@@ -1,0 +1,10 @@
+node_modules
+/.cache
+/build
+/dist
+/public/build
+/.mf
+.env
+/app/styles/app.css
+.vscode
+.idea
