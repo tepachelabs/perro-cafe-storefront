@@ -4,12 +4,14 @@ import {Await, useLoaderData} from '@remix-run/react';
 import {ProductSwimlane, FeaturedCollections, Hero} from '~/components';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
+
 import type {
   CollectionConnection,
   Metafield,
   ProductConnection,
 } from '@shopify/hydrogen/storefront-api-types';
 import {AnalyticsPageType} from '@shopify/hydrogen';
+import {Main, Title} from './index.styles';
 
 interface HomeSeoData {
   shop: {
@@ -122,6 +124,9 @@ export default function Homepage() {
 
   return (
     <>
+      <Main>
+        <Title>Hello!</Title>
+      </Main>
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}

@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "postinstall": "remix-esbuild-override",
     "build": "npm run build:css && shopify hydrogen build",
     "build:css": "postcss styles --base styles --dir app/styles --env production",
     "dev": "npm run build:css && concurrently -g --kill-others-on-fail -r npm:dev:css \"shopify hydrogen dev\"",
@@ -21,6 +22,7 @@
     "@shopify/cli-hydrogen": "^4.0.8",
     "@shopify/hydrogen": "^2023.1.5",
     "@shopify/remix-oxygen": "^1.0.3",
+    "@types/styled-components": "^5.1.26",
     "clsx": "^1.2.1",
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
@@ -32,6 +34,7 @@
     "react-intersection-observer": "^9.4.1",
     "react-use": "^17.4.0",
     "schema-dts": "^1.1.0",
+    "styled-components": "^5.3.8",
     "tiny-invariant": "^1.2.0",
     "typographic-base": "^1.0.4"
   },
@@ -55,6 +58,7 @@
     "postcss-import": "^15.0.0",
     "postcss-preset-env": "^7.8.2",
     "prettier": "^2.8.4",
+    "remix-esbuild-override": "^3.0.4",
     "rimraf": "^3.0.2",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.9.5"
