@@ -24,7 +24,7 @@ import {Layout} from '~/components';
 import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
 
-import styles from './styles/app.css';
+// import styles from './styles/app.css';
 import favicon from '../public/favicon.svg';
 
 import {DEFAULT_LOCALE, parseMenu, type EnhancedMenu} from './lib/utils';
@@ -46,7 +46,7 @@ export const handle = {
 
 export const links: LinksFunction = () => {
   return [
-    {rel: 'stylesheet', href: styles},
+    // {rel: 'stylesheet', href: styles},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
