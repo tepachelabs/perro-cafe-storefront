@@ -31,6 +31,8 @@ import {DEFAULT_LOCALE, parseMenu, type EnhancedMenu} from './lib/utils';
 import invariant from 'tiny-invariant';
 import {Shop, Cart} from '@shopify/hydrogen/storefront-api-types';
 import {useAnalytics} from './hooks/useAnalytics';
+import theme from './theme';
+import {ThemeProvider} from 'styled-components';
 
 const seo: SeoHandleFunction<typeof loader> = ({data, pathname}) => ({
   title: data?.layout?.shop?.name,
@@ -89,23 +91,25 @@ export default function App() {
   useAnalytics(hasUserConsent, locale);
 
   return (
-    <html lang={locale.language}>
-      <head>
-        <Seo />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Layout
-          layout={data.layout as LayoutData}
-          key={`${locale.language}-${locale.country}`}
-        >
-          <Outlet />
-        </Layout>
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
+    <ThemeProvider theme={theme}>
+      <html lang={locale.language}>
+        <head>
+          <Seo />
+          <Meta />
+          <Links />
+        </head>
+        <body>
+          <Layout
+            layout={data.layout as LayoutData}
+            key={`${locale.language}-${locale.country}`}
+          >
+            <Outlet />
+          </Layout>
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }
 

@@ -2,7 +2,11 @@
  * @type {import("@types/eslint").Linter.BaseConfig}
  */
 module.exports = {
-  extends: ['plugin:hydrogen/recommended', 'plugin:hydrogen/typescript'],
+  extends: [
+    'plugin:hydrogen/recommended',
+    'plugin:hydrogen/typescript',
+    'plugin:storybook/recommended',
+  ],
   rules: {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/naming-convention': 'off',
