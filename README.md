@@ -17,7 +17,7 @@ This project is built from the Shopify Hydrogen Demo Store template:
 - TypeScript
 - Styled Components
 - Full-featured setup of components and routes
-- Add more...
+
 
 ## Getting started
 
