@@ -7,6 +7,8 @@ This project is built from the Shopify Hydrogen Demo Store template:
 
 ## What's included
 
+CAMBIO AQUI ESTA EL EJEMPLO PARA EL ARIEL.
+
 - Remix
 - Hydrogen
 - Oxygen
