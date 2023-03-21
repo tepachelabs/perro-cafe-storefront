@@ -35,7 +35,7 @@ export const StyledButton = styled.button<ButtonProps>`
   border-radius: 0.5em;
   border-width: 2px 6px 6px 2px;
   font-weight: bold;
-  padding: 1em 2em;
+  padding: 1em 2em;z
   position: relative;
   top: 0;
   left: 0;

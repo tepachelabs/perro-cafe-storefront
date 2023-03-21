@@ -1,16 +1,12 @@
-const primary = '#7d4fd0';
-const primaryDarker = '#44247c';
-const secondary = '#67c77b';
-const secondaryDarker = '#27913c';
+const darkColor = '#222222';
+const lightColor = '#F2DAB2'
+
 
 export default {
-  main: primary,
 
-  buttonPrimaryColor: primary,
-  buttonPrimaryDarkerColor: primaryDarker,
-  buttonPrimaryTextColor: 'white',
+  darkBackgroundColor: darkColor,
+  darkIconColor: darkColor,
+  lightBackgroundColor: lightColor,
+  lightIconColor: lightColor,
 
-  buttonSecondaryColor: secondary,
-  buttonSecondaryDarkerColor: secondaryDarker,
-  buttonSecondaryTextColor: 'white',
 };
