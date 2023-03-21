@@ -8,7 +8,6 @@ export default {
 
 const Template: ComponentStory<typeof SeeMenuButton> = (args) => (
   <SeeMenuButton {...args}>
-    <span className="btn-shadow"></span>
     <span className="btn-front">SeeMenuButton</span>
   </SeeMenuButton>
 );
