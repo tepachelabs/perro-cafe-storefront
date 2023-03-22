@@ -19,6 +19,11 @@ const styles = css`
   border: 2px solid #222222;
   position: absolute;
   top: 20px;
+  transition: filter 200ms;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
 `;
 
 export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
@@ -37,23 +42,22 @@ export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
     will-change: transform;
   }
 
-  & .btn-shadow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.24);
-    transform: translateY(8px);
-    transition: all 200ms ease;
-  }
-
   &:active .btn-front {
     transform: translateY(-4px);
   }
 
-  &:active .btn-shadow {
-    transform: translateY(2px);
+  & path {
+    opacity: 0;
+  }
+
+  & text {
+    font-weight: bold;
+    transform: translateY(39px) translateX(-18px) rotate(-40deg);
+  }
+
+  & .button__bottom-line {
+    position: absolute;
+    left: 30px;
+    top: 50px;
   }
 `;
