@@ -8,18 +8,16 @@ export interface SeeMenuButtonProps {
 
 const styles = css`
   background-color: #c04625;
-  color: #222222;
-  width: 122px;
+  width: 120px;
   height: 120px;
   cursor: pointer;
-  text-align: center;
   border-radius: 50%;
+  border: 3px solid #222222;
   outline-offset: 4px;
   padding: 0;
-  border: 2px solid #222222;
-  position: absolute;
-  top: 20px;
-  transition: filter 200ms;
+  transition: all 200ms ease;
+  will-change: transform;
+  transform: translateY(16px);
 
   &:hover {
     filter: brightness(1.1);
@@ -28,36 +26,49 @@ const styles = css`
 
 export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
   ${styles}
-  & .btn-front {
+  .st0 {
+    display: none;
+    fill: #c04625;
+  }
+  .st1 {
+    fill: #f1774c;
+  }
+  .st2 {
+    fill: #f2dab2;
+  }
+  .st3 {
+    fill: #222222;
+  }
+  .st4 {
+    display: none;
+    fill: #222222;
+  }
+  .st5 {
+    fill: none;
+    stroke: #222222;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+  }
+
+  .button-front {
     display: block;
-    border: 2px solid #222222;
-    background-color: #f1774c;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
     position: relative;
-    left: -2px;
-    transform: translateY(-16px);
-    transition: all 200ms ease;
+    padding: 0;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    left: -3px;
+
     will-change: transform;
+    transform: translateY(-16px);
+    transition: transform 200ms ease;
   }
 
-  &:active .btn-front {
-    transform: translateY(-4px);
+  &:hover .button-front {
+    transform: translateY(-17px);
   }
 
-  & path {
-    opacity: 0;
-  }
-
-  & text {
-    font-weight: bold;
-    transform: translateY(39px) translateX(-18px) rotate(-40deg);
-  }
-
-  & .button__bottom-line {
-    position: absolute;
-    left: 30px;
-    top: 50px;
+  &:active .button-front {
+    transform: translateY(-8px);
   }
 `;
