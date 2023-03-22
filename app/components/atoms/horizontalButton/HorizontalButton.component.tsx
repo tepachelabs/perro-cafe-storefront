@@ -6,13 +6,13 @@ import {
 } from './HorizontalButton.styles';
 
 export const HorizontalButton: FC<HorizontalButtonProps> = ({
-  children,
+  content,
   ...props
 }) => {
   return (
     <StyledHorizontalButton {...props}>
       <span className="front-btn">
-        <div className="text-btn">{children}</div>
+        <div className="text-btn">{content}</div>
         <div className="arrow-btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,7 @@ import styled, {css} from 'styled-components';
 import {ReactNode} from 'react';
 
 export interface HorizontalButtonProps {
-  children?: ReactNode;
+  content?: ReactNode;
 }
 
 export const StyledHorizontalButton = styled.button<HorizontalButtonProps>`
@@ -37,6 +37,7 @@ export const StyledHorizontalButton = styled.button<HorizontalButtonProps>`
   }
 
   & .text-btn {
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     font-size: 16px;
 

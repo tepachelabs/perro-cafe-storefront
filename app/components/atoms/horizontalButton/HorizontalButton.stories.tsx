@@ -11,12 +11,12 @@ const Template: ComponentStory<typeof HorizontalButton> = (args) => (
   <HorizontalButton {...args} />
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
-  children: 'VER EL MENÚ',
+export const SeeMenu = Template.bind({});
+SeeMenu.args = {
+  content: 'VER EL MENÚ',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  children: '¿CÓMO LLEGAR?',
+export const Directions = Template.bind({});
+Directions.args = {
+  content: '¿CÓMO LLEGAR?',
 };
