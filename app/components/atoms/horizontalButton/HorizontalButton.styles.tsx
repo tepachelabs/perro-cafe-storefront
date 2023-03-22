@@ -51,6 +51,10 @@ export const StyledHorizontalButton = styled.button<HorizontalButtonProps>`
     right: 10px;
   }
 
+  &:hover .front-btn {
+    transform: translateY(-17px);
+  }
+
   &:active .front-btn {
     filter: brightness(0.95);
     transform: translateY(-8px);
