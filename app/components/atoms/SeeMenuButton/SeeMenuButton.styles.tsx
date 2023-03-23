@@ -20,7 +20,11 @@ const styles = css`
   transform: translateY(16px);
 
   &:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.05);
+  }
+
+  &:active {
+    filter: brightness(0.95);
   }
 `;
 
@@ -50,7 +54,7 @@ export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
     stroke-miterlimit: 10;
   }
 
-  .button-front {
+  .see-menu-button__front {
     display: block;
     position: relative;
     padding: 0;
@@ -64,11 +68,33 @@ export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
     transition: transform 200ms ease;
   }
 
-  &:hover .button-front {
+  &:hover .see-menu-button__front {
     transform: translateY(-17px);
   }
 
-  &:active .button-front {
+  &:active .see-menu-button__front {
     transform: translateY(-8px);
+  }
+`;
+
+export const VerticalLines = styled.div`
+  & .see-menu-button__line-one {
+    display: block;
+    position: absolute;
+    width: 3px;
+    height: 16px;
+    top: 93px;
+    left: 83px;
+    background: #222222;
+  }
+
+  & .see-menu-button__line-two {
+    display: block;
+    position: absolute;
+    width: 3px;
+    height: 16px;
+    top: 85px;
+    left: 93px;
+    background: #222222;
   }
 `;

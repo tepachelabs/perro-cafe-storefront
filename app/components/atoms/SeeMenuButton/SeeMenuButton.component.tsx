@@ -1,10 +1,18 @@
 import {FC} from 'react';
-import {SeeMenuButtonProps, StyledSeeMenuButton} from './SeeMenuButton.styles';
+import {
+  SeeMenuButtonProps,
+  StyledSeeMenuButton,
+  VerticalLines,
+} from './SeeMenuButton.styles';
 
 export const SeeMenuButton: FC<SeeMenuButtonProps> = ({children, ...props}) => {
   return (
     <StyledSeeMenuButton {...props}>
-      <span className="button-front">
+      <VerticalLines>
+        <span className="see-menu-button__line-one"></span>
+        <span className="see-menu-button__line-two"></span>
+      </VerticalLines>
+      <span className="see-menu-button__front">
         <svg
           version="1.1"
           id="Layer_2_00000093889474085133927160000002058561383302725017_"
