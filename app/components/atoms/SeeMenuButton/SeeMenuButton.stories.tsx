@@ -1,4 +1,5 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
+
 import {SeeMenuButton} from './SeeMenuButton.component';
 
 export default {
@@ -13,5 +14,4 @@ const Template: ComponentStory<typeof SeeMenuButton> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {
   variant: 'primary',
-  children: 'Primary',
 };

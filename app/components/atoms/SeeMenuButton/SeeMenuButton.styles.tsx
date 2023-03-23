@@ -1,12 +1,24 @@
-import styled, {css} from 'styled-components';
-import {ReactNode} from 'react';
+import styled from 'styled-components';
 
 export interface SeeMenuButtonProps {
-  children?: ReactNode;
   variant: 'primary';
 }
 
-const styles = css`
+export const ButtonFace = styled.img`
+  display: block;
+  position: relative;
+  padding: 0;
+  border-radius: 50%;
+  width: 131px;
+  height: 131px;
+  left: -9px;
+
+  will-change: transform;
+  transform: translateY(-16px);
+  transition: transform 200ms ease;
+`;
+
+export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
   background-color: #c04625;
   width: 120px;
   height: 120px;
@@ -26,75 +38,26 @@ const styles = css`
   &:active {
     filter: brightness(0.95);
   }
-`;
 
-export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
-  ${styles}
-  .st0 {
-    display: none;
-    fill: #c04625;
-  }
-  .st1 {
-    fill: #f1774c;
-  }
-  .st2 {
-    fill: #f2dab2;
-  }
-  .st3 {
-    fill: #222222;
-  }
-  .st4 {
-    display: none;
-    fill: #222222;
-  }
-  .st5 {
-    fill: none;
-    stroke: #222222;
-    stroke-width: 3;
-    stroke-miterlimit: 10;
-  }
-
-  .see-menu-button__front {
-    display: block;
-    position: relative;
-    padding: 0;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    left: -3px;
-
-    will-change: transform;
-    transform: translateY(-16px);
-    transition: transform 200ms ease;
-  }
-
-  &:hover .see-menu-button__front {
+  &:hover ${ButtonFace} {
     transform: translateY(-17px);
   }
 
-  &:active .see-menu-button__front {
+  &:active ${ButtonFace} {
     transform: translateY(-8px);
   }
 `;
 
-export const VerticalLines = styled.div`
-  & .see-menu-button__line-one {
-    display: block;
-    position: absolute;
-    width: 3px;
-    height: 16px;
-    top: 93px;
-    left: 83px;
-    background: #222222;
-  }
+export const VerticalLine = styled.div<{
+  top?: number;
+  left?: number;
+}>`
+  background: #222222;
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 16px;
 
-  & .see-menu-button__line-two {
-    display: block;
-    position: absolute;
-    width: 3px;
-    height: 16px;
-    top: 85px;
-    left: 93px;
-    background: #222222;
-  }
+  top: ${({top}) => top}px;
+  left: ${({left}) => left}px;
 `;
