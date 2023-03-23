@@ -24,7 +24,6 @@
     "@shopify/remix-oxygen": "^1.0.4",
     "@types/styled-components": "^5.1.26",
     "clsx": "^1.2.1",
-    "cross-env": "^7.0.3",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "isbot": "^3.6.7",
