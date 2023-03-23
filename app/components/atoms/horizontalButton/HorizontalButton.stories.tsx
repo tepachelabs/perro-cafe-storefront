@@ -13,10 +13,10 @@ const Template: ComponentStory<typeof HorizontalButton> = (args) => (
 
 export const SeeMenu = Template.bind({});
 SeeMenu.args = {
-  content: 'VER EL MENÚ',
+  label: 'VER EL MENÚ',
 };
 
 export const Directions = Template.bind({});
 Directions.args = {
-  content: '¿CÓMO LLEGAR?',
+  label: '¿CÓMO LLEGAR?',
 };

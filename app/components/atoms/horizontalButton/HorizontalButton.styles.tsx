@@ -2,7 +2,7 @@ import styled, {css} from 'styled-components';
 import {ReactNode} from 'react';
 
 export interface HorizontalButtonProps {
-  content?: ReactNode;
+  label?: string;
 }
 
 export const StyledHorizontalButton = styled.button<HorizontalButtonProps>`
@@ -54,14 +54,17 @@ export const ContentText = styled.div`
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 16px;
+  text-transform: uppercase;
 
   position: absolute;
   top: 9px;
   left: 20px;
 `;
 
-export const Arrow = styled.div`
+export const Arrow = styled.img`
   position: absolute;
   top: 6px;
   right: 12px;
+  height: 23px;
+  width: 14px;
 `;
