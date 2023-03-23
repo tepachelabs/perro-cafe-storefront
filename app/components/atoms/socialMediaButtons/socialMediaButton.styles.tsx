@@ -3,45 +3,58 @@ import {ReactNode} from 'react';
 
 export interface ButtonProps {
   variant?: 'light' | 'dark';
-  children?: ReactNode;
+  socialMediaIcon?: ReactNode;
 }
-
-
 
 const variants = {
   light: css`
-    background-color: ${({theme}) => theme.darkBackgroundColor};
-    color: ${({theme}) => theme.lightIconColor};
-    &:hover,
+    .socialMediaButton {
+      background-color: ${({theme}) => theme.darkBackgroundColor};
+    }
+    .iconColorSVG {
+      fill: ${({theme}) => theme.lightIconColor};
+    }
+    &:hover .socialMediaButton,
     &:active {
       background-color: ${({theme}) => theme.lightBackgroundColor};
-      color: ${({theme}) => theme.darkIconColor};
-      filter: inver
+    }
+    &:hover .iconColorSVG {
+      fill: ${({theme}) => theme.darkIconColor};
+      transition: All 300ms ease;
     }
   `,
   dark: css`
-    background-color: ${({theme}) => theme.lightBackgroundColor};
-    color: ${({theme}) => theme.darkIconColor};
-    &:hover,
+    .socialMediaButton {
+      background-color: ${({theme}) => theme.lightBackgroundColor};
+    }
+    .iconColorSVG {
+      fill: ${({theme}) => theme.darkIconColor};
+      transition: All 300ms ease;
+    }
+    &:hover .socialMediaButton,
     &:active {
       background-color: ${({theme}) => theme.darkBackgroundColor};
-      color: ${({theme}) => theme.lightIconColor};
+    }
+    &:hover .iconColorSVG {
+      fill: ${({theme}) => theme.lightIconColor};
     }
   `,
 };
 
-export const StyledButton = styled.button<ButtonProps> `
+export const StyledButton = styled.div<ButtonProps>`
   ${({variant}) => variants[variant || 'light']}
-  cursor: pointer;
-  border-radius: 0.5em;
-  border: none;
-  padding: 1em 1em;
-  position: relative;
-  top: 0;
-  left: 0;
-  transition: All 300ms ease;
+  .socialMediaButton {
+    width: 2.25em;
+    height: 2.25em;
+    border-radius: 0.4em;
+    padding: 1em 1em;
+    position: absolute;
+    transition: All 300ms ease;
+    cursor: pointer;
+  }
 
+  .socialMediaIcon {
+    width: 2.25em;
+    height: 2.25em;
+  }
 `;
-
-
-
