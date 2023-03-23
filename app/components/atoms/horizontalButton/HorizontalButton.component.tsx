@@ -1,6 +1,9 @@
 import {FC} from 'react';
 
 import {
+  Arrow,
+  ButtonFace,
+  ContentText,
   HorizontalButtonProps,
   StyledHorizontalButton,
 } from './HorizontalButton.styles';
@@ -11,9 +14,9 @@ export const HorizontalButton: FC<HorizontalButtonProps> = ({
 }) => {
   return (
     <StyledHorizontalButton {...props}>
-      <span className="front-btn">
-        <div className="text-btn">{content}</div>
-        <div className="arrow-btn">
+      <ButtonFace>
+        <ContentText>{content}</ContentText>
+        <Arrow>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"
@@ -26,8 +29,8 @@ export const HorizontalButton: FC<HorizontalButtonProps> = ({
               fill="#222222"
             />
           </svg>
-        </div>
-      </span>
+        </Arrow>
+      </ButtonFace>
     </StyledHorizontalButton>
   );
 };
