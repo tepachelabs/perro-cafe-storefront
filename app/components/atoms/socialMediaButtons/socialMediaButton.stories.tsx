@@ -1,5 +1,4 @@
 import {ComponentStory, ComponentMeta} from '@storybook/react';
-
 import {Button} from './socialMediaButton.component';
 
 export default {
@@ -9,20 +8,20 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const InstagramButton = Template.bind({});
-InstagramButton.args = {
+export const Instagram = Template.bind({});
+Instagram.args = {
   variant: 'light',
   socialMediaIcon: 'Instagram',
 };
 
-export const FacebookButton = Template.bind({});
-FacebookButton.args = {
+export const Facebook = Template.bind({});
+Facebook.args = {
   variant: 'light',
   socialMediaIcon: 'Facebook',
 };
 
-export const TwitterButton = Template.bind({});
-TwitterButton.args = {
+export const Twitter = Template.bind({});
+Twitter.args = {
   variant: 'light',
   socialMediaIcon: 'Twitter',
 };

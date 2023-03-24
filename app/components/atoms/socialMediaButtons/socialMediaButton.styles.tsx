@@ -1,60 +1,54 @@
 import styled, {css} from 'styled-components';
 import {ReactNode} from 'react';
 
-export interface ButtonProps {
+export interface SocialMediaButtonProps {
   variant?: 'light' | 'dark';
   socialMediaIcon?: ReactNode;
 }
 
 const variants = {
   light: css`
-    .socialMediaButton {
-      background-color: ${({theme}) => theme.darkBackgroundColor};
-    }
+    background-color: ${({theme}) => theme.colors.backgroundDarker};
     .iconColorSVG {
-      fill: ${({theme}) => theme.lightIconColor};
+      fill: ${({theme}) => theme.colors.black};
     }
-    &:hover .socialMediaButton,
+    &:hover,
     &:active {
-      background-color: ${({theme}) => theme.lightBackgroundColor};
+      background-color: ${({theme}) => theme.colors.black};
     }
     &:hover .iconColorSVG {
-      fill: ${({theme}) => theme.darkIconColor};
+      fill: ${({theme}) => theme.colors.backgroundDarker};
       transition: All 300ms ease;
     }
   `,
   dark: css`
-    .socialMediaButton {
-      background-color: ${({theme}) => theme.lightBackgroundColor};
-    }
+    background-color: ${({theme}) => theme.colors.black};
     .iconColorSVG {
-      fill: ${({theme}) => theme.darkIconColor};
+      fill: ${({theme}) => theme.colors.backgroundDarker};
       transition: All 300ms ease;
     }
-    &:hover .socialMediaButton,
+    &:hover,
     &:active {
-      background-color: ${({theme}) => theme.darkBackgroundColor};
+      background-color: ${({theme}) => theme.colors.backgroundDarker};
     }
     &:hover .iconColorSVG {
-      fill: ${({theme}) => theme.lightIconColor};
+      fill: ${({theme}) => theme.colors.black};
     }
   `,
 };
 
-export const StyledButton = styled.div<ButtonProps>`
+export const StyledButton = styled.div<SocialMediaButtonProps>`
   ${({variant}) => variants[variant || 'light']}
-  .socialMediaButton {
-    width: 2.25em;
-    height: 2.25em;
-    border-radius: 0.4em;
-    padding: 1em 1em;
-    position: absolute;
-    transition: All 300ms ease;
-    cursor: pointer;
-  }
+  width: 2.25em;
+  height: 2.25em;
+  border-radius: 0.4em;
+  padding: 1em 1em;
+  position: absolute;
+  transition: All 300ms ease;
+  cursor: pointer;
+`;
 
-  .socialMediaIcon {
-    width: 2.25em;
-    height: 2.25em;
-  }
+export const Icon = styled.div`
+  width: 2.25em;
+  height: 2.25em;
 `;
