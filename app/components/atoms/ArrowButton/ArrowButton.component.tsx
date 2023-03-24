@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import {
-  Arrow,
+  Img,
   ArrowButtonFace,
   ArrowButtonProps,
   StyledArrowButton,
@@ -9,11 +9,11 @@ import {
 
 import arrowImg from './img/arrow.svg';
 
-export const ArrowButton: FC<ArrowButtonProps> = ({variant, ...props}) => {
+export const ArrowButton: FC<ArrowButtonProps> = ({variant}) => {
   return (
-    <StyledArrowButton variant={variant} {...props}>
+    <StyledArrowButton variant={variant}>
       <ArrowButtonFace>
-        <Arrow
+        <Img
           src={arrowImg}
           alt={`${variant === 'right' ? 'Right' : 'Left'} arrow graphic`}
         />

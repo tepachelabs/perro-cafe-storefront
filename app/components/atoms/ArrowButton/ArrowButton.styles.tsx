@@ -28,7 +28,7 @@ export const ArrowButtonFace = styled.span`
   transition: all 200ms ease;
 `;
 
-export const Arrow = styled.img<ArrowButtonProps>`
+export const Img = styled.img`
   width: 60%;
   height: 60%;
 
@@ -40,7 +40,7 @@ export const Arrow = styled.img<ArrowButtonProps>`
 `;
 
 export const StyledArrowButton = styled.button<ArrowButtonProps>`
-  ${Arrow} {
+  ${Img} {
     ${({variant}) => arrowTransform[variant || 'right']}
   }
 
