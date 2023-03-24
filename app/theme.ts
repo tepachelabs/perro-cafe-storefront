@@ -1,12 +1,6 @@
-// @deprecated
-const primary = '#7d4fd0';
-// @deprecated
-const primaryDarker = '#44247c';
-// @deprecated
-const secondary = '#67c77b';
-// @deprecated
-const secondaryDarker = '#27913c';
-
+/**
+ * DA THEME
+ */
 const orange = '#f1774c';
 const yellow = '#f3b760';
 const green = '#35ae9f';
@@ -16,16 +10,27 @@ const black = '#222222';
 const gray = '#bdbdbd';
 const spanishGray = '#a39b98';
 
-export default {
-  main: primary,
+const oswald = '"Oswald", sans-serif';
+const raleway = '"Raleway", sans-serif';
 
-  buttonPrimaryColor: primary, // @deprecated
-  buttonPrimaryDarkerColor: primaryDarker, // @deprecated
-  buttonPrimaryTextColor: 'white', // @deprecated
-  buttonSecondaryColor: secondary, // @deprecated
-  buttonSecondaryDarkerColor: secondaryDarker, // @deprecated
-  buttonSecondaryTextColor: 'white', // @deprecated
+export interface MainTheme {
+  colors: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    background: string;
+    backgroundDarker: string;
+    black: string;
+    gray: string;
+    grayDarker: string;
+  };
+  fonts: {
+    body: string;
+    title: string;
+  };
+}
 
+const main: MainTheme = {
   colors: {
     primary: orange,
     secondary: green,
@@ -38,7 +43,9 @@ export default {
   },
 
   fonts: {
-    oswald: '"Oswald", sans-serif',
-    raleway: '"Raleway", sans-serif',
+    body: raleway,
+    title: oswald,
   },
 };
+
+export default main;
