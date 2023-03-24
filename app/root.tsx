@@ -48,7 +48,6 @@ export const handle = {
 
 export const links: LinksFunction = () => {
   return [
-    // {rel: 'stylesheet', href: styles},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -57,7 +56,20 @@ export const links: LinksFunction = () => {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.googleapis.com',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      crossorigin: true,
+    },
     {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Oswald&family=Raleway:wght@400;700&display=swap',
+    },
   ];
 };
 
