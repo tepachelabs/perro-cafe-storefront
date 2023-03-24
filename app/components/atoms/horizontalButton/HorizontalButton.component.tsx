@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import {
-  Arrow,
+  Img,
   ButtonFace,
   ContentText,
   HorizontalButtonProps,
@@ -10,15 +10,12 @@ import {
 
 import arrow from './img/arrow.svg';
 
-export const HorizontalButton: FC<HorizontalButtonProps> = ({
-  label,
-  ...props
-}) => {
+export const HorizontalButton: FC<HorizontalButtonProps> = ({label}) => {
   return (
-    <StyledHorizontalButton {...props}>
+    <StyledHorizontalButton>
       <ButtonFace>
         <ContentText>{label}</ContentText>
-        <Arrow src={arrow} alt="Arrow graphic" />
+        <Img src={arrow} alt="Arrow graphic" />
       </ButtonFace>
     </StyledHorizontalButton>
   );
