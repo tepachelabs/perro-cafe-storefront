@@ -16,7 +16,9 @@ export const Img = styled.img`
 `;
 
 export const Label = styled.span`
-  color: #fff;
-  font-size: 1.2em;
+  color: ${({theme}) => theme.colors.background};
+  font-family: ${({theme}) => theme.fonts.title};
+  font-size: 1.5em;
+  font-weight: bold;
   text-transform: uppercase;
 `;
