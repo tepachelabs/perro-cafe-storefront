@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {LineDiv, LineVariant} from './Line.styles'
+import {StyledLine, LineVariant} from './Line.styles'
 
 interface Props {
   size?: 'small' | 'medium' | 'max' ;
@@ -8,6 +8,6 @@ interface Props {
 
 export const Line: FC<Props> = ({size, color}) => {
   return (
-      <LineDiv size={size} color={color}></LineDiv>
+      <StyledLine size={size} color={color}></StyledLine>
   );
 };

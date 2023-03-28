@@ -26,9 +26,8 @@ const colors = {
   `,
 };
 
-export const LineDiv = styled.div<LineVariant>`
+export const StyledLine = styled.div<LineVariant>`
   ${({size}) => sizes[size || 'medium']}
   ${({color}) => colors[color || 'dark']}
-  display: flex;
   height: 5px;
 `;

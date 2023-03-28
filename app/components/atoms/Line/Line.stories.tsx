@@ -10,8 +10,20 @@ const Template: ComponentStory<typeof Line> = (args) => (
   <Line {...args} />
 );
 
-export const LineExample= Template.bind({});
-LineExample.args = {
+export const LineSmall= Template.bind({});
+LineSmall.args = {
   size: 'small',
+  color: 'dark',
+};
+
+export const LineMedium= Template.bind({});
+LineMedium.args = {
+  size: 'medium',
+  color: 'dark',
+};
+
+export const LineMax= Template.bind({});
+LineMax.args = {
+  size: 'max',
   color: 'dark',
 };
