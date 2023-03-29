@@ -1,8 +1,6 @@
 import {FC} from 'react';
 import {Bullet, CarouselCircleProps} from './CarouselCircle.styles';
 
-export const CarouselCircle: FC<CarouselCircleProps> = ({
-  variant = 'normal',
-}) => {
-  return <Bullet variant={variant} />;
+export const CarouselCircle: FC<CarouselCircleProps> = ({active = false}) => {
+  return <Bullet active={active} />;
 };

@@ -12,10 +12,10 @@ const Template: ComponentStory<typeof CarouselCircle> = (args) => (
 
 export const Normal = Template.bind({});
 Normal.args = {
-  variant: 'normal',
+  active: false,
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
-  variant: 'selected',
+  active: true,
 };
