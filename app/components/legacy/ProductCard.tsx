@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import {
   flattenConnection,
   Image,
@@ -6,11 +5,13 @@ import {
   ShopifyAnalyticsProduct,
   useMoney,
 } from '@shopify/hydrogen';
-import type {SerializeFrom} from '@shopify/remix-oxygen';
-import {Text, Link, AddToCartButton} from '~/components';
-import {isDiscounted, isNewArrival} from '~/lib/utils';
-import {getProductPlaceholder} from '~/lib/placeholders';
 import type {MoneyV2, Product} from '@shopify/hydrogen/storefront-api-types';
+import type {SerializeFrom} from '@shopify/remix-oxygen';
+import clsx from 'clsx';
+
+import {Text, Link, AddToCartButton} from '~/components/legacy/index';
+import {getProductPlaceholder} from '~/lib/placeholders';
+import {isDiscounted, isNewArrival} from '~/lib/utils';
 
 export function ProductCard({
   product,

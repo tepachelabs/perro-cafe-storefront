@@ -1,6 +1,7 @@
 import {flattenConnection} from '@shopify/hydrogen';
 import type {Order} from '@shopify/hydrogen/storefront-api-types';
-import {Heading, Text, Link} from '~/components';
+
+import {Heading, Text, Link} from '~/components/legacy/index';
 import {statusMessage} from '~/lib/utils';
 
 export function OrderCard({order}: {order: Order}) {

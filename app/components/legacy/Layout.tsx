@@ -1,8 +1,8 @@
-import {
-  type EnhancedMenu,
-  type EnhancedMenuItem,
-  useIsHomePath,
-} from '~/lib/utils';
+import {Disclosure} from '@headlessui/react';
+import {useParams, Form, Await, useMatches} from '@remix-run/react';
+import {Suspense, useEffect, useMemo} from 'react';
+import {useWindowScroll} from 'react-use';
+
 import {
   Drawer,
   useDrawer,
@@ -19,14 +19,16 @@ import {
   Cart,
   CartLoading,
   Link,
-} from '~/components';
-import {useParams, Form, Await, useMatches} from '@remix-run/react';
-import {useWindowScroll} from 'react-use';
-import {Disclosure} from '@headlessui/react';
-import {Suspense, useEffect, useMemo} from 'react';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
+} from '~/components/legacy/index';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
-import type {LayoutData} from '../root';
+import {useIsHydrated} from '~/hooks/useIsHydrated';
+import {
+  type EnhancedMenu,
+  type EnhancedMenuItem,
+  useIsHomePath,
+} from '~/lib/utils';
+
+import type {LayoutData} from '../../root';
 
 export function Layout({
   children,

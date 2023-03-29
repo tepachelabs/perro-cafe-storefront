@@ -1,16 +1,17 @@
-import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
-import {Suspense} from 'react';
 import {Await, useLoaderData} from '@remix-run/react';
-import {ProductSwimlane, FeaturedCollections, Hero} from '~/components';
-import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
-import {getHeroPlaceholder} from '~/lib/placeholders';
-
+import {AnalyticsPageType} from '@shopify/hydrogen';
 import type {
   CollectionConnection,
   Metafield,
   ProductConnection,
 } from '@shopify/hydrogen/storefront-api-types';
-import {AnalyticsPageType} from '@shopify/hydrogen';
+import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
+import {Suspense} from 'react';
+
+import {ProductSwimlane, FeaturedCollections, Hero} from '~/components/legacy';
+import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
+import {getHeroPlaceholder} from '~/lib/placeholders';
+
 import {Main, Title} from './index.styles';
 
 interface HomeSeoData {

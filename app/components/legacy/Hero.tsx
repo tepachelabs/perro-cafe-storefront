@@ -1,13 +1,14 @@
-import clsx from 'clsx';
-import type {SerializeFrom} from '@shopify/remix-oxygen';
 import {MediaFile} from '@shopify/hydrogen';
 import type {
   MediaImage,
   Media,
   Video as MediaVideo,
 } from '@shopify/hydrogen/storefront-api-types';
-import {Heading, Text, Link} from '~/components';
-import type {CollectionHero} from '~/routes/($lang)/index';
+import type {SerializeFrom} from '@shopify/remix-oxygen';
+import clsx from 'clsx';
+
+import {Heading, Text, Link} from '~/components/legacy/index';
+import type {CollectionHero} from '~/routes/($lang)';
 
 /**
  * Hero component that renders metafields attached to collection resources

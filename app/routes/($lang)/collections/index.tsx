@@ -1,9 +1,10 @@
-import {json, type MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import type {
   Collection,
   CollectionConnection,
 } from '@shopify/hydrogen/storefront-api-types';
+import {json, type MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
+
 import {
   Grid,
   Heading,
@@ -13,7 +14,7 @@ import {
   Pagination,
   getPaginationVariables,
   Button,
-} from '~/components';
+} from '~/components/legacy';
 import {getImageLoadingPriority} from '~/lib/const';
 
 const PAGINATION_SIZE = 8;

@@ -3,7 +3,8 @@ import type {
   Customer,
   MailingAddress,
 } from '@shopify/hydrogen/storefront-api-types';
-import {Button, Link, Text} from '~/components';
+
+import {Button, Link, Text} from '~/components/legacy/index';
 
 export function AccountAddressBook({
   customer,

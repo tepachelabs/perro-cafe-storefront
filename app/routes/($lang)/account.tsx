@@ -6,13 +6,22 @@ import {
   useMatches,
   useOutlet,
 } from '@remix-run/react';
+import {flattenConnection} from '@shopify/hydrogen';
 import type {
   Collection,
   Customer,
   MailingAddress,
   Order,
 } from '@shopify/hydrogen/storefront-api-types';
+import {
+  json,
+  defer,
+  redirect,
+  type LoaderArgs,
+  type AppLoadContext,
+} from '@shopify/remix-oxygen';
 import {Suspense} from 'react';
+
 import {
   Button,
   OrderCard,
@@ -22,19 +31,12 @@ import {
   AccountAddressBook,
   Modal,
   ProductSwimlane,
-} from '~/components';
-import {FeaturedCollections} from '~/components/FeaturedCollections';
-import {
-  json,
-  defer,
-  redirect,
-  type LoaderArgs,
-  type AppLoadContext,
-} from '@shopify/remix-oxygen';
-import {flattenConnection} from '@shopify/hydrogen';
-import {getFeaturedData} from './featured-products';
-import {doLogout} from './account/__private/logout';
+} from '~/components/legacy';
+import {FeaturedCollections} from '~/components/legacy/FeaturedCollections';
 import {usePrefixPathWithLocale} from '~/lib/utils';
+
+import {doLogout} from './account/__private/logout';
+import {getFeaturedData} from './featured-products';
 
 // Combining json + Response + defer in a loader breaks the
 // types returned by useLoaderData. This is a temporary fix.

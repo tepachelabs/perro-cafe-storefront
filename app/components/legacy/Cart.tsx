@@ -1,7 +1,15 @@
+import {useFetcher} from '@remix-run/react';
+import {flattenConnection, Image, Money} from '@shopify/hydrogen';
+import type {
+  Cart as CartType,
+  CartCost,
+  CartLine,
+  CartLineUpdateInput,
+} from '@shopify/hydrogen/storefront-api-types';
 import clsx from 'clsx';
 import {useRef} from 'react';
 import {useScroll} from 'react-use';
-import {flattenConnection, Image, Money} from '@shopify/hydrogen';
+
 import {
   Button,
   Heading,
@@ -9,16 +17,9 @@ import {
   Text,
   Link,
   FeaturedProducts,
-} from '~/components';
-import {getInputStyleClasses} from '~/lib/utils';
-import type {
-  Cart as CartType,
-  CartCost,
-  CartLine,
-  CartLineUpdateInput,
-} from '@shopify/hydrogen/storefront-api-types';
-import {useFetcher} from '@remix-run/react';
+} from '~/components/legacy/index';
 import {CartAction} from '~/lib/type';
+import {getInputStyleClasses} from '~/lib/utils';
 
 type Layouts = 'page' | 'drawer';
 

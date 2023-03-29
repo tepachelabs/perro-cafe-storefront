@@ -1,7 +1,7 @@
-import {Fragment, useState} from 'react';
 import {Dialog, Transition} from '@headlessui/react';
+import {Fragment, useState} from 'react';
 
-import {Heading, IconClose} from '~/components';
+import {Heading, IconClose} from '~/components/legacy/index';
 
 /**
  * Drawer component that opens on user click.

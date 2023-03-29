@@ -1,5 +1,6 @@
 import type {Customer} from '@shopify/hydrogen/storefront-api-types';
-import {Link} from '~/components';
+
+import {Link} from '~/components/legacy/index';
 
 export function AccountDetails({customer}: {customer: Customer}) {
   const {firstName, lastName, email, phone} = customer;

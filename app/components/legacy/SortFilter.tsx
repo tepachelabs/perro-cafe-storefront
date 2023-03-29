@@ -1,7 +1,4 @@
-import {SyntheticEvent, useMemo, useState} from 'react';
-import {Menu} from '@headlessui/react';
-
-import {Heading, IconFilters, IconCaret, IconXMark, Text} from '~/components';
+import {Menu, Disclosure} from '@headlessui/react';
 import {
   Link,
   useLocation,
@@ -9,14 +6,21 @@ import {
   Location,
   useNavigate,
 } from '@remix-run/react';
-import {useDebounce} from 'react-use';
-import {Disclosure} from '@headlessui/react';
-
 import type {
   FilterType,
   Filter,
   Collection,
 } from '@shopify/hydrogen/storefront-api-types';
+import {SyntheticEvent, useMemo, useState} from 'react';
+import {useDebounce} from 'react-use';
+
+import {
+  Heading,
+  IconFilters,
+  IconCaret,
+  IconXMark,
+  Text,
+} from '~/components/legacy/index';
 import {
   AppliedFilter,
   SortParam,
