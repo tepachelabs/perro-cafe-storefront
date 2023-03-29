@@ -1,13 +1,12 @@
 import {FC} from 'react';
 
+import buttonFace from './img/button-face.svg';
 import {
   ButtonFace,
   SeeMenuButtonProps,
   StyledSeeMenuButton,
   VerticalLine,
 } from './SeeMenuButton.styles';
-
-import buttonFace from './img/button-face.svg';
 
 export const SeeMenuButton: FC<SeeMenuButtonProps> = ({...props}) => {
   return (

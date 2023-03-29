@@ -1,7 +1,5 @@
-import {HorizontalRule} from './HorizontalRule.style'
+import {HorizontalRule} from './HorizontalRule.style';
 
 export const Hr = () => {
-  return (
-      <HorizontalRule></HorizontalRule>
-  );
+  return <HorizontalRule></HorizontalRule>;
 };

@@ -1,4 +1,5 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
+
 import {ArrowButton} from './ArrowButton.component';
 
 export default {

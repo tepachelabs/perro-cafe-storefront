@@ -6,7 +6,6 @@ import {
   ArrowButtonProps,
   StyledArrowButton,
 } from './ArrowButton.styles';
-
 import arrowImg from './img/arrow.svg';
 
 export const ArrowButton: FC<ArrowButtonProps> = ({variant}) => {
