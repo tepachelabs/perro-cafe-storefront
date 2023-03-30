@@ -1,5 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {CarouselCircle} from './CarouselCircle.component';
+
+import {CarouselCircle} from './carousel-circle.component';
 
 export default {
   title: 'Atoms/CarouselCircle',
