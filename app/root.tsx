@@ -1,11 +1,4 @@
 import {
-  defer,
-  type LinksFunction,
-  type MetaFunction,
-  type LoaderArgs,
-  type AppLoadContext,
-} from '@shopify/remix-oxygen';
-import {
   Links,
   Meta,
   Outlet,
@@ -20,19 +13,28 @@ import {
   Seo,
   type SeoHandleFunction,
 } from '@shopify/hydrogen';
-import {Layout} from '~/components';
-import {GenericError} from './components/GenericError';
-import {NotFound} from './components/NotFound';
+import {Shop, Cart} from '@shopify/hydrogen/storefront-api-types';
+import {
+  defer,
+  type LinksFunction,
+  type MetaFunction,
+  type LoaderArgs,
+  type AppLoadContext,
+} from '@shopify/remix-oxygen';
+import {ThemeProvider} from 'styled-components';
+import invariant from 'tiny-invariant';
+
+import {Layout} from '~/components/legacy';
+
+import {GenericError} from './components/legacy/GenericError';
+import {NotFound} from './components/legacy/NotFound';
 
 // import styles from './styles/app.css';
-import favicon from '../public/favicon.svg';
 
-import {DEFAULT_LOCALE, parseMenu, type EnhancedMenu} from './lib/utils';
-import invariant from 'tiny-invariant';
-import {Shop, Cart} from '@shopify/hydrogen/storefront-api-types';
 import {useAnalytics} from './hooks/useAnalytics';
+import {DEFAULT_LOCALE, parseMenu, type EnhancedMenu} from './lib/utils';
 import theme from './theme';
-import {ThemeProvider} from 'styled-components';
+import favicon from '../public/favicon.svg';
 
 const seo: SeoHandleFunction<typeof loader> = ({data, pathname}) => ({
   title: data?.layout?.shop?.name,

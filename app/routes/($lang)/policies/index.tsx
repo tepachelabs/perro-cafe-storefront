@@ -1,9 +1,9 @@
-import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import type {ShopPolicy} from '@shopify/hydrogen/storefront-api-types';
+import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
 
-import {PageHeader, Section, Heading, Link} from '~/components';
+import {PageHeader, Section, Heading, Link} from '~/components/legacy';
 
 export const handle = {
   seo: {

@@ -1,14 +1,15 @@
+import {useLoaderData} from '@remix-run/react';
+import type {SeoHandleFunction} from '@shopify/hydrogen';
+import type {Page as PageType} from '@shopify/hydrogen/storefront-api-types';
 import {
   json,
   type MetaFunction,
   type SerializeFrom,
   type LoaderArgs,
 } from '@shopify/remix-oxygen';
-import type {Page as PageType} from '@shopify/hydrogen/storefront-api-types';
-import {useLoaderData} from '@remix-run/react';
 import invariant from 'tiny-invariant';
-import {PageHeader} from '~/components';
-import type {SeoHandleFunction} from '@shopify/hydrogen';
+
+import {PageHeader} from '~/components/legacy';
 
 const seo: SeoHandleFunction<typeof loader> = ({data}) => ({
   title: data?.page?.seo?.title,

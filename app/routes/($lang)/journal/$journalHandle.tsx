@@ -1,3 +1,7 @@
+import {useLoaderData} from '@remix-run/react';
+import {Image} from '@shopify/hydrogen';
+import type {SeoHandleFunction} from '@shopify/hydrogen';
+import {Blog} from '@shopify/hydrogen/storefront-api-types';
 import {
   json,
   type MetaFunction,
@@ -5,14 +9,12 @@ import {
   type LinksFunction,
   type LoaderArgs,
 } from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
-import {Image} from '@shopify/hydrogen';
-import {Blog} from '@shopify/hydrogen/storefront-api-types';
 import invariant from 'tiny-invariant';
-import {PageHeader, Section} from '~/components';
+
+import {PageHeader, Section} from '~/components/legacy';
 import {ATTR_LOADING_EAGER} from '~/lib/const';
+
 // import styles from '../../../styles/custom-font.css';
-import type {SeoHandleFunction} from '@shopify/hydrogen';
 
 const BLOG_HANDLE = 'journal';
 

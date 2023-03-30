@@ -1,18 +1,19 @@
-import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
-import type {
-  Collection as CollectionType,
-  CollectionConnection,
-  Filter,
-} from '@shopify/hydrogen/storefront-api-types';
 import {
   flattenConnection,
   AnalyticsPageType,
   type SeoHandleFunction,
 } from '@shopify/hydrogen';
+import type {
+  Collection as CollectionType,
+  CollectionConnection,
+  Filter,
+} from '@shopify/hydrogen/storefront-api-types';
+import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
-import {PageHeader, Section, Text, SortFilter} from '~/components';
-import {ProductGrid} from '~/components/ProductGrid';
+
+import {PageHeader, Section, Text, SortFilter} from '~/components/legacy';
+import {ProductGrid} from '~/components/legacy/ProductGrid';
 import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 
 const seo: SeoHandleFunction<typeof loader> = ({data}) => ({

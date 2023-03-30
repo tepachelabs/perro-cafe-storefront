@@ -1,1 +1,0 @@
-export * from './HorizontalButton.component';
