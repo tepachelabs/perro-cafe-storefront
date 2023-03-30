@@ -11,7 +11,7 @@ const Template: ComponentStory<typeof SeeMenuButton> = (args) => (
   <SeeMenuButton {...args} />
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Default = Template.bind({});
+Default.args = {
   variant: 'primary',
 };
