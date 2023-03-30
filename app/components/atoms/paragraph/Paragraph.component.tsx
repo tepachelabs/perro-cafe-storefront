@@ -3,15 +3,16 @@ import {FC} from 'react';
 import {StyledParagraph} from './Paragraph.styles';
 
 interface Props {
-  text?: string;
-  height: 'small' | 'large';
-  weight: 'normal' | 'bold';
+  children?: string;
+  lineHeight?: number | string ;
+  bold?: boolean;
+  italic?: boolean;
 }
 
-export const Paragraph: FC<Props> = ({text, height, weight}) => {
+export const Paragraph: FC<Props> = ({children, lineHeight = 1.5, bold = false, italic = false}) => {
   return (
-    <StyledParagraph height={height} weight={weight}>
-      {text}
+    <StyledParagraph lineHeight={lineHeight} bold={bold} italic={italic}>
+      {children}
     </StyledParagraph>
   );
 };

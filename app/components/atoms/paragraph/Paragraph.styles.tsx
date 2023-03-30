@@ -1,32 +1,25 @@
 import styled, {css} from 'styled-components';
 
 export interface ParagraphVariant {
-  height: 'small' | 'large';
-  weight: 'normal' | 'bold'
+  lineHeight: number | string;
+  bold?: boolean;
+  italic?: boolean;
 }
 
-const heights = {
-  small: css`
-    line-height : 1em;
-  `,
-  large: css`
-    line-height : 2em;
-  `,
-};
-
-const weights = {
-  normal: css`
-    font-weight: 400;
-  `,
-  bold: css`
-    font-weight: 700;
-  `,
-};
+const boldStyle = css`
+  font-weight: 700;
+`;
+const italicStyle = css`
+  font-style: italic;
+`;
 
 export const StyledParagraph = styled.p<ParagraphVariant>`
+  font-size: 1em;
+  font-weight: 400;
   color: ${({theme}) => theme.colors.black};
   font-family: ${({theme}) => theme.fonts.body};
-  font-size: 1em;
-  ${({height}) => heights[height|| 'small']}
-  ${({weight}) => weights[weight|| 'normal']}
-`;
+  line-height: ${({lineHeight}) => lineHeight};
+  ${({bold}) => bold && boldStyle};
+  ${({italic}) => italic && italicStyle};
+
+}`;

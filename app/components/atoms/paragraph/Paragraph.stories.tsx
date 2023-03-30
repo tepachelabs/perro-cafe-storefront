@@ -11,9 +11,11 @@ const Template: ComponentStory<typeof Paragraph> = (args) => (
   <Paragraph {...args} />
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  text: 'Lorem ipsum dolor sit amet, conctetuer adipiscing elit volutpat. Hendrerit invulputatevelit esse  Utwisi enim ad minimveniam.',
-  height: 'small',
-  weight: 'bold',
+export const ParagraphDefault = Template.bind({});
+ParagraphDefault.args = {
+  children: 'Lorem ipsum dolor sit amet, conctetuer adipiscing elit volutpat. Hendrerit invulputatevelit esse  Utwisi enim ad minimveniam.',
+  lineHeight: 1.5,
+  bold: false,
+  italic: false,
 };
+
