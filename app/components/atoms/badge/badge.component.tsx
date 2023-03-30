@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import {BadgeProps, Highlight, Img, StyledBadge} from './Badge.styles';
+import {BadgeProps, Highlight, Img, StyledBadge} from './badge.styles';
 import recommendationBadge from './img/recommendation-badge.svg';
 import seasonalBadge from './img/seasonal-badge.svg';
 

@@ -6,7 +6,7 @@ import {
   SeeMenuButtonProps,
   StyledSeeMenuButton,
   VerticalLine,
-} from './SeeMenuButton.styles';
+} from './see-menu-button.styles';
 
 export const SeeMenuButton: FC<SeeMenuButtonProps> = ({...props}) => {
   return (

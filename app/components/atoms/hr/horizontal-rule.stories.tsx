@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {Hr} from './HorizontalRule.component';
+import {Hr} from './horizontal-rule.component';
 
 export default {
   title: 'Atoms/HorizontalRule',

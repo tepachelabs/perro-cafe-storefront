@@ -6,7 +6,7 @@ import {
   ContentText,
   HorizontalButtonProps,
   StyledHorizontalButton,
-} from './HorizontalButton.styles';
+} from './horizontal-button.styles';
 import arrow from './img/arrow.svg';
 
 export const HorizontalButton: FC<HorizontalButtonProps> = ({label}) => {

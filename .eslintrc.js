@@ -8,6 +8,7 @@ module.exports = {
     'plugin:storybook/recommended',
     'plugin:import/recommended',
   ],
+  plugins: ['check-file'],
   settings: {
     'import/resolver': {
       typescript: true,
@@ -52,6 +53,25 @@ module.exports = {
           order: 'asc',
           caseInsensitive: true,
         },
+      },
+    ],
+    'check-file/filename-naming-convention': [
+      'error',
+      {
+        '**/*.{ts,tsx,js,jsx,json}': '+([a-z])*([-a-z0-9])*(.+([a-z0-9]))',
+      },
+    ],
+    'check-file/folder-naming-convention': [
+      'error',
+      {
+        '**/': '+([a-z])*([-a-z0-9])*(.+([a-z0-9]))',
+      },
+    ],
+    'check-file/filename-blocklist': [
+      'error',
+      {
+        '**/*.story.tsx': '*.stories.tsx',
+        '**/*.util.ts': '*.utils.ts',
       },
     ],
   },

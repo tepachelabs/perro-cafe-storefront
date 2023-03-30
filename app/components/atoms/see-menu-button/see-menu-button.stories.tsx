@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {SeeMenuButton} from './SeeMenuButton.component';
+import {SeeMenuButton} from './see-menu-button.component';
 
 export default {
   title: 'Atoms/SeeMenuButton',

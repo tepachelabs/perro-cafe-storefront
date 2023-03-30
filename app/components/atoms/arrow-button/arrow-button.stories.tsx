@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {ArrowButton} from './ArrowButton.component';
+import {ArrowButton} from './arrow-button.component';
 
 export default {
   title: 'Atoms/ArrowButton',
