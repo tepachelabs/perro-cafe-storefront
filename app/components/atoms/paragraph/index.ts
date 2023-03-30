@@ -1,1 +1,1 @@
-export * from './Paragraph.component';
+export * from './paragraph.component';
