@@ -60,6 +60,7 @@
     "eslint-plugin-hydrogen": "0.12.3",
     "eslint-plugin-storybook": "^0.6.11",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.3",
     "prettier": "^2.8.7",
     "remix-esbuild-override": "^3.0.4",
     "rimraf": "^4.4.1",
