@@ -10,12 +10,12 @@ const Template: ComponentStory<typeof CarouselCircle> = (args) => (
   <CarouselCircle {...args} />
 );
 
-export const Normal = Template.bind({});
-Normal.args = {
+export const Default = Template.bind({});
+Default.args = {
   active: false,
 };
 
-export const Selected = Template.bind({});
-Selected.args = {
+export const Active = Template.bind({});
+Active.args = {
   active: true,
 };
