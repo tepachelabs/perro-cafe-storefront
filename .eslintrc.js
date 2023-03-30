@@ -72,6 +72,7 @@ module.exports = {
       {
         '**/*.story.tsx': '*.stories.tsx',
         '**/*.util.ts': '*.utils.ts',
+        '**/*.style.tsx': '*.styles.tsx',
       },
     ],
   },

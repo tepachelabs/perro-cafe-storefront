@@ -1,1 +1,1 @@
-export * from './horizontal-rule.component';
+export * from './hr.component';

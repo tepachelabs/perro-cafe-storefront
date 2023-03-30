@@ -1,12 +1,12 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {Hr} from './horizontal-rule.component';
+import {Hr} from './hr.component';
 
 export default {
-  title: 'Atoms/HorizontalRule',
+  title: 'Atoms/Hr',
   component: Hr,
 } as ComponentMeta<typeof Hr>;
 
 const Template: ComponentStory<typeof Hr> = () => <Hr />;
 
-export const HorizontalRule = Template.bind({});
+export const Default = Template.bind({});
