@@ -1,7 +1,8 @@
-const babel = require('@babel/core');
-const styled = require('babel-plugin-styled-components');
 const fs = require('node:fs');
 const path = require('path');
+
+const babel = require('@babel/core');
+const styled = require('babel-plugin-styled-components');
 
 function styledComponentsPlugin() {
   return {
