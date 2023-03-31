@@ -12,6 +12,7 @@
     "format:check": "prettier --check --ignore-unknown .",
     "typecheck": "tsc --noEmit",
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006 --no-open",
+    "test": "echo \"No tests yet\"",
     "build-storybook": "build-storybook"
   },
   "prettier": "@shopify/prettier-config",
