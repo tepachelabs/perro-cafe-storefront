@@ -1,28 +1,28 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {ComponentStory, ComponentMeta} from '@storybook/react';
 
-import {SocialMediaButton} from './social-media-button.component';
+import {Button} from './social-media-button.component';
 
 export default {
   title: 'Atoms/SocialMediaButton',
-  component: SocialMediaButton,
-} as ComponentMeta<typeof SocialMediaButton>;
+  component: Button,
+} as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof SocialMediaButton> = (args) => (
-  <SocialMediaButton {...args} />
-);
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Instagram = Template.bind({});
-Instagram.args = {
-  icon: 'instagram',
+export const InstagramButton = Template.bind({});
+InstagramButton.args = {
+  variant: 'light',
+  socialMediaIcon: 'Instagram',
 };
 
-export const Facebook = Template.bind({});
-Facebook.args = {
-  icon: 'facebook',
+export const FacebookButton = Template.bind({});
+FacebookButton.args = {
+  variant: 'light',
+  socialMediaIcon: 'Facebook',
 };
 
-export const Twitter = Template.bind({});
-Twitter.args = {
-  icon: 'twitter',
+export const TwitterButton = Template.bind({});
+TwitterButton.args = {
+  variant: 'light',
+  socialMediaIcon: 'Twitter',
 };
-
