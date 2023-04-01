@@ -1,1 +1,1 @@
-export * from './NumberHeading.component';
+export * from './number-heading.component';
