@@ -1,8 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {PromotionCard} from './promotion-card.component';
-
 import placeholder from './img/placeholder.png';
+import {PromotionCard} from './promotion-card.component';
 
 export default {
   title: 'Molecules/PromotionCard',
