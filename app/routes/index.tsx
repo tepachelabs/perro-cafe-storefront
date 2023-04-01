@@ -1,7 +1,6 @@
 import {useLoaderData} from '@remix-run/react';
-import {Image} from '@shopify/hydrogen';
 
-import {Product} from '../../@types/globals';
+import {LandingSkeleton} from '~/components/templates/landing-skeleton';
 
 export const meta = () => {
   return {
@@ -26,31 +25,17 @@ export default function Index() {
     },
   ] = nodes;
 
-  return (
-    <section className="w-full gap-4">
-      <h2>Collections</h2>
-      <div>
-        {products.map((product: Product) => (
-          <div key={product.id}>
-            {product.variants?.nodes?.[0].image && (
-              <Image
-                width={100}
-                alt={`Image of ${product.title}`}
-                data={product.variants?.nodes?.[0].image}
-                sizes="(max-width: 32em) 100vw, 33vw"
-                widths={[400, 500, 600, 700, 800, 900]}
-                loaderOptions={{
-                  scale: 2,
-                  crop: 'center',
-                }}
-              />
-            )}
-            <h3>{product.title}</h3>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+  // @ts-ignore
+  const imgs = products.map((product) => {
+    return {
+      src: product.variants?.nodes?.[0].image?.url,
+      alt: product.title,
+      width: product.variants?.nodes?.[0].image?.width,
+      height: product.variants?.nodes?.[0].image?.height,
+    };
+  });
+
+  return <LandingSkeleton images={imgs} />;
 }
 
 const COLLECTIONS_QUERY = `#graphql
@@ -59,15 +44,15 @@ const COLLECTIONS_QUERY = `#graphql
       nodes {
         products(first: 4) {
           nodes {
-            id
             title
             variants(first: 1) {
               nodes {
                 image {
-                  url
+                  url(transform: {
+                    maxWidth: 100,
+                    crop: CENTER
+                  })
                   altText
-                  width
-                  height
                 }
               }
             }

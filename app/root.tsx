@@ -41,8 +41,8 @@ export async function loader({context}: LoaderArgs) {
 
 export default function App() {
   const data = useLoaderData<typeof loader>();
-
-  const {name} = data.layout.shop;
+  // eslint-disable-next-line no-console
+  console.log(data);
 
   return (
     <html lang="en">
@@ -51,8 +51,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>Hello, {name}</h1>
-        <p>This is a custom storefront powered by Hydrogen</p>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

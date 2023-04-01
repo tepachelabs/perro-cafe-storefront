@@ -16,15 +16,15 @@ export const LandingSkeleton: FC<Props> = ({images}) => {
     <Main>
       {/* HERO */}
       <Container>
-        <Block h="40vh" mh="300px">
+        <Block h="30vh" mh="300px">
           <Title>Cafeteria Indie Experimental</Title>
         </Block>
-        <Block h="30vh" mh="300px" />
+        <Block mh="300px" />
       </Container>
 
       {/* MENU */}
       <Container>
-        <Block h="40vh" mh="300px">
+        <Block mh="300px">
           <Title>El Menu</Title>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           <p>
@@ -41,6 +41,7 @@ export const LandingSkeleton: FC<Props> = ({images}) => {
                 width={image.width}
                 height={image.height}
               />
+              <h3>{image.alt}</h3>
             </Block>
           ))}
         </Container>
