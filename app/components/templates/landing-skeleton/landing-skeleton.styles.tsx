@@ -5,13 +5,14 @@ export const Title = styled.h2`
 `;
 
 const Skeleton = styled.div<{
+  grid?: boolean;
   gridTemplateColumns?: string[];
   gridGap?: string[];
   gridColumn?: string[];
   h?: string;
   mh?: string;
 }>`
-  ${({h}) => h && `height: ${h};`}
+  ${({grid}) => grid && `display: grid;`}
 
   ${({gridTemplateColumns}) =>
     gridTemplateColumns && `grid-template-columns: ${gridTemplateColumns[0]};`}
@@ -60,3 +61,5 @@ export const Main = styled.div`
   max-width: 1200px;
   width: 100%;
 `;
+
+export const Img = styled.img``;
