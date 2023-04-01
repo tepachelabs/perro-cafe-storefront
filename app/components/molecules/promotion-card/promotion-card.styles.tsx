@@ -6,7 +6,14 @@ export interface PromotionCardProps {
   label?: string;
 }
 
-export const Img = styled.img``;
+export const Img = styled.img`
+  // Dimensions must be set in case the image source is bigger than the container.
+  height: 100%;
+  width: 100%;
+
+  // cover seems to look better than fill.
+  object-fit: cover;
+`;
 
 export const BadgeContainer = styled.div`
   height: 80px;
