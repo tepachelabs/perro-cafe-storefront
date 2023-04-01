@@ -1,6 +1,6 @@
 import {Container, Img} from './divider.styles';
-import {Hr} from '../hr/hr.component';
 import graphic from './img/divider-graphic.svg';
+import {Hr} from '../hr/hr.component';
 
 export const Divider = () => {
   return (
