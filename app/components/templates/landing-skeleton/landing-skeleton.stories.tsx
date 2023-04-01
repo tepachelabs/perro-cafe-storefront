@@ -3,7 +3,7 @@ import {ComponentStory, ComponentMeta} from '@storybook/react';
 import {LandingSkeleton} from './landing-skeleton.component';
 
 export default {
-  title: 'Atoms/Skeletons/Landing',
+  title: 'Templates/Skeletons/Landing',
   component: LandingSkeleton,
 } as ComponentMeta<typeof LandingSkeleton>;
 

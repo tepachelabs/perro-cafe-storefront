@@ -19,6 +19,7 @@ export default function Index() {
   const {
     collections: {nodes},
   } = useLoaderData();
+
   const [
     {
       products: {nodes: products},
@@ -26,7 +27,7 @@ export default function Index() {
   ] = nodes;
 
   // @ts-ignore
-  const imgs = products.map((product) => {
+  const images = products.map((product) => {
     return {
       src: product.variants?.nodes?.[0].image?.url,
       alt: product.title,
@@ -35,7 +36,7 @@ export default function Index() {
     };
   });
 
-  return <LandingSkeleton images={imgs} />;
+  return <LandingSkeleton images={images} />;
 }
 
 const COLLECTIONS_QUERY = `#graphql
