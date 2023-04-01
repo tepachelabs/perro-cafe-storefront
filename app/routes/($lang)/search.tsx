@@ -1,14 +1,15 @@
-import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
-import {flattenConnection} from '@shopify/hydrogen';
 import {Await, Form, useLoaderData} from '@remix-run/react';
+import {flattenConnection} from '@shopify/hydrogen';
 import type {
   Collection,
   CollectionConnection,
   Product,
   ProductConnection,
 } from '@shopify/hydrogen/storefront-api-types';
+import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
 import {Suspense} from 'react';
 import invariant from 'tiny-invariant';
+
 import {
   Heading,
   Input,
@@ -18,7 +19,7 @@ import {
   FeaturedCollections,
   Section,
   Text,
-} from '~/components';
+} from '~/components/legacy';
 import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {PAGINATION_SIZE} from '~/lib/const';
 

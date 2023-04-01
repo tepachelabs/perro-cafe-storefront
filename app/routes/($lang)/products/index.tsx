@@ -1,7 +1,8 @@
-import {type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import type {ProductConnection} from '@shopify/hydrogen/storefront-api-types';
+import {type LoaderArgs} from '@shopify/remix-oxygen';
 import invariant from 'tiny-invariant';
+
 import {
   PageHeader,
   Section,
@@ -10,7 +11,7 @@ import {
   Pagination,
   getPaginationVariables,
   Button,
-} from '~/components';
+} from '~/components/legacy';
 import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getImageLoadingPriority} from '~/lib/const';
 

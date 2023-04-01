@@ -1,6 +1,4 @@
-import {type ReactNode, useRef, Suspense, useMemo} from 'react';
 import {Disclosure, Listbox} from '@headlessui/react';
-import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
 import {
   useLoaderData,
   Await,
@@ -17,6 +15,21 @@ import {
   type SeoHandleFunction,
   type SeoConfig,
 } from '@shopify/hydrogen';
+import type {
+  ProductVariant,
+  SelectedOptionInput,
+  Product as ProductType,
+  Shop,
+  ProductConnection,
+  MediaConnection,
+  MediaImage,
+} from '@shopify/hydrogen/storefront-api-types';
+import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
+import clsx from 'clsx';
+import {type ReactNode, useRef, Suspense, useMemo} from 'react';
+import type {Product} from 'schema-dts';
+import invariant from 'tiny-invariant';
+
 import {
   Heading,
   IconCaret,
@@ -29,22 +42,10 @@ import {
   Text,
   Link,
   AddToCartButton,
-} from '~/components';
-import {getExcerpt} from '~/lib/utils';
-import invariant from 'tiny-invariant';
-import clsx from 'clsx';
-import type {
-  ProductVariant,
-  SelectedOptionInput,
-  Product as ProductType,
-  Shop,
-  ProductConnection,
-  MediaConnection,
-  MediaImage,
-} from '@shopify/hydrogen/storefront-api-types';
+} from '~/components/legacy';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import type {Storefront} from '~/lib/type';
-import type {Product} from 'schema-dts';
+import {getExcerpt} from '~/lib/utils';
 
 const seo: SeoHandleFunction<typeof loader> = ({data}) => {
   const media = flattenConnection<MediaConnection>(data.product.media).find(

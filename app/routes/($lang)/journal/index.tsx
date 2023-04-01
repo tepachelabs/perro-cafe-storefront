@@ -1,8 +1,9 @@
-import {json, type MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
 import {flattenConnection, Image} from '@shopify/hydrogen';
 import type {Article, Blog} from '@shopify/hydrogen/storefront-api-types';
-import {Grid, PageHeader, Section, Link} from '~/components';
+import {json, type MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
+
+import {Grid, PageHeader, Section, Link} from '~/components/legacy';
 import {getImageLoadingPriority, PAGINATION_SIZE} from '~/lib/const';
 
 const BLOG_HANDLE = 'Journal';

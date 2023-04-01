@@ -1,5 +1,8 @@
 import React, {FC} from 'react';
 
+import userOne from './img/one.svg';
+import userThree from './img/three.svg';
+import userTwo from './img/two.svg';
 import {
   Author,
   Content,
@@ -8,10 +11,6 @@ import {
   Review,
   ReviewCardVariant,
 } from './review-card.styles';
-
-import userOne from './img/one.svg';
-import userTwo from './img/two.svg';
-import userThree from './img/three.svg';
 
 interface ReviewCardProps {
   author: string;
