@@ -1,5 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {NumberHeading} from './NumberHeading.component';
+
+import {NumberHeading} from './number-heading.component';
 
 export default {
   title: 'Atoms/NumberHeading',

@@ -1,9 +1,10 @@
 import {FC} from 'react';
+
 import {
   Number,
   NumberHeadingProps,
   StyledNumberHeading,
-} from './NumberHeading.styles';
+} from './number-heading.styles';
 
 export const NumberHeading: FC<NumberHeadingProps> = ({children}) => {
   return (
