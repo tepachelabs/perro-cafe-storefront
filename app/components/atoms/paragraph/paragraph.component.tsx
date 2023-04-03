@@ -9,8 +9,9 @@ interface Props {
 export const Paragraph = styled.p<Props>`
   color: ${({theme}) => theme.colors.black};
   font-family: ${({theme}) => theme.fonts.body};
-
   ${({bold}) => bold && 'font-weight: bold'};
   ${({italic}) => italic && 'font-style: italic'};
   ${({lineHeight}) => lineHeight && `line-height: ${lineHeight}`};
+  margin-block-start: 0;
+  margin-block-end: 0;
 }`;
