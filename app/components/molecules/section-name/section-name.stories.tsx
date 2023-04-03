@@ -34,3 +34,9 @@ Community.args = {
   variant: 'community',
   label: 'Comunidad',
 };
+
+export const RegularClients = Template.bind({});
+RegularClients.args = {
+  variant: 'iconless',
+  label: 'Programa de Clientes Frecuentes',
+};

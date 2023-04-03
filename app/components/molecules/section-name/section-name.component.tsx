@@ -13,7 +13,7 @@ import {
 } from './section-name.styles';
 import {Hr} from '../../atoms/hr';
 
-export const SectionName: FC<Props> = ({variant = 'none', label}) => {
+export const SectionName: FC<Props> = ({variant = 'iconless', label}) => {
   let leadingIcon;
 
   switch (variant) {
@@ -26,6 +26,9 @@ export const SectionName: FC<Props> = ({variant = 'none', label}) => {
     case 'temple':
       leadingIcon = temple;
       break;
+    case 'community':
+      leadingIcon = 'https://placehold.co/60x60.png';
+      break;
     default:
       break;
   }
@@ -33,7 +36,7 @@ export const SectionName: FC<Props> = ({variant = 'none', label}) => {
   return (
     <StyledSectionName>
       {leadingIcon && <LeadingIcon src={leadingIcon} />}
-      <LabelContainer>
+      <LabelContainer variant={variant}>
         <Label>{label}</Label>
         <HrContainer>
           <Hr />
