@@ -2,7 +2,10 @@ import {FC} from 'react';
 
 import {ButtonProps, StyledButton} from './social-media-button.styles';
 
-export const Button: FC<ButtonProps> = ({socialMediaIcon, ...props}) => {
+export const SocialMediaButton: FC<ButtonProps> = ({
+  socialMediaIcon,
+  ...props
+}) => {
   let icon;
   switch (socialMediaIcon) {
     case 'Instagram':
@@ -12,7 +15,7 @@ export const Button: FC<ButtonProps> = ({socialMediaIcon, ...props}) => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="socialMediaButton">
+          <div className="socialMedia">
             <svg
               className="socialMediaIcon"
               xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +47,7 @@ export const Button: FC<ButtonProps> = ({socialMediaIcon, ...props}) => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="socialMediaButton">
+          <div className="socialMedia">
             <svg
               className="socialMediaIcon"
               xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +71,7 @@ export const Button: FC<ButtonProps> = ({socialMediaIcon, ...props}) => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="socialMediaButton">
+          <div className="socialMedia">
             <svg
               className="socialMediaIcon"
               xmlns="http://www.w3.org/2000/svg"

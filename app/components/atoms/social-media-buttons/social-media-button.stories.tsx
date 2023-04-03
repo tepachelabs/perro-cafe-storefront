@@ -1,13 +1,15 @@
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
-import {Button} from './social-media-button.component';
+import {SocialMediaButton} from './social-media-button.component';
 
 export default {
   title: 'Atoms/SocialMediaButton',
-  component: Button,
-} as ComponentMeta<typeof Button>;
+  component: SocialMediaButton,
+} as ComponentMeta<typeof SocialMediaButton>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof SocialMediaButton> = (args) => (
+  <SocialMediaButton {...args} />
+);
 
 export const InstagramButton = Template.bind({});
 InstagramButton.args = {

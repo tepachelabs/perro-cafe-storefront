@@ -1,5 +1,5 @@
-import styled, {css} from 'styled-components';
 import {ReactNode} from 'react';
+import styled, {css} from 'styled-components';
 
 export interface ButtonProps {
   variant?: 'light' | 'dark';
@@ -8,13 +8,13 @@ export interface ButtonProps {
 
 const variants = {
   light: css`
-    .socialMediaButton {
+    .socialMedia {
       background-color: ${({theme}) => theme.colors.black};
     }
     .iconColorSVG {
       fill: ${({theme}) => theme.colors.backgroundDarker};
     }
-    &:hover .socialMediaButton,
+    &:hover .socialMedia,
     &:active {
       background-color: ${({theme}) => theme.colors.backgroundDarker};
     }
@@ -24,14 +24,14 @@ const variants = {
     }
   `,
   dark: css`
-    .socialMediaButton {
+    .socialMedia {
       background-color: ${({theme}) => theme.colors.backgroundDarker};
     }
     .iconColorSVG {
       fill: ${({theme}) => theme.colors.black};
       transition: All 300ms ease;
     }
-    &:hover .socialMediaButton,
+    &:hover .socialMedia,
     &:active {
       background-color: ${({theme}) => theme.colors.black};
     }
@@ -43,7 +43,7 @@ const variants = {
 
 export const StyledButton = styled.div<ButtonProps>`
   ${({variant}) => variants[variant || 'light']}
-  .socialMediaButton {
+  .socialMedia {
     width: 2.25em;
     height: 2.25em;
     border-radius: 0.4em;
