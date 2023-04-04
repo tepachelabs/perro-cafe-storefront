@@ -1,8 +1,9 @@
+import {ReactNode} from 'react';
 import styled from 'styled-components';
 
 export interface Props {
-  variant: 'none' | 'internet' | 'events' | 'ingredients' | 'games';
-  children: string;
+  variant: 'internet' | 'events' | 'ingredients' | 'games';
+  children: ReactNode;
 }
 
 export const LeadingIcon = styled.img`
