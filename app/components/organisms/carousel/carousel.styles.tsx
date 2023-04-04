@@ -43,10 +43,9 @@ export const ImageContainer = styled.div`
 `;
 
 export const CarouselNavigation = styled.div`
-  position: absolute;
-  left: 50%;
   margin-top: 2rem;
-  padding: 0 1em;
+  margin-left: 50%;
+  padding: 0 1rem;
 
   display: flex;
   flex-direction: row;
