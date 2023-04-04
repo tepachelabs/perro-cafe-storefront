@@ -2,16 +2,14 @@ import styled from 'styled-components';
 
 export interface PromotionCardProps {
   variant?: 'default' | 'recommendation' | 'seasonal';
-  bgImage?: string;
+  promoImageUrl?: string;
   label?: string;
 }
 
 export const Img = styled.img`
-  // Dimensions must be set in case the image source is bigger than the container.
   height: 100%;
   width: 100%;
 
-  // cover seems to look better than fill.
   object-fit: cover;
 `;
 
@@ -24,8 +22,7 @@ export const BadgeContainer = styled.div`
   right: 14px;
 `;
 
-// Could this be a styled.footer instead?
-export const PromotionCardFooter = styled.div`
+export const Footer = styled.div`
   display: block;
   position: absolute;
   bottom: 0px;

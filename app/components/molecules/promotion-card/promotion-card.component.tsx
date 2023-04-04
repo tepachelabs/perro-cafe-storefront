@@ -3,17 +3,15 @@ import {FC} from 'react';
 import {
   BadgeContainer,
   Img,
-  PromotionCardFooter,
+  Footer,
   PromotionCardProps,
   StyledPromotionCard,
 } from './promotion-card.styles';
 import {Badge} from '../../atoms/badge';
 
-export const PromotionCard: FC<PromotionCardProps> = ({
-  variant = 'default',
-  bgImage,
-  label,
-}) => {
+export const PromotionCard: FC<PromotionCardProps> = (props) => {
+  const {variant = 'default', promoImageUrl, label} = props;
+
   return (
     <StyledPromotionCard>
       {variant !== 'default' && (
@@ -21,8 +19,8 @@ export const PromotionCard: FC<PromotionCardProps> = ({
           <Badge variant={variant} />
         </BadgeContainer>
       )}
-      <PromotionCardFooter>{label}</PromotionCardFooter>
-      <Img src={bgImage} />
+      <Footer>{label}</Footer>
+      <Img src={promoImageUrl} />
     </StyledPromotionCard>
   );
 };
