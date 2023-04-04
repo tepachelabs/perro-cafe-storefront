@@ -8,9 +8,9 @@ import {
 } from './arrow-button.styles';
 import arrowImg from './img/arrow.svg';
 
-export const ArrowButton: FC<ArrowButtonProps> = ({variant}) => {
+export const ArrowButton: FC<ArrowButtonProps> = ({variant, onClick}) => {
   return (
-    <StyledArrowButton variant={variant}>
+    <StyledArrowButton variant={variant} onClick={onClick}>
       <ArrowButtonFace>
         <Img
           src={arrowImg}

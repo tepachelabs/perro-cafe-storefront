@@ -1,7 +1,8 @@
 import styled, {css} from 'styled-components';
 
 export interface ArrowButtonProps {
-  variant?: 'right' | 'left';
+  variant: 'right' | 'left';
+  onClick: () => void;
 }
 
 const arrowTransform = {
