@@ -1,8 +1,8 @@
 import {FC} from 'react';
 
 import {Block, Container, Img, Main, Title} from './landing-skeleton.styles';
-import { PerkInfo } from '../../molecules/perk-info/perk-info.component';
-import { Paragraph } from '../../atoms/paragraph/paragraph.component';
+import {Paragraph} from '../../atoms/paragraph/paragraph.component';
+import {PerkInfo} from '../../molecules/perk-info/perk-info.component';
 
 interface Props {
   images: Array<{
@@ -62,23 +62,23 @@ export const LandingSkeleton: FC<Props> = ({images}) => {
         <Block h="40vh" mh="200px">
           <Container gridTemplateColumns={['1fr 1fr', '1fr 1fr']}>
             <Block>
-              <PerkInfo icon='internet'>
-                  <Paragraph bold>BLASTING FAST INTERNET!</Paragraph>
+              <PerkInfo icon="internet">
+                <Paragraph bold>BLASTING FAST INTERNET!</Paragraph>
               </PerkInfo>
             </Block>
             <Block>
-              <PerkInfo icon='games'>
-                  <Paragraph bold>Jueguitos de mesa!!</Paragraph>
+              <PerkInfo icon="games">
+                <Paragraph bold>Jueguitos de mesa!!</Paragraph>
               </PerkInfo>
             </Block>
             <Block>
-              <PerkInfo icon='ingredients'>
-                  <Paragraph bold>Ingredientes frrrrreskibon</Paragraph>
+              <PerkInfo icon="ingredients">
+                <Paragraph bold>Ingredientes frrrrreskibon</Paragraph>
               </PerkInfo>
             </Block>
             <Block>
-              <PerkInfo icon='events'>
-                  <Paragraph bold>Fiesta fiesta, eventazos siempre</Paragraph>
+              <PerkInfo icon="events">
+                <Paragraph bold>Fiesta fiesta, eventazos siempre</Paragraph>
               </PerkInfo>
             </Block>
           </Container>
