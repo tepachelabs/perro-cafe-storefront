@@ -1,26 +1,32 @@
 import {FC} from 'react';
 
-import {
-  BadgeContainer,
-  Img,
-  Footer,
-  PromotionCardProps,
-  StyledPromotionCard,
-} from './promotion-card.styles';
+import {BadgeContainer, Img, Title, Card} from './promotion-card.styles';
 import {Badge} from '../../atoms/badge';
 
-export const PromotionCard: FC<PromotionCardProps> = (props) => {
-  const {variant = 'default', promoImageUrl, label} = props;
+interface PromotionCardProps {
+  image: string;
+  isRecommended?: boolean;
+  isSeasonal?: boolean;
+  label: string;
+}
+
+export const PromotionCard: FC<PromotionCardProps> = ({
+  image,
+  isRecommended,
+  isSeasonal,
+  label,
+}) => {
+  const showBadge = isRecommended || isSeasonal;
 
   return (
-    <StyledPromotionCard>
-      {variant !== 'default' && (
+    <Card>
+      {showBadge && (
         <BadgeContainer>
-          <Badge variant={variant} />
+          <Badge variant={isRecommended ? 'recommendation' : 'seasonal'} />
         </BadgeContainer>
       )}
-      <Footer>{label}</Footer>
-      <Img src={promoImageUrl} />
-    </StyledPromotionCard>
+      <Img src={image} />
+      <Title>{label}</Title>
+    </Card>
   );
 };
