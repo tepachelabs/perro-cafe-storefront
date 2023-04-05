@@ -6,13 +6,14 @@ import instagramDark from './img/instagram-dark.svg';
 import instagram from './img/instagram.svg';
 import twitterDark from './img/twitter-dark.svg';
 import twitter from './img/twitter.svg';
-import {Icon, StyledButton, Container} from './social-media-button.styles';
+import {
+  Icon,
+  StyledButton,
+  Container,
+  Props,
+} from './social-media-button.styles';
 
-interface Props {
-  dark?: boolean;
-}
-
-export const InstagramButton: FC<Props> = ({dark = false}) => {
+export const InstagramButton: FC<Props> = ({dark}) => {
   return (
     <Container>
       <a
@@ -28,7 +29,7 @@ export const InstagramButton: FC<Props> = ({dark = false}) => {
   );
 };
 
-export const FacebookButton: FC<Props> = ({dark = false}) => {
+export const FacebookButton: FC<Props> = ({dark}) => {
   return (
     <Container>
       <a
@@ -44,7 +45,7 @@ export const FacebookButton: FC<Props> = ({dark = false}) => {
   );
 };
 
-export const TwitterButton: FC<Props> = ({dark = false}) => {
+export const TwitterButton: FC<Props> = ({dark}) => {
   return (
     <Container>
       <a

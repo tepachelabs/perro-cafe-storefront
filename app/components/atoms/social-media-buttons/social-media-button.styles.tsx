@@ -2,7 +2,7 @@ import {ReactNode} from 'react';
 import styled from 'styled-components';
 
 export interface Props {
-  dark: boolean;
+  dark?: boolean;
 }
 
 export const Icon = styled.img`

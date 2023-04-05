@@ -8,27 +8,25 @@ import {
 
 export default {
   title: 'Atoms/SocialMediaButton',
-  component: InstagramButton,
-} as ComponentMeta<typeof InstagramButton>;
+} as ComponentMeta<
+  typeof InstagramButton | typeof FacebookButton | typeof TwitterButton
+>;
 
-const Template: ComponentStory<typeof InstagramButton> = () => (
+const Template: ComponentStory<
+  typeof InstagramButton | typeof FacebookButton | typeof TwitterButton
+> = (args) => (
   <>
     <div
       style={{display: 'flex', justifyContent: 'space-evenly', width: '20em'}}
     >
-      <InstagramButton />
-      <FacebookButton />
-      <TwitterButton />
-    </div>
-    <br />
-    <div
-      style={{display: 'flex', justifyContent: 'space-evenly', width: '20em'}}
-    >
-      <InstagramButton dark />
-      <FacebookButton dark />
-      <TwitterButton dark />
+      <InstagramButton {...args} />
+      <FacebookButton {...args} />
+      <TwitterButton {...args} />
     </div>
   </>
 );
 
-export const Default = Template.bind({});
+export const SocialMediaButton = Template.bind({});
+SocialMediaButton.args = {
+  dark: true,
+};
