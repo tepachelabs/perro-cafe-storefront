@@ -26,15 +26,15 @@ const TwitterButtonTemplate: ComponentStory<typeof TwitterButton> = (args) => (
 
 export const Instagram = InstagramButtonTemplate.bind({});
 Instagram.args = {
-  dark: false,
+  isDarkBackground: false,
 };
 
 export const Facebook = FacebookButtonTemplate.bind({});
 Facebook.args = {
-  dark: false,
+  isDarkBackground: false,
 };
 
 export const Twitter = TwitterButtonTemplate.bind({});
 Twitter.args = {
-  dark: false,
+  isDarkBackground: false,
 };

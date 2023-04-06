@@ -6,56 +6,53 @@ import instagramDark from './img/instagram-dark.svg';
 import instagram from './img/instagram.svg';
 import twitterDark from './img/twitter-dark.svg';
 import twitter from './img/twitter.svg';
-import {Icon, StyledButton, Container} from './social-media-button.styles';
+import {
+  Icon,
+  StyledButton,
+  Container,
+  StyledButtonProps,
+} from './social-media-button.styles';
 
-export default interface Props {
-  dark?: boolean;
-}
+type Button = FC<StyledButtonProps>;
 
-export const InstagramButton: FC<Props> = (Props) => {
-  return (
-    <Container>
-      <a
-        href="https://www.instagram.com/cultoperrocafe/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <StyledButton dark={Props.dark}>
-          <Icon src={Props.dark ? instagram : instagramDark} />
-        </StyledButton>
-      </a>
-    </Container>
-  );
-};
+export const InstagramButton: Button = ({isDarkBackground}) => (
+  <Container>
+    <a
+      href="https://www.instagram.com/cultoperrocafe/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <StyledButton isDarkBackground={isDarkBackground}>
+        <Icon src={isDarkBackground ? instagram : instagramDark} />
+      </StyledButton>
+    </a>
+  </Container>
+);
 
-export const FacebookButton: FC<Props> = (Props) => {
-  return (
-    <Container>
-      <a
-        href="https://www.facebook.com/cultoperrocafe"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <StyledButton dark={Props.dark}>
-          <Icon src={Props.dark ? facebook : facebookDark} />
-        </StyledButton>
-      </a>
-    </Container>
-  );
-};
+export const FacebookButton: Button = ({isDarkBackground}) => (
+  <Container>
+    <a
+      href="https://www.facebook.com/cultoperrocafe"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <StyledButton isDarkBackground={isDarkBackground}>
+        <Icon src={isDarkBackground ? facebook : facebookDark} />
+      </StyledButton>
+    </a>
+  </Container>
+);
 
-export const TwitterButton: FC<Props> = (Props) => {
-  return (
-    <Container>
-      <a
-        href="https://twitter.com/cultoperrocafe"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <StyledButton dark={Props.dark}>
-          <Icon src={Props.dark ? twitter : twitterDark} />
-        </StyledButton>
-      </a>
-    </Container>
-  );
-};
+export const TwitterButton: Button = ({isDarkBackground}) => (
+  <Container>
+    <a
+      href="https://twitter.com/cultoperrocafe"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <StyledButton isDarkBackground={isDarkBackground}>
+        <Icon src={isDarkBackground ? twitter : twitterDark} />
+      </StyledButton>
+    </a>
+  </Container>
+);
