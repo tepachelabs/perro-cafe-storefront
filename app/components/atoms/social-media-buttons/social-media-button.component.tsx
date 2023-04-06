@@ -12,7 +12,7 @@ export default interface Props {
   dark?: boolean;
 }
 
-export const InstagramButton: FC<Props> = ({dark}) => {
+export const InstagramButton: FC<Props> = (Props) => {
   return (
     <Container>
       <a
@@ -20,15 +20,15 @@ export const InstagramButton: FC<Props> = ({dark}) => {
         target="_blank"
         rel="noreferrer"
       >
-        <StyledButton dark={dark}>
-          <Icon src={dark ? instagramDark : instagram} />
+        <StyledButton dark={Props.dark}>
+          <Icon src={Props.dark ? instagramDark : instagram} />
         </StyledButton>
       </a>
     </Container>
   );
 };
 
-export const FacebookButton: FC<Props> = ({dark}) => {
+export const FacebookButton: FC<Props> = (Props) => {
   return (
     <Container>
       <a
@@ -36,15 +36,15 @@ export const FacebookButton: FC<Props> = ({dark}) => {
         target="_blank"
         rel="noreferrer"
       >
-        <StyledButton dark={dark}>
-          <Icon src={dark ? facebookDark : facebook} />
+        <StyledButton dark={Props.dark}>
+          <Icon src={Props.dark ? facebookDark : facebook} />
         </StyledButton>
       </a>
     </Container>
   );
 };
 
-export const TwitterButton: FC<Props> = ({dark}) => {
+export const TwitterButton: FC<Props> = (Props) => {
   return (
     <Container>
       <a
@@ -52,8 +52,8 @@ export const TwitterButton: FC<Props> = ({dark}) => {
         target="_blank"
         rel="noreferrer"
       >
-        <StyledButton dark={dark}>
-          <Icon src={dark ? twitterDark : twitter} />
+        <StyledButton dark={Props.dark}>
+          <Icon src={Props.dark ? twitterDark : twitter} />
         </StyledButton>
       </a>
     </Container>
