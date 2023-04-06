@@ -21,7 +21,7 @@ export const InstagramButton: FC<Props> = (Props) => {
         rel="noreferrer"
       >
         <StyledButton dark={Props.dark}>
-          <Icon src={Props.dark ? instagramDark : instagram} />
+          <Icon src={Props.dark ? instagram : instagramDark} />
         </StyledButton>
       </a>
     </Container>
@@ -37,7 +37,7 @@ export const FacebookButton: FC<Props> = (Props) => {
         rel="noreferrer"
       >
         <StyledButton dark={Props.dark}>
-          <Icon src={Props.dark ? facebookDark : facebook} />
+          <Icon src={Props.dark ? facebook : facebookDark} />
         </StyledButton>
       </a>
     </Container>
@@ -53,7 +53,7 @@ export const TwitterButton: FC<Props> = (Props) => {
         rel="noreferrer"
       >
         <StyledButton dark={Props.dark}>
-          <Icon src={Props.dark ? twitterDark : twitter} />
+          <Icon src={Props.dark ? twitter : twitterDark} />
         </StyledButton>
       </a>
     </Container>

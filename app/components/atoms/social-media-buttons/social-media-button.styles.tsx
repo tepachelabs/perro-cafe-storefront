@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const StyledButton = styled.div<Props>`
   background-color: ${({dark, theme}) =>
-    dark ? theme.colors.backgroundDarker : theme.colors.black};
+    dark ? theme.colors.black : theme.colors.backgroundDarker};
   width: 2.25em;
   height: 2.25em;
   border-radius: 0.4em;
