@@ -8,6 +8,8 @@ interface PromotionCardProps {
   isRecommended?: boolean;
   isSeasonal?: boolean;
   label: string;
+  fullWidth?: boolean;
+  borderless?: boolean;
 }
 
 export const PromotionCard: FC<PromotionCardProps> = ({
@@ -15,11 +17,13 @@ export const PromotionCard: FC<PromotionCardProps> = ({
   isRecommended,
   isSeasonal,
   label,
+  fullWidth = false,
+  borderless = false,
 }) => {
   const showBadge = isRecommended || isSeasonal;
 
   return (
-    <Card>
+    <Card fullWidth={fullWidth} borderless={borderless}>
       {showBadge && (
         <BadgeContainer>
           <Badge variant={isRecommended ? 'recommendation' : 'seasonal'} />

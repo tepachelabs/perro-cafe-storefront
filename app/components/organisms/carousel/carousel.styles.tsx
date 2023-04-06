@@ -1,15 +1,11 @@
 import styled, {css} from 'styled-components';
 
-export interface Props {
-  images: string[];
-}
-
 const arrowStyles = {
   right: css`
-    right: -3px;
+    right: 0;
   `,
   left: css`
-    left: -3px;
+    left: 0;
   `,
 };
 
@@ -21,25 +17,37 @@ export const CarouselCircleContainer = styled.div`
 
 export const ArrowButtonContainer = styled.span<{variant: 'right' | 'left'}>`
   position: absolute;
-  top: 48%;
+  top: 45%;
   ${({variant}) => arrowStyles[variant]};
 
   will-change: transform;
   transform: translateY(-50%);
 `;
 
-export const Img = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
 export const ImageContainer = styled.div`
-  width: 100%;
-  height: 280px;
-
-  position: relative;
+  display: none;
+  flex-direction: row;
+  justify-content: center;
 
   border: 3px solid ${({theme}) => theme.colors.black};
+
+  @media ${({theme}) => theme.device.desktop} {
+    height: 280px;
+    max-height: unset;
+  }
+
+  &[aria-current='true'] {
+    display: flex;
+  }
+
+  & > img {
+    height: 160px;
+    max-width: 100%;
+
+    @media ${({theme}) => theme.device.desktop} {
+      height: unset;
+    }
+  }
 `;
 
 export const CarouselNavigation = styled.div`
@@ -56,8 +64,5 @@ export const CarouselNavigation = styled.div`
 `;
 
 export const StyledCarousel = styled.div`
-  width: 540px;
-  height: 320px;
-
-  padding: 0;
+  position: relative;
 `;

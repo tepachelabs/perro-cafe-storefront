@@ -1,25 +1,26 @@
-import {FC, useState} from 'react';
+import {FC, ReactNode, useState} from 'react';
 
 import {
   ArrowButtonContainer,
   CarouselCircleContainer,
   CarouselNavigation,
   ImageContainer,
-  Img,
-  Props,
   StyledCarousel,
 } from './carousel.styles';
 import {ArrowButton} from '../../atoms/arrow-button';
 import {CarouselCircle} from '../../atoms/carousel-circle';
 
-export const Carousel: FC<Props> = ({images}) => {
+interface Props {
+  children: ReactNode[];
+  showDots?: boolean;
+}
+
+export const Carousel: FC<Props> = ({children, showDots = false}) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const nextImage = () => {
     setSelectedIndex((prevIndex) => {
-      if (prevIndex === images.length - 1) {
-        return 0;
-      }
+      if (prevIndex === children.length - 1) return 0;
 
       return prevIndex + 1;
     });
@@ -27,9 +28,7 @@ export const Carousel: FC<Props> = ({images}) => {
 
   const previousImage = () => {
     setSelectedIndex((prevIndex) => {
-      if (prevIndex === 0) {
-        return images.length - 1;
-      }
+      if (prevIndex === 0) return children.length - 1;
 
       return prevIndex - 1;
     });
@@ -37,22 +36,29 @@ export const Carousel: FC<Props> = ({images}) => {
 
   return (
     <StyledCarousel>
-      <ImageContainer>
-        <ArrowButtonContainer variant="left">
-          <ArrowButton variant="left" onClick={previousImage} />
-        </ArrowButtonContainer>
-        <ArrowButtonContainer variant="right">
-          <ArrowButton variant="right" onClick={nextImage} />
-        </ArrowButtonContainer>
-        <Img src={images[selectedIndex]} />
-      </ImageContainer>
-      <CarouselNavigation>
-        {images.map((img, index) => (
-          <CarouselCircleContainer key={img}>
-            <CarouselCircle active={index === selectedIndex} />
-          </CarouselCircleContainer>
-        ))}
-      </CarouselNavigation>
+      {children.map((child, index) => (
+        <ImageContainer
+          key={child!.toString()}
+          aria-current={index === selectedIndex}
+        >
+          {child}
+        </ImageContainer>
+      ))}
+      <ArrowButtonContainer variant="left">
+        <ArrowButton variant="left" onClick={previousImage} />
+      </ArrowButtonContainer>
+      <ArrowButtonContainer variant="right">
+        <ArrowButton variant="right" onClick={nextImage} />
+      </ArrowButtonContainer>
+      {showDots && (
+        <CarouselNavigation>
+          {children.map((child, index) => (
+            <CarouselCircleContainer key={child!.toString()}>
+              <CarouselCircle active={index === selectedIndex} />
+            </CarouselCircleContainer>
+          ))}
+        </CarouselNavigation>
+      )}
     </StyledCarousel>
   );
 };

@@ -13,6 +13,14 @@ const spanishGray = '#a39b98';
 const oswald = '"Oswald", sans-serif';
 const raleway = '"Raleway", sans-serif';
 
+const resolutions = {
+  extraSmall: '0',
+  small: '600px',
+};
+
+const handheld = `(min-width: ${resolutions.extraSmall})`;
+const desktop = `(min-width: ${resolutions.small})`;
+
 export interface MainTheme {
   colors: {
     primary: string;
@@ -27,6 +35,10 @@ export interface MainTheme {
   fonts: {
     body: string;
     title: string;
+  };
+  device: {
+    handheld: string;
+    desktop: string;
   };
 }
 
@@ -45,6 +57,11 @@ const main: MainTheme = {
   fonts: {
     body: raleway,
     title: oswald,
+  },
+
+  device: {
+    handheld,
+    desktop,
   },
 };
 
