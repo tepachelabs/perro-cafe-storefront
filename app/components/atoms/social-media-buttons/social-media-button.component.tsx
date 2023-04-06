@@ -6,12 +6,11 @@ import instagramDark from './img/instagram-dark.svg';
 import instagram from './img/instagram.svg';
 import twitterDark from './img/twitter-dark.svg';
 import twitter from './img/twitter.svg';
-import {
-  Icon,
-  StyledButton,
-  Container,
-  Props,
-} from './social-media-button.styles';
+import {Icon, StyledButton, Container} from './social-media-button.styles';
+
+export default interface Props {
+  dark?: boolean;
+}
 
 export const InstagramButton: FC<Props> = ({dark}) => {
   return (

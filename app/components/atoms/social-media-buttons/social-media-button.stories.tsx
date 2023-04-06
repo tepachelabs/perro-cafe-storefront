@@ -12,21 +12,29 @@ export default {
   typeof InstagramButton | typeof FacebookButton | typeof TwitterButton
 >;
 
-const Template: ComponentStory<
-  typeof InstagramButton | typeof FacebookButton | typeof TwitterButton
-> = (args) => (
-  <>
-    <div
-      style={{display: 'flex', justifyContent: 'space-evenly', width: '20em'}}
-    >
-      <InstagramButton {...args} />
-      <FacebookButton {...args} />
-      <TwitterButton {...args} />
-    </div>
-  </>
+const InstagramButtonTemplate: ComponentStory<typeof InstagramButton> = (
+  args,
+) => <InstagramButton {...args} />;
+
+const FacebookButtonTemplate: ComponentStory<typeof FacebookButton> = (
+  args,
+) => <FacebookButton {...args} />;
+
+const TwitterButtonTemplate: ComponentStory<typeof TwitterButton> = (args) => (
+  <TwitterButton {...args} />
 );
 
-export const SocialMediaButton = Template.bind({});
-SocialMediaButton.args = {
-  dark: true,
+export const Instagram = InstagramButtonTemplate.bind({});
+Instagram.args = {
+  dark: false,
+};
+
+export const Facebook = FacebookButtonTemplate.bind({});
+Facebook.args = {
+  dark: false,
+};
+
+export const Twitter = TwitterButtonTemplate.bind({});
+Twitter.args = {
+  dark: false,
 };

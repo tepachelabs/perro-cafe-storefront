@@ -1,9 +1,7 @@
 import {ReactNode} from 'react';
 import styled from 'styled-components';
 
-export interface Props {
-  dark?: boolean;
-}
+import Props from './social-media-button.component';
 
 export const Icon = styled.img`
   width: 2.25em;
