@@ -1,5 +1,3 @@
-import React, {FC} from 'react';
-
 import hand from './img/hand.svg';
 import map from './img/map.svg';
 import {MapSketchContainer, HandOverlay, MapImage} from './map-sketch.styles';
