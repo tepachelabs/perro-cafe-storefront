@@ -2,13 +2,13 @@ import React, {FC} from 'react';
 
 import hand from './img/hand.svg';
 import map from './img/map.svg';
-import {MapContainer, HandOverlay, MapImage} from './map.styles';
+import {MapSketchContainer, HandOverlay, MapImage} from './map-sketch.styles';
 
-export const Map = () => {
+export const MapSketch = () => {
   return (
-    <MapContainer>
+    <MapSketchContainer>
       <HandOverlay src={hand} />
       <MapImage src={map} />
-    </MapContainer>
+    </MapSketchContainer>
   );
 };

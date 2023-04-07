@@ -12,7 +12,7 @@ const handAnimation = keyframes`
   }
 `;
 
-export const MapContainer = styled.div`
+export const MapSketchContainer = styled.div`
   position: relative;
 `;
 
