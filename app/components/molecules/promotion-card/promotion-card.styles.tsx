@@ -2,7 +2,12 @@ import styled from 'styled-components';
 
 import {Paragraph} from '../../atoms/paragraph';
 
-export const Card = styled.div<{fullWidth: boolean; borderless: boolean}>`
+export interface CardProps {
+  fullWidth?: boolean;
+  borderless?: boolean;
+}
+
+export const Card = styled.div<CardProps>`
   border: 3px solid ${({theme}) => theme.colors.black};
   display: inline-block;
   position: relative;

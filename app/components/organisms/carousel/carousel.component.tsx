@@ -39,7 +39,7 @@ export const Carousel: FC<Props> = ({children, showDots = false}) => {
       {children.map((child, index) => (
         <ImageContainer
           key={child!.toString()}
-          aria-current={index === selectedIndex}
+          aria-selected={index === selectedIndex}
         >
           {child}
         </ImageContainer>

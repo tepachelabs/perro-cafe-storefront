@@ -1,5 +1,7 @@
 import styled, {css} from 'styled-components';
 
+export type ArrowContainerVariants = 'right' | 'left';
+
 const arrowStyles = {
   right: css`
     right: 0;
@@ -15,7 +17,9 @@ export const CarouselCircleContainer = styled.div`
   margin: 0 1rem;
 `;
 
-export const ArrowButtonContainer = styled.span<{variant: 'right' | 'left'}>`
+export const ArrowButtonContainer = styled.span<{
+  variant: ArrowContainerVariants;
+}>`
   position: absolute;
   top: 45%;
   ${({variant}) => arrowStyles[variant]};
@@ -31,12 +35,12 @@ export const ImageContainer = styled.div`
 
   border: 3px solid ${({theme}) => theme.colors.black};
 
-  @media ${({theme}) => theme.device.desktop} {
+  @media ${({theme}) => theme.sizes.desktop} {
     height: 280px;
     max-height: unset;
   }
 
-  &[aria-current='true'] {
+  &[aria-selected='true'] {
     display: flex;
   }
 
@@ -44,7 +48,7 @@ export const ImageContainer = styled.div`
     height: 160px;
     max-width: 100%;
 
-    @media ${({theme}) => theme.device.desktop} {
+    @media ${({theme}) => theme.sizes.desktop} {
       height: unset;
     }
   }

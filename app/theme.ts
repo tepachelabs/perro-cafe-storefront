@@ -36,7 +36,7 @@ export interface MainTheme {
     body: string;
     title: string;
   };
-  device: {
+  sizes: {
     handheld: string;
     desktop: string;
   };
@@ -59,7 +59,7 @@ const main: MainTheme = {
     title: oswald,
   },
 
-  device: {
+  sizes: {
     handheld,
     desktop,
   },

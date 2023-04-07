@@ -4,7 +4,7 @@ import {Carousel} from './carousel.component';
 import {PromotionCard} from '../../molecules/promotion-card';
 
 export default {
-  title: 'Orgamisms/Carousel',
+  title: 'Organisms/Carousel',
   component: Carousel,
 } as ComponentMeta<typeof Carousel>;
 
