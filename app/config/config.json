@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "links": [
+      {"label": "Inicio", "link": "/"},
+      {"label": "Menú", "link": "https://www.instagram.com/cultoperrocafe/"},
+      {"label": "Frecuentes", "link": "/frecuentes"},
+      {"label": "Tienda", "link": "https://cultoperrocafe.myshopify.com/"},
+      {
+        "label": "Contacto",
+        "link": "https://docs.google.com/forms/d/e/1FAIpQLSeGAKG-yRAr2mEekmXD8CYnRyFoLlbNs2v4bawn1xeo92exTw/viewform"
+      },
+      {
+        "label": "Facturación",
+        "link": "https://docs.google.com/forms/d/e/1FAIpQLScFR6PyEhwbW1R3j5n0-3QPzuaxXd5THdpNVNaFECAtkzVUqA/viewform"
+      }
+    ]
+  }
+}

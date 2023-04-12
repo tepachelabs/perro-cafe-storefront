@@ -13,6 +13,8 @@ const spanishGray = '#a39b98';
 const oswald = '"Oswald", sans-serif';
 const raleway = '"Raleway", sans-serif';
 
+const maxWidth = '960px';
+
 export interface MainTheme {
   colors: {
     primary: string;
@@ -27,6 +29,9 @@ export interface MainTheme {
   fonts: {
     body: string;
     title: string;
+  };
+  sizes: {
+    maxWidth: string;
   };
 }
 
@@ -45,6 +50,10 @@ const main: MainTheme = {
   fonts: {
     body: raleway,
     title: oswald,
+  },
+
+  sizes: {
+    maxWidth,
   },
 };
 

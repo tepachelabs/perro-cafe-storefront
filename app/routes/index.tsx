@@ -1,5 +1,6 @@
-import {useLoaderData} from '@remix-run/react';
+import {Link, useLoaderData} from '@remix-run/react';
 
+import {NavBarLink} from '~/components/organisms/navbar';
 import {LandingSkeleton} from '~/components/templates/landing-skeleton';
 
 export const meta = () => {
@@ -13,6 +14,9 @@ export const meta = () => {
 export async function loader({context}) {
   return await context.storefront.query(COLLECTIONS_QUERY);
 }
+
+// @ts-ignore
+const _Link = (props) => <NavBarLink {...props} as={Link} />;
 
 export default function Index() {
   // lmao this is a mess
