@@ -8,12 +8,14 @@ import {
   VerticalLine,
 } from './see-menu-button.styles';
 
-export const SeeMenuButton: FC<SeeMenuButtonProps> = ({...props}) => {
+export const SeeMenuButton: FC<SeeMenuButtonProps> = ({variant, href}) => {
   return (
-    <StyledSeeMenuButton {...props}>
-      <VerticalLine top={93} left={83} />
-      <VerticalLine top={85} left={93} />
-      <ButtonFace src={buttonFace} alt="Button design" />
+    <StyledSeeMenuButton variant={variant} href={href}>
+      <a href={href} target="_blank" rel="noreferrer">
+        <VerticalLine top={93} left={83} />
+        <VerticalLine top={85} left={93} />
+        <ButtonFace src={buttonFace} alt="Button design" />
+      </a>
     </StyledSeeMenuButton>
   );
 };

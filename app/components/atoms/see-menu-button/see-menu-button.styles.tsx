@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export interface SeeMenuButtonProps {
   variant: 'primary';
+  href?: string;
 }
 
 export const ButtonFace = styled.img`
