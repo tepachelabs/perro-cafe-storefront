@@ -15,7 +15,7 @@ const raleway = '"Raleway", sans-serif';
 
 const resolutions = {
   extraSmall: '0',
-  small: '600px',
+  small: '768px',
 };
 
 const handheld = `(min-width: ${resolutions.extraSmall})`;
