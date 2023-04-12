@@ -1,42 +1,22 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {SectionName} from './section-name.component';
+import {Menu, Cult, Temple, Community} from './section-name.component';
 
 export default {
   title: 'Molecules/SectionName',
-  component: SectionName,
-} as ComponentMeta<typeof SectionName>;
+} as ComponentMeta<
+  typeof Menu | typeof Cult | typeof Temple | typeof Community
+>;
 
-const Template: ComponentStory<typeof SectionName> = (args) => (
-  <SectionName {...args} />
-);
+const MenuTemplate: ComponentStory<typeof Menu> = () => <Menu />;
 
-export const Menu = Template.bind({});
-Menu.args = {
-  variant: 'menu',
-  label: 'El Menú',
-};
+const CultTemplate: ComponentStory<typeof Cult> = () => <Cult />;
 
-export const Cult = Template.bind({});
-Cult.args = {
-  variant: 'cult',
-  label: 'El Culto',
-};
+const TempleTemplate: ComponentStory<typeof Temple> = () => <Temple />;
 
-export const Temple = Template.bind({});
-Temple.args = {
-  variant: 'temple',
-  label: 'El Templo',
-};
+const CommunityTemplate: ComponentStory<typeof Community> = () => <Community />;
 
-export const Community = Template.bind({});
-Community.args = {
-  variant: 'community',
-  label: 'Comunidad',
-};
-
-export const RegularClients = Template.bind({});
-RegularClients.args = {
-  variant: 'iconless',
-  label: 'Programa de Clientes Frecuentes',
-};
+export const MenuSection = MenuTemplate.bind({});
+export const CultSection = CultTemplate.bind({});
+export const TempleSection = TempleTemplate.bind({});
+export const CommunitySection = CommunityTemplate.bind({});

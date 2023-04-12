@@ -4,44 +4,48 @@ import cult from './img/cult.svg';
 import menu from './img/menu.svg';
 import temple from './img/temple.svg';
 import {
-  HrContainer,
   Label,
-  LabelContainer,
   LeadingIcon,
-  Props,
   StyledSectionName,
+  Border,
 } from './section-name.styles';
-import {Hr} from '../../atoms/hr';
 
-export const SectionName: FC<Props> = ({variant = 'iconless', label}) => {
-  let leadingIcon;
+export const Menu = () => (
+  <StyledSectionName>
+    <LeadingIcon src={menu} />
+    <Label>
+      EL MENÚ
+      <Border />
+    </Label>
+  </StyledSectionName>
+);
 
-  switch (variant) {
-    case 'cult':
-      leadingIcon = cult;
-      break;
-    case 'menu':
-      leadingIcon = menu;
-      break;
-    case 'temple':
-      leadingIcon = temple;
-      break;
-    case 'community':
-      leadingIcon = 'https://placehold.co/60x60.png';
-      break;
-    default:
-      break;
-  }
+export const Cult = () => (
+  <StyledSectionName>
+    <LeadingIcon src={cult} />
+    <Label>
+      EL CULTO
+      <Border />
+    </Label>
+  </StyledSectionName>
+);
 
-  return (
-    <StyledSectionName>
-      {leadingIcon && <LeadingIcon src={leadingIcon} />}
-      <LabelContainer variant={variant}>
-        <Label>{label}</Label>
-        <HrContainer>
-          <Hr />
-        </HrContainer>
-      </LabelContainer>
-    </StyledSectionName>
-  );
-};
+export const Temple = () => (
+  <StyledSectionName>
+    <LeadingIcon src={temple} />
+    <Label>
+      EL TEMPLO
+      <Border />
+    </Label>
+  </StyledSectionName>
+);
+
+export const Community = () => (
+  <StyledSectionName>
+    <LeadingIcon src={temple} />
+    <Label>
+      COMUNIDAD
+      <Border />
+    </Label>
+  </StyledSectionName>
+);
