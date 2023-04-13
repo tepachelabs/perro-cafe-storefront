@@ -1,7 +1,8 @@
 import {Link, useLoaderData} from '@remix-run/react';
 
-import {NavBarLink} from '~/components/organisms/navbar';
+import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {LandingSkeleton} from '~/components/templates/landing-skeleton';
+import configData from '~/config/config.json';
 
 export const meta = () => {
   return {
@@ -40,7 +41,18 @@ export default function Index() {
     };
   });
 
-  return <LandingSkeleton images={images} />;
+  const links = configData.navbar.links.map((link) => ({
+    label: link.label,
+    href: link.link,
+    ...(link.label === 'Inicio' && {active: 'true'}),
+  }));
+
+  return (
+    <>
+      <NavBar links={links} linkRender={_Link} />
+      <LandingSkeleton images={images} />
+    </>
+  );
 }
 
 const COLLECTIONS_QUERY = `#graphql

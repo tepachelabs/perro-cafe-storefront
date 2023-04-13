@@ -58,7 +58,7 @@ export const Main = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: ${({theme}) => theme.sizes.maxWidth};
   width: 100%;
 `;
 

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-const desktopMediaQuery = '@media (min-width: 960px)';
+const desktopMediaQuery = '@media (min-width: 768px)';
 
 export const Header = styled.header`
   background-color: ${({theme}) => theme.colors.black};
   padding: 0.5rem 1rem;
 
   ${desktopMediaQuery} {
-    padding: 0.5rem 3rem;
+    padding: 0.5rem 0;
   }
 `;
 

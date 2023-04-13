@@ -1,5 +1,4 @@
 import {FC, ReactNode, useState} from 'react';
-import {useMediaQuery} from 'react-responsive';
 
 import burgerMenu from './img/burger-menu.svg';
 import logo from './img/logo.svg';
@@ -11,6 +10,7 @@ import {
   Img,
   BurgerMenuIcon,
 } from './navbar.styles';
+import useMediaQuery from '../../../hooks/use-media-query';
 
 export {NavBarLink} from './navbar.styles';
 
@@ -18,7 +18,7 @@ interface Props {
   links: Array<{
     label: string;
     href: string;
-    active?: boolean;
+    active?: boolean | string;
   }>;
   linkRender: FC<{
     to: string;
@@ -29,9 +29,7 @@ interface Props {
 
 export const NavBar: FC<Props> = ({linkRender: Link, links}) => {
   const [showDrawer, setShowDrawer] = useState(false);
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 960px)',
-  });
+  const isDesktop = useMediaQuery('(min-width: 768px)');
 
   const handleBurgerMenuPressed = () => {
     setShowDrawer((currentState) => !currentState);
