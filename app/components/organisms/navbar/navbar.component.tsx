@@ -27,9 +27,14 @@ interface Props {
   }>;
 }
 
-export const NavBar: FC<Props> = ({linkRender: Link, links}) => {
-  const [showDrawer, setShowDrawer] = useState(false);
+export const NavBar: FC<Props> = (props) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
+
+  return isDesktop ? <DesktopNavBar {...props} /> : <MobileNavBar {...props} />;
+};
+
+const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
+  const [showDrawer, setShowDrawer] = useState(false);
 
   const handleBurgerMenuPressed = () => {
     setShowDrawer((currentState) => !currentState);
@@ -39,30 +44,32 @@ export const NavBar: FC<Props> = ({linkRender: Link, links}) => {
     <Header>
       <Flex>
         <Img src={logo} alt="Culto al Perro Café logo" />
-        {!isDesktop && (
-          <MenuButton onClick={handleBurgerMenuPressed} aria-label="Open menu">
-            <BurgerMenuIcon src={burgerMenu} alt="Menu icon" />
-          </MenuButton>
-        )}
-        {isDesktop && (
-          <Drawer>
-            {links.map((link) => (
-              <Link key={link.label} to={link.href} active={link.active}>
-                {link.label}
-              </Link>
-            ))}
-          </Drawer>
-        )}
+        <MenuButton onClick={handleBurgerMenuPressed} aria-label="Open menu">
+          <BurgerMenuIcon src={burgerMenu} alt="Menu icon" />
+        </MenuButton>
       </Flex>
-      {!isDesktop && (
-        <Drawer collapsed={!showDrawer} aria-hidden={!showDrawer}>
-          {links.map((link) => (
-            <Link key={link.label} to={link.href} active={link.active}>
-              {link.label}
-            </Link>
-          ))}
-        </Drawer>
-      )}
+      <Drawer collapsed={!showDrawer}>
+        {links.map((link) => (
+          <Link key={link.label} to={link.href} active={link.active}>
+            {link.label}
+          </Link>
+        ))}
+      </Drawer>
     </Header>
   );
 };
+
+const DesktopNavBar: FC<Props> = ({linkRender: Link, links}) => (
+  <Header>
+    <Flex>
+      <Img src={logo} alt="Culto al Perro Café logo" />
+      <Drawer>
+        {links.map((link) => (
+          <Link key={link.label} to={link.href} active={link.active}>
+            {link.label}
+          </Link>
+        ))}
+      </Drawer>
+    </Flex>
+  </Header>
+);

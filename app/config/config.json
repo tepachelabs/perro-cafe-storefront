@@ -3,7 +3,7 @@
     "links": [
       {"label": "Inicio", "link": "/"},
       {"label": "Menú", "link": "https://www.instagram.com/cultoperrocafe/"},
-      {"label": "Frecuentes", "link": "/frecuentes"},
+      {"label": "Frecuentes", "link": "https://cultoperrocafe.com/frecuentes"},
       {"label": "Tienda", "link": "https://cultoperrocafe.myshopify.com/"},
       {
         "label": "Contacto",
