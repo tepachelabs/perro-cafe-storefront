@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 function useMediaQuery(query: string): boolean {
   const getMatches = (query: string): boolean => {
@@ -11,9 +11,10 @@ function useMediaQuery(query: string): boolean {
 
   const [matches, setMatches] = useState<boolean>(false);
 
-  function handleChange() {
-    setMatches(getMatches(query));
-  }
+  const handleChange = useCallback(
+    () => setMatches(getMatches(query)),
+    [query],
+  );
 
   useEffect(() => {
     const matchMedia = window.matchMedia(query);
@@ -21,7 +22,6 @@ function useMediaQuery(query: string): boolean {
     // Triggered at the first client-side load and if query changes
     handleChange();
 
-    // Listen matchMedia
     if (matchMedia.addListener) {
       matchMedia.addListener(handleChange);
     } else {
@@ -35,8 +35,7 @@ function useMediaQuery(query: string): boolean {
         matchMedia.removeEventListener('change', handleChange);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [handleChange, query]);
 
   return matches;
 }

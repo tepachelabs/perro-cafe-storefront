@@ -2,14 +2,7 @@ import {FC, ReactNode, useState} from 'react';
 
 import burgerMenu from './img/burger-menu.svg';
 import logo from './img/logo.svg';
-import {
-  MenuButton,
-  Drawer,
-  Flex,
-  Header,
-  Img,
-  BurgerMenuIcon,
-} from './navbar.styles';
+import {MenuButton, Drawer, Flex, Header, Img, Icon} from './navbar.styles';
 import useMediaQuery from '../../../hooks/use-media-query';
 
 export {NavBarLink} from './navbar.styles';
@@ -36,7 +29,7 @@ export const NavBar: FC<Props> = (props) => {
 const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const handleBurgerMenuPressed = () => {
+  const handleMenuPressed = () => {
     setShowDrawer((currentState) => !currentState);
   };
 
@@ -44,8 +37,8 @@ const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
     <Header>
       <Flex>
         <Img src={logo} alt="Culto al Perro Café logo" />
-        <MenuButton onClick={handleBurgerMenuPressed} aria-label="Open menu">
-          <BurgerMenuIcon src={burgerMenu} alt="Menu icon" />
+        <MenuButton onClick={handleMenuPressed} aria-label="Open menu">
+          <Icon src={burgerMenu} alt="Menu icon" />
         </MenuButton>
       </Flex>
       <Drawer collapsed={!showDrawer}>

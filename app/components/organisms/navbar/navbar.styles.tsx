@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 const desktopMediaQuery = '@media (min-width: 768px)';
 
+interface NavBarLinkProps {
+  active?: boolean | string;
+}
+
 export const Header = styled.header`
   background-color: ${({theme}) => theme.colors.black};
   padding: 0.5rem 1rem;
@@ -40,7 +44,7 @@ export const MenuButton = styled.button`
   border: none;
 `;
 
-export const BurgerMenuIcon = styled.img`
+export const Icon = styled.img`
   height: 20px;
 `;
 
@@ -63,7 +67,7 @@ export const Drawer = styled.nav<{collapsed?: boolean}>`
   }
 `;
 
-export const NavBarLink = styled.a<{active?: boolean | string}>`
+export const NavBarLink = styled.a<NavBarLinkProps>`
   display: block;
   padding: 0.5rem 0 0;
   cursor: pointer;
