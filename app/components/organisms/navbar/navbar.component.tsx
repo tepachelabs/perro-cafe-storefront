@@ -38,7 +38,7 @@ export const NavBar: FC<Props> = ({linkRender: Link, links}) => {
   return (
     <Header>
       <Flex>
-        <Img src={logo} />
+        <Img src={logo} alt="Culto al Perro Café logo" />
         {!isDesktop && (
           <MenuButton onClick={handleBurgerMenuPressed} aria-label="Open menu">
             <BurgerMenuIcon src={burgerMenu} alt="Menu icon" />

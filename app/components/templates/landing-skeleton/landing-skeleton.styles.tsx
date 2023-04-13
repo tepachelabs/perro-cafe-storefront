@@ -35,7 +35,6 @@ const Skeleton = styled.div<{
 `;
 
 export const Container = styled(Skeleton)`
-  border: 1px dotted orange;
   display: grid;
   position: relative;
 `;
@@ -53,7 +52,6 @@ export const Block = styled(Skeleton)`
 
 export const Main = styled.div`
   align-items: stretch;
-  border: 1px dotted deepskyblue;
   display: flex;
   flex-direction: column;
   justify-content: center;

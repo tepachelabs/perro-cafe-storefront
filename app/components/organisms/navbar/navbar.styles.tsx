@@ -7,7 +7,7 @@ export const Header = styled.header`
   padding: 0.5rem 1rem;
 
   ${desktopMediaQuery} {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
   }
 `;
 
@@ -25,7 +25,7 @@ export const Img = styled.img`
   height: 20px;
 
   ${desktopMediaQuery} {
-    height: 35px;
+    height: 28px;
   }
 `;
 
@@ -50,10 +50,9 @@ export const Drawer = styled.nav<{collapsed?: boolean}>`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0 0;
+  padding: 0.5rem 0;
 
   width: 100%;
-
   display: ${({collapsed}) => collapsed && 'none'};
 
   ${desktopMediaQuery} {
@@ -80,6 +79,7 @@ export const NavBarLink = styled.a<{active?: boolean | string}>`
     display: inline-block;
     margin-left: 0.65rem;
     padding: 0;
+    font-size: 14px;
   }
 
   ${({theme, active}) =>
