@@ -15,6 +15,14 @@ const raleway = '"Raleway", sans-serif';
 
 const maxWidth = '960px';
 
+const resolutions = {
+  extraSmall: '0',
+  small: '768px',
+};
+
+const handheld = `(min-width: ${resolutions.extraSmall})`;
+const desktop = `(min-width: ${resolutions.small})`;
+
 export interface MainTheme {
   colors: {
     primary: string;
@@ -31,6 +39,8 @@ export interface MainTheme {
     title: string;
   };
   sizes: {
+    handheld: string;
+    desktop: string;
     maxWidth: string;
   };
 }
@@ -53,6 +63,8 @@ const main: MainTheme = {
   },
 
   sizes: {
+    handheld,
+    desktop,
     maxWidth,
   },
 };

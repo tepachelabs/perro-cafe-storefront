@@ -1,22 +1,21 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {ArrowButton} from './arrow-button.component';
+import {LeftArrow, RightArrow} from './arrow-button.component';
 
 export default {
   title: 'Atoms/ArrowButton',
-  component: ArrowButton,
-} as ComponentMeta<typeof ArrowButton>;
+} as ComponentMeta<typeof LeftArrow | typeof RightArrow>;
 
-const Template: ComponentStory<typeof ArrowButton> = (args) => (
-  <ArrowButton {...args} />
+const LeftArrowTemplate: ComponentStory<typeof LeftArrow> = (args) => (
+  <LeftArrow {...args} />
 );
 
-export const Right = Template.bind({});
-Right.args = {
-  variant: 'right',
-};
+export const Left = LeftArrowTemplate.bind({});
+Left.args = {};
 
-export const Left = Template.bind({});
-Left.args = {
-  variant: 'left',
-};
+const RightArrowTemplate: ComponentStory<typeof RightArrow> = (args) => (
+  <RightArrow {...args} />
+);
+
+export const Right = RightArrowTemplate.bind({});
+Right.args = {};
