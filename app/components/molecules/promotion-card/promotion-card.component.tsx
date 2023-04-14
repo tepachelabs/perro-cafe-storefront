@@ -1,6 +1,12 @@
 import {FC} from 'react';
 
-import {BadgeContainer, Img, Title, Card} from './promotion-card.styles';
+import {
+  BadgeContainer,
+  Img,
+  Title,
+  Card,
+  CardProps,
+} from './promotion-card.styles';
 import {Badge} from '../../atoms/badge';
 
 interface PromotionCardProps {
@@ -10,16 +16,18 @@ interface PromotionCardProps {
   label: string;
 }
 
-export const PromotionCard: FC<PromotionCardProps> = ({
+export const PromotionCard: FC<PromotionCardProps & CardProps> = ({
   image,
   isRecommended,
   isSeasonal,
   label,
+  fullWidth = false,
+  borderless = false,
 }) => {
   const showBadge = isRecommended || isSeasonal;
 
   return (
-    <Card>
+    <Card fullWidth={fullWidth} borderless={borderless}>
       {showBadge && (
         <BadgeContainer>
           <Badge variant={isRecommended ? 'recommendation' : 'seasonal'} />

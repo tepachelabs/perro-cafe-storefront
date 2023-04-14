@@ -2,16 +2,25 @@ import styled from 'styled-components';
 
 import {Paragraph} from '../../atoms/paragraph';
 
-export const Card = styled.div`
+export interface CardProps {
+  fullWidth?: boolean;
+  borderless?: boolean;
+}
+
+export const Card = styled.div<CardProps>`
   border: 3px solid ${({theme}) => theme.colors.black};
   display: inline-block;
   position: relative;
+
+  ${({fullWidth}) => fullWidth && 'width: 100%'};
+  ${({borderless}) => borderless && 'border: none'};
 `;
 
 export const Img = styled.img`
   aspect-ratio: 1;
   display: block;
   height: 220px;
+  width: 100%;
   object-fit: cover;
 `;
 
