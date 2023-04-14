@@ -52,6 +52,10 @@ export const StyledHorizontalButton = styled.button`
   &:active ${ButtonFace} {
     transform: translateY(-8px);
   }
+
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 export const ContentText = styled.div`
