@@ -13,6 +13,8 @@ const spanishGray = '#a39b98';
 const oswald = '"Oswald", sans-serif';
 const raleway = '"Raleway", sans-serif';
 
+const maxWidth = '960px';
+
 const resolutions = {
   extraSmall: '0',
   small: '768px',
@@ -39,6 +41,7 @@ export interface MainTheme {
   sizes: {
     handheld: string;
     desktop: string;
+    maxWidth: string;
   };
 }
 
@@ -62,6 +65,7 @@ const main: MainTheme = {
   sizes: {
     handheld,
     desktop,
+    maxWidth,
   },
 };
 

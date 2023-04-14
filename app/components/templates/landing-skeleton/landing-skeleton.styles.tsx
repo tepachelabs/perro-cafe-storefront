@@ -35,7 +35,6 @@ const Skeleton = styled.div<{
 `;
 
 export const Container = styled(Skeleton)`
-  border: 1px dotted orange;
   display: grid;
   position: relative;
 `;
@@ -53,12 +52,11 @@ export const Block = styled(Skeleton)`
 
 export const Main = styled.div`
   align-items: stretch;
-  border: 1px dotted deepskyblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: ${({theme}) => theme.sizes.maxWidth};
   width: 100%;
 `;
 
