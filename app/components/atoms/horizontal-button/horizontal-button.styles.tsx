@@ -1,10 +1,4 @@
-import {ReactNode} from 'react';
-import styled, {css} from 'styled-components';
-
-export interface HorizontalButtonProps {
-  label?: string;
-  onClick: () => void;
-}
+import styled from 'styled-components';
 
 export const ButtonFace = styled.span`
   display: block;

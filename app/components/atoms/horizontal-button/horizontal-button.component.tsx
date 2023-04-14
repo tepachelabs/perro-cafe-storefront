@@ -4,15 +4,16 @@ import {
   Img,
   ButtonFace,
   ContentText,
-  HorizontalButtonProps,
   StyledHorizontalButton,
 } from './horizontal-button.styles';
 import arrow from './img/arrow.svg';
 
-export const HorizontalButton: FC<HorizontalButtonProps> = ({
-  label,
-  onClick,
-}) => (
+interface Props {
+  label: string;
+  onClick: () => void;
+}
+
+export const HorizontalButton: FC<Props> = ({label, onClick}) => (
   <StyledHorizontalButton onClick={onClick}>
     <ButtonFace>
       <ContentText>{label}</ContentText>
