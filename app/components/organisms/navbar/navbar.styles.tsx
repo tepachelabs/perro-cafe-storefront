@@ -8,10 +8,10 @@ interface NavBarLinkProps {
 
 export const Header = styled.header`
   background-color: ${({theme}) => theme.colors.black};
-  padding: 10px 1rem;
+  padding: 0 1rem;
 
   ${desktopMediaQuery} {
-    padding: 0.5rem;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -20,6 +20,7 @@ export const Flex = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 44px;
 
   max-width: ${({theme}) => theme.sizes.maxWidth};
   margin: 0 auto;
