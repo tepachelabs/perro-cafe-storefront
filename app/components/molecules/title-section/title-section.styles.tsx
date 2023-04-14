@@ -1,3 +1,4 @@
+import {ReactNode} from 'react';
 import styled, {css} from 'styled-components';
 
 export const StyledSectionName = styled.div`
@@ -21,12 +22,13 @@ export const Label = styled.h1`
   font-weight: 400;
   font-family: ${({theme}) => theme.fonts.title};
   font-size: 32px;
+  text-transform: uppercase;
 `;
-export const Border = styled.div`
+export const Line = styled.div`
   margin-top: 5px;
   bottom: 0;
   left: 0;
   width: 140px;
   height: 4px;
-  background-color: black;
+  background-color: ${({theme}) => theme.colors.black};
 `;
