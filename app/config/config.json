@@ -14,5 +14,13 @@
         "link": "https://docs.google.com/forms/d/e/1FAIpQLScFR6PyEhwbW1R3j5n0-3QPzuaxXd5THdpNVNaFECAtkzVUqA/viewform"
       }
     ]
+  },
+  "socialMedia":{
+    "instagram": "https://www.instagram.com/cultoperrocafe/",
+    "facebook": "https://www.facebook.com/cultoperrocafe",
+    "twitter": "https://twitter.com/cultoperrocafe"
+  },
+  "globalLinks":{
+    "menu": "https://www.instagram.com/cultoperrocafe/"
   }
 }

@@ -1,7 +1,7 @@
 import {Link, useLoaderData} from '@remix-run/react';
 
+import {Hero} from '~/components/organisms/hero';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
-import {LandingSkeleton} from '~/components/templates/landing-skeleton';
 import configData from '~/config/config.json';
 
 export const meta = () => {
@@ -50,7 +50,8 @@ export default function Index() {
   return (
     <>
       <NavBar links={links} linkRender={_Link} />
-      <LandingSkeleton images={images} />
+      <Hero />
+      {/*<LandingSkeleton images={images} />*/}
     </>
   );
 }

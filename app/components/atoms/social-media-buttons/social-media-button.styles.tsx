@@ -17,8 +17,8 @@ export const Container = styled.div`
 export const StyledButton = styled.div<StyledButtonProps>`
   background-color: ${({isDarkBackground, theme}) =>
     isDarkBackground ? theme.colors.black : theme.colors.backgroundDarker};
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   border-radius: 0.2em;
   padding: 0.5em 0.5em;
   position: block;

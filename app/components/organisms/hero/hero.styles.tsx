@@ -47,7 +47,7 @@ export const HeadingImg = styled.img`
 `;
 
 export const TextContainer = styled.div`
-  margin: 0 0 30px 25px;
+  margin: 16px 0 26px 25px;
   @media screen and (min-width: 960px) {
     margin-left: 80px;
   }
