@@ -69,8 +69,4 @@ export const StyledArrowButton = styled.button<ArrowButtonProps>`
     filter: brightness(0.95);
     transform: translateY(-28px);
   }
-
-  * {
-    box-sizing: border-box;
-  }
 `;
