@@ -8,7 +8,7 @@ interface NavBarLinkProps {
 
 export const Header = styled.header`
   background-color: ${({theme}) => theme.colors.black};
-  padding: 0.5rem 1rem;
+  padding: 10px 1rem;
 
   ${desktopMediaQuery} {
     padding: 0.5rem;
@@ -26,7 +26,7 @@ export const Flex = styled.div`
 `;
 
 export const Img = styled.img`
-  height: 20px;
+  height: 24px;
 
   ${desktopMediaQuery} {
     height: 28px;

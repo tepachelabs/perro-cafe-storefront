@@ -9,7 +9,7 @@ function useMediaQuery(query: string): boolean {
     return false;
   };
 
-  const [matches, setMatches] = useState<boolean>(false);
+  const [matches, setMatches] = useState(false);
 
   const handleChange = useCallback(
     () => setMatches(getMatches(query)),
