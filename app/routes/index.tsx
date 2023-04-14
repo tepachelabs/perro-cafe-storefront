@@ -1,6 +1,8 @@
-import {useLoaderData} from '@remix-run/react';
+import {Link, useLoaderData} from '@remix-run/react';
 
+import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {LandingSkeleton} from '~/components/templates/landing-skeleton';
+import configData from '~/config/config.json';
 
 export const meta = () => {
   return {
@@ -13,6 +15,9 @@ export const meta = () => {
 export async function loader({context}) {
   return await context.storefront.query(COLLECTIONS_QUERY);
 }
+
+// @ts-ignore
+const _Link = (props) => <NavBarLink {...props} as={Link} />;
 
 export default function Index() {
   // lmao this is a mess
@@ -36,7 +41,18 @@ export default function Index() {
     };
   });
 
-  return <LandingSkeleton images={images} />;
+  const links = configData.navbar.links.map((link) => ({
+    label: link.label,
+    href: link.link,
+    ...(link.label === 'Inicio' && {active: 'true'}),
+  }));
+
+  return (
+    <>
+      <NavBar links={links} linkRender={_Link} />
+      <LandingSkeleton images={images} />
+    </>
+  );
 }
 
 const COLLECTIONS_QUERY = `#graphql
