@@ -23,12 +23,6 @@ export const Label = styled.h1`
   font-family: ${({theme}) => theme.fonts.title};
   font-size: 32px;
   text-transform: uppercase;
-`;
-export const Line = styled.div`
-  margin-top: 5px;
-  bottom: 0;
-  left: 0;
-  width: 140px;
-  height: 4px;
-  background-color: ${({theme}) => theme.colors.black};
+
+  border-bottom: 4px solid ${({theme}) => theme.colors.black};
 `;

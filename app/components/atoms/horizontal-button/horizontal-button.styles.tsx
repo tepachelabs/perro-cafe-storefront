@@ -3,12 +3,13 @@ import styled, {css} from 'styled-components';
 
 export interface HorizontalButtonProps {
   label?: string;
+  onClick: () => void;
 }
 
 export const ButtonFace = styled.span`
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 220px;
+  height: 46px;
   background-color: #f8eee0;
   border: 3px solid #222222;
   border-radius: 23px;
