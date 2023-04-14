@@ -13,7 +13,7 @@ import {
 
 interface TitleSectionProps {
   children?: ReactNode;
-  icon?: 'cult' | 'menu' | 'temple' | 'community';
+  icon: 'cult' | 'menu' | 'temple' | 'community';
 }
 
 const icons = {
@@ -23,11 +23,8 @@ const icons = {
   community,
 };
 
-export const TitleSection: FC<TitleSectionProps> = ({
-  icon = 'menu',
-  children,
-}) => {
-  const iconSrc = icons[icon] || menu;
+export const TitleSection: FC<TitleSectionProps> = ({icon, children}) => {
+  const iconSrc = icons[icon];
   return (
     <StyledSectionName>
       <LeadingIcon src={iconSrc} />
