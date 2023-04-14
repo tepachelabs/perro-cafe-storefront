@@ -7,7 +7,7 @@ import {
   ImageContainer,
   StyledCarousel,
 } from './carousel.styles';
-import {ArrowButton} from '../../atoms/arrow-button';
+import {LeftArrow, RightArrow} from '../../atoms/arrow-button';
 import {CarouselCircle} from '../../atoms/carousel-circle';
 
 interface Props {
@@ -38,22 +38,24 @@ export const Carousel: FC<Props> = ({children, showDots = false}) => {
     <StyledCarousel>
       {children.map((child, index) => (
         <ImageContainer
-          key={child!.toString()}
+          // eslint-disable-next-line react/no-array-index-key
+          key={`Image ${index}`}
           aria-selected={index === selectedIndex}
         >
           {child}
         </ImageContainer>
       ))}
       <ArrowButtonContainer variant="left">
-        <ArrowButton variant="left" onClick={previousImage} />
+        <LeftArrow onClick={previousImage} />
       </ArrowButtonContainer>
       <ArrowButtonContainer variant="right">
-        <ArrowButton variant="right" onClick={nextImage} />
+        <RightArrow onClick={nextImage} />
       </ArrowButtonContainer>
       {showDots && (
         <CarouselNavigation>
-          {children.map((child, index) => (
-            <CarouselCircleContainer key={child!.toString()}>
+          {children.map((_, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <CarouselCircleContainer key={`Dot ${index}`}>
               <CarouselCircle active={index === selectedIndex} />
             </CarouselCircleContainer>
           ))}
