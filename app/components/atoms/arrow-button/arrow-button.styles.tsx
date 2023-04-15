@@ -16,8 +16,8 @@ const arrowTransform = {
 
 export const ArrowButtonFace = styled.span`
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 46px;
+  height: 46px;
   background-color: #f8eee0;
   border: 3px solid #222222;
 

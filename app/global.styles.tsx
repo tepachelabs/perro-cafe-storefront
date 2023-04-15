@@ -8,8 +8,14 @@ export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
   }
+<<<<<<< HEAD
   
   body {
     background-color: #F8EEE0
+=======
+
+  body {
+    background-color: #F8EEE0;
+>>>>>>> main
   }
 `;
