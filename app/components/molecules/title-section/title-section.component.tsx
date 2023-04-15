@@ -4,12 +4,7 @@ import community from './img/community.svg';
 import cult from './img/cult.svg';
 import menu from './img/menu.svg';
 import temple from './img/temple.svg';
-import {
-  Label,
-  LeadingIcon,
-  StyledSectionName,
-  Line,
-} from './title-section.styles';
+import {Label, LeadingIcon, StyledSectionName} from './title-section.styles';
 
 interface TitleSectionProps {
   children?: ReactNode;
@@ -28,10 +23,7 @@ export const TitleSection: FC<TitleSectionProps> = ({icon, children}) => {
   return (
     <StyledSectionName>
       <LeadingIcon src={iconSrc} />
-      <Label>
-        {children}
-        <Line />
-      </Label>
+      <Label>{children}</Label>
     </StyledSectionName>
   );
 };

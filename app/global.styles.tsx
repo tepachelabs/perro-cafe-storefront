@@ -8,4 +8,8 @@ export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
   }
+
+  body {
+    background-color: #F8EEE0;
+  }
 `;
