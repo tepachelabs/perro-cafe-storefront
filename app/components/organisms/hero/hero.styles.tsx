@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
+const desktopMediaQuery = `
+  @media (min-width: 768px)
+`;
+
 export const HeroContainer = styled.header`
   display: flex;
-  max-width: ${({theme}) => theme.sizes.maxWidth};
+  max-width: 960px;
   margin: 0 auto;
   align-items: stretch;
   flex-direction: column;
-  @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
+  ${desktopMediaQuery} {
     flex-direction: row;
   }
 `;
@@ -18,19 +22,18 @@ export const PrimaryContainer = styled.div`
   border-bottom: 4px solid ${({theme}) => theme.colors.black};
   padding-top: 20px;
   padding-bottom: 30px;
-  @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
+  ${desktopMediaQuery} {
     border-left: 4px solid ${({theme}) => theme.colors.black};
-    padding-top: 50px;
+    padding-top: 1.5rem;
+    padding-bottom: 0;
   }
 `;
 
 export const SecondaryContainer = styled.div`
   height: auto;
   position: relative;
-  background-color: red;
   border-bottom: 4px solid ${({theme}) => theme.colors.black};
-  @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
-    height: 373px;
+  ${desktopMediaQuery} {
     flex: 1.1;
     border-left: 4px solid ${({theme}) => theme.colors.black};
     border-right: 4px solid ${({theme}) => theme.colors.black};
@@ -40,7 +43,8 @@ export const SecondaryContainer = styled.div`
 export const HeadingImg = styled.img`
   width: 80%;
   margin-left: 25px;
-  @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
+  ${desktopMediaQuery} {
+    margin-top: 26px;
     margin-left: 80px;
     width: 60%;
   }
@@ -48,7 +52,7 @@ export const HeadingImg = styled.img`
 
 export const TextContainer = styled.div`
   margin: 16px 0 26px 25px;
-  @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
+  ${desktopMediaQuery} {
     margin-left: 80px;
   }
 `;
@@ -58,7 +62,7 @@ export const SocialMediaButtonsContainer = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin: 0 115px 0 25px;
-  @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
+  ${desktopMediaQuery} {
     margin: 0 160px 0 80px;
     padding-top: 25px;
   }
@@ -70,7 +74,7 @@ export const CandleImg = styled.img`
     right: 0px;
     bottom: 21px;
 
-    @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
+    ${desktopMediaQuery} {
       width: 120px;
       right: 30px;
       bottom: 30px;
@@ -80,18 +84,18 @@ export const CandleImg = styled.img`
 
 export const SeeMenuButtonContainer = styled.div`
   display: none;
-  @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
+  ${desktopMediaQuery} {
     position: absolute;
     display: inline-block;
-    margin-top: 217px;
-    margin-left: 356px;
+    bottom: 1.5rem;
+    right: 1.5rem;
   }
 `;
 
 export const HeroBannerImg = styled.img`
   width: 100%;
   display: block;
-  @media screen and (min-width: ${({theme}) => theme.sizes.maxWidth}) {
+  ${desktopMediaQuery} {
     width: 100%;
     height: 100%;
   }

@@ -52,6 +52,7 @@ export default function Index() {
     <>
       <NavBar links={links} linkRender={_Link} />
       <Hero />
+      <Menu products={images} />
     </>
   );
 }
