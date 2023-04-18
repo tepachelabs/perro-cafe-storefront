@@ -27,14 +27,17 @@ const TwitterButtonTemplate: ComponentStory<typeof TwitterButton> = (args) => (
 export const Instagram = InstagramButtonTemplate.bind({});
 Instagram.args = {
   isDarkBackground: false,
+  href: 'https://www.instagram.com/cultoperrocafe/',
 };
 
 export const Facebook = FacebookButtonTemplate.bind({});
 Facebook.args = {
   isDarkBackground: false,
+  href: 'https://www.facebook.com/cultoperrocafe',
 };
 
 export const Twitter = TwitterButtonTemplate.bind({});
 Twitter.args = {
   isDarkBackground: false,
+  href: 'https://twitter.com/cultoperrocafe',
 };

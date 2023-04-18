@@ -1,7 +1,7 @@
 import {Link, useLoaderData} from '@remix-run/react';
 
+import {Hero} from '~/components/organisms/hero';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
-import {LandingSkeleton} from '~/components/templates/landing-skeleton';
 import {Menu} from '~/components/templates/menu/menu.component';
 import configData from '~/config/config.json';
 
@@ -51,8 +51,8 @@ export default function Index() {
   return (
     <>
       <NavBar links={links} linkRender={_Link} />
+      <Hero />
       <Menu products={images} />
-      {/* <LandingSkeleton images={images} /> */}
     </>
   );
 }

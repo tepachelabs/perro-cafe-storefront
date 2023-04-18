@@ -15,7 +15,12 @@
       }
     ]
   },
-  "globalLinks": {
+  "socialMedia":{
+    "instagram": "https://www.instagram.com/cultoperrocafe/",
+    "facebook": "https://www.facebook.com/cultoperrocafe",
+    "twitter": "https://twitter.com/cultoperrocafe"
+  },
+  "globalLinks":{
     "menu": "https://www.instagram.com/cultoperrocafe/"
   }
 }

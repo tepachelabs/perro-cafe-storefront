@@ -15,42 +15,30 @@ import {
 
 type Button = FC<StyledButtonProps>;
 
-export const InstagramButton: Button = ({isDarkBackground}) => (
+export const InstagramButton: Button = ({isDarkBackground, href}) => (
   <Container>
-    <a
-      href="https://www.instagram.com/cultoperrocafe/"
-      target="_blank"
-      rel="noreferrer"
-    >
-      <StyledButton isDarkBackground={isDarkBackground}>
+    <a href={href} target="_blank" rel="noreferrer">
+      <StyledButton isDarkBackground={isDarkBackground} href={href}>
         <Icon src={isDarkBackground ? instagram : instagramDark} />
       </StyledButton>
     </a>
   </Container>
 );
 
-export const FacebookButton: Button = ({isDarkBackground}) => (
+export const FacebookButton: Button = ({isDarkBackground, href}) => (
   <Container>
-    <a
-      href="https://www.facebook.com/cultoperrocafe"
-      target="_blank"
-      rel="noreferrer"
-    >
-      <StyledButton isDarkBackground={isDarkBackground}>
+    <a href={href} target="_blank" rel="noreferrer">
+      <StyledButton isDarkBackground={isDarkBackground} href={href}>
         <Icon src={isDarkBackground ? facebook : facebookDark} />
       </StyledButton>
     </a>
   </Container>
 );
 
-export const TwitterButton: Button = ({isDarkBackground}) => (
+export const TwitterButton: Button = ({isDarkBackground, href}) => (
   <Container>
-    <a
-      href="https://twitter.com/cultoperrocafe"
-      target="_blank"
-      rel="noreferrer"
-    >
-      <StyledButton isDarkBackground={isDarkBackground}>
+    <a href={href} target="_blank" rel="noreferrer">
+      <StyledButton isDarkBackground={isDarkBackground} href={href}>
         <Icon src={isDarkBackground ? twitter : twitterDark} />
       </StyledButton>
     </a>
