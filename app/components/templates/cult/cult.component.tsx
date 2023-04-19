@@ -12,11 +12,11 @@ import {PerkInfo} from '../../molecules/perk-info/perk-info.component';
 import {TitleSection} from '../../molecules/title-section';
 import {Carousel} from '../../organisms/carousel';
 
-type CarouselImage = {
+interface CarouselImage {
   id: string;
   alt: string;
   src: string;
-};
+}
 
 interface Props {
   images: CarouselImage[];

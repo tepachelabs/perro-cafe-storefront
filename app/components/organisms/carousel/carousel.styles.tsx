@@ -2,6 +2,10 @@ import styled, {css} from 'styled-components';
 
 export type ArrowContainerVariants = 'right' | 'left';
 
+const desktopMediaQuery = css`
+  ${({theme}) => theme.mediaQueries.desktop}
+`;
+
 const arrowStyles = {
   right: css`
     right: 0;
@@ -21,7 +25,7 @@ export const ArrowButtonContainer = styled.span<{
   variant: ArrowContainerVariants;
 }>`
   position: absolute;
-  top: 45%;
+  top: 47%;
   ${({variant}) => arrowStyles[variant]};
 
   will-change: transform;
@@ -32,25 +36,16 @@ export const ImageContainer = styled.div`
   display: none;
   flex-direction: row;
   justify-content: center;
+  background-color: ${({theme}) => theme.colors.background};
 
   border: 3px solid ${({theme}) => theme.colors.black};
-
-  @media ${({theme}) => theme.sizes.desktop} {
-    height: 280px;
-    max-height: unset;
-  }
 
   &[aria-selected='true'] {
     display: flex;
   }
 
   & > img {
-    height: 160px;
     max-width: 100%;
-
-    @media ${({theme}) => theme.sizes.desktop} {
-      height: unset;
-    }
   }
 `;
 

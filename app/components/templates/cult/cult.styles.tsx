@@ -1,8 +1,10 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import {Paragraph} from '../../atoms/paragraph';
 
-const desktopMediaQuery = '@media (min-width: 768px)';
+const desktopMediaQuery = css`
+  ${({theme}) => theme.mediaQueries.desktop}
+`;
 
 export const CultSection = styled.section`
   background-color: ${({theme}) => theme.colors.secondary};
@@ -61,10 +63,10 @@ export const CarouselContainer = styled.div`
 export const PerksGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
+  gap: 1rem;
 
   ${desktopMediaQuery} {
     flex: 1;
-    grid-gap: 2rem;
+    gap: 2rem;
   }
 `;
