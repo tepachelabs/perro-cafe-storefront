@@ -1,5 +1,4 @@
 import {ComponentStory, ComponentMeta} from '@storybook/react';
-import React from 'react';
 
 import {ReviewCard} from './review-card.component';
 
@@ -9,7 +8,7 @@ export default {
 } as ComponentMeta<typeof ReviewCard>;
 
 const Template: ComponentStory<typeof ReviewCard> = (args) => (
-  <div style={{width: 420}}>
+  <div style={{maxWidth: '420px'}}>
     <ReviewCard {...args} />
   </div>
 );

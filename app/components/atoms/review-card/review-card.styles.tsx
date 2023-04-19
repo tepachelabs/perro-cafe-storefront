@@ -21,15 +21,20 @@ export const Frame = styled.div<{variant: ReviewCardVariant}>`
   border: ${BORDER_WIDTH}px solid ${({theme}) => theme.colors.black};
   display: flex;
   font-family: ${({theme}) => theme.fonts.body};
-  font-size: 1.2em;
+  font-size: 1em;
   justify-content: space-between;
 
   ${({variant}) => variants[variant]}
+
+  @media (min-width: 768px) {
+    font-size: 0.8em;
+  }
 `;
 
 export const Img = styled.img`
   background-color: ${({theme}) => theme.colors.backgroundDarker};
-  width: calc(50% - ${BORDER_WIDTH / 2}px);
+  object-fit: cover;
+  width: 50%;
 `;
 
 export const Content = styled.div`
@@ -37,14 +42,15 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.5em 1em;
-  width: calc(50% - ${BORDER_WIDTH / 2}px);
+  padding: 0.5em;
+  gap: 1rem;
+  width: 50%;
 `;
 
 // empty on purpose
-export const Review = styled.div``;
+export const Review = styled.p``;
 
-export const Author = styled.div`
+export const Author = styled.p`
   font-weight: bold;
   position: relative;
 
