@@ -4,7 +4,7 @@ import events from './img/events.svg';
 import games from './img/games.svg';
 import ingredients from './img/ingredients.svg';
 import internet from './img/internet.svg';
-import {Label, LeadingIcon, Section} from './perk-info.styles';
+import {Label, LeadingIcon, PerkItem, Section} from './perk-info.styles';
 
 export interface PerkInfoProps {
   children?: ReactNode;
@@ -21,11 +21,11 @@ const icons = {
 export const PerkInfo: FC<PerkInfoProps> = ({icon, children}) => {
   const iconSrc = icons[icon];
   return (
-    <>
+    <PerkItem>
       <LeadingIcon src={iconSrc} />
       <Section>
         <Label>{children}</Label>
       </Section>
-    </>
+    </PerkItem>
   );
 };
