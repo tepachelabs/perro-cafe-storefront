@@ -15,12 +15,31 @@
       }
     ]
   },
-  "socialMedia":{
+  "socialMedia": {
     "instagram": "https://www.instagram.com/cultoperrocafe/",
     "facebook": "https://www.facebook.com/cultoperrocafe",
     "twitter": "https://twitter.com/cultoperrocafe"
   },
-  "globalLinks":{
+  "globalLinks": {
     "menu": "https://www.instagram.com/cultoperrocafe/"
+  },
+  "community": {
+    "reviews": [
+      {
+        "id": "92e41e29-94bd-4d86-943f-bc689f644cc0",
+        "review": "Buenisimo todo, la atención es muy buena y el lugar muy agradable. Recomiendo ampliamente el smoothie de aguacate✨",
+        "author": "Henda Villalobos"
+      },
+      {
+        "id": "11d8fe39-a6cc-4c06-8710-5555253b0ef9",
+        "review": "Super recomendado. El trato es amable, y el café muy rico a precios accesibles, también fueron amigables con mi mascota 🐶. Me gustó mucho!",
+        "author": "Anhi Gmz Crdns"
+      },
+      {
+        "id": "04b48aef-7daf-49ce-8957-0aee8df92c51",
+        "review": "Buena atención al cliente, precios económicos, ambiente agradable, Pet-friendly y cuenta con las medidas sanitarias ante la actual pandemia.",
+        "author": "Miguel Madrid"
+      }
+    ]
   }
 }
