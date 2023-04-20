@@ -5,7 +5,7 @@ const handAnimation = keyframes`
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10%);
+    transform: translateY(-25%);
   }
   100% {
     transform: translateY(0);
