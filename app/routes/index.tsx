@@ -4,6 +4,7 @@ import {Hero} from '~/components/organisms/hero';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {Community} from '~/components/templates/community/community.component';
 import {Menu} from '~/components/templates/menu/menu.component';
+import {Temple} from '~/components/templates/temple/temple.component';
 import configData from '~/config/config.json';
 
 export const meta = () => {
@@ -56,6 +57,7 @@ export default function Index() {
       <NavBar links={links} linkRender={_Link} />
       <Hero />
       <Menu products={images} />
+      <Temple />
       <Community reviews={reviews} />
     </>
   );
