@@ -2,8 +2,9 @@ import {Link, useLoaderData} from '@remix-run/react';
 
 import {Hero} from '~/components/organisms/hero';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
-import {Community} from '~/components/templates/community/community.component';
-import {Menu} from '~/components/templates/menu/menu.component';
+import {Community} from '~/components/templates/community';
+import {Cult} from '~/components/templates/cult';
+import {Menu} from '~/components/templates/menu';
 import configData from '~/config/config.json';
 
 export const meta = () => {
@@ -49,6 +50,8 @@ export default function Index() {
     ...(link.label === 'Inicio' && {active: 'true'}),
   }));
 
+  const cultImages = configData.cult.images;
+
   const reviews = configData.community.reviews;
 
   return (
@@ -56,6 +59,7 @@ export default function Index() {
       <NavBar links={links} linkRender={_Link} />
       <Hero />
       <Menu products={images} />
+      <Cult images={cultImages} />
       <Community reviews={reviews} />
     </>
   );

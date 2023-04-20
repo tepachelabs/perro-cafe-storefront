@@ -20,8 +20,8 @@ const resolutions = {
   small: '768px',
 };
 
-const handheld = `(min-width: ${resolutions.extraSmall})`;
-const desktop = `(min-width: ${resolutions.small})`;
+const handheld = `@media (min-width: ${resolutions.extraSmall})`;
+const desktop = `@media (min-width: ${resolutions.small})`;
 
 export interface MainTheme {
   colors: {
@@ -39,9 +39,11 @@ export interface MainTheme {
     title: string;
   };
   sizes: {
+    maxWidth: string;
+  };
+  mediaQueries: {
     handheld: string;
     desktop: string;
-    maxWidth: string;
   };
 }
 
@@ -63,9 +65,12 @@ const main: MainTheme = {
   },
 
   sizes: {
+    maxWidth,
+  },
+
+  mediaQueries: {
     handheld,
     desktop,
-    maxWidth,
   },
 };
 
