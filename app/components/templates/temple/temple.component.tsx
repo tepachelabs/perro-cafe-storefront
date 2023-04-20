@@ -55,10 +55,10 @@ export const Temple = () => {
             </ExplosionBadgeContainer>
           </HoursContainer>
           <HorizontalButtonContainer>
-          <HorizontalButton
-            label="¿Cómo llegar?"
-            onClick={navigateToLocation}
-          />
+            <HorizontalButton
+              label="¿Cómo llegar?"
+              onClick={navigateToLocation}
+            />
           </HorizontalButtonContainer>
         </PrimaryContainer>
         <SecondaryContainer>
