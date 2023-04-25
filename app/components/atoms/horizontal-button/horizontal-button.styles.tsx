@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import {Paragraph} from '../paragraph';
+
 export const ButtonFace = styled.span`
   display: block;
   width: 220px;
@@ -18,7 +20,8 @@ export const ButtonFace = styled.span`
   }
 `;
 
-export const StyledHorizontalButton = styled.button`
+export const StyledHorizontalButton = styled.a`
+  display: block;
   width: 220px;
   height: 46px;
   background-color: #f2dab2;
@@ -48,10 +51,7 @@ export const StyledHorizontalButton = styled.button`
   }
 `;
 
-export const ContentText = styled.div`
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-  font-size: 16px;
+export const Label = styled(Paragraph).attrs({bold: true})`
   text-transform: uppercase;
 
   position: absolute;

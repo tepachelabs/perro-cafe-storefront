@@ -3,20 +3,20 @@ import {FC} from 'react';
 import {
   Img,
   ButtonFace,
-  ContentText,
+  Label,
   StyledHorizontalButton,
 } from './horizontal-button.styles';
 import arrow from './img/arrow.svg';
 
 interface Props {
   label: string;
-  onClick: () => void;
+  href: string;
 }
 
-export const HorizontalButton: FC<Props> = ({label, onClick}) => (
-  <StyledHorizontalButton onClick={onClick}>
+export const HorizontalButton: FC<Props> = ({label, href}) => (
+  <StyledHorizontalButton href={href} target="_blank">
     <ButtonFace>
-      <ContentText>{label}</ContentText>
+      <Label>{label}</Label>
       <Img src={arrow} alt="Arrow graphic" />
     </ButtonFace>
   </StyledHorizontalButton>

@@ -77,12 +77,9 @@
       }
     ]
   },
-  "location": {
-    "hours": [
-      {
-        "week": "Lunes a Sábado: 8:30 a.m. - 10:00 p.m.",
-        "sunday": "Domingo: 2:00 p.m. - 10:00 p.m."
-      }
-    ]  
+  "location": "Blvd. Juan Navarrete 125 | Local 15. Valle Verde. C.P. 83200. Hermosillo, Sonora.",
+  "schedule": {
+    "weekdays": "Lunes a Sábado: 8:30 a.m. - 10:00 p.m.",
+    "sunday": "Domingo: 2:00 p.m. - 10:00 p.m."
   }
 }

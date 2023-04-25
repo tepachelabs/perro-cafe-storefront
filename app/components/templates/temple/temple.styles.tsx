@@ -1,13 +1,19 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
-const desktopMediaQuery = '@media (min-width: 768px)';
+const desktopMediaQuery = css`
+  ${({theme}) => theme.mediaQueries.desktop}
+`;
+
+const maxWidth = css`
+  max-width: ${({theme}) => theme.sizes.maxWidth};
+`;
 
 export const TempleContainer = styled.section`
   display: flex;
   align-items: stretch;
   flex-direction: column;
-  max-width: 960px;
   margin: 0 auto;
+  ${maxWidth}
 
   ${desktopMediaQuery} {
     flex-direction: row;
@@ -15,74 +21,45 @@ export const TempleContainer = styled.section`
 `;
 
 export const PrimaryContainer = styled.div`
-  padding: 2rem 1.25rem 1rem 1.25rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  padding: 2rem 1.25rem 1rem;
+
   ${desktopMediaQuery} {
-    width: 44%;
-    padding: 2rem 1.25rem 2rem;
+    flex: 1;
+    padding: 2rem 1.25rem;
   }
 `;
 
 export const SecondaryContainer = styled.div`
   padding: 1rem 1.25rem 1rem 1.25rem;
-  position: relative;
+
   ${desktopMediaQuery} {
-    width: 56%;
-    margin-top: 0;
-    padding: 2rem 1.25rem 2rem 0rem;
+    flex: 1.6;
+    padding: 2rem 1.25rem 2rem 0;
   }
 `;
 
-export const PrimaryTextContainer = styled.div`
-  padding-top: 2.5rem;
-  padding-bottom: 1.2rem;
-`;
-
-export const SecondaryTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  ${desktopMediaQuery} {
-    white-space: nowrap;
-  }
+export const AddressContainer = styled.div`
+  margin-top: 1rem;
 `;
 
 export const ExplosionBadgeContainer = styled.div`
-  position: relative;
-  display: inline-block;
   float: right;
-  ${desktopMediaQuery} {
-    display: block;
-    position: relative;
-  }
 `;
 
 export const LineContainer = styled.div`
-  padding: 1.4rem 1.25rem 0rem 1.25rem;
+  padding: 0 1.25rem;
   margin: 0 auto;
+  ${maxWidth}
+
   ${desktopMediaQuery} {
-    padding: 0rem 1.2rem 0rem 1.2rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    max-width: 960px;
+    margin: 1rem auto;
   }
 `;
 
-export const HoursContainer = styled.div`
-  padding-top: 1.2rem;
-  ${desktopMediaQuery} {
-    padding-top: 1.2rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-`;
-
-export const HorizontalButtonContainer = styled.div`
-  padding-top: 4rem;
-  padding-bottom: 1rem;
-
-  ${desktopMediaQuery} {
-    padding-top: 2rem;
-  }
-`;
+// empty on purpose
+export const ScheduleContainer = styled.div``;
