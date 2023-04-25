@@ -5,6 +5,7 @@ import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {Community} from '~/components/templates/community';
 import {Cult} from '~/components/templates/cult';
 import {Menu} from '~/components/templates/menu';
+import {Temple} from '~/components/templates/temple/temple.component';
 import configData from '~/config/config.json';
 
 export const meta = () => {
@@ -60,6 +61,7 @@ export default function Index() {
       <Hero />
       <Menu products={images} />
       <Cult images={cultImages} />
+      <Temple />
       <Community reviews={reviews} />
     </>
   );

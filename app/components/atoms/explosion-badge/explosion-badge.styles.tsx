@@ -12,7 +12,7 @@ export const Img = styled.img`
   height: 68px;
   position: absolute;
   width: 94px;
-  z-index: -1;
+  z-index: 1;
 `;
 
 export const Label = styled.span`
@@ -21,4 +21,5 @@ export const Label = styled.span`
   font-size: 1.5em;
   font-weight: bold;
   text-transform: uppercase;
+  z-index: 2;
 `;

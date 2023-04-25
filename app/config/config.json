@@ -21,7 +21,8 @@
     "twitter": "https://twitter.com/cultoperrocafe"
   },
   "globalLinks": {
-    "menu": "https://www.instagram.com/cultoperrocafe/"
+    "menu": "https://www.instagram.com/cultoperrocafe/",
+    "googleMaps": "https://goo.gl/maps/FDdqXj3i6scS4hqx9"
   },
   "cult": {
     "images": [
@@ -75,5 +76,13 @@
         "author": "Miguel Madrid"
       }
     ]
+  },
+  "location": {
+    "hours": [
+      {
+        "week": "Lunes a Sábado: 8:30 a.m. - 10:00 p.m.",
+        "sunday": "Domingo: 2:00 p.m. - 10:00 p.m."
+      }
+    ]  
   }
 }
