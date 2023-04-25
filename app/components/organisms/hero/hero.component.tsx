@@ -19,7 +19,7 @@ import {
   FacebookButton,
   TwitterButton,
 } from '../../../components/atoms/social-media-buttons';
-import configData from '../../../config/config.json';
+import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 
 export const Hero = () => {

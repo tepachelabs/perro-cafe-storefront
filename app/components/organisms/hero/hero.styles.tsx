@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
-const desktopMediaQuery = `
-  @media (min-width: 768px)
+const desktopMediaQuery = css`
+  ${({theme}) => theme.mediaQueries.desktop}
 `;
 
 export const HeroContainer = styled.header`

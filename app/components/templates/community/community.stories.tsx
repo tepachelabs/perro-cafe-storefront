@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
 import {Community} from './community.component';
-import configData from '../../../config/config.json';
+import configData from '../../../config.json';
 
 export default {
   title: 'Templates/Community',
@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof Community> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  reviews: configData.community.reviews,
+  reviews: configData.reviews,
 };

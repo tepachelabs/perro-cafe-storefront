@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
 import {NavBar, NavBarLink} from './navbar.component';
-import configData from '../../../config/config.json';
+import configData from '../../../config.json';
 
 export default {
   title: 'Organisms/NavBar',

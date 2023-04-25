@@ -6,7 +6,7 @@ export const MapSketch = () => {
   return (
     <MapSketchContainer>
       <HandOverlay src={hand} />
-      <MapImage src={map} />
+      <MapImage src={map} alt="ilustración del mapa" />
     </MapSketchContainer>
   );
 };

@@ -8,7 +8,7 @@ import {
   SecondaryContainer,
   TextContainer,
 } from './menu.styles';
-import configData from '../../../config/config.json';
+import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
@@ -29,9 +29,6 @@ interface Props {
 export const Menu: FC<Props> = ({products}) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
-  const navigateToMenu = () =>
-    window.open(configData.globalLinks.menu, '_blank');
-
   return (
     <MenuContainer>
       <PrimaryContainer>
@@ -48,7 +45,10 @@ export const Menu: FC<Props> = ({products}) => {
         </TextContainer>
         <Hr />
         <ButtonContainer>
-          <HorizontalButton label="Ver el menú" onClick={navigateToMenu} />
+          <HorizontalButton
+            label="Ver el menú"
+            href={configData.globalLinks.menu}
+          />
         </ButtonContainer>
       </PrimaryContainer>
       <SecondaryContainer>
