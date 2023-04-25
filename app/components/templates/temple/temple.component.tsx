@@ -7,7 +7,7 @@ import {
   ScheduleContainer,
   LineContainer,
 } from './temple.styles';
-import configData from '../../../config/config.json';
+import configData from '../../../config.json';
 import {ExplosionBadge} from '../../atoms/explosion-badge';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';

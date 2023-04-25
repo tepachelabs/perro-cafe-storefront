@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
 import {Cult} from './cult.component';
-import configData from '../../../config/config.json';
+import configData from '../../../config.json';
 
 export default {
   title: 'Templates/Cult',

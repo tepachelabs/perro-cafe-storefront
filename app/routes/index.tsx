@@ -6,7 +6,7 @@ import {Community} from '~/components/templates/community';
 import {Cult} from '~/components/templates/cult';
 import {Menu} from '~/components/templates/menu';
 import {Temple} from '~/components/templates/temple/temple.component';
-import configData from '~/config/config.json';
+import configData from '~/config.json';
 
 export const meta = () => {
   return {
@@ -53,7 +53,7 @@ export default function Index() {
 
   const cultImages = configData.cult.images;
 
-  const reviews = configData.community.reviews;
+  const reviews = configData.reviews;
 
   return (
     <>

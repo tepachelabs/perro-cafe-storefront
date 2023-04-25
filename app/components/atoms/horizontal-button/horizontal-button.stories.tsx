@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
 import {HorizontalButton} from './horizontal-button.component';
-import configData from '../../../config/config.json';
+import configData from '../../../config.json';
 
 export default {
   title: 'Atoms/HorizontalButton',

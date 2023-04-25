@@ -8,7 +8,7 @@ import {
   SecondaryContainer,
   TextContainer,
 } from './menu.styles';
-import configData from '../../../config/config.json';
+import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
