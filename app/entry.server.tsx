@@ -1,7 +1,7 @@
 import {RemixServer} from '@remix-run/react';
 import type {EntryContext} from '@shopify/remix-oxygen';
-import isbot from 'isbot';
-import {renderToReadableStream} from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
+import {ServerStyleSheet} from 'styled-components';
 
 export default async function handleRequest(
   request: Request,
@@ -9,25 +9,19 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
-  const body = await renderToReadableStream(
-    <RemixServer context={remixContext} url={request.url} />,
-    {
-      signal: request.signal,
-      onError(error) {
-        // eslint-disable-next-line no-console
-        console.error(error);
-        responseStatusCode = 500;
-      },
-    },
-  );
+  const sheet = new ServerStyleSheet();
 
-  if (isbot(request.headers.get('user-agent'))) {
-    await body.allReady;
-  }
+  let markup = renderToString(
+    sheet.collectStyles(
+      <RemixServer context={remixContext} url={request.url} />,
+    ),
+  );
+  markup = markup.replace('__STYLES__', sheet.getStyleTags());
 
   responseHeaders.set('Content-Type', 'text/html');
-  return new Response(body, {
-    headers: responseHeaders,
+
+  return new Response('<!DOCTYPE html>' + markup, {
     status: responseStatusCode,
+    headers: responseHeaders,
   });
 }
