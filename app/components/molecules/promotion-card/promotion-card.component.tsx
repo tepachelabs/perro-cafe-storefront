@@ -33,7 +33,7 @@ export const PromotionCard: FC<PromotionCardProps & CardProps> = ({
           <Badge variant={isRecommended ? 'recommendation' : 'seasonal'} />
         </BadgeContainer>
       )}
-      <Img src={image} />
+      <Img src={image} alt={label} />
       <Title>{label}</Title>
     </Card>
   );

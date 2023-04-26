@@ -52,6 +52,7 @@ export default function Index() {
     ...(link.label === 'Inicio' && {active: 'true'}),
   }));
 
+  const cultDescription = configData.cult.description;
   const cultImages = configData.cult.images;
 
   const reviews = configData.reviews;
@@ -61,7 +62,7 @@ export default function Index() {
       <NavBar links={links} linkRender={_Link} />
       <Hero />
       <Menu products={images} />
-      <Cult images={cultImages} />
+      <Cult images={cultImages} description={cultDescription} />
       <Temple />
       <Community reviews={reviews} />
       <Footer />

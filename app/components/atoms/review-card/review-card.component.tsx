@@ -31,7 +31,7 @@ export const ReviewCard: FC<ReviewCardProps> = ({
 }) => {
   return (
     <Frame variant={variant}>
-      <Img src={authorImages[variant]} alt="Human face" />
+      <Img src={authorImages[variant]} alt="Rostro humano" />
       <Content>
         <Review>{review}</Review>
         <Author>{author}</Author>

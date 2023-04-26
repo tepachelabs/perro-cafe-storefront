@@ -28,7 +28,7 @@ export const Hero = () => {
   return (
     <HeroContainer>
       <PrimaryContainer>
-        <HeadingImg src={Heading} alt="Heading" />
+        <HeadingImg src={Heading} alt="Título: Cafetería Indie Experimental" />
         <TextContainer>
           <Paragraph bold>Lorem ipsum dolor sit.</Paragraph>
         </TextContainer>
@@ -46,7 +46,7 @@ export const Hero = () => {
             href={configData.socialMedia.twitter}
           />
         </SocialMediaButtonsContainer>
-        <CandleImg src={Candle} alt="Candle" />
+        <CandleImg src={Candle} alt="Gráfico de una vela" />
       </PrimaryContainer>
       <SecondaryContainer>
         {isDesktop && (
@@ -57,7 +57,7 @@ export const Hero = () => {
             />
           </SeeMenuButtonContainer>
         )}
-        <HeroBannerImg src={HeroBanner} alt="Heading" />
+        <HeroBannerImg src={HeroBanner} alt="Fondo de cabecera" />
       </SecondaryContainer>
     </HeroContainer>
   );

@@ -21,17 +21,15 @@ interface CarouselImage {
 
 interface Props {
   images: CarouselImage[];
+  description: string;
 }
 
-export const Cult: FC<Props> = ({images}) => (
+export const Cult: FC<Props> = ({images, description}) => (
   <CultBackground>
     <CultContainer>
       <TopContainer>
         <TitleSection icon="cult">El Culto</TitleSection>
-        <Description bold>
-          Lorem ipsum dolor sit amet, conctetuer adipiscing elit volutpat.
-          Hendrerit in vulputate velit esse. Ut wisi enim ad minim veniam.
-        </Description>
+        <Description bold>{description}</Description>
       </TopContainer>
       <BottomContainer>
         <CarouselContainer>

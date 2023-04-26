@@ -59,9 +59,9 @@ export const Footer: FC = () => {
           </Container>
         </TopContainer>
         <BottomContainer>
-          <Img src={sparkle} alt="Sparkle graphic" />
+          <Img src={sparkle} alt="Gráfico de estrellas" />
           <CopyrightParagraph>{configData.copyright}</CopyrightParagraph>
-          <PositionedLogo src={logo} alt="Culto al Perro Café logo" />
+          <PositionedLogo src={logo} alt="Logo de Culto al Perro Café" />
         </BottomContainer>
       </FooterContainer>
     </FooterBackground>

@@ -5,8 +5,8 @@ import {MapSketchContainer, HandOverlay, MapImage} from './map-sketch.styles';
 export const MapSketch = () => {
   return (
     <MapSketchContainer>
-      <HandOverlay src={hand} />
-      <MapImage src={map} alt="ilustración del mapa" />
+      <HandOverlay src={hand} alt="Mano indicando la ubicación" />
+      <MapImage src={map} alt="Ilustración del mapa" />
     </MapSketchContainer>
   );
 };
