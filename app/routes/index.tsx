@@ -4,8 +4,9 @@ import {Hero} from '~/components/organisms/hero';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {Community} from '~/components/templates/community';
 import {Cult} from '~/components/templates/cult';
+import {Footer} from '~/components/templates/footer';
 import {Menu} from '~/components/templates/menu';
-import {Temple} from '~/components/templates/temple/temple.component';
+import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
 
 export const meta = () => {
@@ -63,6 +64,7 @@ export default function Index() {
       <Cult images={cultImages} />
       <Temple />
       <Community reviews={reviews} />
+      <Footer />
     </>
   );
 }
@@ -78,7 +80,7 @@ const COLLECTIONS_QUERY = `#graphql
               nodes {
                 image {
                   url(transform: {
-                    maxWidth: 100,
+                    maxWidth: 1080,
                     crop: CENTER
                   })
                   altText

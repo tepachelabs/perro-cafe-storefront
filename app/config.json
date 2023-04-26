@@ -79,5 +79,7 @@
   "schedule": {
     "weekdays": "Lunes a Sábado: 8:30 a.m. - 10:00 p.m.",
     "sunday": "Domingo: 2:00 p.m. - 10:00 p.m."
-  }
+  },
+  "footerInfo": ["Lorem ipsum.", "Dolor sit amet.", "Lipsu lorem."],
+  "copyright": "Copyright © 2020-2022 TepacheLabs. Todos los derechos reservados."
 }
