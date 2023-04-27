@@ -18,9 +18,11 @@ import {
   InstagramButton,
   FacebookButton,
   TwitterButton,
-} from '../../../components/atoms/social-media-buttons';
+} from '../../../components/molecules/social-media-buttons';
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
+
+const {socialMedia, globalLinks} = configData;
 
 export const Hero = () => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -33,28 +35,16 @@ export const Hero = () => {
           <Paragraph bold>Lorem ipsum dolor sit.</Paragraph>
         </TextContainer>
         <SocialMediaButtonsContainer>
-          <InstagramButton
-            isDarkBackground
-            href={configData.socialMedia.instagram}
-          />
-          <FacebookButton
-            isDarkBackground
-            href={configData.socialMedia.facebook}
-          />
-          <TwitterButton
-            isDarkBackground
-            href={configData.socialMedia.twitter}
-          />
+          <InstagramButton href={socialMedia.instagram} />
+          <FacebookButton href={socialMedia.facebook} />
+          <TwitterButton href={socialMedia.twitter} />
         </SocialMediaButtonsContainer>
         <CandleImg src={Candle} alt="Gráfico de una vela" />
       </PrimaryContainer>
       <SecondaryContainer>
         {isDesktop && (
           <SeeMenuButtonContainer>
-            <SeeMenuButton
-              variant="primary"
-              href={configData.globalLinks.menu}
-            />
+            <SeeMenuButton variant="primary" href={globalLinks.menu} />
           </SeeMenuButtonContainer>
         )}
         <HeroBannerImg src={HeroBanner} alt="Fondo de cabecera" />
