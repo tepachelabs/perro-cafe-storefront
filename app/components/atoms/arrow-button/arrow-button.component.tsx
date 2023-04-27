@@ -1,31 +1,19 @@
 import {FC} from 'react';
 
-import {
-  Img,
-  ArrowButtonFace,
-  ArrowButtonProps,
-  StyledArrowButton,
-} from './arrow-button.styles';
-import arrowImg from './img/arrow.svg';
+import {ArrowButton as _ArrowButton} from './arrow-button.styles';
 
-type Button = FC<ArrowButtonProps>;
+interface ArrowButtonProps {
+  onClick: () => void;
+  title: string;
+}
 
-export const LeftArrow: Button = ({onClick}) => {
-  return (
-    <StyledArrowButton variant="left" onClick={onClick}>
-      <ArrowButtonFace>
-        <Img src={arrowImg} alt="Flecha izquierda" />
-      </ArrowButtonFace>
-    </StyledArrowButton>
-  );
+export const ArrowButton: FC<ArrowButtonProps> = ({onClick, title}) => {
+  return <_ArrowButton onClick={onClick} title={title} type="button" />;
 };
 
-export const RightArrow: Button = ({onClick}) => {
-  return (
-    <StyledArrowButton variant="right" onClick={onClick}>
-      <ArrowButtonFace>
-        <Img src={arrowImg} alt="Flecha derecha" />
-      </ArrowButtonFace>
-    </StyledArrowButton>
-  );
+// alias
+export const RightArrow = ArrowButton;
+
+export const LeftArrow: FC<ArrowButtonProps> = ({onClick, title}) => {
+  return <_ArrowButton isLeft onClick={onClick} title={title} type="button" />;
 };

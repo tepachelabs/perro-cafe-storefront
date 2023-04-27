@@ -1,21 +1,21 @@
+import {action} from '@storybook/addon-actions';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {LeftArrow, RightArrow} from './arrow-button.component';
+import {ArrowButton, LeftArrow, RightArrow} from './arrow-button.component';
 
 export default {
   title: 'Atoms/ArrowButton',
-} as ComponentMeta<typeof LeftArrow | typeof RightArrow>;
+} as ComponentMeta<typeof ArrowButton>;
 
-const LeftArrowTemplate: ComponentStory<typeof LeftArrow> = (args) => (
-  <LeftArrow {...args} />
+const Template: ComponentStory<typeof ArrowButton> = (args) => (
+  <div style={{display: 'flex', gap: '1em'}}>
+    <LeftArrow {...args} />
+    <RightArrow {...args} />
+  </div>
 );
 
-export const Left = LeftArrowTemplate.bind({});
-Left.args = {};
-
-const RightArrowTemplate: ComponentStory<typeof RightArrow> = (args) => (
-  <RightArrow {...args} />
-);
-
-export const Right = RightArrowTemplate.bind({});
-Right.args = {};
+export const Default = Template.bind({});
+Default.args = {
+  title: 'buttons',
+  onClick: action('click'),
+};

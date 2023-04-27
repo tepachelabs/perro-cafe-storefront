@@ -1,72 +1,58 @@
 import styled, {css} from 'styled-components';
 
-export interface ArrowButtonProps {
-  variant?: 'right' | 'left';
-  onClick: () => void;
-}
+import arrowImg from './img/arrow.svg';
+import {select} from '../../../utils';
 
-const arrowTransform = {
-  right: css`
-    transform: translate(-50%, -50%) rotate(0deg);
-  `,
-  left: css`
-    transform: translate(-50%, -50%) rotate(180deg);
-  `,
-};
-
-export const ArrowButtonFace = styled.span`
-  display: block;
-  width: 46px;
-  height: 46px;
-  background-color: #f8eee0;
-  border: 3px solid #222222;
-
-  position: absolute;
-  left: -3px;
-
-  will-change: transform;
-  transform: translateY(-32px);
-  transition: all 200ms ease;
+const ButtonBaseStyle = css`
+  border: ${select(({sizes}) => sizes.borderWidth)} solid
+    ${select(({colors}) => colors.black)};
+  height: 48px;
+  width: 48px;
 `;
 
-export const Img = styled.img`
-  width: 60%;
-  height: 60%;
+export const ArrowButton = styled.button<{
+  isLeft?: boolean;
+}>`
+  ${ButtonBaseStyle};
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  background-color: ${select(({colors}) => colors.backgroundDarker)};
+  position: relative;
 
-  will-change: transform;
-`;
+  &:before {
+    ${ButtonBaseStyle};
 
-export const StyledArrowButton = styled.button<ArrowButtonProps>`
-  ${Img} {
-    ${({variant}) => arrowTransform[variant || 'right']}
+    content: ' ';
+    display: block;
+    left: -${select(({sizes}) => sizes.borderWidth)}; // compensate for border in parent
+    left: -${select(({sizes}) => sizes.borderWidth)}; // compensate for border in parent
+    position: absolute;
+    top: -${select(({sizes}) => sizes.borderWidth)}; // compensate for border in parent
+    transition: all 200ms ease;
+    transform: translateY(
+      calc(${select(({sizes}) => sizes.borderWidth)} * -2.5)
+    );
+    will-change: transform;
+
+    background: ${select(({colors}) => colors.background)} url(${arrowImg})
+      no-repeat center;
+    background-size: 50% 50%;
   }
 
-  width: 46px;
-  height: 46px;
-  background-color: #f2dab2;
-  padding: 0;
-  border: 3px solid #222222;
-  outline-offset: 4px;
-  cursor: pointer;
-
-  will-change: transform;
-  transform: translateY(16px);
-  transition: all 200ms ease;
-
-  &:hover {
+  &:hover:before {
     filter: brightness(1.05);
+    transform: translateY(calc(${select(({sizes}) => sizes.borderWidth)} * -3));
   }
 
-  &:hover ${ArrowButtonFace} {
-    transform: translateY(-33px);
-  }
-
-  &:active ${ArrowButtonFace} {
+  &:active:before {
     filter: brightness(0.95);
-    transform: translateY(-28px);
+    transform: translateY(
+      calc(${select(({sizes}) => sizes.borderWidth)} * -1.5)
+    );
   }
+
+  ${({isLeft}) =>
+    isLeft &&
+    css`
+      transform: scaleX(-1);
+    `}
 `;
