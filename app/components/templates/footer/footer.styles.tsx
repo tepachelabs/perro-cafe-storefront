@@ -65,7 +65,11 @@ export const Subtitle = styled(Paragraph)`
 
 export const LightParagraph = styled(Paragraph)`
   color: ${({theme}) => theme.colors.backgroundDarker};
-  font-size: 12px;
+  font-size: 16px;
+
+  ${desktopMediaQuery} {
+    font-size: 14px;
+  }
 `;
 
 export const CopyrightParagraph = styled(LightParagraph)`
