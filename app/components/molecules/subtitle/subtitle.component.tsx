@@ -4,7 +4,7 @@ import community from './img/community.svg';
 import cult from './img/cult.svg';
 import menu from './img/menu.svg';
 import temple from './img/temple.svg';
-import {Text, Icon, Frame} from './title-section.styles';
+import {Text, Icon, Frame} from './subtitle.styles';
 
 export interface TitleSectionProps {
   children?: ReactNode;

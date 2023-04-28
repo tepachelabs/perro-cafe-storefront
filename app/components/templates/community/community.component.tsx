@@ -3,7 +3,7 @@ import {FC} from 'react';
 import {CommunitySection, ReviewsContainer} from './community.styles';
 import {ReviewCard} from '../../atoms/review-card';
 import {ReviewCardVariant} from '../../atoms/review-card/review-card.styles';
-import {Subtitle} from '../../molecules/title-section';
+import {Subtitle} from '../../molecules/subtitle';
 
 type Review = {
   id: string;

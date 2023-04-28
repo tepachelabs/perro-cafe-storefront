@@ -10,7 +10,7 @@ import {
   CultBackground,
 } from './cult.styles';
 import {PerkInfo} from '../../molecules/perk-info/perk-info.component';
-import {Subtitle} from '../../molecules/title-section';
+import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
 
 interface CarouselImage {

@@ -13,7 +13,7 @@ import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
 import {MapSketch} from '../../atoms/map-sketch';
 import {Paragraph} from '../../atoms/paragraph';
-import {Subtitle} from '../../molecules/title-section';
+import {Subtitle} from '../../molecules/subtitle';
 
 export const Temple = () => (
   <>

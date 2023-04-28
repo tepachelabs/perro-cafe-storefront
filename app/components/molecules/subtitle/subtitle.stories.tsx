@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {Subtitle, TitleSectionProps} from './title-section.component';
+import {Subtitle, TitleSectionProps} from './subtitle.component';
 
 export default {
   title: 'Molecules/Subtitle',

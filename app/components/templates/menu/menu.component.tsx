@@ -14,7 +14,7 @@ import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
 import {Paragraph} from '../../atoms/paragraph';
 import {PromotionCard} from '../../molecules/promotion-card';
-import {Subtitle} from '../../molecules/title-section';
+import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
 
 interface Props {
