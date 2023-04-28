@@ -74,11 +74,13 @@ export const NavBarLink = styled.a<NavBarLinkProps>`
   display: block;
   padding: 0.5rem 0 0;
   cursor: pointer;
+  height: 48px;
 
   color: ${({theme}) => theme.colors.backgroundDarker};
   font-family: ${({theme}) => theme.fonts.body};
   font-weight: bold;
   text-decoration: none;
+  line-height: 48px;
 
   border-bottom: 4px solid transparent;
 
@@ -86,7 +88,10 @@ export const NavBarLink = styled.a<NavBarLinkProps>`
     display: inline-block;
     margin-left: 0.65rem;
     padding: 0;
+    height: auto;
+
     font-size: 14px;
+    line-height: 16px;
   }
 
   ${({theme, active}) =>

@@ -25,7 +25,6 @@ export const HandOverlay = styled.img`
   animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  z-index: 1;
 `;
 
 export const MapImage = styled.img`

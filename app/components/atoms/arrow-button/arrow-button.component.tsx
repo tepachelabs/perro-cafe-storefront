@@ -14,7 +14,7 @@ export const LeftArrow: Button = ({onClick}) => {
   return (
     <StyledArrowButton variant="left" onClick={onClick}>
       <ArrowButtonFace>
-        <Img src={arrowImg} alt="Left arrow graphic" />
+        <Img src={arrowImg} alt="Flecha izquierda" />
       </ArrowButtonFace>
     </StyledArrowButton>
   );
@@ -24,7 +24,7 @@ export const RightArrow: Button = ({onClick}) => {
   return (
     <StyledArrowButton variant="right" onClick={onClick}>
       <ArrowButtonFace>
-        <Img src={arrowImg} alt="Right arrow graphic" />
+        <Img src={arrowImg} alt="Flecha derecha" />
       </ArrowButtonFace>
     </StyledArrowButton>
   );

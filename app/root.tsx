@@ -50,7 +50,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <html lang="en">
+      <html lang="es">
         <head>
           <Meta />
           <Links />

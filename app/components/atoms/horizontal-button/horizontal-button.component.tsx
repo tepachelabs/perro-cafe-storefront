@@ -17,7 +17,7 @@ export const HorizontalButton: FC<Props> = ({label, href}) => (
   <StyledHorizontalButton href={href} target="_blank">
     <ButtonFace>
       <Label>{label}</Label>
-      <Img src={arrow} alt="Arrow graphic" />
+      <Img src={arrow} alt="Flecha" />
     </ButtonFace>
   </StyledHorizontalButton>
 );

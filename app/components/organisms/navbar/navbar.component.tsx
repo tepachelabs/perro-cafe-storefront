@@ -36,9 +36,9 @@ const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
   return (
     <Header>
       <Flex>
-        <Img src={logo} alt="Culto al Perro Café logo" />
-        <MenuButton onClick={handleMenuPressed} aria-label="Open menu">
-          <Icon src={burgerMenu} alt="Menu icon" />
+        <Img src={logo} alt="Logotipo de Culto al Perro Café" />
+        <MenuButton onClick={handleMenuPressed} aria-label="Abrir menú">
+          <Icon src={burgerMenu} alt="Ícono de menú" />
         </MenuButton>
       </Flex>
       <Drawer collapsed={!showDrawer}>
@@ -55,7 +55,7 @@ const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
 const DesktopNavBar: FC<Props> = ({linkRender: Link, links}) => (
   <Header>
     <Flex>
-      <Img src={logo} alt="Culto al Perro Café logo" />
+      <Img src={logo} alt="Logotipo de Culto al Perro Café" />
       <Drawer>
         {links.map((link) => (
           <Link key={link.label} to={link.href} active={link.active}>

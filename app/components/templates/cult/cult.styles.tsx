@@ -6,9 +6,13 @@ const desktopMediaQuery = css`
   ${({theme}) => theme.mediaQueries.desktop}
 `;
 
-export const CultSection = styled.section`
+export const CultBackground = styled.section`
   background-color: ${({theme}) => theme.colors.secondary};
 
+  width: 100%;
+`;
+
+export const CultContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;

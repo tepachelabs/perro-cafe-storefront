@@ -25,6 +25,7 @@
     "googleMaps": "https://goo.gl/maps/FDdqXj3i6scS4hqx9"
   },
   "cult": {
+    "description": "Lorem ipsum dolor sit amet, conctetuer adipiscing elit volutpat. Hendrerit in vulputate velit esse. Ut wisi enim ad minim veniam.",
     "images": [
       {
         "id": "1a91c11d-fd09-48f0-a157-988c0d172a41",
@@ -79,5 +80,7 @@
   "schedule": {
     "weekdays": "Lunes a Sábado: 8:30 a.m. - 10:00 p.m.",
     "sunday": "Domingo: 2:00 p.m. - 10:00 p.m."
-  }
+  },
+  "footerInfo": ["Lorem ipsum.", "Dolor sit amet.", "Lipsu lorem."],
+  "copyright": "Copyright © 2020-2022 TepacheLabs. Todos los derechos reservados."
 }
