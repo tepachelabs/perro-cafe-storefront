@@ -20,12 +20,12 @@ const SocialMediaButton =
   ({color, inverted, ...buttonProps}: IconButtonProps) => {
     return (
       <SquaredButton
-        color={inverted ? 'background' : 'black'}
+        color={inverted ? 'backgroundDarker' : 'black'}
         target="_blank"
         rel="noopener noreferrer"
         {...buttonProps}
       >
-        <Icon color={inverted ? 'black' : 'background'} />
+        <Icon color={inverted ? 'black' : 'backgroundDarker'} />
       </SquaredButton>
     );
   };
