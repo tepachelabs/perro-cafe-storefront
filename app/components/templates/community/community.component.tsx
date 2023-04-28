@@ -3,7 +3,7 @@ import {FC} from 'react';
 import {CommunitySection, ReviewsContainer} from './community.styles';
 import {ReviewCard} from '../../atoms/review-card';
 import {ReviewCardVariant} from '../../atoms/review-card/review-card.styles';
-import {TitleSection} from '../../molecules/title-section';
+import {Subtitle} from '../../molecules/title-section';
 
 type Review = {
   id: string;
@@ -19,7 +19,7 @@ const variants: ReviewCardVariant[] = ['orange', 'yellow', 'green'];
 
 export const Community: FC<Props> = ({reviews}) => (
   <CommunitySection>
-    <TitleSection icon="community">Comunidad</TitleSection>
+    <Subtitle icon="community">Comunidad</Subtitle>
     <ReviewsContainer>
       {reviews.map((review, i) => (
         <ReviewCard

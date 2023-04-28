@@ -10,7 +10,7 @@ import {
   CultBackground,
 } from './cult.styles';
 import {PerkInfo} from '../../molecules/perk-info/perk-info.component';
-import {TitleSection} from '../../molecules/title-section';
+import {Subtitle} from '../../molecules/title-section';
 import {Carousel} from '../../organisms/carousel';
 
 interface CarouselImage {
@@ -28,7 +28,7 @@ export const Cult: FC<Props> = ({images, description}) => (
   <CultBackground>
     <CultContainer>
       <TopContainer>
-        <TitleSection icon="cult">El Culto</TitleSection>
+        <Subtitle icon="cult">El Culto</Subtitle>
         <Description bold>{description}</Description>
       </TopContainer>
       <BottomContainer>

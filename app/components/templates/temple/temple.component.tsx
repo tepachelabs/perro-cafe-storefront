@@ -13,13 +13,13 @@ import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
 import {MapSketch} from '../../atoms/map-sketch';
 import {Paragraph} from '../../atoms/paragraph';
-import {TitleSection} from '../../molecules/title-section';
+import {Subtitle} from '../../molecules/title-section';
 
 export const Temple = () => (
   <>
     <TempleContainer>
       <PrimaryContainer>
-        <TitleSection icon="temple">El templo</TitleSection>
+        <Subtitle icon="temple">El templo</Subtitle>
         <AddressContainer>
           <Paragraph bold>Dirección</Paragraph>
           <Paragraph>{configData.location}</Paragraph>

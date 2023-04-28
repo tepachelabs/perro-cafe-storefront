@@ -42,6 +42,8 @@ export interface MainTheme {
   sizes: {
     maxWidth: string;
     borderWidth: string;
+    header: string;
+    subHeader: string;
   };
   mediaQueries: {
     handheld: string;
@@ -69,6 +71,8 @@ const main: MainTheme = {
   sizes: {
     borderWidth: `${unit}px`,
     maxWidth,
+    header: `${unit * 16}px`,
+    subHeader: `${unit * 12}px`,
   },
 
   mediaQueries: {

@@ -4,11 +4,11 @@ import community from './img/community.svg';
 import cult from './img/cult.svg';
 import menu from './img/menu.svg';
 import temple from './img/temple.svg';
-import {Label, LeadingIcon, StyledSectionName} from './title-section.styles';
+import {Text, Icon, Frame} from './title-section.styles';
 
-interface TitleSectionProps {
+export interface TitleSectionProps {
   children?: ReactNode;
-  icon: 'cult' | 'menu' | 'temple' | 'community';
+  icon?: 'community' | 'cult' | 'menu' | 'temple';
 }
 
 const icons = {
@@ -18,12 +18,9 @@ const icons = {
   community,
 };
 
-export const TitleSection: FC<TitleSectionProps> = ({icon, children}) => {
-  const iconSrc = icons[icon];
-  return (
-    <StyledSectionName>
-      <LeadingIcon src={iconSrc} />
-      <Label>{children}</Label>
-    </StyledSectionName>
-  );
-};
+export const Subtitle: FC<TitleSectionProps> = ({icon, children}) => (
+  <Frame>
+    {icon && <Icon src={icons[icon]} />}
+    <Text>{children}</Text>
+  </Frame>
+);

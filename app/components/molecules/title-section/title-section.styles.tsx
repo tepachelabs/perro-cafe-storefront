@@ -1,27 +1,30 @@
 import styled from 'styled-components';
 
-export const StyledSectionName = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  max-width: 300px;
-  max-height: 78px;
+import {select} from '../../../utils';
+
+export const Frame = styled.div`
+  display: inline-flex;
+  gap: 1em;
 `;
 
-export const LeadingIcon = styled.img`
+export const Icon = styled.img`
   width: 60px;
-  margin-right: 20px;
-  align-self: center;
 `;
 
-export const Label = styled.h1`
+export const Text = styled.h2`
   color: ${({theme}) => theme.colors.black};
-  font-weight: 400;
   font-family: ${({theme}) => theme.fonts.title};
-  font-size: 32px;
+  font-size: ${({theme}) => theme.sizes.subHeader};
   text-transform: uppercase;
+  font-weight: 400;
 
-  border-bottom: 4px solid ${({theme}) => theme.colors.black};
+  &:after {
+    border-bottom: ${select(({sizes}) => sizes.borderWidth)} solid
+      ${({theme}) => theme.colors.black};
+    content: ' ';
+    display: block;
+    height: 4px;
+    position: absolute;
+    width: 156px;
+  }
 `;
