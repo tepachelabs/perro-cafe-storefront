@@ -30,6 +30,6 @@ TempleSection.args = {
 
 export const CommunityTemple = Template.bind({});
 CommunityTemple.args = {
-  icon: 'temple',
+  icon: 'community',
   children: 'comunidad',
 };

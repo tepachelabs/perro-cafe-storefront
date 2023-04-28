@@ -1,5 +1,4 @@
-import {ReactNode} from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 export const StyledSectionName = styled.div`
   position: relative;
