@@ -23,7 +23,7 @@ This project is built from the Shopify Hydrogen Demo Store template:
 
 **Requirements:**
 
-- Node.js version 16.14.0 or higher
+- Node.js version 18.12.0 or higher
 
 ```bash
 npm install
