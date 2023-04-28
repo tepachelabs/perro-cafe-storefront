@@ -21,7 +21,7 @@ import {
   FacebookButton,
   InstagramButton,
   TwitterButton,
-} from '../../atoms/social-media-buttons';
+} from '../../molecules/social-media-buttons';
 
 export const Footer: FC = () => {
   return (
@@ -52,9 +52,12 @@ export const Footer: FC = () => {
           <Container>
             <Subtitle>Las Redes</Subtitle>
             <SocialMediaWrapper>
-              <InstagramButton href={configData.socialMedia.instagram} />
-              <FacebookButton href={configData.socialMedia.facebook} />
-              <TwitterButton href={configData.socialMedia.twitter} />
+              <InstagramButton
+                inverted
+                href={configData.socialMedia.instagram}
+              />
+              <FacebookButton inverted href={configData.socialMedia.facebook} />
+              <TwitterButton inverted href={configData.socialMedia.twitter} />
             </SocialMediaWrapper>
           </Container>
         </TopContainer>
