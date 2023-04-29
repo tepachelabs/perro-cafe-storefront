@@ -14,7 +14,7 @@ import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
 import {Paragraph} from '../../atoms/paragraph';
 import {PromotionCard} from '../../molecules/promotion-card';
-import {TitleSection} from '../../molecules/title-section';
+import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
 
 interface Props {
@@ -32,7 +32,7 @@ export const Menu: FC<Props> = ({products}) => {
   return (
     <MenuContainer>
       <PrimaryContainer>
-        <TitleSection icon="menu">El Menú</TitleSection>
+        <Subtitle icon="menu">El Menú</Subtitle>
         <TextContainer>
           <Paragraph lineHeight="30px">
             Lorem ipsum dolor sit amet, conctetuer adipiscing elitvolutpat.
