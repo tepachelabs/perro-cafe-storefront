@@ -19,7 +19,7 @@ export const Temple = () => (
   <>
     <TempleContainer>
       <PrimaryContainer>
-        <Subtitle icon="temple">El templo</Subtitle>
+        <Subtitle icon="temple">El Templo</Subtitle>
         <AddressContainer>
           <Paragraph bold>Dirección</Paragraph>
           <Paragraph>{configData.location}</Paragraph>
