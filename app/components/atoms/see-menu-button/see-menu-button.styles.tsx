@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export interface SeeMenuButtonProps {
-  variant: 'primary';
-  href?: string;
-}
-
 export const ButtonFace = styled.img`
   display: block;
   position: relative;
@@ -19,7 +14,9 @@ export const ButtonFace = styled.img`
   transition: transform 200ms ease;
 `;
 
-export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
+export const StyledSeeMenuButton = styled.a`
+  display: block;
+
   background-color: #c04625;
   width: 120px;
   height: 120px;
@@ -28,6 +25,7 @@ export const StyledSeeMenuButton = styled.button<SeeMenuButtonProps>`
   border: 3px solid #222222;
   outline-offset: 4px;
   padding: 0;
+
   transition: all 200ms ease;
   will-change: transform;
   transform: translateY(16px);
