@@ -3,7 +3,7 @@
     "links": [
       {"label": "Inicio", "link": "/"},
       {"label": "Menú", "link": "https://www.instagram.com/cultoperrocafe/"},
-      {"label": "Frecuentes", "link": "https://cultoperrocafe.com/frecuentes"},
+      {"label": "Frecuentes", "link": "/frecuentes"},
       {"label": "Tienda", "link": "https://cultoperrocafe.myshopify.com/"},
       {
         "label": "Contacto",
@@ -82,5 +82,9 @@
     "sunday": "Domingo: 2:00 p.m. - 10:00 p.m."
   },
   "footerInfo": ["Lorem ipsum.", "Dolor sit amet.", "Lipsu lorem."],
-  "copyright": "Copyright © 2020-2022 TepacheLabs. Todos los derechos reservados."
+  "copyright": "Copyright © 2020-2022 TepacheLabs. Todos los derechos reservados.",
+  "regularsHero": {
+    "title": "Programa de Clientes Frecuentes",
+    "description": "Conoce nuestro programa de recompensas, creado para premiarte por tu consumo."
+  }
 }
