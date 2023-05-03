@@ -22,7 +22,7 @@ import {
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 
-const {socialMedia, globalLinks} = configData;
+const {heroSubtitle, socialMedia, globalLinks} = configData;
 
 export const Hero = () => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -32,7 +32,7 @@ export const Hero = () => {
       <PrimaryContainer>
         <HeadingImg src={Heading} alt="Título: Cafetería Indie Experimental" />
         <TextContainer>
-          <Paragraph bold>Lorem ipsum dolor sit.</Paragraph>
+          <Paragraph bold>{heroSubtitle}</Paragraph>
         </TextContainer>
         <SocialMediaButtonsContainer>
           <InstagramButton href={socialMedia.instagram} />
@@ -44,7 +44,7 @@ export const Hero = () => {
       <SecondaryContainer>
         {isDesktop && (
           <SeeMenuButtonContainer>
-            <SeeMenuButton variant="primary" href={globalLinks.menu} />
+            <SeeMenuButton href={globalLinks.menu} />
           </SeeMenuButtonContainer>
         )}
         <HeroBannerImg src={HeroBanner} alt="Fondo de cabecera" />

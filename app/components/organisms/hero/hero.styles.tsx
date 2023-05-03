@@ -1,31 +1,36 @@
 import styled, {css} from 'styled-components';
 
+import {select} from '../../../utils';
+
 const desktopMediaQuery = css`
   ${({theme}) => theme.mediaQueries.desktop}
 `;
 
 export const HeroContainer = styled.header`
   display: flex;
-  max-width: 960px;
+  max-width: ${select(({sizes}) => sizes.maxWidth)};
   margin: 0 auto;
-  align-items: stretch;
   flex-direction: column;
+
   ${desktopMediaQuery} {
     flex-direction: row;
   }
 `;
 
 export const PrimaryContainer = styled.div`
-  flex: 1;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+
   background-color: ${({theme}) => theme.colors.primary};
   border-bottom: 4px solid ${({theme}) => theme.colors.black};
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding: 1.5rem;
+
   ${desktopMediaQuery} {
+    padding: 2.5rem 4rem;
     border-left: 4px solid ${({theme}) => theme.colors.black};
-    padding-top: 1.5rem;
-    padding-bottom: 0;
   }
 `;
 
@@ -34,50 +39,39 @@ export const SecondaryContainer = styled.div`
   position: relative;
   border-bottom: 4px solid ${({theme}) => theme.colors.black};
   ${desktopMediaQuery} {
-    flex: 1.1;
+    flex: 1.5;
     border-left: 4px solid ${({theme}) => theme.colors.black};
     border-right: 4px solid ${({theme}) => theme.colors.black};
   }
 `;
 
 export const HeadingImg = styled.img`
-  width: 80%;
-  margin-left: 25px;
-  ${desktopMediaQuery} {
-    margin-top: 26px;
-    margin-left: 80px;
-    width: 60%;
-  }
+  width: 100%;
 `;
 
-export const TextContainer = styled.div`
-  margin: 16px 0 26px 25px;
-  ${desktopMediaQuery} {
-    margin-left: 80px;
-  }
-`;
+export const TextContainer = styled.div``;
 
 export const SocialMediaButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 0 115px 0 25px;
+
+  margin-top: 0.5rem;
+  max-width: 200px;
+
   ${desktopMediaQuery} {
-    margin: 0 160px 0 80px;
-    padding-top: 25px;
   }
 `;
 
 export const CandleImg = styled.img`
     position: absolute;
-    width: 100px;
-    right: 0px;
-    bottom: 21px;
+    width: 50px;
+    right: 1.5rem;
+    bottom: 1.5rem;
 
     ${desktopMediaQuery} {
-      width: 120px;
-      right: 30px;
-      bottom: 30px;
+      right: 3rem;
+      bottom: 2.5rem;
     }
   }
 `;
@@ -87,7 +81,7 @@ export const SeeMenuButtonContainer = styled.div`
   ${desktopMediaQuery} {
     position: absolute;
     display: inline-block;
-    bottom: 1.5rem;
+    bottom: 2rem;
     right: 1.5rem;
   }
 `;
@@ -98,5 +92,6 @@ export const HeroBannerImg = styled.img`
   ${desktopMediaQuery} {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 `;

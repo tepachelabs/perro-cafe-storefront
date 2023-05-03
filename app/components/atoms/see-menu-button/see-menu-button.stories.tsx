@@ -13,6 +13,5 @@ const Template: ComponentStory<typeof SeeMenuButton> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  variant: 'primary',
   href: 'https://www.instagram.com/cultoperrocafe',
 };

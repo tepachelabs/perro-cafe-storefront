@@ -1,4 +1,5 @@
 {
+  "heroSubtitle": "Lorem ipsum dolor sit.",
   "navbar": {
     "links": [
       {"label": "Inicio", "link": "/"},
