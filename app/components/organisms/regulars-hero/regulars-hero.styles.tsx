@@ -47,11 +47,13 @@ export const Description = styled(Paragraph)`
 
 export const SecondaryContainer = styled.div`
   position: relative;
-  border-bottom: 4px solid ${select(({colors}) => colors.black)};
+  border-bottom: ${select(({sizes}) => sizes.borderWidth)} solid
+    ${select(({colors}) => colors.black)};
 
   ${desktopMediaQuery} {
     flex: 1;
-    border: 4px solid ${select(({colors}) => colors.black)};
+    border: ${select(({sizes}) => sizes.borderWidth)} solid
+      ${select(({colors}) => colors.black)};
   }
 `;
 
