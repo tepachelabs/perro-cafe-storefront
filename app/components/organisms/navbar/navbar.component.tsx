@@ -2,7 +2,7 @@ import {FC, ReactNode, useState} from 'react';
 
 import burgerMenu from './img/burger-menu.svg';
 import logo from './img/logo.svg';
-import {MenuButton, Drawer, Flex, Header, Img, Icon} from './navbar.styles';
+import {MenuButton, Drawer, Flex, _NavBar, Img, Icon} from './navbar.styles';
 import useMediaQuery from '../../../hooks/use-media-query';
 
 export {NavBarLink} from './navbar.styles';
@@ -34,7 +34,7 @@ const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
   };
 
   return (
-    <Header>
+    <_NavBar>
       <Flex>
         <Img src={logo} alt="Logotipo de Culto al Perro Café" />
         <MenuButton onClick={handleMenuPressed} aria-label="Abrir menú">
@@ -48,12 +48,12 @@ const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
           </Link>
         ))}
       </Drawer>
-    </Header>
+    </_NavBar>
   );
 };
 
 const DesktopNavBar: FC<Props> = ({linkRender: Link, links}) => (
-  <Header>
+  <_NavBar>
     <Flex>
       <Img src={logo} alt="Logotipo de Culto al Perro Café" />
       <Drawer>
@@ -64,5 +64,5 @@ const DesktopNavBar: FC<Props> = ({linkRender: Link, links}) => (
         ))}
       </Drawer>
     </Flex>
-  </Header>
+  </_NavBar>
 );
