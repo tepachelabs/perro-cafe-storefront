@@ -8,7 +8,7 @@ interface NavBarLinkProps {
   active?: boolean | string;
 }
 
-export const Header = styled.header`
+export const _NavBar = styled.nav`
   background-color: ${({theme}) => theme.colors.black};
   padding: 0 1rem;
 
@@ -51,7 +51,7 @@ export const Icon = styled.img`
   height: 20px;
 `;
 
-export const Drawer = styled.nav<{collapsed?: boolean}>`
+export const Drawer = styled.div<{collapsed?: boolean}>`
   background-color: ${({theme}) => theme.colors.black};
   display: flex;
   flex-direction: column;
