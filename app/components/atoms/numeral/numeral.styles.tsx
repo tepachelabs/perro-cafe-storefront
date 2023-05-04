@@ -20,5 +20,5 @@ export const Label = styled.span`
 
   color: ${select(({colors}) => colors.background)};
   font-family: ${select(({fonts}) => fonts.title)};
-  font-size: 44px;
+  font-size: ${select(({sizes}) => sizes.numeralSubheader)};
 `;
