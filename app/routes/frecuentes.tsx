@@ -3,6 +3,7 @@ import {Link} from '@remix-run/react';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {RegularsHero} from '~/components/organisms/regulars-hero/regulars-hero.component';
 import {Footer} from '~/components/templates/footer';
+import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
 
 // @ts-ignore
@@ -19,6 +20,7 @@ export default function Frecuentes() {
     <>
       <NavBar links={links} linkRender={_Link} />
       <RegularsHero />
+      <RegularsInfo />
       <Footer />
     </>
   );
