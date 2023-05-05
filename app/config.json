@@ -3,7 +3,7 @@
   "navbar": {
     "links": [
       {"label": "Inicio", "link": "/"},
-      {"label": "Menú", "link": "https://www.instagram.com/cultoperrocafe/"},
+      {"label": "Menú", "link": "/menu"},
       {"label": "Frecuentes", "link": "/frecuentes"},
       {"label": "Tienda", "link": "https://cultoperrocafe.myshopify.com/"},
       {
@@ -15,6 +15,9 @@
         "link": "https://docs.google.com/forms/d/e/1FAIpQLScFR6PyEhwbW1R3j5n0-3QPzuaxXd5THdpNVNaFECAtkzVUqA/viewform"
       }
     ]
+  },
+  "menu": {
+    "coffeeCollection": ""
   },
   "socialMedia": {
     "instagram": "https://www.instagram.com/cultoperrocafe/",
