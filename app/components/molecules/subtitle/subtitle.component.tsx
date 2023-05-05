@@ -1,19 +1,15 @@
-import {FC, ReactNode} from 'react';
+import {FC} from 'react';
 
 import community from './img/community.svg';
 import cult from './img/cult.svg';
 import menu from './img/menu.svg';
 import temple from './img/temple.svg';
-import {Text, Icon, Frame} from './subtitle.styles';
+import {Text, Icon, Frame, TitleSectionProps} from './subtitle.styles';
+import {Numeral} from '../../atoms/numeral';
 
 interface Icon {
   src: string;
   alt: string;
-}
-
-export interface TitleSectionProps {
-  children?: ReactNode;
-  icon?: 'community' | 'cult' | 'menu' | 'temple';
 }
 
 const icons: Record<string, Icon> = {
@@ -23,9 +19,10 @@ const icons: Record<string, Icon> = {
   community: {src: community, alt: 'Ícono Comunidad'},
 };
 
-export const Subtitle: FC<TitleSectionProps> = ({icon, children}) => (
+export const Subtitle: FC<TitleSectionProps> = ({icon, numeral, children}) => (
   <Frame>
     {icon && <Icon src={icons[icon].src} alt={icons[icon].alt} />}
-    <Text>{children}</Text>
+    {numeral && <Numeral label={numeral} />}
+    <Text numeral={numeral}>{children}</Text>
   </Frame>
 );

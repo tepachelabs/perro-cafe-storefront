@@ -44,6 +44,7 @@ export interface MainTheme {
     borderWidth: string;
     header: string;
     subHeader: string;
+    numeralSubheader: string;
   };
   mediaQueries: {
     handheld: string;
@@ -73,6 +74,7 @@ const main: MainTheme = {
     maxWidth,
     header: `${unit * 16}px`,
     subHeader: `${unit * 12}px`,
+    numeralSubheader: `${unit * 10}px`,
   },
 
   mediaQueries: {
