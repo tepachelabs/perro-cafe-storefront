@@ -1,8 +1,3 @@
-import {
-  Collection,
-  Product,
-  ProductPriceRange,
-} from '@shopify/hydrogen/storefront-api-types';
 import {FC} from 'react';
 
 import {
@@ -12,51 +7,66 @@ import {
   Product as ProductFrame,
   ProductsGrid,
 } from './menu-page.styles';
+import {Divider} from '../../atoms/divider';
 import {Hr} from '../../atoms/hr';
 import {Paragraph} from '../../atoms/paragraph';
 import {Subtitle} from '../../molecules/subtitle';
 
+export interface MenuProductPriceRange {
+  minVariantPrice: {amount: string; currencyCode: string};
+  maxVariantPrice: {amount: string; currencyCode: string};
+}
+
+export interface MenuProduct {
+  id: string;
+  title: string;
+  src?: string;
+  priceRange: MenuProductPriceRange;
+}
+
+export interface MenuCollection {
+  id: string;
+  title: string;
+  products: Array<MenuProduct>;
+}
+
 interface Props {
-  collections: Array<Collection>;
+  collections: Array<MenuCollection>;
 }
 
 interface ProductProps {
   title: string;
   src?: string;
-  priceRange: ProductPriceRange;
+  priceRange: MenuProductPriceRange;
 }
 
-export const MenuPage: FC<Props> = ({collections}) => {
-  return (
-    <MenuPageContainer>
-      {collections.map((collection) => {
-        return (
-          <CollectionSection key={collection.id}>
-            <Subtitle>{collection.title}</Subtitle>
-            <ProductsGrid>
-              {collection.products.nodes.map((product) => {
-                const productImage =
-                  product.images.nodes.length > 0
-                    ? product.images.nodes[0].url
-                    : undefined;
+export const MenuPage: FC<Props> = ({collections}) => (
+  <MenuPageContainer>
+    {collections.map((collection, index, array) => {
+      const renderDivider = index < array.length - 1;
 
-                return (
-                  <ProductItem
-                    key={product.id}
-                    title={product.title}
-                    src={productImage}
-                    priceRange={product.priceRange}
-                  />
-                );
-              })}
-            </ProductsGrid>
-            <Hr />
-          </CollectionSection>
-        );
-      })}
-    </MenuPageContainer>
-  );
-};
+      return (
+        <CollectionSection key={collection.id}>
+          <Subtitle>{collection.title}</Subtitle>
+          <ProductsGrid>
+            {collection.products.map((product) => {
+              return (
+                <ProductItem
+                  key={product.id}
+                  title={product.title}
+                  src={product.src}
+                  priceRange={product.priceRange}
+                />
+              );
+            })}
+          </ProductsGrid>
+          {renderDivider && <Hr />}
+        </CollectionSection>
+      );
+    })}
+    <Divider />
+  </MenuPageContainer>
+);
 
 const ProductItem: FC<ProductProps> = ({title, src, priceRange}) => {
   const {

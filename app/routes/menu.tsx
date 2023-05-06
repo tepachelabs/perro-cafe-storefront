@@ -4,7 +4,12 @@ import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {Footer} from '~/components/templates/footer';
-import {MenuPage} from '~/components/templates/menu-page';
+import {
+  MenuCollection,
+  MenuPage,
+  MenuProduct,
+  MenuProductPriceRange,
+} from '~/components/templates/menu-page';
 import configData from '~/config.json';
 
 export const meta = () => {
@@ -26,7 +31,6 @@ export async function loader({context: {storefront}}: LoaderArgs) {
 const _Link = (props) => <NavBarLink {...props} as={Link} />;
 
 export default function Index() {
-  // lmao this is a mess
   const {
     collections: {nodes: collectionNodes},
   } = useLoaderData<typeof loader>();
@@ -37,10 +41,35 @@ export default function Index() {
     ...(link.label === 'Menú' && {active: 'true'}),
   }));
 
+  const collections = (
+    collectionNodes as Array<Collection>
+  ).map<MenuCollection>((col) => ({
+    id: col.id,
+    title: col.title,
+    products: col.products.nodes.map<MenuProduct>((product) => ({
+      id: product.id,
+      title: product.title,
+      src:
+        product.images.nodes.length > 0
+          ? product.images.nodes[0].url
+          : undefined,
+      priceRange: {
+        minVariantPrice: {
+          amount: product.priceRange.minVariantPrice.amount,
+          currencyCode: product.priceRange.minVariantPrice.currencyCode,
+        },
+        maxVariantPrice: {
+          amount: product.priceRange.maxVariantPrice.amount,
+          currencyCode: product.priceRange.maxVariantPrice.currencyCode,
+        },
+      },
+    })),
+  }));
+
   return (
     <>
       <NavBar links={links} linkRender={_Link} />
-      <MenuPage collections={collectionNodes as Array<Collection>} />
+      <MenuPage collections={collections} />
       <Footer />
     </>
   );

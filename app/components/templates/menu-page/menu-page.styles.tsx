@@ -11,7 +11,7 @@ export const MenuPageContainer = styled.main`
   flex-direction: column;
   gap: 2rem;
 
-  padding: 1rem;
+  padding: 1rem 1rem 2rem;
   margin: 0 auto;
   max-width: ${select(({sizes}) => sizes.maxWidth)};
 `;
@@ -29,6 +29,7 @@ export const ProductsGrid = styled.div`
 
   ${desktopMediaQuery} {
     grid-template-columns: repeat(3, 1fr);
+    align-items: flex-end;
   }
 `;
 
