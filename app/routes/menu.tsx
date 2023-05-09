@@ -8,7 +8,6 @@ import {
   MenuCollection,
   MenuPage,
   MenuProduct,
-  MenuProductPriceRange,
 } from '~/components/templates/menu-page';
 import configData from '~/config.json';
 

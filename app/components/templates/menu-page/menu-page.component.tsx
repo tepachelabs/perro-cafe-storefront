@@ -40,6 +40,8 @@ interface ProductProps {
   priceRange: MenuProductPriceRange;
 }
 
+const placeholderImage = 'http://placehold.co/400x400.png';
+
 export const MenuPage: FC<Props> = ({collections}) => (
   <MenuPageContainer>
     {collections.map((collection, index, array) => {
@@ -69,6 +71,12 @@ export const MenuPage: FC<Props> = ({collections}) => (
 );
 
 const ProductItem: FC<ProductProps> = ({title, src, priceRange}) => {
+  const formatPrice = (price: string, currency: string) =>
+    `${Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency,
+    }).format(Number(price))} ${currency}`;
+
   const {
     minVariantPrice: {amount: minPrice, currencyCode: minCurrency},
     maxVariantPrice: {amount: maxPrice, currencyCode: maxCurrency},
@@ -77,12 +85,15 @@ const ProductItem: FC<ProductProps> = ({title, src, priceRange}) => {
   const isActualRange = minPrice !== maxPrice;
 
   const price = isActualRange
-    ? `${minPrice}0 ${minCurrency} - ${maxPrice}0 ${maxCurrency}`
-    : `${maxPrice}0 ${maxCurrency}`;
+    ? `${formatPrice(minPrice, minCurrency)} - ${formatPrice(
+        maxPrice,
+        maxCurrency,
+      )}`
+    : formatPrice(maxPrice, maxCurrency);
 
   return (
     <ProductFrame>
-      <Img src={src || 'http://placehold.co/400x400.png'} alt={title} />
+      <Img src={src || placeholderImage} alt={title} />
       <Paragraph bold>{title}</Paragraph>
       <Paragraph bold>{price}</Paragraph>
     </ProductFrame>
