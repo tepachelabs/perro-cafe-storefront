@@ -3,7 +3,7 @@
   "navbar": {
     "links": [
       {"label": "Inicio", "link": "/"},
-      {"label": "Menú", "link": "https://www.instagram.com/cultoperrocafe/"},
+      {"label": "Menú", "link": "/menu"},
       {"label": "Frecuentes", "link": "/frecuentes"},
       {"label": "Tienda", "link": "https://cultoperrocafe.myshopify.com/"},
       {
