@@ -7,6 +7,7 @@ import {
   Product as ProductFrame,
   ProductsGrid,
 } from './menu-page.styles';
+import {currencyFormatter} from '../../../utils';
 import {Divider} from '../../atoms/divider';
 import {Hr} from '../../atoms/hr';
 import {Paragraph} from '../../atoms/paragraph';
@@ -71,12 +72,6 @@ export const MenuPage: FC<Props> = ({collections}) => (
 );
 
 const ProductItem: FC<ProductProps> = ({title, src, priceRange}) => {
-  const formatPrice = (price: string, currency: string) =>
-    `${Intl.NumberFormat('es-MX', {
-      style: 'currency',
-      currency,
-    }).format(Number(price))} ${currency}`;
-
   const {
     minVariantPrice: {amount: minPrice, currencyCode: minCurrency},
     maxVariantPrice: {amount: maxPrice, currencyCode: maxCurrency},
@@ -85,11 +80,12 @@ const ProductItem: FC<ProductProps> = ({title, src, priceRange}) => {
   const isActualRange = minPrice !== maxPrice;
 
   const price = isActualRange
-    ? `${formatPrice(minPrice, minCurrency)} - ${formatPrice(
-        maxPrice,
-        maxCurrency,
-      )}`
-    : formatPrice(maxPrice, maxCurrency);
+    ? `${currencyFormatter.format(
+        Number(minPrice),
+      )} ${minCurrency} - ${currencyFormatter.format(
+        Number(maxPrice),
+      )} ${maxCurrency}`
+    : `${currencyFormatter.format(Number(maxPrice))} ${maxCurrency}`;
 
   return (
     <ProductFrame>
