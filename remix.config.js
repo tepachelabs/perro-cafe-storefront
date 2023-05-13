@@ -1,5 +1,26 @@
-/** @type {import('@remix-run/dev').AppConfig} */
+// remix.config.js
+const { withEsbuildOverride } = require("remix-esbuild-override");
 
+/**
+ * Define callbacks for the arguments of withEsbuildOverride.
+ * @param option - Default configuration values defined by the remix compiler
+ * @param isServer - True for server compilation, false for browser compilation
+ * @param isDev - True during development.
+ * @return {EsbuildOption} - You must return the updated option
+ */
+withEsbuildOverride((option, { isServer }) => {
+  if (isServer) {
+    option.inject = [
+      ...(option.inject ?? []),
+      require.resolve("@esbuild-plugins/node-globals-polyfill/Buffer.js"),
+      require.resolve("@esbuild-plugins/node-globals-polyfill/process.js"),
+    ];
+  }
+
+  return option;
+});
+
+/** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
   appDirectory: 'app',
   ignoredRouteFiles: ['**/.*'],
