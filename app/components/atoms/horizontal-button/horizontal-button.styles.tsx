@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import {Paragraph} from '../paragraph';
 
@@ -38,7 +38,7 @@ export const StyledHorizontalButton = styled.a`
     filter: brightness(1.05);
   }
 
-  &:hover ${ButtonFace} {
+  &:hover span {
     transform: translateY(-17px);
   }
 
@@ -46,18 +46,22 @@ export const StyledHorizontalButton = styled.a`
     filter: brightness(0.95);
   }
 
-  &:active ${ButtonFace} {
+  &:active span {
     transform: translateY(-8px);
   }
 `;
 
-export const Label = styled(Paragraph).attrs({bold: true})`
+export const Label = styled(Paragraph)`
   text-transform: uppercase;
 
   position: absolute;
   top: 9px;
   left: 20px;
 `;
+
+Label.defaultProps = {
+  bold: true,
+};
 
 export const Img = styled.img`
   position: absolute;
