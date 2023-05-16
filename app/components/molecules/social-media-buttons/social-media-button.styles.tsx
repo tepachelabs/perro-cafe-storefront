@@ -1,11 +1,9 @@
-import styled, {css} from 'styled-components';
+import {css, Theme} from '@emotion/react';
+import styled from '@emotion/styled';
 
-import {MainTheme} from '../../../theme';
-import {select} from '../../../utils';
-
-const SquaredButtonStyle = css`
+const SquaredButtonStyle = ({theme}: {theme: Theme}) => css`
   align-items: center;
-  background-color: ${select(({colors}) => colors.black)};
+  background-color: ${theme.colors.black};
   border-radius: 2px;
   display: flex;
   height: 36px;
@@ -16,7 +14,7 @@ const SquaredButtonStyle = css`
 `;
 
 export interface SquaredButtonProps {
-  color?: keyof MainTheme['colors'];
+  color?: keyof Theme['colors'];
   size?: number;
   href: string;
 }
