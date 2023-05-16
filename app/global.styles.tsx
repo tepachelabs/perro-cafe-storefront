@@ -1,15 +1,23 @@
-import {createGlobalStyle} from 'styled-components';
+import {Global, css} from '@emotion/react';
 
-export const GlobalStyles = createGlobalStyle`
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+import theme from './theme';
 
-  * {
-    margin: 0;
-  }
+export const GlobalStyles = () => (
+  <Global
+    styles={css`
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-  body {
-    background-color: #F8EEE0;
-  }
-`;
+      * {
+        margin: 0;
+      }
+
+      body {
+        background-color: ${theme.colors.background};
+      }
+    `}
+  />
+);
