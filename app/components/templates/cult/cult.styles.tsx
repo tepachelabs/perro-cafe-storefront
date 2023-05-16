@@ -1,10 +1,6 @@
-import styled, {css} from 'styled-components';
+import styled from '@emotion/styled';
 
 import {Paragraph} from '../../atoms/paragraph';
-
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
-`;
 
 export const CultBackground = styled.section`
   background-color: ${({theme}) => theme.colors.secondary};
@@ -29,28 +25,33 @@ export const TopContainer = styled.div`
   align-items: flex-start;
   gap: 1rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex-direction: row;
+    align-items: flex-end;
+  }
+
+  & > p {
+    border-bottom: 4px solid ${({theme}) => theme.colors.black};
+    padding-bottom: 0.5rem;
+
+    ${({theme}) => theme.mediaQueries.desktop} {
+      max-width: 50%;
+    }
   }
 `;
 
-export const Description = styled(Paragraph).attrs({
+export const Description = styled(Paragraph)``;
+
+Description.defaultProps = {
   bold: true,
-})`
-  border-bottom: 4px solid ${({theme}) => theme.colors.black};
-  padding-bottom: 0.5rem;
-
-  ${desktopMediaQuery} {
-    max-width: 50%;
-  }
-`;
+};
 
 export const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -59,7 +60,7 @@ export const BottomContainer = styled.div`
 `;
 
 export const CarouselContainer = styled.div`
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex: 2;
   }
 `;
@@ -69,7 +70,7 @@ export const PerksGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex: 1;
     gap: 2rem;
   }

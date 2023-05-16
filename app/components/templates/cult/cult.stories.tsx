@@ -13,4 +13,6 @@ const Template: ComponentStory<typeof Cult> = (args) => <Cult {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   images: configData.cult.images,
+  description:
+    'Lorem ipsum dolor sit amet, conctetuer adipiscing elit volutpat. Hendrerit in vulputate velit esse. Ut wisi enim ad minim veniam.',
 };
