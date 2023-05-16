@@ -1,16 +1,15 @@
-import styled, {css} from 'styled-components';
+import styled from '@emotion/styled';
 
-import {select} from '../../../utils';
 import {Hr} from '../../atoms/hr';
 
-const desktopMediaQuery = css`
-  ${select(({mediaQueries}) => mediaQueries.desktop)}
-`;
-
 export const InfoSection = styled.section`
-  max-width: ${select(({sizes}) => sizes.maxWidth)};
+  max-width: ${({theme}) => theme.sizes.maxWidth};
   margin: 1rem auto;
   padding: 1rem;
+
+  & hr {
+    margin: 1.5rem 0;
+  }
 `;
 
 export const Grid = styled.div`
@@ -18,7 +17,7 @@ export const Grid = styled.div`
   gap: 1rem;
   grid-template-columns: 1fr;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
@@ -29,9 +28,7 @@ export const InfoBlock = styled.div`
   gap: 1.5rem;
 `;
 
-export const BlockDivider = styled(Hr)`
-  margin: 1.5rem 0;
-`;
+export const BlockDivider = styled(Hr)``;
 
 export const SectionDividerContainer = styled.div`
   margin: 2rem 0;
