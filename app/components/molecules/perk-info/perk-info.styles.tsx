@@ -1,15 +1,11 @@
-import styled, {css} from 'styled-components';
-
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
-`;
+import styled from '@emotion/styled';
 
 export const PerkItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  ${desktopMediaQuery} {
+  ${(props) => props.theme.mediaQueries.desktop} {
     align-items: flex-start;
   }
 `;
@@ -20,7 +16,7 @@ export const LeadingIcon = styled.img`
 `;
 
 export const Section = styled.div`
-  border-top: 4px solid ${({theme}) => theme.colors.black};
+  border-top: 4px solid ${(props) => props.theme.colors.black};
   padding-top: 5px;
   position: relative;
   display: flex;
@@ -31,14 +27,14 @@ export const Section = styled.div`
 `;
 
 export const Label = styled.h3`
-  color: ${({theme}) => theme.colors.black};
-  font-family: ${({theme}) => theme.fonts.body};
+  color: ${(props) => props.theme.colors.black};
+  font-family: ${(props) => props.theme.fonts.body};
   font-size: 16px;
   font-weight: 700;
 
   text-align: center;
 
-  ${desktopMediaQuery} {
+  ${(props) => props.theme.mediaQueries.desktop} {
     text-align: left;
   }
 `;
