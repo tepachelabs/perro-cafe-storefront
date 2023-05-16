@@ -13,7 +13,6 @@ import {
   type MetaFunction,
   type LoaderArgs,
 } from '@shopify/remix-oxygen';
-import {ThemeProvider as ScThemeProvider} from 'styled-components';
 
 import {GlobalStyles} from '~/global.styles';
 import theme from '~/theme';
@@ -51,21 +50,19 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <ScThemeProvider theme={theme}>
-        <html lang="es">
-          <head>
-            <Meta />
-            <Links />
-            {typeof document === 'undefined' ? '__STYLES__' : null}
-          </head>
-          <body>
-            <GlobalStyles />
-            <Outlet />
-            <ScrollRestoration />
-            <Scripts />
-          </body>
-        </html>
-      </ScThemeProvider>
+      <html lang="es">
+        <head>
+          <Meta />
+          <Links />
+          {typeof document === 'undefined' ? '__STYLES__' : null}
+        </head>
+        <body>
+          <GlobalStyles />
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
     </ThemeProvider>
   );
 }

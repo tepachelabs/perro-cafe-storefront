@@ -1,7 +1,6 @@
-import {ThemeProvider as ScThemeProvider} from 'styled-components';
 import theme from '../app/theme';
 import {GlobalStyles} from '../app/global.styles';
-import { ThemeProvider } from "@emotion/react";
+import {ThemeProvider} from '@emotion/react';
 
 export const parameters = {
   actions: {argTypesRegex: '^on[A-Z].*'},
@@ -16,10 +15,8 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
-      <ScThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Story />
-      </ScThemeProvider>
+      <GlobalStyles />
+      <Story />
     </ThemeProvider>
   ),
 ];
