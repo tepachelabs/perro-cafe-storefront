@@ -1,19 +1,19 @@
-import styled, {css} from 'styled-components';
+import {css, Theme} from '@emotion/react';
+import styled from '@emotion/styled';
 
-import {select} from '../../../utils';
 import {Paragraph} from '../../atoms/paragraph';
 
-const desktopMediaQuery = css`
-  ${select(({mediaQueries}) => mediaQueries.desktop)}
+const borderStyle = ({theme}: {theme: Theme}) => css`
+  ${theme.sizes.borderWidth} solid ${theme.colors.black}
 `;
 
 export const RegularsHeroContainer = styled.header`
   display: flex;
-  max-width: ${select(({sizes}) => sizes.maxWidth)};
+  max-width: ${({theme}) => theme.sizes.maxWidth};
   margin: 1rem auto 0;
   flex-direction: column;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex-direction: row;
   }
 `;
@@ -24,57 +24,55 @@ export const PrimaryContainer = styled.div`
   flex-direction: column;
 
   background-color: transparent;
-  border-bottom: ${select(({sizes}) => sizes.borderWidth)} solid
-    ${select(({colors}) => colors.black)};
+  border-bottom: ${borderStyle};
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex: 1.3;
   }
-`;
 
-export const Description = styled(Paragraph)`
-  display: block;
+  & > p {
+    display: block;
 
-  background-color: ${select(({colors}) => colors.black)};
-  color: ${select(({colors}) => colors.background)};
+    background-color: ${({theme}) => theme.colors.black};
+    color: ${({theme}) => theme.colors.background};
 
-  padding: 1.5rem;
+    padding: 1.5rem;
 
-  ${desktopMediaQuery} {
-    padding: 1.5rem 5.5rem;
+    ${({theme}) => theme.mediaQueries.desktop} {
+      padding: 1.5rem 5.5rem;
+    }
   }
 `;
+
+export const Description = styled(Paragraph)``;
 
 export const SecondaryContainer = styled.div`
   position: relative;
-  border-bottom: ${select(({sizes}) => sizes.borderWidth)} solid
-    ${select(({colors}) => colors.black)};
+  border-bottom: ${borderStyle};
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex: 1;
-    border: ${select(({sizes}) => sizes.borderWidth)} solid
-      ${select(({colors}) => colors.black)};
+    border: ${borderStyle};
   }
 `;
 
 export const RegularsTitle = styled.h1`
   display: block;
 
-  color: ${select(({colors}) => colors.black)};
-  font-family: ${select(({fonts}) => fonts.title)};
+  color: ${({theme}) => theme.colors.black};
+  font-family: ${({theme}) => theme.fonts.title};
   font-size: 44px;
   text-transform: uppercase;
   font-weight: 400;
 
   padding: 1.5rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     padding: 3rem 1.5rem;
   }
 
   &:after {
-    border-bottom: ${select(({sizes}) => sizes.borderWidth)} solid
-      ${select(({colors}) => colors.black)};
+    border-bottom: ${borderStyle};
     content: ' ';
     display: block;
     height: 4px;
@@ -88,7 +86,7 @@ export const RegularsHeroBanner = styled.img`
 
   width: 100%;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     height: 100%;
     object-fit: cover;
   }
