@@ -1,8 +1,4 @@
-import styled, {css} from 'styled-components';
-
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
-`;
+import styled from '@emotion/styled';
 
 export const CommunitySection = styled.section`
   display: flex;
@@ -20,7 +16,7 @@ export const ReviewsContainer = styled.div`
   align-items: center;
   gap: 1rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex-direction: row;
     align-items: stretch;
     gap: 0.5rem;
