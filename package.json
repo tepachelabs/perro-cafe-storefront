@@ -27,13 +27,11 @@
     "@shopify/cli-hydrogen": "^4.1.1",
     "@shopify/hydrogen": "^2023.4.0",
     "@shopify/remix-oxygen": "^1.0.5",
-    "@types/styled-components": "^5.1.26",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "isbot": "^3.6.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "styled-components": "^5.3.9"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
