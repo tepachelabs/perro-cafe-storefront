@@ -4,7 +4,6 @@ import createEmotionServer from '@emotion/server/create-instance';
 import {RemixServer} from '@remix-run/react';
 import type {EntryContext} from '@shopify/remix-oxygen';
 import {renderToString} from 'react-dom/server';
-import {ServerStyleSheet} from 'styled-components';
 
 const key = 'css';
 const cache = createCache({key});
@@ -17,19 +16,14 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
-  const sheet = new ServerStyleSheet();
-
   let markup = renderToString(
     <CacheProvider value={cache}>
-      {sheet.collectStyles(
-        <RemixServer context={remixContext} url={request.url} />,
-      )}
+      <RemixServer context={remixContext} url={request.url} />
     </CacheProvider>,
   );
 
   const chunks = extractCriticalToChunks(markup);
-  const oldStyles = sheet.getStyleTags();
-  const styles = constructStyleTagsFromChunks(chunks) + oldStyles;
+  const styles = constructStyleTagsFromChunks(chunks);
 
   markup = markup.replace('__STYLES__', styles);
 
