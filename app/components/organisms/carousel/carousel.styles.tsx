@@ -1,10 +1,7 @@
-import styled, {css} from 'styled-components';
+import {css} from '@emotion/react';
+import styled from '@emotion/styled';
 
 export type ArrowContainerVariants = 'right' | 'left';
-
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
-`;
 
 const arrowStyles = {
   right: css`
@@ -25,7 +22,7 @@ export const ArrowButtonContainer = styled.span<{
   variant: ArrowContainerVariants;
 }>`
   position: absolute;
-  top: 47%;
+  top: 50%;
   ${({variant}) => arrowStyles[variant]};
 
   will-change: transform;
@@ -38,7 +35,8 @@ export const ImageContainer = styled.div`
   justify-content: center;
   background-color: ${({theme}) => theme.colors.background};
 
-  border: 3px solid ${({theme}) => theme.colors.black};
+  border: ${({theme}) => theme.sizes.borderWidth} solid
+    ${({theme}) => theme.colors.black};
 
   &[aria-selected='true'] {
     display: flex;
@@ -46,6 +44,7 @@ export const ImageContainer = styled.div`
 
   & > img {
     max-width: 100%;
+    aspect-ratio: 16 / 9;
   }
 `;
 
