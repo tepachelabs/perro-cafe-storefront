@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-import {select} from '../../../utils';
+import styled from '@emotion/styled';
 
 export const Frame = styled.div`
   display: flex;
@@ -18,7 +16,7 @@ export const Img = styled.img`
 export const Label = styled.span`
   position: absolute;
 
-  color: ${select(({colors}) => colors.background)};
-  font-family: ${select(({fonts}) => fonts.title)};
-  font-size: ${select(({sizes}) => sizes.numeralSubheader)};
+  color: ${(props) => props.theme.colors.background};
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: ${(props) => props.theme.sizes.numeralSubheader};
 `;
