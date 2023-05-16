@@ -1,18 +1,17 @@
-import styled, {css} from 'styled-components';
+import {css, Theme} from '@emotion/react';
+import styled from '@emotion/styled';
 
-import {select} from '../../../utils';
-
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
+const borderStyle = ({theme}: {theme: Theme}) => css`
+  ${theme.sizes.borderWidth} solid ${theme.colors.black}
 `;
 
 export const HeroContainer = styled.header`
   display: flex;
-  max-width: ${select(({sizes}) => sizes.maxWidth)};
+  max-width: ${({theme}) => theme.sizes.maxWidth};
   margin: 0 auto;
   flex-direction: column;
 
-  ${desktopMediaQuery} {
+  ${(props) => props.theme.mediaQueries.desktop} {
     flex-direction: row;
   }
 `;
@@ -25,23 +24,24 @@ export const PrimaryContainer = styled.div`
   flex: 1;
 
   background-color: ${({theme}) => theme.colors.primary};
-  border-bottom: 4px solid ${({theme}) => theme.colors.black};
+  border-bottom: ${borderStyle};
   padding: 1.5rem;
 
-  ${desktopMediaQuery} {
+  ${(props) => props.theme.mediaQueries.desktop} {
     padding: 2.5rem 4rem;
-    border-left: 4px solid ${({theme}) => theme.colors.black};
+    border-left: ${borderStyle};
   }
 `;
 
 export const SecondaryContainer = styled.div`
   height: auto;
   position: relative;
-  border-bottom: 4px solid ${({theme}) => theme.colors.black};
-  ${desktopMediaQuery} {
+  border-bottom: ${borderStyle};
+
+  ${(props) => props.theme.mediaQueries.desktop} {
     flex: 1.5;
-    border-left: 4px solid ${({theme}) => theme.colors.black};
-    border-right: 4px solid ${({theme}) => theme.colors.black};
+    border-left: ${borderStyle};
+    border-right: ${borderStyle};
   }
 `;
 
@@ -58,27 +58,24 @@ export const SocialMediaButtonsContainer = styled.div`
 
   margin-top: 0.5rem;
   max-width: 200px;
-
-  ${desktopMediaQuery} {
-  }
 `;
 
 export const CandleImg = styled.img`
-    position: absolute;
-    width: 50px;
-    right: 1.5rem;
-    bottom: 1.5rem;
+  position: absolute;
+  width: 50px;
+  right: 1.5rem;
+  bottom: 1.5rem;
 
-    ${desktopMediaQuery} {
-      right: 3rem;
-      bottom: 2.5rem;
-    }
+  ${(props) => props.theme.mediaQueries.desktop} {
+    right: 3rem;
+    bottom: 2.5rem;
   }
 `;
 
 export const SeeMenuButtonContainer = styled.div`
   display: none;
-  ${desktopMediaQuery} {
+
+  ${(props) => props.theme.mediaQueries.desktop} {
     position: absolute;
     display: inline-block;
     bottom: 2rem;
@@ -89,7 +86,8 @@ export const SeeMenuButtonContainer = styled.div`
 export const HeroBannerImg = styled.img`
   width: 100%;
   display: block;
-  ${desktopMediaQuery} {
+
+  ${(props) => props.theme.mediaQueries.desktop} {
     width: 100%;
     height: 100%;
     object-fit: cover;
