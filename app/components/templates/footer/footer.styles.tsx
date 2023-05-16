@@ -1,10 +1,6 @@
-import styled, {css} from 'styled-components';
+import styled from '@emotion/styled';
 
 import {Paragraph} from '../../atoms/paragraph';
-
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
-`;
 
 export const FooterBackground = styled.footer`
   background-color: ${({theme}) => theme.colors.black};
@@ -20,8 +16,17 @@ export const FooterContainer = styled.div`
   padding: 2rem 1rem;
   max-width: ${({theme}) => theme.sizes.maxWidth};
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     padding: 2rem;
+  }
+
+  & p {
+    color: ${({theme}) => theme.colors.backgroundDarker};
+    font-size: 16px;
+
+    ${({theme}) => theme.mediaQueries.desktop} {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -30,7 +35,7 @@ export const TopContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -42,8 +47,12 @@ export const BottomContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     gap: 1rem;
+  }
+
+  & > p {
+    margin-right: 3rem;
   }
 `;
 
@@ -52,33 +61,21 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 0.75rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex: 1;
   }
 `;
 
-export const Subtitle = styled(Paragraph)`
+export const Subtitle = styled.h3`
   color: ${({theme}) => theme.colors.backgroundDarker};
   font-family: ${({theme}) => theme.fonts.title};
+  font-weight: normal;
   text-transform: uppercase;
 `;
 
-export const LightParagraph = styled(Paragraph)`
-  color: ${({theme}) => theme.colors.backgroundDarker};
-  font-size: 16px;
+export const LightParagraph = styled(Paragraph)``;
 
-  ${desktopMediaQuery} {
-    font-size: 14px;
-  }
-`;
-
-export const CopyrightParagraph = styled(LightParagraph)`
-  margin-right: 3rem;
-
-  ${desktopMediaQuery} {
-    margin-right: 0;
-  }
-`;
+export const CopyrightParagraph = styled(LightParagraph)``;
 
 export const SocialMediaWrapper = styled.div`
   position: relative;
@@ -98,7 +95,7 @@ export const SocialMediaWrapper = styled.div`
     left: 0;
   }
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     margin-right: 2rem;
     justify-content: space-between;
     gap: 0;
@@ -109,7 +106,7 @@ export const Img = styled.img`
   width: 6em;
   margin-top: 1rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     margin-top: 0;
   }
 `;
@@ -121,7 +118,7 @@ export const PositionedLogo = styled.img`
 
   width: 3em;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     width: 4em;
   }
 `;
