@@ -1,11 +1,8 @@
-import styled, {css} from 'styled-components';
+import {css, Theme} from '@emotion/react';
+import styled from '@emotion/styled';
 
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
-`;
-
-const maxWidth = css`
-  max-width: ${({theme}) => theme.sizes.maxWidth};
+const maxWidth = ({theme}: {theme: Theme}) => css`
+  max-width: ${theme.sizes.maxWidth};
 `;
 
 export const TempleContainer = styled.section`
@@ -15,7 +12,7 @@ export const TempleContainer = styled.section`
   margin: 0 auto;
   ${maxWidth}
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex-direction: row;
   }
 `;
@@ -28,7 +25,7 @@ export const PrimaryContainer = styled.div`
 
   padding: 2rem 1.25rem 1rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex: 1;
     padding: 2rem 1.25rem;
   }
@@ -37,7 +34,7 @@ export const PrimaryContainer = styled.div`
 export const SecondaryContainer = styled.div`
   padding: 1rem 1.25rem 1rem 1.25rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex: 1.6;
     padding: 2rem 1.25rem 2rem 0;
   }
@@ -56,7 +53,7 @@ export const LineContainer = styled.div`
   margin: 0 auto;
   ${maxWidth}
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     margin: 1rem auto;
   }
 `;
