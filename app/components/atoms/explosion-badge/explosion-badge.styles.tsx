@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Frame = styled.div`
   align-items: center;
@@ -16,8 +16,8 @@ export const Img = styled.img`
 
 export const Label = styled.span`
   position: relative;
-  color: ${({theme}) => theme.colors.background};
-  font-family: ${({theme}) => theme.fonts.title};
+  color: ${(props) => props.theme.colors.background};
+  font-family: ${(props) => props.theme.fonts.title};
   font-size: 1.5em;
   font-weight: bold;
   text-transform: uppercase;
