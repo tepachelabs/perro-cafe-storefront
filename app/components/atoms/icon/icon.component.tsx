@@ -1,9 +1,10 @@
+import {Theme} from '@emotion/react';
 import {FC} from 'react';
 
-import theme, {MainTheme} from '../../../theme';
+import theme from '../../../theme';
 
 export interface IconProps {
-  color?: keyof MainTheme['colors'];
+  color?: keyof Theme['colors'];
   height?: number | string;
 }
 
