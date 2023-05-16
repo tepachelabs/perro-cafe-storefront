@@ -1,44 +1,47 @@
-import styled, {css} from 'styled-components';
+import {css, Theme} from '@emotion/react';
+import styled from '@emotion/styled';
 
 export type ReviewCardVariant = 'green' | 'orange' | 'yellow';
 
-const BORDER_WIDTH = 4;
+const borderStyle = ({theme}: {theme: Theme}) => css`
+  ${theme.sizes.borderWidth} solid ${theme.colors.black}
+`;
 
 const variants = {
-  green: css`
-    background-color: ${({theme}) => theme.colors.secondary};
+  green: ({theme}: {theme: Theme}) => css`
+    background-color: ${theme.colors.secondary};
   `,
-  orange: css`
-    background-color: ${({theme}) => theme.colors.primary};
+  orange: ({theme}: {theme: Theme}) => css`
+    background-color: ${theme.colors.primary};
   `,
-  yellow: css`
-    background-color: ${({theme}) => theme.colors.tertiary};
+  yellow: ({theme}: {theme: Theme}) => css`
+    background-color: ${theme.colors.tertiary};
   `,
 };
 
 export const Frame = styled.div<{variant: ReviewCardVariant}>`
   align-items: stretch;
-  border: ${BORDER_WIDTH}px solid ${({theme}) => theme.colors.black};
   display: flex;
   font-family: ${({theme}) => theme.fonts.body};
   font-size: 1em;
   justify-content: space-between;
+  border: ${borderStyle};
 
   ${({variant}) => variants[variant]}
 
-  @media (min-width: 768px) {
+  ${(props) => props.theme.mediaQueries.desktop} {
     font-size: 0.8em;
   }
 `;
 
 export const Img = styled.img`
-  background-color: ${({theme}) => theme.colors.backgroundDarker};
+  background-color: ${(props) => props.theme.colors.backgroundDarker};
   object-fit: cover;
   width: 50%;
 `;
 
 export const Content = styled.div`
-  border-left: ${BORDER_WIDTH}px solid ${({theme}) => theme.colors.black};
+  border-left: ${borderStyle};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -56,8 +59,8 @@ export const Author = styled.p`
 
   &::before {
     content: ' ';
-    background-color: ${({theme}) => theme.colors.black};
-    height: ${BORDER_WIDTH}px;
+    background-color: ${(props) => props.theme.colors.black};
+    height: ${(props) => props.theme.sizes.borderWidth};
     left: 0;
     position: absolute;
     top: -0.5em;
