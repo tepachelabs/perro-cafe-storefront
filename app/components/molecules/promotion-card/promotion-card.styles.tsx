@@ -7,10 +7,11 @@ export interface CardProps {
   borderless?: boolean;
 }
 
-export const Card = styled.div<CardProps>`
+export const Card = styled.a<CardProps>`
   border: 3px solid ${(props) => props.theme.colors.black};
   display: inline-block;
   position: relative;
+  text-decoration: none;
 
   ${({fullWidth}) => fullWidth && 'width: 100%'};
   ${({borderless}) => borderless && 'border: none'};
