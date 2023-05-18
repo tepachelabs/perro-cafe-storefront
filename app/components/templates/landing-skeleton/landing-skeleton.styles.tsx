@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Title = styled.h2`
   display: inline-block;
@@ -22,7 +22,7 @@ const Skeleton = styled.div<{
   ${({h}) => h && `height: ${h};`}
   ${({mh}) => mh && `min-height: ${mh};`}
 
-  @media (min-width: 768px) {
+  ${({theme}) => theme.mediaQueries.desktop} {
     grid-template-columns: repeat(2, 1fr);
 
     ${({gridTemplateColumns}) =>

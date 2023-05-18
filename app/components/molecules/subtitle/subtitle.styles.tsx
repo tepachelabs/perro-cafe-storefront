@@ -1,7 +1,5 @@
+import styled from '@emotion/styled';
 import {ReactNode} from 'react';
-import styled from 'styled-components';
-
-import {select} from '../../../utils';
 
 export interface TitleSectionProps {
   children?: ReactNode;
@@ -27,7 +25,7 @@ export const Text = styled.h2<{numeral?: string}>`
   ${({numeral}) => !numeral && 'text-transform: uppercase;'};
 
   &:after {
-    border-bottom: ${select(({sizes}) => sizes.borderWidth)} solid
+    border-bottom: ${({theme}) => theme.sizes.borderWidth} solid
       ${({theme}) => theme.colors.black};
     content: ' ';
     display: block;

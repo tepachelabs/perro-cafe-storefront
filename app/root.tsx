@@ -1,3 +1,4 @@
+import {ThemeProvider} from '@emotion/react';
 import {
   Links,
   Meta,
@@ -12,7 +13,6 @@ import {
   type MetaFunction,
   type LoaderArgs,
 } from '@shopify/remix-oxygen';
-import {ThemeProvider} from 'styled-components';
 
 import {GlobalStyles} from '~/global.styles';
 import theme from '~/theme';

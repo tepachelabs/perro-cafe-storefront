@@ -1,12 +1,16 @@
-import styled, {css} from 'styled-components';
+import {css, Theme} from '@emotion/react';
+import styled from '@emotion/styled';
 
 export interface Props {
   active?: boolean;
 }
 
-const activeStyles = css`
-  background-color: ${({theme}) => theme.colors.backgroundDarker};
-  border: 3px solid ${({theme}) => theme.colors.black};
+const activeStyles = ({theme}: {theme: Theme}) => css`
+  width: 13px;
+  height: 13px;
+
+  background-color: ${theme.colors.backgroundDarker};
+  border: 3px solid ${theme.colors.black};
 `;
 
 export const CarouselCircle = styled.span<Props>`
@@ -15,7 +19,7 @@ export const CarouselCircle = styled.span<Props>`
   width: 10px;
   height: 10px;
 
-  background-color: ${({theme}) => theme.colors.black};
+  background-color: ${(props) => props.theme.colors.black};
   border-radius: 50%;
 
   ${({active}) => active && activeStyles};

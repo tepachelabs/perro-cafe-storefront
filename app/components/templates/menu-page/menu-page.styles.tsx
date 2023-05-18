@@ -1,10 +1,4 @@
-import styled, {css} from 'styled-components';
-
-import {select} from '../../../utils';
-
-const desktopMediaQuery = css`
-  ${select(({mediaQueries}) => mediaQueries.desktop)}
-`;
+import styled from '@emotion/styled';
 
 export const MenuPageContainer = styled.main`
   display: flex;
@@ -13,7 +7,7 @@ export const MenuPageContainer = styled.main`
 
   padding: 1rem 1rem 2rem;
   margin: 0 auto;
-  max-width: ${select(({sizes}) => sizes.maxWidth)};
+  max-width: ${({theme}) => theme.sizes.maxWidth};
 `;
 
 export const CollectionSection = styled.section`
@@ -27,7 +21,7 @@ export const ProductsGrid = styled.div`
   gap: 1rem;
   grid-template-columns: 1fr;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     grid-template-columns: repeat(3, 1fr);
     align-items: flex-end;
   }

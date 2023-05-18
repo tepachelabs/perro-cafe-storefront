@@ -1,22 +1,31 @@
-import styled from 'styled-components';
+import {css, Theme} from '@emotion/react';
+import styled from '@emotion/styled';
 
 import {Paragraph} from '../paragraph';
+
+const borderStyle = ({theme}: {theme: Theme}) => css`
+  ${theme.sizes.borderWidth} solid ${theme.colors.black}
+`;
 
 export const ButtonFace = styled.span`
   display: block;
   width: 220px;
   height: 46px;
-  background-color: #f8eee0;
-  border: 3px solid #222222;
+  background-color: ${(props) => props.theme.colors.background};
+  border: ${borderStyle};
   border-radius: 23px;
-  transform: translateY(-16px);
+  transform: translateY(calc(${(props) => props.theme.sizes.borderWidth} * -4));
   transition: all 200ms ease;
 
   position: relative;
-  left: -3px;
+  left: -${(props) => props.theme.sizes.borderWidth};
 
-  &:hover {
-    transform: translateY(-17px);
+  & > p {
+    text-transform: uppercase;
+
+    position: absolute;
+    top: 9px;
+    left: 20px;
   }
 `;
 
@@ -24,13 +33,12 @@ export const StyledHorizontalButton = styled.a`
   display: block;
   width: 220px;
   height: 46px;
-  background-color: #f2dab2;
-  border: 3px solid #222222;
+  background-color: ${(props) => props.theme.colors.backgroundDarker};
+  border: ${borderStyle};
   border-radius: 16px 16px 23px 23px;
-  color: #222222;
   cursor: pointer;
   transition: all 200ms ease;
-  transform: translateY(16px);
+  transform: translateY(calc(${(props) => props.theme.sizes.borderWidth} * 4));
   outline-offset: 4px;
   padding: 0;
 
@@ -38,26 +46,28 @@ export const StyledHorizontalButton = styled.a`
     filter: brightness(1.05);
   }
 
-  &:hover ${ButtonFace} {
-    transform: translateY(-17px);
+  &:hover span {
+    transform: translateY(
+      calc(${(props) => props.theme.sizes.borderWidth} * -4.25)
+    );
   }
 
   &:active {
     filter: brightness(0.95);
   }
 
-  &:active ${ButtonFace} {
-    transform: translateY(-8px);
+  &:active span {
+    transform: translateY(
+      calc(${(props) => props.theme.sizes.borderWidth} * -2.5)
+    );
   }
 `;
 
-export const Label = styled(Paragraph).attrs({bold: true})`
-  text-transform: uppercase;
+export const Label = styled(Paragraph)``;
 
-  position: absolute;
-  top: 9px;
-  left: 20px;
-`;
+Label.defaultProps = {
+  bold: true,
+};
 
 export const Img = styled.img`
   position: absolute;

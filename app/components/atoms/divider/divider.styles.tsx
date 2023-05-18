@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Container = styled.div`
   display: flex;
@@ -8,5 +8,5 @@ export const Container = styled.div`
 
 export const Img = styled.img`
   width: 76px;
-  margin: 0 15px 0 15px;
+  margin: 0 15px;
 `;

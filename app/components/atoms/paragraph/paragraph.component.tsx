@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 interface Props {
   lineHeight?: number | string;
@@ -7,8 +7,8 @@ interface Props {
 }
 
 export const Paragraph = styled.p<Props>`
-  color: ${({theme}) => theme.colors.black};
-  font-family: ${({theme}) => theme.fonts.body};
+  color: ${(props) => props.theme.colors.black};
+  font-family: ${(props) => props.theme.fonts.body};
 
   ${({bold}) => bold && 'font-weight: bold'};
   ${({italic}) => italic && 'font-style: italic'};

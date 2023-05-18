@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Hr = styled.hr`
   border: none;
-  background: ${({theme}) => theme.colors.black};
-  height: 4px;
+  background: ${(props) => props.theme.colors.black};
+  height: ${(props) => props.theme.sizes.borderWidth};
   width: 100%;
 `;

@@ -1,3 +1,5 @@
+import {Theme} from '@emotion/react';
+
 /**
  * DA THEME
  */
@@ -24,35 +26,7 @@ const resolutions = {
 const handheld = `@media (min-width: ${resolutions.extraSmall})`;
 const desktop = `@media (min-width: ${resolutions.small})`;
 
-export interface MainTheme {
-  colors: {
-    primary: string;
-    secondary: string;
-    tertiary: string;
-    background: string;
-    backgroundDarker: string;
-    black: string;
-    gray: string;
-    grayDarker: string;
-  };
-  fonts: {
-    body: string;
-    title: string;
-  };
-  sizes: {
-    maxWidth: string;
-    borderWidth: string;
-    header: string;
-    subHeader: string;
-    numeralSubheader: string;
-  };
-  mediaQueries: {
-    handheld: string;
-    desktop: string;
-  };
-}
-
-const main: MainTheme = {
+const main: Theme = {
   colors: {
     primary: orange,
     secondary: green,

@@ -1,8 +1,4 @@
-import styled, {css} from 'styled-components';
-
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
-`;
+import styled from '@emotion/styled';
 
 export const MenuContainer = styled.section`
   display: flex;
@@ -10,11 +6,11 @@ export const MenuContainer = styled.section`
   flex-direction: column;
 
   margin: 0 auto;
-  max-width: 960px;
+  max-width: ${({theme}) => theme.sizes.maxWidth};
 
   background-color: ${({theme}) => theme.colors.background};
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     flex-direction: row;
   }
 `;
@@ -23,7 +19,7 @@ export const PrimaryContainer = styled.div`
   position: relative;
   padding: 1.65rem 1.25rem 1.75rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     width: 50%;
   }
 `;
@@ -32,7 +28,7 @@ export const SecondaryContainer = styled.div`
   position: relative;
   padding: 1.25rem 1.25rem 2rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     width: 50%;
   }
 `;
@@ -46,7 +42,7 @@ export const Grid = styled.div`
 export const ButtonContainer = styled.div`
   margin: 4rem 0 1.75rem;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     margin: 6rem 0 1.75rem;
   }
 `;
@@ -54,7 +50,7 @@ export const ButtonContainer = styled.div`
 export const TextContainer = styled.div`
   margin: 2.5rem 0;
 
-  ${desktopMediaQuery} {
+  ${({theme}) => theme.mediaQueries.desktop} {
     margin: 2.5rem 0 4.5rem;
   }
 `;

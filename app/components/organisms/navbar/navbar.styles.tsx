@@ -1,8 +1,5 @@
-import styled, {css} from 'styled-components';
-
-const desktopMediaQuery = css`
-  ${({theme}) => theme.mediaQueries.desktop}
-`;
+import {css, Theme} from '@emotion/react';
+import styled from '@emotion/styled';
 
 interface NavBarLinkProps {
   active?: boolean | string;
@@ -12,7 +9,7 @@ export const _NavBar = styled.nav`
   background-color: ${({theme}) => theme.colors.black};
   padding: 0 1rem;
 
-  ${desktopMediaQuery} {
+  ${(props) => props.theme.mediaQueries.desktop} {
     padding: 0 0.5rem;
   }
 `;
@@ -31,7 +28,7 @@ export const Flex = styled.div`
 export const Img = styled.img`
   height: 24px;
 
-  ${desktopMediaQuery} {
+  ${(props) => props.theme.mediaQueries.desktop} {
     height: 28px;
   }
 `;
@@ -62,7 +59,7 @@ export const Drawer = styled.div<{collapsed?: boolean}>`
   width: 100%;
   display: ${({collapsed}) => collapsed && 'none'};
 
-  ${desktopMediaQuery} {
+  ${(props) => props.theme.mediaQueries.desktop} {
     padding: 0;
     flex-direction: row;
 
@@ -82,9 +79,9 @@ export const NavBarLink = styled.a<NavBarLinkProps>`
   text-decoration: none;
   line-height: 48px;
 
-  border-bottom: 4px solid transparent;
+  border-bottom: ${({theme}) => theme.sizes.borderWidth} solid transparent;
 
-  ${desktopMediaQuery} {
+  ${(props) => props.theme.mediaQueries.desktop} {
     display: inline-block;
     margin-left: 0.65rem;
     padding: 0;

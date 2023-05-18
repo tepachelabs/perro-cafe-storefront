@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const ButtonFace = styled.img`
   display: block;
@@ -10,7 +10,7 @@ export const ButtonFace = styled.img`
   left: -9px;
 
   will-change: transform;
-  transform: translateY(-16px);
+  transform: translateY(calc(${(props) => props.theme.sizes.borderWidth} * -4));
   transition: transform 200ms ease;
 `;
 
@@ -22,13 +22,13 @@ export const StyledSeeMenuButton = styled.a`
   height: 120px;
   cursor: pointer;
   border-radius: 50%;
-  border: 3px solid #222222;
+  border: 3px solid ${(props) => props.theme.colors.black};
   outline-offset: 4px;
   padding: 0;
 
   transition: all 200ms ease;
   will-change: transform;
-  transform: translateY(16px);
+  transform: translateY(calc(${(props) => props.theme.sizes.borderWidth} * 4));
 
   &:hover {
     filter: brightness(1.05);
@@ -38,12 +38,16 @@ export const StyledSeeMenuButton = styled.a`
     filter: brightness(0.95);
   }
 
-  &:hover ${ButtonFace} {
-    transform: translateY(-17px);
+  &:hover img {
+    transform: translateY(
+      calc(${(props) => props.theme.sizes.borderWidth} * -4.5)
+    );
   }
 
-  &:active ${ButtonFace} {
-    transform: translateY(-8px);
+  &:active img {
+    transform: translateY(
+      calc(${(props) => props.theme.sizes.borderWidth} * -2.5)
+    );
   }
 `;
 
@@ -51,7 +55,7 @@ export const VerticalLine = styled.div<{
   top?: number;
   left?: number;
 }>`
-  background: #222222;
+  background: ${(props) => props.theme.colors.black};
   display: block;
   position: absolute;
   width: 3px;
