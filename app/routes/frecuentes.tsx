@@ -48,7 +48,7 @@ export default function Frecuentes() {
 }
 
 const PAGE_QUERY = `#graphql
-  query Pages {
+  query Page {
     page(handle: "frecuentes") {
       title
       body
