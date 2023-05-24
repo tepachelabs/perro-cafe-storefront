@@ -41,7 +41,7 @@ interface ProductProps {
   priceRange: MenuProductPriceRange;
 }
 
-const placeholderImage = 'http://placehold.co/400x400.png';
+const placeholderImage = 'https://placehold.co/400x400.png';
 
 export const MenuPage: FC<Props> = ({collections}) => (
   <MenuPageContainer>

@@ -11,7 +11,7 @@ const Template: ComponentStory<typeof MenuPage> = (args) => (
   <MenuPage {...args} />
 );
 
-const placeholderImage = 'http://placehold.co/400x400.png';
+const placeholderImage = 'https://placehold.co/400x400.png';
 const placeholderPrice = {amount: '35.0', currencyCode: 'MXN'};
 const products: Array<MenuProduct> = [
   {
