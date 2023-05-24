@@ -81,7 +81,7 @@ const COLLECTIONS_QUERY = `#graphql
               nodes {
                 image {
                   url(transform: {
-                    maxWidth: 1080,
+                    maxWidth: 300,
                     crop: CENTER
                   })
                   altText

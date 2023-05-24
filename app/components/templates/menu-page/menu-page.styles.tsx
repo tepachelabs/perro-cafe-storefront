@@ -8,6 +8,7 @@ export const MenuPageContainer = styled.main`
   padding: 1rem 1rem 2rem;
   margin: 0 auto;
   max-width: ${({theme}) => theme.sizes.maxWidth};
+  max-width: calc(${({theme}) => theme.sizes.maxWidth} * 0.7);
 `;
 
 export const CollectionSection = styled.section`
@@ -16,24 +17,11 @@ export const CollectionSection = styled.section`
   gap: 1rem;
 `;
 
-export const ProductsGrid = styled.div`
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
+export const List = styled.ul``;
 
-  ${({theme}) => theme.mediaQueries.desktop} {
-    grid-template-columns: repeat(3, 1fr);
-    align-items: flex-end;
-  }
-`;
-
-export const Product = styled.article`
+export const ListItem = styled.li`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-export const Img = styled.img`
-  width: 100%;
+  justify-content: space-between;
+  margin: 0.75em 0;
+  gap: 1rem;
 `;

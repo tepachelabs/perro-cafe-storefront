@@ -1,5 +1,5 @@
 import {Link, useLoaderData} from '@remix-run/react';
-import type {Collection} from '@shopify/hydrogen/storefront-api-types';
+import type {Node} from '@shopify/hydrogen/storefront-api-types';
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
@@ -19,9 +19,25 @@ export const meta = () => {
 };
 
 export async function loader({context: {storefront}}: LoaderArgs) {
-  const {collections} = await storefront.query<Array<Collection>>(
-    COLLECTIONS_QUERY,
-  );
+  const {nodes} = await storefront.query<{nodes: Node}>(COLLECTIONS_QUERY, {
+    variables: {
+      ids: [
+        'gid://shopify/Collection/433512874277',
+        'gid://shopify/Collection/433789960485',
+        'gid://shopify/Collection/434472354085',
+      ],
+    },
+  });
+
+  const collections = nodes.map((node: any) => ({
+    id: node.id,
+    title: node.title,
+    products: node.products.edges.map((edge: any) => ({
+      id: edge.node.id,
+      title: edge.node.title,
+      priceRange: edge.node.priceRange,
+    })),
+  }));
 
   return json({collections});
 }
@@ -30,39 +46,12 @@ export async function loader({context: {storefront}}: LoaderArgs) {
 const _Link = (props) => <NavBarLink {...props} as={Link} />;
 
 export default function Index() {
-  const {
-    collections: {nodes: collectionNodes},
-  } = useLoaderData<typeof loader>();
+  const {collections} = useLoaderData<typeof loader>();
 
   const links = configData.navbar.links.map((link) => ({
     label: link.label,
     href: link.link,
     ...(link.label === 'Menú' && {active: 'true'}),
-  }));
-
-  const collections = (
-    collectionNodes as Array<Collection>
-  ).map<MenuCollection>((col) => ({
-    id: col.id,
-    title: col.title,
-    products: col.products.nodes.map<MenuProduct>((product) => ({
-      id: product.id,
-      title: product.title,
-      src:
-        product.images.nodes.length > 0
-          ? product.images.nodes[0].url
-          : undefined,
-      priceRange: {
-        minVariantPrice: {
-          amount: product.priceRange.minVariantPrice.amount,
-          currencyCode: product.priceRange.minVariantPrice.currencyCode,
-        },
-        maxVariantPrice: {
-          amount: product.priceRange.maxVariantPrice.amount,
-          currencyCode: product.priceRange.maxVariantPrice.currencyCode,
-        },
-      },
-    })),
   }));
 
   return (
@@ -75,37 +64,23 @@ export default function Index() {
 }
 
 const COLLECTIONS_QUERY = `#graphql
-  query Collections {
-    collections(first: 250) {
-      nodes {
-        handle
+  query Menu($ids: [ID!]!) {
+    nodes(ids: $ids) {
+      ... on Collection {
+        id
         title
-        products(first: 250) {
-          nodes {
-            title
-            priceRange {
-              minVariantPrice {
-                amount
-                currencyCode
-              }
-              maxVariantPrice {
-                amount
-                currencyCode
-              }
-            }
-            images(first: 1) {
-              nodes {
-                url(transform: {
-                  maxWidth: 1080, 
-                  crop: CENTER
-                })
-                altText
-              }
-            }
-            collections(first: 250) {
-              nodes {
-                title
-                handle
+        products(first: 50) {
+          edges {
+            node {
+              id
+              title
+              priceRange {
+                minVariantPrice {
+                  amount
+                }
+                maxVariantPrice {
+                  amount
+                }
               }
             }
           }
