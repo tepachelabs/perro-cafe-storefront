@@ -1,18 +1,16 @@
 import {FC} from 'react';
 
 import {
-  ButtonContainer,
   Grid,
   MenuContainer,
   PrimaryContainer,
   SecondaryContainer,
-  TextContainer,
+  MenuDescription,
 } from './menu.styles';
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
-import {Paragraph} from '../../atoms/paragraph';
 import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
@@ -33,23 +31,18 @@ export const Menu: FC<Props> = ({products}) => {
     <MenuContainer>
       <PrimaryContainer>
         <Subtitle icon="menu">El Menú</Subtitle>
-        <TextContainer>
-          <Paragraph lineHeight="30px">
-            Lorem ipsum dolor sit amet, conctetuer adipiscing elitvolutpat.
-            Hendrerit invulputatevelit esse Ut wisi enim ad minimveniam.
-          </Paragraph>
-          <br />
-          <Paragraph bold lineHeight="30px">
-            Molestie consequat, vel illum dolore eu feugiat.
-          </Paragraph>
-        </TextContainer>
+        <MenuDescription>
+          Lorem ipsum dolor sit amet, conctetuer adipiscing elitvolutpat.
+          Hendrerit invulputatevelit esse Ut wisi enim ad minimveniam.
+        </MenuDescription>
+        <MenuDescription bold>
+          Molestie consequat, vel illum dolore eu feugiat.
+        </MenuDescription>
         <Hr />
-        <ButtonContainer>
-          <HorizontalButton
-            label="Ver el menú"
-            href={configData.globalLinks.menu}
-          />
-        </ButtonContainer>
+        <HorizontalButton
+          label="Ver el menú"
+          href={configData.globalLinks.menu}
+        />
       </PrimaryContainer>
       <SecondaryContainer>
         {isDesktop ? (

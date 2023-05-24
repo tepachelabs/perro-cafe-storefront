@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import {Paragraph} from '../../atoms/paragraph';
+
 export const MenuContainer = styled.section`
   display: flex;
   align-items: stretch;
@@ -16,8 +18,16 @@ export const MenuContainer = styled.section`
 `;
 
 export const PrimaryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
   position: relative;
   padding: 1.65rem 1.25rem 1.75rem;
+
+  & > hr {
+    margin: 1rem 0;
+  }
 
   ${({theme}) => theme.mediaQueries.desktop} {
     width: 50%;
@@ -47,10 +57,8 @@ export const ButtonContainer = styled.div`
   }
 `;
 
-export const TextContainer = styled.div`
-  margin: 2.5rem 0;
+export const MenuDescription = styled(Paragraph)``;
 
-  ${({theme}) => theme.mediaQueries.desktop} {
-    margin: 2.5rem 0 4.5rem;
-  }
-`;
+MenuDescription.defaultProps = {
+  lineHeight: '30px',
+};
