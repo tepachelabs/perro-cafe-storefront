@@ -109,6 +109,7 @@ var _rollbarConfig = {
                 }}
               />
             )}
+          <script></script>
         </head>
         <body>
           <GlobalStyles />
