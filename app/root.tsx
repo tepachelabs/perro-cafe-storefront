@@ -13,6 +13,8 @@ import {
   type MetaFunction,
   type LoaderArgs,
 } from '@shopify/remix-oxygen';
+import Posthog from 'posthog-js';
+import {useEffect} from 'react';
 
 import {GlobalStyles} from '~/global.styles';
 import theme from '~/theme';
@@ -52,13 +54,32 @@ export const meta: MetaFunction = () => ({
 
 export async function loader({context}: LoaderArgs) {
   const layout = await context.storefront.query<{shop: Shop}>(LAYOUT_QUERY);
-  return {layout};
+
+  return {
+    layout,
+    ENV: {
+      PUBLIC_POSTHOG_KEY: context.env.PUBLIC_POSTHOG_KEY,
+      NODE_ENV: context.env.NODE_ENV,
+    },
+  };
 }
 
 export default function App() {
   const data = useLoaderData<typeof loader>();
-  // eslint-disable-next-line no-console
-  console.log(data);
+
+  useEffect(() => {
+    if (data.ENV.PUBLIC_POSTHOG_KEY.length) {
+      Posthog.init(data.ENV.PUBLIC_POSTHOG_KEY, {
+        api_host: 'https://app.posthog.com',
+        loaded: (posthog) => {
+          // Enable debug mode in development
+          if (data.ENV.NODE_ENV === 'development') {
+            posthog.debug();
+          }
+        },
+      });
+    }
+  });
 
   return (
     <ThemeProvider theme={theme}>
