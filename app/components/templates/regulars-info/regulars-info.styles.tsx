@@ -6,9 +6,20 @@ export const InfoSection = styled.section`
   max-width: ${({theme}) => theme.sizes.maxWidth};
   margin: 1rem auto;
   padding: 1rem;
+  color: ${({theme}) => theme.colors.black};
 
   & hr {
     margin: 1.5rem 0;
+  }
+
+  & h2 {
+    font-size: ${({theme}) => theme.sizes.subHeader};
+    font-family: ${({theme}) => theme.fonts.title};
+    font-weight: normal;
+  }
+
+  & p {
+    font-family: ${({theme}) => theme.fonts.body};
   }
 `;
 

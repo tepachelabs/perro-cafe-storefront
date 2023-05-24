@@ -22,6 +22,7 @@ export const PrimaryContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   background-color: transparent;
   border-bottom: ${borderStyle};
