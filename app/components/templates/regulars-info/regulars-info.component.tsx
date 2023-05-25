@@ -1,43 +1,69 @@
+import {Product} from '@shopify/hydrogen/storefront-api-types';
+import parse from 'html-react-parser';
+import {FC} from 'react';
+
 import {
-  BlockDivider,
-  Grid,
-  InfoBlock,
   InfoSection,
+  Products,
+  ProductsSection,
   SectionDividerContainer,
 } from './regulars-info.styles';
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {Divider} from '../../atoms/divider';
 import {Paragraph} from '../../atoms/paragraph';
+import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
+import {Carousel} from '../../organisms/carousel';
 
-const {regularsInfo, regularsDisclaimer} = configData;
+const {regularsDisclaimer} = configData;
 
-export const RegularsInfo = () => {
+interface Props {
+  content: string;
+  productsTitle?: {value: string};
+  products?: Product[];
+}
+
+export const RegularsInfo: FC<Props> = ({content, productsTitle, products}) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   return (
     <InfoSection>
-      <Grid>
-        {regularsInfo.map((info, index, arr) => {
-          const renderBlockDivider = isDesktop
-            ? index < arr.length - (2 - (arr.length % 2))
-            : index < arr.length - 1;
-
-          return (
-            <InfoBlock key={info.id}>
-              <Subtitle numeral={`${index + 1}.`}>{info.title}</Subtitle>
-              <Paragraph>{info.body}</Paragraph>
-              <Paragraph bold>{info.footer}</Paragraph>
-              {renderBlockDivider && <BlockDivider />}
-            </InfoBlock>
-          );
-        })}
-      </Grid>
+      {parse(content)}
+      {products && (
+        <ProductsSection>
+          {productsTitle && <Subtitle>{productsTitle.value}</Subtitle>}
+          {isDesktop ? (
+            <Products>
+              {products.map((product) => (
+                <PromotionCard
+                  key={product.title}
+                  image={product.featuredImage!.url}
+                  label={product.title}
+                />
+              ))}
+            </Products>
+          ) : (
+            <Carousel>
+              {products.map((product) => (
+                <PromotionCard
+                  key={product.title}
+                  image={product.featuredImage!.url}
+                  label={product.title}
+                  borderless
+                  fullWidth
+                />
+              ))}
+            </Carousel>
+          )}
+        </ProductsSection>
+      )}
       <SectionDividerContainer>
         <Divider />
       </SectionDividerContainer>
-      <Paragraph>{regularsDisclaimer}</Paragraph>
+      <Paragraph>
+        <small>{regularsDisclaimer}</small>
+      </Paragraph>
     </InfoSection>
   );
 };

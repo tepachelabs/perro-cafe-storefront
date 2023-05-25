@@ -6,9 +6,24 @@ export const InfoSection = styled.section`
   max-width: ${({theme}) => theme.sizes.maxWidth};
   margin: 1rem auto;
   padding: 1rem;
+  color: ${({theme}) => theme.colors.black};
 
   & hr {
     margin: 1.5rem 0;
+  }
+
+  & h2 {
+    font-size: ${({theme}) => theme.sizes.subHeader};
+    font-family: ${({theme}) => theme.fonts.title};
+    font-weight: normal;
+  }
+
+  & p {
+    font-family: ${({theme}) => theme.fonts.body};
+  }
+
+  & > div > img {
+    max-width: 100%;
   }
 `;
 
@@ -32,4 +47,17 @@ export const BlockDivider = styled(Hr)``;
 
 export const SectionDividerContainer = styled.div`
   margin: 2rem 0;
+`;
+
+export const ProductsSection = styled.section`
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const Products = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 `;
