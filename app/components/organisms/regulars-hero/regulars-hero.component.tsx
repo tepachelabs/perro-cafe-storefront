@@ -1,4 +1,4 @@
-import {Image} from '@shopify/hydrogen/storefront-api-types';
+import {Image, Metafield} from '@shopify/hydrogen/storefront-api-types';
 import {FC} from 'react';
 
 import banner from './img/regular-clients-banner.svg';
@@ -13,14 +13,13 @@ import {
 } from './regulars-hero.styles';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 
-interface Subtitle {
-  value: string;
-}
+export type MetafieldValue = Pick<Metafield, 'value'>;
+export type HeroBanner = Pick<Image, 'url'>;
 
 interface Props {
   title?: string;
-  subtitle?: Subtitle;
-  imgSrc?: Image;
+  subtitle?: MetafieldValue;
+  imgSrc?: HeroBanner;
 }
 
 export const RegularsHero: FC<Props> = ({title, subtitle, imgSrc}) => (

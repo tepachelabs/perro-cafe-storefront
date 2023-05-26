@@ -10,10 +10,21 @@ import type {
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
-import {RegularsHero} from '~/components/organisms/regulars-hero';
+import {
+  HeroBanner,
+  MetafieldValue,
+  RegularsHero,
+} from '~/components/organisms/regulars-hero';
 import {Footer} from '~/components/templates/footer';
 import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
+
+interface ShopifyPage extends Page {
+  productsTitle?: MetafieldValue;
+  products?: MetafieldValue;
+  image?: MetafieldValue;
+  subtitle?: MetafieldValue;
+}
 
 export const meta = () => {
   return {
@@ -23,19 +34,18 @@ export const meta = () => {
 };
 
 export async function loader({params, context: {storefront}}: LoaderArgs) {
-  const result = {
-    page: null,
-    subtitle: null,
-    image: null,
-    products: null,
-  };
+  const result: {
+    page?: ShopifyPage;
+    image?: HeroBanner;
+    products?: Array<Product>;
+  } = {};
+
   const handle = params.handle;
-  const {page} = await storefront.query<Page>(PAGE_QUERY, {
+  const {page} = await storefront.query<{page: ShopifyPage}>(PAGE_QUERY, {
     variables: {
       handle: handle!,
     },
   });
-  result.page = page;
 
   if (!page) {
     throw new Response(null, {
@@ -44,16 +54,17 @@ export async function loader({params, context: {storefront}}: LoaderArgs) {
     });
   }
 
-  if (page && page.image) {
+  result.page = page as ShopifyPage;
+  if (result.page.image) {
     const {
       node: {image},
-    } = await storefront.query<Node>(IMAGE_QUERY, {
+    } = await storefront.query<{node: Node}>(IMAGE_QUERY, {
       variables: {
         id: page.image.value,
       },
     });
 
-    result.image = image;
+    result.image = image as HeroBanner;
   }
 
   if (page && page.products) {
@@ -64,13 +75,13 @@ export async function loader({params, context: {storefront}}: LoaderArgs) {
       },
     });
 
-    result.products = products;
+    result.products = products as Array<Product>;
   }
 
   return json({
-    page: result.page as any,
-    image: result.image as any,
-    products: result.products as any,
+    page: result.page,
+    image: result.image,
+    products: result.products,
   });
 }
 
@@ -78,8 +89,6 @@ export async function loader({params, context: {storefront}}: LoaderArgs) {
 const _Link = (props) => <NavBarLink {...props} as={Link} />;
 
 export function CatchBoundary() {
-  const params = useParams();
-
   const links = configData.navbar.links.map((link) => ({
     label: link.label,
     href: link.link,
@@ -97,8 +106,6 @@ export function CatchBoundary() {
 export default function Index() {
   const {handle} = useParams();
   const {page, image, products} = useLoaderData<typeof loader>();
-  console.log('In slug', page);
-  console.log('Products', products);
 
   const links = configData.navbar.links.map((link) => ({
     label: link.label,
@@ -112,7 +119,7 @@ export default function Index() {
       <RegularsHero
         title={page.title}
         subtitle={page.subtitle}
-        imgSrc={image as Image}
+        imgSrc={image}
       />
       <RegularsInfo
         content={page.body}
