@@ -92,3 +92,7 @@ export const RegularsHeroBanner = styled.img`
     object-fit: cover;
   }
 `;
+
+export const HeroButtonContainer = styled.div`
+  margin: 0 1.5rem 2rem;
+`;

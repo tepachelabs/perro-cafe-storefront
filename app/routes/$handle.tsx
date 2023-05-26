@@ -37,6 +37,13 @@ export async function loader({params, context: {storefront}}: LoaderArgs) {
   });
   result.page = page;
 
+  if (!page) {
+    throw new Response(null, {
+      status: 404,
+      statusText: 'El recurso solicitado no fue encontrado.',
+    });
+  }
+
   if (page && page.image) {
     const {
       node: {image},
@@ -69,6 +76,23 @@ export async function loader({params, context: {storefront}}: LoaderArgs) {
 
 // @ts-ignore
 const _Link = (props) => <NavBarLink {...props} as={Link} />;
+
+export function CatchBoundary() {
+  const params = useParams();
+
+  const links = configData.navbar.links.map((link) => ({
+    label: link.label,
+    href: link.link,
+  }));
+
+  return (
+    <>
+      <NavBar links={links} linkRender={_Link} />
+      <RegularsHero />
+      <Footer />
+    </>
+  );
+}
 
 export default function Index() {
   const {handle} = useParams();

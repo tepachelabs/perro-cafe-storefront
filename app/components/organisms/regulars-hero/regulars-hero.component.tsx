@@ -4,19 +4,21 @@ import {FC} from 'react';
 import banner from './img/regular-clients-banner.svg';
 import {
   Description,
+  HeroButtonContainer,
   PrimaryContainer,
   RegularsHeroBanner,
   RegularsHeroContainer,
   RegularsTitle,
   SecondaryContainer,
 } from './regulars-hero.styles';
+import {HorizontalButton} from '../../atoms/horizontal-button';
 
 interface Subtitle {
   value: string;
 }
 
 interface Props {
-  title: string;
+  title?: string;
   subtitle?: Subtitle;
   imgSrc?: Image;
 }
@@ -24,7 +26,12 @@ interface Props {
 export const RegularsHero: FC<Props> = ({title, subtitle, imgSrc}) => (
   <RegularsHeroContainer>
     <PrimaryContainer>
-      <RegularsTitle>{title}</RegularsTitle>
+      <RegularsTitle>{title || 'Página no encontrada'}</RegularsTitle>
+      {!title && (
+        <HeroButtonContainer>
+          <HorizontalButton label="Volver al inicio" href="/" target="_self" />
+        </HeroButtonContainer>
+      )}
       {subtitle && <Description bold>{subtitle.value}</Description>}
     </PrimaryContainer>
     <SecondaryContainer>
