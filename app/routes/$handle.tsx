@@ -1,12 +1,7 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable check-file/filename-naming-convention */
 import {Link, useLoaderData, useParams} from '@remix-run/react';
-import type {
-  Image,
-  Node,
-  Page,
-  Product,
-} from '@shopify/hydrogen/storefront-api-types';
+import type {Node, Page, Product} from '@shopify/hydrogen/storefront-api-types';
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
@@ -103,7 +98,7 @@ export function CatchBoundary() {
   );
 }
 
-export default function Index() {
+export default function InfoPage() {
   const {handle} = useParams();
   const {page, image, products} = useLoaderData<typeof loader>();
 
