@@ -1,12 +1,8 @@
 import {FC} from 'react';
 
-import {
-  Grid,
-  MenuContainer,
-  PrimaryContainer,
-  SecondaryContainer,
-  MenuDescription,
-} from './menu.styles';
+import {Section} from '~/components/atoms/section';
+
+import {Grid, PrimaryContainer, MenuDescription} from './menu.styles';
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {HorizontalButton} from '../../atoms/horizontal-button';
@@ -28,15 +24,15 @@ export const Menu: FC<Props> = ({products}) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   return (
-    <MenuContainer>
+    <Section>
       <PrimaryContainer>
         <Subtitle icon="menu">El Menú</Subtitle>
         <MenuDescription>
-          Lorem ipsum dolor sit amet, conctetuer adipiscing elitvolutpat.
-          Hendrerit invulputatevelit esse Ut wisi enim ad minimveniam.
+          Descubre nuestro toque casero, con ingredientes de la más alta
+          calidad, seleccionados cuidadosamente para ti.
         </MenuDescription>
         <MenuDescription bold>
-          Molestie consequat, vel illum dolore eu feugiat.
+          Nuestro café es tostado por nosotros en Hermosillo.
         </MenuDescription>
         <Hr />
         <HorizontalButton
@@ -44,31 +40,29 @@ export const Menu: FC<Props> = ({products}) => {
           href={configData.globalLinks.menu}
         />
       </PrimaryContainer>
-      <SecondaryContainer>
-        {isDesktop ? (
-          <Grid>
-            {products.map((product) => (
-              <PromotionCard
-                key={product.alt}
-                image={product.src}
-                label={product.alt}
-              />
-            ))}
-          </Grid>
-        ) : (
-          <Carousel>
-            {products.map((product) => (
-              <PromotionCard
-                key={product.alt}
-                image={product.src}
-                label={product.alt}
-                borderless
-                fullWidth
-              />
-            ))}
-          </Carousel>
-        )}
-      </SecondaryContainer>
-    </MenuContainer>
+      {isDesktop ? (
+        <Grid>
+          {products.map((product) => (
+            <PromotionCard
+              key={product.alt}
+              image={product.src}
+              label={product.alt}
+            />
+          ))}
+        </Grid>
+      ) : (
+        <Carousel>
+          {products.map((product) => (
+            <PromotionCard
+              key={product.alt}
+              image={product.src}
+              label={product.alt}
+              borderless
+              fullWidth
+            />
+          ))}
+        </Carousel>
+      )}
+    </Section>
   );
 };

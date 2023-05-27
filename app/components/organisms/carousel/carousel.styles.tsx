@@ -63,4 +63,5 @@ export const CarouselNavigation = styled.div`
 
 export const StyledCarousel = styled.div`
   position: relative;
+  width: fit-content;
 `;

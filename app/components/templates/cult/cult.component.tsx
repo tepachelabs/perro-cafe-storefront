@@ -43,7 +43,7 @@ export const Cult: FC<Props> = ({images, description}) => (
           <PerkInfo icon="internet">Internet rápido</PerkInfo>
           <PerkInfo icon="ingredients">Ingredientes 100% naturales</PerkInfo>
           <PerkInfo icon="games">Juegos de mesa</PerkInfo>
-          <PerkInfo icon="events">Hosteo de eventos</PerkInfo>
+          <PerkInfo icon="events">Hospedamos eventos</PerkInfo>
         </PerksGrid>
       </BottomContainer>
     </CultContainer>
