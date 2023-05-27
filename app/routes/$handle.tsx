@@ -1,7 +1,14 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable check-file/filename-naming-convention */
 import {Link, useLoaderData, useParams} from '@remix-run/react';
-import type {Node, Page, Product} from '@shopify/hydrogen/storefront-api-types';
+import type {
+  Location,
+  LocationConnection,
+  Metafield,
+  Node,
+  Page,
+  Product,
+} from '@shopify/hydrogen/storefront-api-types';
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
@@ -13,6 +20,10 @@ import {
 import {Footer} from '~/components/templates/footer';
 import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
+
+interface ShopifyLocation extends Location {
+  schedule: Pick<Metafield, 'value'>;
+}
 
 interface ShopifyPage extends Page {
   productsTitle?: MetafieldValue;
@@ -30,10 +41,19 @@ export const meta = () => {
 
 export async function loader({params, context: {storefront}}: LoaderArgs) {
   const result: {
+    location?: ShopifyLocation;
     page?: ShopifyPage;
     image?: HeroBanner;
     products?: Array<Product>;
   } = {};
+
+  const {locations} = await storefront.query<{locations: LocationConnection}>(
+    LOCATIONS_QUERY,
+  );
+
+  const {nodes} = locations as LocationConnection;
+  const location = nodes[0] as ShopifyLocation;
+  result.location = location;
 
   const handle = params.handle;
   const {page} = await storefront.query<{page: ShopifyPage}>(PAGE_QUERY, {
@@ -74,6 +94,7 @@ export async function loader({params, context: {storefront}}: LoaderArgs) {
   }
 
   return json({
+    location: result.location,
     page: result.page,
     image: result.image,
     products: result.products,
@@ -100,7 +121,7 @@ export function CatchBoundary() {
 
 export default function InfoPage() {
   const {handle} = useParams();
-  const {page, image, products} = useLoaderData<typeof loader>();
+  const {location, page, image, products} = useLoaderData<typeof loader>();
 
   const links = configData.navbar.links.map((link) => ({
     label: link.label,
@@ -121,10 +142,29 @@ export default function InfoPage() {
         productsTitle={page.productsTitle}
         products={products}
       />
-      <Footer />
+      <Footer address={location.address} schedule={location.schedule} />
     </>
   );
 }
+
+const LOCATIONS_QUERY = `#graphql
+  query Locations {
+    locations(first: 1) {
+      nodes {
+        address {
+          address1
+          address2
+          zip
+          city
+          province
+        }
+        schedule: metafield(namespace: "custom", key: "schedule") {
+          value
+        }
+      }
+    }
+  }
+`;
 
 const PAGE_QUERY = `#graphql
   query Page($handle: String!) {

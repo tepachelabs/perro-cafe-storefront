@@ -1,4 +1,11 @@
 import {Link, useLoaderData} from '@remix-run/react';
+import {
+  CollectionConnection,
+  Location,
+  LocationConnection,
+  Metafield,
+} from '@shopify/hydrogen/storefront-api-types';
+import {LoaderArgs, json} from '@shopify/remix-oxygen';
 
 import {Hero} from '~/components/organisms/hero';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
@@ -9,6 +16,10 @@ import {Menu} from '~/components/templates/menu';
 import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
 
+interface ShopifyLocation extends Location {
+  schedule: Pick<Metafield, 'value'>;
+}
+
 export const meta = () => {
   return {
     title: 'Culto al Perro Café',
@@ -16,9 +27,18 @@ export const meta = () => {
   };
 };
 
-// @ts-ignore
-export async function loader({context}) {
-  return await context.storefront.query(COLLECTIONS_QUERY);
+export async function loader({context: {storefront}}: LoaderArgs) {
+  const {locations} = await storefront.query<{locations: LocationConnection}>(
+    LOCATIONS_QUERY,
+  );
+  const {collections} = await storefront.query<{
+    collections: CollectionConnection;
+  }>(COLLECTIONS_QUERY);
+
+  const {nodes} = locations as LocationConnection;
+  const location = nodes[0] as ShopifyLocation;
+
+  return json({collections, location});
 }
 
 // @ts-ignore
@@ -28,7 +48,8 @@ export default function Index() {
   // lmao this is a mess
   const {
     collections: {nodes},
-  } = useLoaderData();
+    location,
+  } = useLoaderData<typeof loader>();
 
   const [
     {
@@ -65,10 +86,29 @@ export default function Index() {
       <Cult images={cultImages} description={cultDescription} />
       <Temple />
       <Community reviews={reviews} />
-      <Footer />
+      <Footer address={location.address} schedule={location.schedule} />
     </>
   );
 }
+
+const LOCATIONS_QUERY = `#graphql
+  query Locations {
+    locations(first: 1) {
+      nodes {
+        address {
+          address1
+          address2
+          zip
+          city
+          province
+        }
+        schedule: metafield(namespace: "custom", key: "schedule") {
+          value
+        }
+      }
+    }
+  }
+`;
 
 const COLLECTIONS_QUERY = `#graphql
   query FeaturedCollections {

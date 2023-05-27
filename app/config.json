@@ -68,10 +68,7 @@
     }
   ],
   "location": "Blvd. Juan Navarrete 125, local 15. Valle Verde. C.P. 83200. Hermosillo, Sonora.",
-  "schedule": {
-    "weekdays": "Martes a Domingo: 3 - 10 PM",
-    "sunday": "Lunes: Cerrado"
-  },
+  "schedule": ["Martes a Domingo: 3 - 10 PM", "Lunes: Cerrado"],
   "footerInfo": ["Cafetería indie experimental,", "Con ❤ desde Hermosillo."],
   "copyright": "Copyright © 2020-2023 TepacheLabs. Todos los derechos reservados.",
   "regularsHero": {
