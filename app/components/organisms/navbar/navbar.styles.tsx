@@ -34,11 +34,14 @@ export const MenuButton = styled.button`
 
   cursor: pointer;
   background-color: transparent;
-  width: 36px;
+  width: 3em;
+  height: 3em;
   border: none;
+  padding: 0;
 `;
 
 export const Icon = styled.img`
+  height: 100%;
   width: 100%;
 `;
 
