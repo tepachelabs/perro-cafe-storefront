@@ -10,6 +10,7 @@ export const TempleContainer = styled.section`
   align-items: stretch;
   flex-direction: column;
   margin: 0 auto;
+  padding: 2em 0;
   ${maxWidth}
 
   ${({theme}) => theme.mediaQueries.desktop} {

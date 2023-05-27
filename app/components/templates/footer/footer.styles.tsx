@@ -10,15 +10,11 @@ export const FooterBackground = styled.footer`
 export const FooterContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.25rem;
 
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 4em 1em;
   max-width: ${({theme}) => theme.sizes.maxWidth};
-
-  ${({theme}) => theme.mediaQueries.desktop} {
-    padding: 2rem;
-  }
 
   & p {
     color: ${({theme}) => theme.colors.backgroundDarker};
@@ -103,7 +99,7 @@ export const SocialMediaWrapper = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 6em;
+  width: 3em;
   margin-top: 1rem;
 
   ${({theme}) => theme.mediaQueries.desktop} {

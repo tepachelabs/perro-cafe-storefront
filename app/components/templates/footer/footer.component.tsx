@@ -14,8 +14,8 @@ import {
   FooterBackground,
   CopyrightParagraph,
 } from './footer.styles';
-import logo from './img/logo.svg';
-import sparkle from './img/sparkle.svg';
+import logoSimple from './img/logo-simple.svg';
+import sparkles from './img/sparkles.svg';
 import configData from '../../../config.json';
 import {
   FacebookButton,
@@ -35,10 +35,8 @@ export const Footer: FC = () => {
           <Container>
             <Subtitle>Horario</Subtitle>
             <ParagraphWrapper>
-              <LightParagraph bold>
-                {configData.schedule.weekdays}
-              </LightParagraph>
-              <LightParagraph bold>{configData.schedule.sunday}</LightParagraph>
+              <LightParagraph>{configData.schedule.weekdays}</LightParagraph>
+              <LightParagraph>{configData.schedule.sunday}</LightParagraph>
             </ParagraphWrapper>
           </Container>
           <Container>
@@ -62,9 +60,9 @@ export const Footer: FC = () => {
           </Container>
         </TopContainer>
         <BottomContainer>
-          <Img src={sparkle} alt="Gráfico de estrellas" />
+          <Img src={sparkles} alt="Gráfico de estrellas" />
           <CopyrightParagraph>{configData.copyright}</CopyrightParagraph>
-          <PositionedLogo src={logo} alt="Logo de Culto al Perro Café" />
+          <PositionedLogo src={logoSimple} alt="Logo de Culto al Perro Café" />
         </BottomContainer>
       </FooterContainer>
     </FooterBackground>
