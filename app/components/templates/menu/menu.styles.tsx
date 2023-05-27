@@ -22,9 +22,6 @@ export const PrimaryContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
 
-  position: relative;
-  padding: 1.65rem 1.25rem 1.75rem;
-
   & > hr {
     margin: 1rem 0;
   }
