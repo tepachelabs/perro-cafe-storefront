@@ -4,11 +4,7 @@ import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {Footer} from '~/components/templates/footer';
-import {
-  MenuCollection,
-  MenuPage,
-  MenuProduct,
-} from '~/components/templates/menu-page';
+import {MenuPage} from '~/components/templates/menu-page';
 import configData from '~/config.json';
 
 export const meta = () => {

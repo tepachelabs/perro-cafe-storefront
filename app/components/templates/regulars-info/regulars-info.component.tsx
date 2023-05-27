@@ -1,4 +1,4 @@
-import {Metafield, Product} from '@shopify/hydrogen/storefront-api-types';
+import {Product} from '@shopify/hydrogen/storefront-api-types';
 import parse from 'html-react-parser';
 import {FC} from 'react';
 
@@ -17,8 +17,6 @@ import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
 
 const {regularsDisclaimer} = configData;
-
-type MetafieldValue = Pick<Metafield, 'value'>;
 
 interface Props {
   content: string;

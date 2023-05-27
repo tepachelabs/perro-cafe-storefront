@@ -13,7 +13,6 @@ import {
 } from './regulars-hero.styles';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 
-export type MetafieldValue = Pick<Metafield, 'value'>;
 export type HeroBanner = Pick<Image, 'url'>;
 
 interface Props {

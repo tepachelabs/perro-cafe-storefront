@@ -1,25 +1,14 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable check-file/filename-naming-convention */
 import {Link, useLoaderData, useParams} from '@remix-run/react';
-import type {Node, Page, Product} from '@shopify/hydrogen/storefront-api-types';
+import type {Node, Product} from '@shopify/hydrogen/storefront-api-types';
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
-import {
-  HeroBanner,
-  MetafieldValue,
-  RegularsHero,
-} from '~/components/organisms/regulars-hero';
+import {HeroBanner, RegularsHero} from '~/components/organisms/regulars-hero';
 import {Footer} from '~/components/templates/footer';
 import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
-
-interface ShopifyPage extends Page {
-  productsTitle?: MetafieldValue;
-  products?: MetafieldValue;
-  image?: MetafieldValue;
-  subtitle?: MetafieldValue;
-}
 
 export const meta = () => {
   return {
