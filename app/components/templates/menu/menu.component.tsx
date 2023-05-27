@@ -2,7 +2,12 @@ import {FC} from 'react';
 
 import {Section} from '~/components/atoms/section';
 
-import {Grid, PrimaryContainer, MenuDescription} from './menu.styles';
+import {
+  Grid,
+  PrimaryContainer,
+  MenuDescription,
+  CarouselContainer,
+} from './menu.styles';
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {HorizontalButton} from '../../atoms/horizontal-button';
@@ -51,17 +56,19 @@ export const Menu: FC<Props> = ({products}) => {
           ))}
         </Grid>
       ) : (
-        <Carousel>
-          {products.map((product) => (
-            <PromotionCard
-              key={product.alt}
-              image={product.src}
-              label={product.alt}
-              borderless
-              fullWidth
-            />
-          ))}
-        </Carousel>
+        <CarouselContainer>
+          <Carousel>
+            {products.map((product) => (
+              <PromotionCard
+                key={product.alt}
+                image={product.src}
+                label={product.alt}
+                borderless
+                fullWidth
+              />
+            ))}
+          </Carousel>
+        </CarouselContainer>
       )}
     </Section>
   );
