@@ -14,11 +14,7 @@ interface Props {
   target?: HTMLAttributeAnchorTarget;
 }
 
-export const HorizontalButton: FC<Props> = ({
-  label,
-  href,
-  target = '_blank',
-}) => (
+export const HorizontalButton: FC<Props> = ({label, href, target}) => (
   <StyledHorizontalButton href={href} target={target}>
     <ButtonFace>
       <Label>{label}</Label>

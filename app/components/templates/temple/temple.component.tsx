@@ -36,6 +36,7 @@ export const Temple = () => (
         <HorizontalButton
           label="¿Cómo llegar?"
           href={configData.globalLinks.googleMaps}
+          target="_blank"
         />
       </PrimaryContainer>
       <SecondaryContainer>
