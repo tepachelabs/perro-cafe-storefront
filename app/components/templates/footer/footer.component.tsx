@@ -1,7 +1,4 @@
-import {
-  LocationAddress,
-  Metafield,
-} from '@shopify/hydrogen/storefront-api-types';
+import {LocationAddress} from '@shopify/hydrogen/storefront-api-types';
 import {FC} from 'react';
 
 import {
@@ -29,7 +26,7 @@ import {
 
 interface Props {
   address?: LocationAddress;
-  schedule?: Pick<Metafield, 'value'>;
+  schedule?: MetafieldValue;
 }
 
 export const Footer: FC<Props> = ({address, schedule}) => {

@@ -84,7 +84,7 @@ export default function Index() {
       <Hero />
       <Menu products={images} />
       <Cult images={cultImages} description={cultDescription} />
-      <Temple />
+      <Temple address={location.address} schedule={location.schedule} />
       <Community reviews={reviews} />
       <Footer address={location.address} schedule={location.schedule} />
     </>
