@@ -2,7 +2,7 @@
 /* eslint-disable check-file/filename-naming-convention */
 import {Link, useLoaderData, useParams} from '@remix-run/react';
 import type {Node, Page, Product} from '@shopify/hydrogen/storefront-api-types';
-import {json, type LoaderArgs} from '@shopify/remix-oxygen';
+import {json, MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {
@@ -19,12 +19,31 @@ interface ShopifyPage extends Page {
   products?: MetafieldValue;
   image?: MetafieldValue;
   subtitle?: MetafieldValue;
+  seoDescription?: MetafieldValue;
 }
 
-export const meta = () => {
+export const meta: MetaFunction<typeof loader> = ({data, params}) => {
+  if (!data) {
+    return {};
+  }
+
+  const title = `${data.page.title} - Culto al Perro Café`;
+  const url = `https://perro.cafe/${params.handle}`;
+  const description = data.page.seoDescription
+    ? data.page.seoDescription.value
+    : null;
+  const image = data.image ? data.image.url : null;
+
   return {
-    title: 'Culto al Perro Café',
-    description: 'A custom storefront powered by Hydrogen',
+    title,
+    description,
+    'og:title': title,
+    'og:description': description,
+    'og:url': url,
+    'og:image': image,
+    'twitter:title': title,
+    'twitter:url': url,
+    'twitter:description': description,
   };
 };
 
@@ -143,6 +162,9 @@ const PAGE_QUERY = `#graphql
         value
       }
       subtitle: metafield(namespace: "custom", key: "subtitle") {
+        value
+      }
+      seoDescription: metafield(namespace: "custom", key: "seo_description") {
         value
       }
     }

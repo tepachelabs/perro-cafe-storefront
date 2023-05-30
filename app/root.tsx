@@ -19,7 +19,7 @@ import {useEffect} from 'react';
 import {GlobalStyles} from '~/global.styles';
 import theme from '~/theme';
 
-import favicon from '../public/favicon.svg';
+import favicon from '../public/favicon.png';
 
 export const links: LinksFunction = () => {
   return [
@@ -47,16 +47,35 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  viewport: 'width=device-width,initial-scale=1',
-});
+export const meta: MetaFunction<typeof loader> = ({data: {shop}}) => {
+  const metaTags: Record<string, string> = {
+    charset: 'utf-8',
+    viewport: 'width=device-width,initial-scale=1',
+    'og:type': 'website',
+    'twitter:card': 'summary',
+    'twitter:site': '@cultoperrocafe',
+    'twitter:app:country': 'México',
+    robots: 'index, follow',
+    'theme-color': '#F1774C',
+  };
+
+  if (!shop) {
+    return metaTags;
+  }
+
+  metaTags['title'] = shop.name;
+  metaTags['description'] = shop.description!;
+  metaTags['og:image'] = shop.brand!.logo!.image!.url;
+  metaTags['twitter:image'] = shop.brand!.logo!.image!.url;
+
+  return metaTags;
+};
 
 export async function loader({context}: LoaderArgs) {
-  const layout = await context.storefront.query<{shop: Shop}>(LAYOUT_QUERY);
+  const {shop} = await context.storefront.query<{shop: Shop}>(LAYOUT_QUERY);
 
   return {
-    layout,
+    shop: shop as Shop,
     ENV: {
       PUBLIC_POSTHOG_KEY: context.env.PUBLIC_POSTHOG_KEY,
       PUBLIC_ROLLBAR_KEY: context.env.PUBLIC_ROLLBAR_KEY,
@@ -127,6 +146,17 @@ const LAYOUT_QUERY = `#graphql
     shop {
       name
       description
+      brand {
+        logo {
+          image {
+            url(transform: {
+              maxWidth: 300,
+              maxHeight: 300,
+              crop: CENTER,
+            })
+          }
+        }
+      }
     }
   }
 `;

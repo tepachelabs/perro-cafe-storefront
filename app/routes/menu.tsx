@@ -13,8 +13,9 @@ import configData from '~/config.json';
 
 export const meta = () => {
   return {
-    title: 'Culto al Perro Café',
-    description: 'A custom storefront powered by Hydrogen',
+    title: 'Menú - Culto al Perro Café',
+    description:
+      'Descubre nuestro toque casero, con ingredientes de la más alta calidad, seleccionados cuidadosamente para ti.',
   };
 };
 
