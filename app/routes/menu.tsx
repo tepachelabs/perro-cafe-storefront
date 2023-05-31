@@ -19,6 +19,7 @@ export const meta = () => {
     description,
     url,
     'og:url': url,
+    'twitter:url': url,
   };
 };
 

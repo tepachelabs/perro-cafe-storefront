@@ -126,6 +126,7 @@ export const meta: MetaFunction<typeof loader> = ({data, params}) => {
   return {
     title,
     description,
+    url,
     'og:title': title,
     'og:description': description,
     'og:url': url,
