@@ -16,6 +16,7 @@ import {
 import Posthog from 'posthog-js';
 import {useEffect} from 'react';
 
+import configData from '~/config.json';
 import {GlobalStyles} from '~/global.styles';
 import theme from '~/theme';
 
@@ -49,24 +50,27 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction<typeof loader> = ({data: {shop}}) => {
   const metaTags: Record<string, string> = {
-    charset: 'utf-8',
-    viewport: 'width=device-width,initial-scale=1',
-    'og:type': 'website',
-    'twitter:card': 'summary',
-    'twitter:site': '@cultoperrocafe',
-    'twitter:app:country': 'México',
-    robots: 'index, follow',
-    'theme-color': '#F1774C',
+    ...configData.seo,
   };
 
   if (!shop) {
     return metaTags;
   }
 
-  metaTags['title'] = shop.name;
-  metaTags['description'] = shop.description!;
-  metaTags['og:image'] = shop.brand!.logo!.image!.url;
-  metaTags['twitter:image'] = shop.brand!.logo!.image!.url;
+  const {name, description, brand} = shop;
+
+  metaTags['title'] = name;
+  metaTags['og:title'] = name;
+
+  if (description) {
+    metaTags['description'] = description;
+    metaTags['og:description'] = description;
+  }
+
+  if (brand?.coverImage?.image?.url) {
+    metaTags['og:image'] = brand.coverImage.image.url;
+    metaTags['twitter:image'] = brand.coverImage.image.url;
+  }
 
   return metaTags;
 };
@@ -147,13 +151,9 @@ const LAYOUT_QUERY = `#graphql
       name
       description
       brand {
-        logo {
+        coverImage {
           image {
-            url(transform: {
-              maxWidth: 300,
-              maxHeight: 300,
-              crop: CENTER,
-            })
+            url
           }
         }
       }
