@@ -112,7 +112,7 @@
     "title": "Culto al Perro Café",
     "description": "Sirviendo el café más perrón de Hermosillo, Sonora. La cafetería favorita de la gente que trabaja. Ven con tu laptop, libro favorito y/o mascota.",
     "keywords": "cafeteria, cafe, café, promocion, frappe, cultoperrocafe, frappés, hermosillo, destino, gastronómico, pet friendly, mascotas, libros, juegos de mesa, internet, wifi",
-    "image": "https://perro.cafe/",
+    "image": "https://perro.cafe/thumbnail.png",
     "url": "https://perro.cafe",
     "twitter:app:country": "México",
     "twitter:card": "summary",
@@ -121,7 +121,7 @@
     "og:title": "Culto al Perro Café",
     "og:description": "Sirviendo el café más perrón de Hermosillo, Sonora. La cafetería favorita de la gente que trabaja. Ven con tu laptop, libro favorito y/o mascota.",
     "og:image": "https://perro.cafe/thumbnail.png",
-    "og:url": "Sirviendo el café más perrón de Hermosillo, Sonora. La cafetería favorita de la gente que trabaja. Ven con tu laptop, libro favorito y/o mascota.",
+    "og:url": "https://perro.cafe",
     "og:type": "website"
   }
 }

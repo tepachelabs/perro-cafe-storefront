@@ -22,8 +22,97 @@ interface ShopifyPage extends Page {
   seoDescription?: MetafieldValue;
 }
 
+interface LoaderProps {
+  page: ShopifyPage;
+  image?: HeroBanner;
+  products?: Array<Product>;
+}
+
+export async function loader({
+  params: {handle},
+  context: {storefront},
+}: LoaderArgs) {
+  const {page} = await storefront.query<{page: ShopifyPage}>(PAGE_QUERY, {
+    variables: {
+      handle: handle!,
+    },
+  });
+
+  if (!page) {
+    throw new Response(null, {
+      status: 404,
+      statusText: 'El recurso solicitado no fue encontrado.',
+    });
+  }
+
+  if (page.image || page.products) {
+    const requests = [];
+
+    if (page.image) {
+      requests.push(
+        storefront.query<{node: Node}>(IMAGE_QUERY, {
+          variables: {
+            id: page.image.value,
+          },
+        }),
+      );
+    }
+
+    if (page.products) {
+      const ids = JSON.parse(page.products.value);
+
+      requests.push(
+        storefront.query<Node>(PRODUCTS_QUERY, {
+          variables: {ids},
+        }),
+      );
+    }
+
+    const fulfill = await Promise.all(requests);
+
+    let image;
+    let products;
+
+    if (page.image) {
+      image = fulfill[0];
+
+      if (page.products) {
+        products = fulfill[1];
+      }
+    } else {
+      products = fulfill[0];
+    }
+
+    return {
+      page,
+      image: image?.node.image,
+      products: products?.nodes,
+    } as LoaderProps;
+  }
+
+  return {page} as LoaderProps;
+}
+
+// @ts-ignore
+const _Link = (props) => <NavBarLink {...props} as={Link} />;
+
+export function CatchBoundary() {
+  const links = configData.navbar.links.map((link) => ({
+    label: link.label,
+    href: link.link,
+  }));
+
+  return (
+    <>
+      <NavBar links={links} linkRender={_Link} />
+      <RegularsHero />
+      <Footer />
+    </>
+  );
+}
+
 export const meta: MetaFunction<typeof loader> = ({data, params}) => {
-  if (!data) {
+  if (!data || !data.page) {
     return {};
   }
 
@@ -46,76 +135,6 @@ export const meta: MetaFunction<typeof loader> = ({data, params}) => {
     'twitter:description': description,
   };
 };
-
-export async function loader({params, context: {storefront}}: LoaderArgs) {
-  const result: {
-    page?: ShopifyPage;
-    image?: HeroBanner;
-    products?: Array<Product>;
-  } = {};
-
-  const handle = params.handle;
-  const {page} = await storefront.query<{page: ShopifyPage}>(PAGE_QUERY, {
-    variables: {
-      handle: handle!,
-    },
-  });
-
-  if (!page) {
-    throw new Response(null, {
-      status: 404,
-      statusText: 'El recurso solicitado no fue encontrado.',
-    });
-  }
-
-  result.page = page as ShopifyPage;
-  if (result.page.image) {
-    const {
-      node: {image},
-    } = await storefront.query<{node: Node}>(IMAGE_QUERY, {
-      variables: {
-        id: page.image.value,
-      },
-    });
-
-    result.image = image as HeroBanner;
-  }
-
-  if (page && page.products) {
-    const productIds = JSON.parse(page.products.value);
-    const {nodes: products} = await storefront.query<Node>(PRODUCTS_QUERY, {
-      variables: {
-        ids: productIds,
-      },
-    });
-
-    result.products = products as Array<Product>;
-  }
-
-  return json({
-    page: result.page,
-    image: result.image,
-    products: result.products,
-  });
-}
-
-// @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
-
-export function CatchBoundary() {
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-  }));
-
-  return (
-    <>
-      <NavBar links={links} linkRender={_Link} />
-      <RegularsHero />
-      <Footer />
-    </>
-  );
-}
 
 export default function InfoPage() {
   const {handle} = useParams();

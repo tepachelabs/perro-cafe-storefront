@@ -4,18 +4,21 @@ import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {Footer} from '~/components/templates/footer';
-import {
-  MenuCollection,
-  MenuPage,
-  MenuProduct,
-} from '~/components/templates/menu-page';
+import {MenuPage} from '~/components/templates/menu-page';
 import configData from '~/config.json';
 
 export const meta = () => {
+  const title = 'Menú - Culto al Perro Café';
+  const description =
+    'Descubre nuestro toque casero, con ingredientes de la más alta calidad, seleccionados cuidadosamente para ti.';
+  const url = 'https://perro.cafe/menu';
+
   return {
-    title: 'Menú - Culto al Perro Café',
-    description:
-      'Descubre nuestro toque casero, con ingredientes de la más alta calidad, seleccionados cuidadosamente para ti.',
+    title,
+    'og:title': title,
+    description,
+    url,
+    'og:url': url,
   };
 };
 
