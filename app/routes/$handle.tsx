@@ -116,11 +116,10 @@ export const meta: MetaFunction<typeof loader> = ({data, params}) => {
     return {};
   }
 
-  const title = `${data.page.title} - Culto al Perro Café`;
+  const pageSeo = data.page.seo!;
+  const title = pageSeo?.title || `${data.page.title} - Culto al Perro Café`;
   const url = `https://perro.cafe/${params.handle}`;
-  const description = data.page.seoDescription
-    ? data.page.seoDescription.value
-    : null;
+  const description = pageSeo.description || null;
   const image = data.image ? data.image.url : null;
 
   return {
@@ -186,6 +185,10 @@ const PAGE_QUERY = `#graphql
       }
       seoDescription: metafield(namespace: "custom", key: "seo_description") {
         value
+      }
+      seo {
+        description
+        title
       }
     }
   }

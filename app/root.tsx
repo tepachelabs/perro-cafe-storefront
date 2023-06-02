@@ -65,6 +65,7 @@ export const meta: MetaFunction<typeof loader> = ({data: {shop}}) => {
   if (description) {
     metaTags['description'] = description;
     metaTags['og:description'] = description;
+    metaTags['twitter:description'] = description;
   }
 
   if (brand?.coverImage?.image?.url) {
