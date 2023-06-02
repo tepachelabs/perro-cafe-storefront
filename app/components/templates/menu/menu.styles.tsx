@@ -1,32 +1,15 @@
 import styled from '@emotion/styled';
 
-export const MenuContainer = styled.section`
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-
-  margin: 0 auto;
-  max-width: ${({theme}) => theme.sizes.maxWidth};
-
-  background-color: ${({theme}) => theme.colors.background};
-
-  ${({theme}) => theme.mediaQueries.desktop} {
-    flex-direction: row;
-  }
-`;
+import {Paragraph} from '../../atoms/paragraph';
 
 export const PrimaryContainer = styled.div`
-  position: relative;
-  padding: 1.65rem 1.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
-  ${({theme}) => theme.mediaQueries.desktop} {
-    width: 50%;
+  & > hr {
+    margin: 1rem 0;
   }
-`;
-
-export const SecondaryContainer = styled.div`
-  position: relative;
-  padding: 1.25rem 1.25rem 2rem;
 
   ${({theme}) => theme.mediaQueries.desktop} {
     width: 50%;
@@ -39,18 +22,12 @@ export const Grid = styled.div`
   grid-gap: 1rem;
 `;
 
-export const ButtonContainer = styled.div`
-  margin: 4rem 0 1.75rem;
-
-  ${({theme}) => theme.mediaQueries.desktop} {
-    margin: 6rem 0 1.75rem;
-  }
+export const CarouselContainer = styled.div`
+  margin: 0 auto;
 `;
 
-export const TextContainer = styled.div`
-  margin: 2.5rem 0;
+export const MenuDescription = styled(Paragraph)``;
 
-  ${({theme}) => theme.mediaQueries.desktop} {
-    margin: 2.5rem 0 4.5rem;
-  }
-`;
+MenuDescription.defaultProps = {
+  lineHeight: '30px',
+};

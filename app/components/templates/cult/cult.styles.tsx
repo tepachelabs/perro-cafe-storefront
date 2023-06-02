@@ -11,11 +11,14 @@ export const CultBackground = styled.section`
 export const CultContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3em;
 
-  padding: 2rem 1.25rem;
+  padding: 2.75em 1.25em;
   margin: 0 auto;
   max-width: ${({theme}) => theme.sizes.maxWidth};
+
+  border-top: ${({theme}) => theme.sizes.borderWidth} solid
+    ${({theme}) => theme.colors.black};
 `;
 
 export const TopContainer = styled.div`
@@ -23,7 +26,7 @@ export const TopContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.75em;
 
   ${({theme}) => theme.mediaQueries.desktop} {
     flex-direction: row;
@@ -32,7 +35,7 @@ export const TopContainer = styled.div`
 
   & > p {
     border-bottom: 4px solid ${({theme}) => theme.colors.black};
-    padding-bottom: 0.5rem;
+    padding-bottom: 1em;
 
     ${({theme}) => theme.mediaQueries.desktop} {
       max-width: 50%;

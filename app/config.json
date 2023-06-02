@@ -1,5 +1,5 @@
 {
-  "heroSubtitle": "Lorem ipsum dolor sit.",
+  "heroSubtitle": "",
   "navbar": {
     "links": [
       {"label": "Inicio", "link": "/"},
@@ -22,46 +22,41 @@
     "twitter": "https://twitter.com/cultoperrocafe"
   },
   "globalLinks": {
-    "menu": "https://www.instagram.com/cultoperrocafe/",
-    "googleMaps": "https://goo.gl/maps/FDdqXj3i6scS4hqx9",
+    "menu": "/menu",
+    "googleMaps": "https://www.google.com/maps/dir//Culto+al+Perro+Caf%C3%A9,+Blvd.+Juan+Navarrete+125-Local+15,+Valle+Verde,+83200+Hermosillo,+Son./@29.0868238,-110.9765992,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x86ce852cc8c31ec7:0x92b9efe14263c386!2m2!1d-110.9744105!2d29.0868191!3e0",
     "store": "https://cultoperrocafe.myshopify.com/"
   },
   "cult": {
-    "description": "Lorem ipsum dolor sit amet, conctetuer adipiscing elit volutpat. Hendrerit in vulputate velit esse. Ut wisi enim ad minim veniam.",
+    "description": "Entendemos a la gente que trabaja. Disfruta de nuestro internet de alta velocidad, enchufes en cada mesa y un ambiente tranquilo para que puedas trabajar o estudiar.",
     "images": [
       {
-        "id": "1a91c11d-fd09-48f0-a157-988c0d172a41",
-        "src": "http://placehold.co/1280x720.png",
+        "id": "mok-1.png?v=1685145108",
+        "src": "https://cdn.shopify.com/s/files/1/0707/0167/8885/files/mok-1.png?v=1685145108",
         "alt": "Placeholder 1"
       },
       {
-        "id": "40c806b4-b87f-47de-a5b8-b5761aa57095",
-        "src": "http://placehold.co/1280x720.png",
+        "id": "mok-2.png?v=1685145108",
+        "src": "https://cdn.shopify.com/s/files/1/0707/0167/8885/files/mok-2.png?v=1685145108",
         "alt": "Placeholder 2"
       },
       {
-        "id": "5bf972dc-c7d2-4fff-83aa-719c050ce182",
-        "src": "http://placehold.co/1280x720.png",
+        "id": "mok-3.png?v=1685145108",
+        "src": "https://cdn.shopify.com/s/files/1/0707/0167/8885/files/mok-3.png?v=1685145108",
         "alt": "Placeholder 3"
       },
       {
-        "id": "57695cdc-d121-4247-b1c5-c3f7d32a16b0",
-        "src": "http://placehold.co/1280x720.png",
+        "id": "mok-4.png?v=1685145108",
+        "src": "https://cdn.shopify.com/s/files/1/0707/0167/8885/files/mok-4.png?v=1685145108",
         "alt": "Placeholder 4"
-      },
-      {
-        "id": "a0ca3df4-4d67-4841-b84f-e865a037b482",
-        "src": "http://placehold.co/1280x720.png",
-        "alt": "Placeholder 5"
-      },
-      {
-        "id": "73154e47-50a1-4634-adba-7a5fcb1171f7",
-        "src": "http://placehold.co/1280x720.png",
-        "alt": "Placeholder 6"
       }
     ]
   },
   "reviews": [
+    {
+      "id": "04b48aef-7daf-49ce-8957-0aee8df92c51",
+      "review": "Buena atención al cliente, precios económicos, ambiente agradable, Pet-friendly y cuenta con las medidas sanitarias ante la actual pandemia.",
+      "author": "Miguel Madrid"
+    },
     {
       "id": "92e41e29-94bd-4d86-943f-bc689f644cc0",
       "review": "Buenisimo todo, la atención es muy buena y el lugar muy agradable. Recomiendo ampliamente el smoothie de aguacate✨",
@@ -71,20 +66,15 @@
       "id": "11d8fe39-a6cc-4c06-8710-5555253b0ef9",
       "review": "Super recomendado. El trato es amable, y el café muy rico a precios accesibles, también fueron amigables con mi mascota 🐶. Me gustó mucho!",
       "author": "Anhi Gmz Crdns"
-    },
-    {
-      "id": "04b48aef-7daf-49ce-8957-0aee8df92c51",
-      "review": "Buena atención al cliente, precios económicos, ambiente agradable, Pet-friendly y cuenta con las medidas sanitarias ante la actual pandemia.",
-      "author": "Miguel Madrid"
     }
   ],
-  "location": "Blvd. Juan Navarrete 125 | Local 15. Valle Verde. C.P. 83200. Hermosillo, Sonora.",
+  "location": "Blvd. Juan Navarrete 125, local 15. Valle Verde. C.P. 83200. Hermosillo, Sonora.",
   "schedule": {
-    "weekdays": "Lunes a Sábado: 8:30 a.m. - 10:00 p.m.",
-    "sunday": "Domingo: 2:00 p.m. - 10:00 p.m."
+    "weekdays": "Martes a Domingo: 3 - 10 PM",
+    "sunday": "Lunes: Cerrado"
   },
-  "footerInfo": ["Lorem ipsum.", "Dolor sit amet.", "Lipsu lorem."],
-  "copyright": "Copyright © 2020-2022 TepacheLabs. Todos los derechos reservados.",
+  "footerInfo": ["Cafetería indie experimental,", "Con ❤ desde Hermosillo."],
+  "copyright": "Copyright © 2020-2023 TepacheLabs. Todos los derechos reservados.",
   "regularsHero": {
     "title": "Programa de Clientes Frecuentes",
     "description": "Conoce nuestro programa de recompensas, creado para premiarte por tu consumo."

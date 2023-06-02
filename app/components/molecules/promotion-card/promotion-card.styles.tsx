@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import {select} from '~/utils';
+
 import {Paragraph} from '../../atoms/paragraph';
 
 export interface CardProps {
@@ -8,7 +10,8 @@ export interface CardProps {
 }
 
 export const Card = styled.a<CardProps>`
-  border: 3px solid ${(props) => props.theme.colors.black};
+  border: ${select((theme) => theme.sizes.borderWidth)} solid
+    ${select((theme) => theme.colors.black)};
   display: inline-block;
   position: relative;
   text-decoration: none;
@@ -27,11 +30,15 @@ export const Card = styled.a<CardProps>`
 `;
 
 export const Img = styled.img`
-  aspect-ratio: 1;
+  aspect-ratio: 3/2;
   display: block;
-  height: 220px;
-  width: 100%;
+  height: 280px;
   object-fit: cover;
+  width: 100%;
+
+  ${({theme}) => theme.mediaQueries.desktop} {
+    height: 220px;
+  }
 `;
 
 export const BadgeContainer = styled.div`

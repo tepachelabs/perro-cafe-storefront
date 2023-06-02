@@ -46,10 +46,10 @@ export const Carousel: FC<Props> = ({children, showDots = false}) => {
         </ImageContainer>
       ))}
       <ArrowButtonContainer variant="left">
-        <LeftArrow onClick={previousImage} />
+        <LeftArrow onClick={previousImage} title="left arrow" />
       </ArrowButtonContainer>
       <ArrowButtonContainer variant="right">
-        <RightArrow onClick={nextImage} />
+        <RightArrow onClick={nextImage} title="right arrow" />
       </ArrowButtonContainer>
       {showDots && (
         <CarouselNavigation>

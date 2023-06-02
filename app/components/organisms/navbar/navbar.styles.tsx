@@ -1,4 +1,3 @@
-import {css, Theme} from '@emotion/react';
 import styled from '@emotion/styled';
 
 interface NavBarLinkProps {
@@ -7,11 +6,7 @@ interface NavBarLinkProps {
 
 export const _NavBar = styled.nav`
   background-color: ${({theme}) => theme.colors.black};
-  padding: 0 1rem;
-
-  ${(props) => props.theme.mediaQueries.desktop} {
-    padding: 0 0.5rem;
-  }
+  padding: 0 1.25em;
 `;
 
 export const Flex = styled.div`
@@ -19,18 +14,18 @@ export const Flex = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 44px;
+  height: 64px;
 
   max-width: ${({theme}) => theme.sizes.maxWidth};
   margin: 0 auto;
+
+  ${(props) => props.theme.mediaQueries.desktop} {
+    padding: 0 1.25em;
+  }
 `;
 
 export const Img = styled.img`
-  height: 24px;
-
-  ${(props) => props.theme.mediaQueries.desktop} {
-    height: 28px;
-  }
+  height: 1.75em;
 `;
 
 export const MenuButton = styled.button`
@@ -39,13 +34,15 @@ export const MenuButton = styled.button`
 
   cursor: pointer;
   background-color: transparent;
-  height: 20px;
-  width: 34px;
+  width: 3em;
+  height: 3em;
   border: none;
+  padding: 0;
 `;
 
 export const Icon = styled.img`
-  height: 20px;
+  height: 100%;
+  width: 100%;
 `;
 
 export const Drawer = styled.div<{collapsed?: boolean}>`
