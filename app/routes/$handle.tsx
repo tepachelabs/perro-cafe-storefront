@@ -184,6 +184,7 @@ const PRODUCTS_QUERY = `#graphql
             currencyCode
           }
         }
+        onlineStoreUrl
       }
     }
   }

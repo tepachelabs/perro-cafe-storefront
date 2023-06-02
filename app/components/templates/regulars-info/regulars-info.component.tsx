@@ -42,6 +42,7 @@ export const RegularsInfo: FC<Props> = ({content, productsTitle, products}) => {
                   key={product.title}
                   image={product.featuredImage!.url}
                   label={product.title}
+                  storeUrl={product.onlineStoreUrl || undefined}
                 />
               ))}
             </Products>
@@ -52,6 +53,7 @@ export const RegularsInfo: FC<Props> = ({content, productsTitle, products}) => {
                   key={product.title}
                   image={product.featuredImage!.url}
                   label={product.title}
+                  storeUrl={product.onlineStoreUrl || undefined}
                   borderless
                   fullWidth
                 />
