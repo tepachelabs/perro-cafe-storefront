@@ -19,6 +19,7 @@ interface PromotionCardProps {
   isRecommended?: boolean;
   isSeasonal?: boolean;
   label: string;
+  storeUrl?: string;
 }
 
 export const PromotionCard: FC<PromotionCardProps & CardProps> = ({
@@ -26,6 +27,7 @@ export const PromotionCard: FC<PromotionCardProps & CardProps> = ({
   isRecommended,
   isSeasonal,
   label,
+  storeUrl,
   fullWidth = false,
   borderless = false,
 }) => {
@@ -35,7 +37,7 @@ export const PromotionCard: FC<PromotionCardProps & CardProps> = ({
     <Card
       fullWidth={fullWidth}
       borderless={borderless}
-      href={store}
+      href={storeUrl}
       target="_blank"
     >
       {showBadge && (

@@ -43,6 +43,7 @@ export default function Index() {
       alt: product.title,
       width: product.variants?.nodes?.[0].image?.width,
       height: product.variants?.nodes?.[0].image?.height,
+      onlineStoreUrl: product.onlineStoreUrl,
     };
   });
 
@@ -89,6 +90,7 @@ const COLLECTIONS_QUERY = `#graphql
                 }
               }
             }
+            onlineStoreUrl
           }
         }
       }
