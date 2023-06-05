@@ -9,13 +9,6 @@ import {Menu} from '~/components/templates/menu';
 import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
 
-export const meta = () => {
-  return {
-    title: 'Culto al Perro Café',
-    description: 'A custom storefront powered by Hydrogen',
-  };
-};
-
 // @ts-ignore
 export async function loader({context}) {
   return await context.storefront.query(COLLECTIONS_QUERY);
