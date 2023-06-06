@@ -1,4 +1,4 @@
-import {FC, HTMLAttributeAnchorTarget} from 'react';
+import {FC} from 'react';
 
 import {
   Img,
@@ -7,18 +7,20 @@ import {
   StyledHorizontalButton,
 } from './horizontal-button.styles';
 import arrow from './img/arrow.svg';
+import {Link} from '../link';
 
 interface Props {
   label: string;
   href: string;
-  target?: HTMLAttributeAnchorTarget;
 }
 
-export const HorizontalButton: FC<Props> = ({label, href, target}) => (
-  <StyledHorizontalButton href={href} target={target}>
-    <ButtonFace>
-      <Label>{label}</Label>
-      <Img src={arrow} alt="Flecha" />
-    </ButtonFace>
-  </StyledHorizontalButton>
+export const HorizontalButton: FC<Props> = ({label, href}) => (
+  <Link to={href}>
+    <StyledHorizontalButton>
+      <ButtonFace>
+        <Label>{label}</Label>
+        <Img src={arrow} alt="Flecha" />
+      </ButtonFace>
+    </StyledHorizontalButton>
+  </Link>
 );
