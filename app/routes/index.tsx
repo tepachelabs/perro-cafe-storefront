@@ -1,6 +1,7 @@
 import {Link, useLoaderData} from '@remix-run/react';
 import {MenuItem} from '@shopify/hydrogen/storefront-api-types';
 
+import {CustomLink} from '~/components/atoms/link';
 import {Hero} from '~/components/organisms/hero';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {Community} from '~/components/templates/community';
@@ -18,7 +19,7 @@ export async function loader({context}) {
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export default function Index() {
   // lmao this is a mess

@@ -1,7 +1,5 @@
 import {FC} from 'react';
 
-import {Section} from '~/components/atoms/section';
-
 import {
   Grid,
   PrimaryContainer,
@@ -12,6 +10,7 @@ import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
+import {Section} from '../../atoms/section';
 import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';

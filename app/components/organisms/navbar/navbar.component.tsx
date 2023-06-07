@@ -4,6 +4,7 @@ import burgerMenu from './img/burger-menu.svg';
 import logo from './img/logo.svg';
 import {MenuButton, Drawer, Flex, _NavBar, Img, Icon} from './navbar.styles';
 import useMediaQuery from '../../../hooks/use-media-query';
+import {Link} from '../../atoms/link';
 
 export {NavBarLink} from './navbar.styles';
 
@@ -26,7 +27,7 @@ export const NavBar: FC<Props> = (props) => {
   return isDesktop ? <DesktopNavBar {...props} /> : <MobileNavBar {...props} />;
 };
 
-const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
+const MobileNavBar: FC<Props> = ({linkRender: LinkRender, links}) => {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const handleMenuPressed = () => {
@@ -43,7 +44,12 @@ const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
       </Flex>
       <Drawer collapsed={!showDrawer}>
         {links.map((link) => (
-          <Link key={link.label} to={link.href} active={link.active}>
+          <Link
+            key={link.label}
+            to={link.href}
+            active={link.active}
+            linkRender={LinkRender}
+          >
             {link.label}
           </Link>
         ))}
@@ -52,13 +58,18 @@ const MobileNavBar: FC<Props> = ({linkRender: Link, links}) => {
   );
 };
 
-const DesktopNavBar: FC<Props> = ({linkRender: Link, links}) => (
+const DesktopNavBar: FC<Props> = ({linkRender: LinkRender, links}) => (
   <_NavBar>
     <Flex>
       <Img src={logo} alt="Logotipo de Culto al Perro Café" />
       <Drawer>
         {links.map((link) => (
-          <Link key={link.label} to={link.href} active={link.active}>
+          <Link
+            key={link.label}
+            to={link.href}
+            active={link.active}
+            linkRender={LinkRender}
+          >
             {link.label}
           </Link>
         ))}
