@@ -1,5 +1,4 @@
 import {Link, useLoaderData} from '@remix-run/react';
-import {MenuItem} from '@shopify/hydrogen/storefront-api-types';
 
 import {CustomLink} from '~/components/atoms/link';
 import {Hero} from '~/components/organisms/hero';
@@ -10,8 +9,7 @@ import {Footer} from '~/components/templates/footer';
 import {Menu} from '~/components/templates/menu';
 import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
-
-const hostname = 'perro.cafe';
+import {mapNavBarLinks} from '~/utils';
 
 // @ts-ignore
 export async function loader({context}) {
@@ -44,16 +42,7 @@ export default function Index() {
     };
   });
 
-  const links = menuItems.map((link: MenuItem) => {
-    const uri = new URL(link.url!);
-    const href = uri.hostname === hostname ? uri.pathname : link.url;
-
-    return {
-      label: link.title,
-      href,
-      ...(link.title === 'Inicio' && {active: 'true'}),
-    };
-  });
+  const links = mapNavBarLinks(menuItems, 'Inicio');
 
   const cultDescription = configData.cult.description;
   const cultImages = configData.cult.images;

@@ -1,5 +1,9 @@
 import {Link, useLoaderData} from '@remix-run/react';
-import type {Node} from '@shopify/hydrogen/storefront-api-types';
+import type {
+  Menu,
+  MenuItem,
+  Node,
+} from '@shopify/hydrogen/storefront-api-types';
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {CustomLink} from '~/components/atoms/link';
@@ -7,6 +11,7 @@ import {NavBar} from '~/components/organisms/navbar';
 import {Footer} from '~/components/templates/footer';
 import {MenuPage} from '~/components/templates/menu-page';
 import configData from '~/config.json';
+import {mapNavBarLinks} from '~/utils';
 
 export const meta = () => {
   const title = 'Menú - Culto al Perro Café';
@@ -25,15 +30,18 @@ export const meta = () => {
 };
 
 export async function loader({context: {storefront}}: LoaderArgs) {
-  const {nodes} = await storefront.query<{nodes: Node}>(COLLECTIONS_QUERY, {
-    variables: {
-      ids: [
-        'gid://shopify/Collection/433512874277',
-        'gid://shopify/Collection/433789960485',
-        'gid://shopify/Collection/434472354085',
-      ],
+  const {menu, nodes} = await storefront.query<{menu: Menu; nodes: Node}>(
+    COLLECTIONS_QUERY,
+    {
+      variables: {
+        ids: [
+          'gid://shopify/Collection/433512874277',
+          'gid://shopify/Collection/433789960485',
+          'gid://shopify/Collection/434472354085',
+        ],
+      },
     },
-  });
+  );
 
   const collections = nodes.map((node: any) => ({
     id: node.id,
@@ -45,20 +53,19 @@ export async function loader({context: {storefront}}: LoaderArgs) {
     })),
   }));
 
-  return json({collections});
+  return json({menu, collections});
 }
 
 // @ts-ignore
 const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export default function Index() {
-  const {collections} = useLoaderData<typeof loader>();
+  const {
+    menu: {items: menuItems},
+    collections,
+  } = useLoaderData<typeof loader>();
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label === 'Menú' && {active: 'true'}),
-  }));
+  const links = mapNavBarLinks(menuItems, 'Menú');
 
   return (
     <>
@@ -71,6 +78,12 @@ export default function Index() {
 
 const COLLECTIONS_QUERY = `#graphql
   query Menu($ids: [ID!]!) {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
     nodes(ids: $ids) {
       ... on Collection {
         id
