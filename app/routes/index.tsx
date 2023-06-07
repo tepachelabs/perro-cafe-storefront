@@ -1,4 +1,5 @@
 import {Link, useLoaderData} from '@remix-run/react';
+import {MenuItem} from '@shopify/hydrogen/storefront-api-types';
 
 import {Hero} from '~/components/organisms/hero';
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
@@ -8,6 +9,8 @@ import {Footer} from '~/components/templates/footer';
 import {Menu} from '~/components/templates/menu';
 import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
+
+const hostname = 'perro.cafe';
 
 // @ts-ignore
 export async function loader({context}) {
@@ -20,6 +23,7 @@ const _Link = (props) => <NavBarLink {...props} as={Link} />;
 export default function Index() {
   // lmao this is a mess
   const {
+    menu: {items: menuItems},
     collections: {nodes},
   } = useLoaderData();
 
@@ -39,11 +43,16 @@ export default function Index() {
     };
   });
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label === 'Inicio' && {active: 'true'}),
-  }));
+  const links = menuItems.map((link: MenuItem) => {
+    const uri = new URL(link.url!);
+    const href = uri.hostname === hostname ? uri.pathname : link.url;
+
+    return {
+      label: link.title,
+      href,
+      ...(link.title === 'Inicio' && {active: 'true'}),
+    };
+  });
 
   const cultDescription = configData.cult.description;
   const cultImages = configData.cult.images;
@@ -65,6 +74,12 @@ export default function Index() {
 
 const COLLECTIONS_QUERY = `#graphql
   query FeaturedCollections {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
     collections(first: 1, query: "web-destacados") {
       nodes {
         products(first: 4) {
