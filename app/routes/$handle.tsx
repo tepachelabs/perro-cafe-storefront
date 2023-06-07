@@ -4,7 +4,8 @@ import {Link, useLoaderData, useParams} from '@remix-run/react';
 import type {Node, Page, Product} from '@shopify/hydrogen/storefront-api-types';
 import {json, MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {CustomLink} from '~/components/atoms/link';
+import {NavBar} from '~/components/organisms/navbar';
 import {
   HeroBanner,
   MetafieldValue,
@@ -94,7 +95,7 @@ export async function loader({
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export function CatchBoundary() {
   const links = configData.navbar.links.map((link) => ({

@@ -3,7 +3,7 @@ import {MenuItem} from '@shopify/hydrogen/storefront-api-types';
 
 import {CustomLink} from '~/components/atoms/link';
 import {Hero} from '~/components/organisms/hero';
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {NavBar} from '~/components/organisms/navbar';
 import {Community} from '~/components/templates/community';
 import {Cult} from '~/components/templates/cult';
 import {Footer} from '~/components/templates/footer';

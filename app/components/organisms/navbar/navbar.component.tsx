@@ -6,8 +6,6 @@ import {MenuButton, Drawer, Flex, _NavBar, Img, Icon} from './navbar.styles';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {Link} from '../../atoms/link';
 
-export {NavBarLink} from './navbar.styles';
-
 interface Props {
   links: Array<{
     label: string;

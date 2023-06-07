@@ -2,7 +2,8 @@ import {Link, useLoaderData} from '@remix-run/react';
 import type {Node} from '@shopify/hydrogen/storefront-api-types';
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {CustomLink} from '~/components/atoms/link';
+import {NavBar} from '~/components/organisms/navbar';
 import {Footer} from '~/components/templates/footer';
 import {MenuPage} from '~/components/templates/menu-page';
 import configData from '~/config.json';
@@ -48,7 +49,7 @@ export async function loader({context: {storefront}}: LoaderArgs) {
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export default function Index() {
   const {collections} = useLoaderData<typeof loader>();
