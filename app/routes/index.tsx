@@ -17,14 +17,12 @@ import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
 
 interface ShopifyLocation extends Location {
-  schedule: Pick<Metafield, 'value'>;
+  schedule?: Pick<Metafield, 'value'>;
 }
 
 export async function loader({context: {storefront}}: LoaderArgs) {
-  const {locations} = await storefront.query<{locations: LocationConnection}>(
-    LOCATIONS_QUERY,
-  );
-  const {collections} = await storefront.query<{
+  const {locations, collections} = await storefront.query<{
+    locations: LocationConnection;
     collections: CollectionConnection;
   }>(COLLECTIONS_QUERY);
 
@@ -77,15 +75,15 @@ export default function Index() {
       <Hero />
       <Menu products={images} />
       <Cult images={cultImages} description={cultDescription} />
-      <Temple address={location.address} schedule={location.schedule} />
+      <Temple address={location?.address} schedule={location?.schedule} />
       <Community reviews={reviews} />
-      <Footer address={location.address} schedule={location.schedule} />
+      <Footer address={location?.address} schedule={location?.schedule} />
     </>
   );
 }
 
-const LOCATIONS_QUERY = `#graphql
-  query Locations {
+const COLLECTIONS_QUERY = `#graphql
+  query FeaturedCollections {
     locations(first: 1) {
       nodes {
         address {
@@ -100,11 +98,6 @@ const LOCATIONS_QUERY = `#graphql
         }
       }
     }
-  }
-`;
-
-const COLLECTIONS_QUERY = `#graphql
-  query FeaturedCollections {
     collections(first: 1, query: "web-destacados") {
       nodes {
         products(first: 4) {

@@ -5,7 +5,7 @@ import type {
   Metafield,
   Node,
 } from '@shopify/hydrogen/storefront-api-types';
-import {json, type LoaderArgs} from '@shopify/remix-oxygen';
+import {type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {Footer} from '~/components/templates/footer';
@@ -13,7 +13,7 @@ import {MenuPage} from '~/components/templates/menu-page';
 import configData from '~/config.json';
 
 interface ShopifyLocation extends Location {
-  schedule: Pick<Metafield, 'value'>;
+  schedule?: Pick<Metafield, 'value'>;
 }
 
 export const meta = () => {
@@ -33,11 +33,10 @@ export const meta = () => {
 };
 
 export async function loader({context: {storefront}}: LoaderArgs) {
-  const {locations} = await storefront.query<{locations: LocationConnection}>(
-    LOCATIONS_QUERY,
-  );
-
-  const {nodes} = await storefront.query<{nodes: Node}>(COLLECTIONS_QUERY, {
+  const {locations, nodes} = await storefront.query<{
+    locations: LocationConnection;
+    nodes: Node;
+  }>(COLLECTIONS_QUERY, {
     variables: {
       ids: [
         'gid://shopify/Collection/433512874277',
@@ -58,15 +57,15 @@ export async function loader({context: {storefront}}: LoaderArgs) {
   }));
 
   const {nodes: locationNodes} = locations as LocationConnection;
-  const location = locationNodes[0] as ShopifyLocation;
+  const location = locationNodes[0];
 
-  return json({collections, location});
+  return {collections, location: location as ShopifyLocation};
 }
 
 // @ts-ignore
 const _Link = (props) => <NavBarLink {...props} as={Link} />;
 
-export default function Index() {
+export default function Menu() {
   const {collections, location} = useLoaderData<typeof loader>();
 
   const links = configData.navbar.links.map((link) => ({
@@ -79,13 +78,13 @@ export default function Index() {
     <>
       <NavBar links={links} linkRender={_Link} />
       <MenuPage collections={collections} />
-      <Footer address={location.address} schedule={location.schedule} />
+      <Footer address={location?.address} schedule={location?.schedule} />
     </>
   );
 }
 
-const LOCATIONS_QUERY = `#graphql
-  query Locations {
+const COLLECTIONS_QUERY = `#graphql
+  query Menu($ids: [ID!]!) {
     locations(first: 1) {
       nodes {
         address {
@@ -100,11 +99,6 @@ const LOCATIONS_QUERY = `#graphql
         }
       }
     }
-  }
-`;
-
-const COLLECTIONS_QUERY = `#graphql
-  query Menu($ids: [ID!]!) {
     nodes(ids: $ids) {
       ... on Collection {
         id

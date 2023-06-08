@@ -9,7 +9,7 @@ import type {
   Page,
   Product,
 } from '@shopify/hydrogen/storefront-api-types';
-import {json, MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
+import {MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {
@@ -22,7 +22,7 @@ import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
 
 interface ShopifyLocation extends Location {
-  schedule: Pick<Metafield, 'value'>;
+  schedule?: Pick<Metafield, 'value'>;
 }
 
 interface ShopifyPage extends Page {
@@ -35,6 +35,7 @@ interface ShopifyPage extends Page {
 
 interface LoaderProps {
   page: ShopifyPage;
+  location?: ShopifyLocation;
   image?: HeroBanner;
   products?: Array<Product>;
 }
@@ -43,7 +44,10 @@ export async function loader({
   params: {handle},
   context: {storefront},
 }: LoaderArgs) {
-  const {page} = await storefront.query<{page: ShopifyPage}>(PAGE_QUERY, {
+  const {locations, page} = await storefront.query<{
+    locations: ShopifyLocation;
+    page: ShopifyPage;
+  }>(PAGE_QUERY, {
     variables: {
       handle: handle!,
     },
@@ -55,6 +59,8 @@ export async function loader({
       statusText: 'El recurso solicitado no fue encontrado.',
     });
   }
+
+  const {nodes: locationNodes} = locations as LocationConnection;
 
   if (page.image || page.products) {
     const requests = [];
@@ -95,13 +101,14 @@ export async function loader({
     }
 
     return {
+      location: locationNodes[0],
       page,
       image: image?.node.image,
       products: products?.nodes,
     } as LoaderProps;
   }
 
-  return {page} as LoaderProps;
+  return {location: locationNodes[0], page} as LoaderProps;
 }
 
 // @ts-ignore
@@ -170,13 +177,13 @@ export default function InfoPage() {
         productsTitle={page.productsTitle}
         products={products}
       />
-      <Footer address={location.address} schedule={location.schedule} />
+      <Footer address={location?.address} schedule={location?.schedule} />
     </>
   );
 }
 
-const LOCATIONS_QUERY = `#graphql
-  query Locations {
+const PAGE_QUERY = `#graphql
+  query Page($handle: String!) {
     locations(first: 1) {
       nodes {
         address {
@@ -191,11 +198,6 @@ const LOCATIONS_QUERY = `#graphql
         }
       }
     }
-  }
-`;
-
-const PAGE_QUERY = `#graphql
-  query Page($handle: String!) {
     page(handle: $handle) {
       body
       id
