@@ -9,7 +9,7 @@ import type {
   Page,
   Product,
 } from '@shopify/hydrogen/storefront-api-types';
-import {json, type LoaderArgs} from '@shopify/remix-oxygen';
+import {json, MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {NavBar, NavBarLink} from '~/components/organisms/navbar';
 import {
@@ -30,32 +30,19 @@ interface ShopifyPage extends Page {
   products?: MetafieldValue;
   image?: MetafieldValue;
   subtitle?: MetafieldValue;
+  seoDescription?: MetafieldValue;
 }
 
-export const meta = () => {
-  return {
-    title: 'Culto al Perro Café',
-    description: 'A custom storefront powered by Hydrogen',
-  };
-};
+interface LoaderProps {
+  page: ShopifyPage;
+  image?: HeroBanner;
+  products?: Array<Product>;
+}
 
-export async function loader({params, context: {storefront}}: LoaderArgs) {
-  const result: {
-    location?: ShopifyLocation;
-    page?: ShopifyPage;
-    image?: HeroBanner;
-    products?: Array<Product>;
-  } = {};
-
-  const {locations} = await storefront.query<{locations: LocationConnection}>(
-    LOCATIONS_QUERY,
-  );
-
-  const {nodes} = locations as LocationConnection;
-  const location = nodes[0] as ShopifyLocation;
-  result.location = location;
-
-  const handle = params.handle;
+export async function loader({
+  params: {handle},
+  context: {storefront},
+}: LoaderArgs) {
   const {page} = await storefront.query<{page: ShopifyPage}>(PAGE_QUERY, {
     variables: {
       handle: handle!,
@@ -69,36 +56,52 @@ export async function loader({params, context: {storefront}}: LoaderArgs) {
     });
   }
 
-  result.page = page as ShopifyPage;
-  if (result.page.image) {
-    const {
-      node: {image},
-    } = await storefront.query<{node: Node}>(IMAGE_QUERY, {
-      variables: {
-        id: page.image.value,
-      },
-    });
+  if (page.image || page.products) {
+    const requests = [];
 
-    result.image = image as HeroBanner;
+    if (page.image) {
+      requests.push(
+        storefront.query<{node: Node}>(IMAGE_QUERY, {
+          variables: {
+            id: page.image.value,
+          },
+        }),
+      );
+    }
+
+    if (page.products) {
+      const ids = JSON.parse(page.products.value);
+
+      requests.push(
+        storefront.query<Node>(PRODUCTS_QUERY, {
+          variables: {ids},
+        }),
+      );
+    }
+
+    const fulfill = await Promise.all(requests);
+
+    let image;
+    let products;
+
+    if (page.image) {
+      image = fulfill[0];
+
+      if (page.products) {
+        products = fulfill[1];
+      }
+    } else {
+      products = fulfill[0];
+    }
+
+    return {
+      page,
+      image: image?.node.image,
+      products: products?.nodes,
+    } as LoaderProps;
   }
 
-  if (page && page.products) {
-    const productIds = JSON.parse(page.products.value);
-    const {nodes: products} = await storefront.query<Node>(PRODUCTS_QUERY, {
-      variables: {
-        ids: productIds,
-      },
-    });
-
-    result.products = products as Array<Product>;
-  }
-
-  return json({
-    location: result.location,
-    page: result.page,
-    image: result.image,
-    products: result.products,
-  });
+  return {page} as LoaderProps;
 }
 
 // @ts-ignore
@@ -118,6 +121,31 @@ export function CatchBoundary() {
     </>
   );
 }
+
+export const meta: MetaFunction<typeof loader> = ({data, params}) => {
+  if (!data || !data.page) {
+    return {};
+  }
+
+  const pageSeo = data.page.seo!;
+  const title = pageSeo?.title || `${data.page.title} - Culto al Perro Café`;
+  const url = `https://perro.cafe/${params.handle}`;
+  const description = pageSeo.description || null;
+  const image = data.image ? data.image.url : null;
+
+  return {
+    title,
+    description,
+    url,
+    'og:title': title,
+    'og:description': description,
+    'og:url': url,
+    'og:image': image,
+    'twitter:title': title,
+    'twitter:url': url,
+    'twitter:description': description,
+  };
+};
 
 export default function InfoPage() {
   const {handle} = useParams();
@@ -184,6 +212,13 @@ const PAGE_QUERY = `#graphql
       }
       subtitle: metafield(namespace: "custom", key: "subtitle") {
         value
+      }
+      seoDescription: metafield(namespace: "custom", key: "seo_description") {
+        value
+      }
+      seo {
+        description
+        title
       }
     }
   }

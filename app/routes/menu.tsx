@@ -17,9 +17,18 @@ interface ShopifyLocation extends Location {
 }
 
 export const meta = () => {
+  const title = 'Menú - Culto al Perro Café';
+  const description =
+    'Descubre nuestro toque casero, con ingredientes de la más alta calidad, seleccionados cuidadosamente para ti.';
+  const url = 'https://perro.cafe/menu';
+
   return {
-    title: 'Culto al Perro Café',
-    description: 'A custom storefront powered by Hydrogen',
+    title,
+    'og:title': title,
+    description,
+    url,
+    'og:url': url,
+    'twitter:url': url,
   };
 };
 

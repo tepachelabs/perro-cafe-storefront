@@ -20,13 +20,6 @@ interface ShopifyLocation extends Location {
   schedule: Pick<Metafield, 'value'>;
 }
 
-export const meta = () => {
-  return {
-    title: 'Culto al Perro Café',
-    description: 'A custom storefront powered by Hydrogen',
-  };
-};
-
 export async function loader({context: {storefront}}: LoaderArgs) {
   const {locations} = await storefront.query<{locations: LocationConnection}>(
     LOCATIONS_QUERY,
