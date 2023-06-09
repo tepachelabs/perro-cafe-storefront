@@ -129,7 +129,7 @@ export function CatchBoundary() {
   return (
     <>
       <NavBar links={links} linkRender={_Link} />
-      <RegularsHero />
+      <RegularsHero linkRender={_Link} />
       <Footer />
     </>
   );
@@ -179,6 +179,7 @@ export default function InfoPage() {
         title={page.title}
         subtitle={page.subtitle}
         imgSrc={image}
+        linkRender={_Link}
       />
       <RegularsInfo
         content={page.body}

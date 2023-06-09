@@ -26,6 +26,14 @@ export const PrimaryContainer = styled.div`
 
   padding: 2rem 1.25rem 1rem;
 
+  & > a {
+    padding: 0;
+    margin: 0;
+    height: unset;
+    line-height: unset;
+    border-bottom: none;
+  }
+
   ${({theme}) => theme.mediaQueries.desktop} {
     flex: 1;
     padding: 2rem 1.25rem;
