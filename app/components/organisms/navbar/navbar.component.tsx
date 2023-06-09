@@ -1,10 +1,10 @@
-import {FC, ReactNode, useState} from 'react';
+import {FC, useState} from 'react';
 
 import burgerMenu from './img/burger-menu.svg';
 import logo from './img/logo.svg';
 import {MenuButton, Drawer, Flex, _NavBar, Img, Icon} from './navbar.styles';
 import useMediaQuery from '../../../hooks/use-media-query';
-import {Link} from '../../atoms/link';
+import {Link, LinkRender} from '../../atoms/link';
 
 interface Props {
   links: Array<{
@@ -12,11 +12,7 @@ interface Props {
     href: string;
     active?: boolean | string;
   }>;
-  linkRender: FC<{
-    to: string;
-    children: ReactNode;
-    active?: boolean | string;
-  }>;
+  linkRender: LinkRender;
 }
 
 export const NavBar: FC<Props> = (props) => {

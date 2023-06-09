@@ -95,4 +95,12 @@ export const RegularsHeroBanner = styled.img`
 
 export const HeroButtonContainer = styled.div`
   margin: 0 1.5rem 2rem;
+
+  & > a {
+    padding: 0;
+    margin: 0;
+    height: unset;
+    line-height: unset;
+    border-bottom: none;
+  }
 `;

@@ -14,7 +14,7 @@ export const ButtonFace = styled.img`
   transition: transform 200ms ease;
 `;
 
-export const StyledSeeMenuButton = styled.a`
+export const StyledSeeMenuButton = styled.span`
   display: block;
 
   background-color: #c04625;

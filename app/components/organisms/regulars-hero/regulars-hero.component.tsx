@@ -12,6 +12,7 @@ import {
   SecondaryContainer,
 } from './regulars-hero.styles';
 import {HorizontalButton} from '../../atoms/horizontal-button';
+import {LinkRender} from '../../atoms/link';
 
 export type MetafieldValue = Pick<Metafield, 'value'>;
 export type HeroBanner = Pick<Image, 'url'>;
@@ -20,15 +21,25 @@ interface Props {
   title?: string;
   subtitle?: MetafieldValue;
   imgSrc?: HeroBanner;
+  linkRender: LinkRender;
 }
 
-export const RegularsHero: FC<Props> = ({title, subtitle, imgSrc}) => (
+export const RegularsHero: FC<Props> = ({
+  title,
+  subtitle,
+  imgSrc,
+  linkRender: _Link,
+}) => (
   <RegularsHeroContainer>
     <PrimaryContainer>
       <RegularsTitle>{title || 'Página no encontrada'}</RegularsTitle>
       {!title && (
         <HeroButtonContainer>
-          <HorizontalButton label="Volver al inicio" href="/" />
+          <HorizontalButton
+            label="Volver al inicio"
+            href="/"
+            linkRender={_Link}
+          />
         </HeroButtonContainer>
       )}
       {subtitle && <Description bold>{subtitle.value}</Description>}

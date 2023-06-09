@@ -11,6 +11,14 @@ export const PrimaryContainer = styled.div`
     margin: 1rem 0;
   }
 
+  & > a {
+    padding: 0;
+    margin: 0;
+    height: unset;
+    line-height: unset;
+    border-bottom: none;
+  }
+
   ${({theme}) => theme.mediaQueries.desktop} {
     width: 50%;
   }
