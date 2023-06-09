@@ -8,12 +8,27 @@ interface ArrowButtonProps {
 }
 
 export const ArrowButton: FC<ArrowButtonProps> = ({onClick, title}) => {
-  return <_ArrowButton onClick={onClick} title={title} type="button" />;
+  return (
+    <_ArrowButton
+      onClick={onClick}
+      title={title}
+      type="button"
+      aria-label={title}
+    />
+  );
 };
 
 // alias
 export const RightArrow = ArrowButton;
 
 export const LeftArrow: FC<ArrowButtonProps> = ({onClick, title}) => {
-  return <_ArrowButton isLeft onClick={onClick} title={title} type="button" />;
+  return (
+    <_ArrowButton
+      isLeft
+      onClick={onClick}
+      title={title}
+      type="button"
+      aria-label={title}
+    />
+  );
 };
