@@ -45,6 +45,7 @@ export const Menu: FC<Props> = ({products, linkRender: _Link}) => {
         <HorizontalButton
           label="Ver el menú"
           href={configData.globalLinks.menu}
+          linkRender={_Link}
         />
       </PrimaryContainer>
       {isDesktop ? (

@@ -29,7 +29,7 @@ export const ButtonFace = styled.span`
   }
 `;
 
-export const StyledHorizontalButton = styled.a`
+export const StyledHorizontalButton = styled.span`
   display: block;
   width: 220px;
   height: 46px;

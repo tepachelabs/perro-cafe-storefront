@@ -17,6 +17,7 @@ import configData from '../../../config.json';
 import {ExplosionBadge} from '../../atoms/explosion-badge';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
+import {LinkRender} from '../../atoms/link';
 import {MapSketch} from '../../atoms/map-sketch';
 import {Paragraph} from '../../atoms/paragraph';
 import {Subtitle} from '../../molecules/subtitle';
@@ -24,9 +25,10 @@ import {Subtitle} from '../../molecules/subtitle';
 interface Props {
   address?: LocationAddress;
   schedule?: Pick<Metafield, 'value'>;
+  linkRender: LinkRender;
 }
 
-export const Temple: FC<Props> = ({address, schedule}) => {
+export const Temple: FC<Props> = ({address, schedule, linkRender: _Link}) => {
   const formattedAddress = address
     ? `${address.address1}, ${address.address2}. C.P. ${address.zip}. ${address.city}, ${address.province}.`
     : configData.location;
@@ -56,6 +58,7 @@ export const Temple: FC<Props> = ({address, schedule}) => {
           <HorizontalButton
             label="¿Cómo llegar?"
             href={configData.globalLinks.googleMaps}
+            linkRender={_Link}
           />
         </PrimaryContainer>
         <SecondaryContainer>

@@ -1,3 +1,5 @@
+import {FC} from 'react';
+
 import {
   HeroContainer,
   TextContainer,
@@ -21,10 +23,15 @@ import {
 } from '../../../components/molecules/social-media-buttons';
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
+import {LinkRender} from '../../atoms/link';
 
 const {heroSubtitle, socialMedia, globalLinks} = configData;
 
-export const Hero = () => {
+interface Props {
+  linkRender: LinkRender;
+}
+
+export const Hero: FC<Props> = ({linkRender: _Link}) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   return (
@@ -44,7 +51,7 @@ export const Hero = () => {
       <SecondaryContainer>
         {isDesktop && (
           <SeeMenuButtonContainer>
-            <SeeMenuButton href={globalLinks.menu} />
+            <SeeMenuButton href={globalLinks.menu} linkRender={_Link} />
           </SeeMenuButtonContainer>
         )}
         <HeroBannerImg src={HeroBanner} alt="Fondo de cabecera" />

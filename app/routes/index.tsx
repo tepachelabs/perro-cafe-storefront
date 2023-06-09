@@ -74,10 +74,14 @@ export default function Index() {
   return (
     <>
       <NavBar links={links} linkRender={_Link} />
-      <Hero />
+      <Hero linkRender={_Link} />
       <Menu products={images} linkRender={_Link} />
       <Cult images={cultImages} description={cultDescription} />
-      <Temple address={location?.address} schedule={location?.schedule} />
+      <Temple
+        address={location?.address}
+        schedule={location?.schedule}
+        linkRender={_Link}
+      />
       <Community reviews={reviews} />
       <Footer address={location?.address} schedule={location?.schedule} />
     </>
