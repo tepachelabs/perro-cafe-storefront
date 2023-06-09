@@ -34,7 +34,19 @@ export async function loader({context: {storefront}}: LoaderArgs) {
   const {nodes} = locations as LocationConnection;
   const location = nodes[0] as ShopifyLocation;
 
-  return {menu: menu as NavigationMenu, collection, location};
+  const products = (collection as Collection).products.nodes.map((product) => ({
+    src: product.featuredImage?.url!,
+    alt: product.title,
+    width: product.featuredImage?.width!,
+    height: product.featuredImage?.height!,
+    onlineStoreUrl: product.onlineStoreUrl || undefined,
+  }));
+
+  return {
+    menu: menu as NavigationMenu,
+    products,
+    location,
+  };
 }
 
 // @ts-ignore
@@ -44,22 +56,11 @@ export default function Index() {
   // lmao this is a mess
   const {
     menu: {items: menuItems},
-    collection: {
-      products: {nodes: products},
-    },
+    products,
     location,
   } = useLoaderData<typeof loader>();
 
-  // @ts-ignore
-  const images = products.map((product) => {
-    return {
-      src: product.featuredImage?.url,
-      alt: product.title,
-      width: product.featuredImage?.width,
-      height: product.featuredImage?.height,
-      onlineStoreUrl: product.onlineStoreUrl,
-    };
-  });
+  const images = products;
 
   const links = mapNavBarLinks(menuItems, 'Inicio');
 
