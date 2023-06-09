@@ -22,6 +22,7 @@ interface Props {
     alt: string;
     width: number;
     height: number;
+    onlineStoreUrl?: string;
   }>;
   linkRender: LinkRender;
 }
@@ -54,6 +55,8 @@ export const Menu: FC<Props> = ({products, linkRender: _Link}) => {
               key={product.alt}
               image={product.src}
               label={product.alt}
+              storeUrl={product.onlineStoreUrl}
+              linkRender={_Link}
             />
           ))}
         </Grid>
@@ -65,6 +68,8 @@ export const Menu: FC<Props> = ({products, linkRender: _Link}) => {
                 key={product.alt}
                 image={product.src}
                 label={product.alt}
+                storeUrl={product.onlineStoreUrl}
+                linkRender={_Link}
                 borderless
                 fullWidth
               />

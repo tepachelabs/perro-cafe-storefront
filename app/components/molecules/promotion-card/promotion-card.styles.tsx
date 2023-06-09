@@ -17,7 +17,17 @@ export const Card = styled.div<CardProps>`
   ${({fullWidth}) => fullWidth && 'width: 100%'};
   ${({borderless}) => borderless && 'border: none'};
 
-  & > p {
+  & > a {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-size: unset;
+    line-height: unset;
+    height: unset;
+    border-bottom: none;
+  }
+
+  & p {
     background-color: ${(props) => props.theme.colors.primary};
     border-top: 3px solid ${(props) => props.theme.colors.black};
     font-weight: bold;
