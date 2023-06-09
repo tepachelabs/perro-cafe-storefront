@@ -3,6 +3,7 @@ import parse from 'html-react-parser';
 import {FC} from 'react';
 
 import {
+  CarouselContainer,
   InfoSection,
   Products,
   ProductsSection,
@@ -55,19 +56,21 @@ export const RegularsInfo: FC<Props> = ({
               ))}
             </Products>
           ) : (
-            <Carousel>
-              {products.map((product) => (
-                <PromotionCard
-                  key={product.title}
-                  image={product.featuredImage!.url}
-                  label={product.title}
-                  storeUrl={product.onlineStoreUrl || undefined}
-                  linkRender={_Link}
-                  borderless
-                  fullWidth
-                />
-              ))}
-            </Carousel>
+            <CarouselContainer>
+              <Carousel>
+                {products.map((product) => (
+                  <PromotionCard
+                    key={product.title}
+                    image={product.featuredImage!.url}
+                    label={product.title}
+                    storeUrl={product.onlineStoreUrl || undefined}
+                    linkRender={_Link}
+                    borderless
+                    fullWidth
+                  />
+                ))}
+              </Carousel>
+            </CarouselContainer>
           )}
         </ProductsSection>
       )}
