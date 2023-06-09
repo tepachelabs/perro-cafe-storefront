@@ -61,3 +61,7 @@ export const Products = styled.div`
   flex-direction: row;
   gap: 1rem;
 `;
+
+export const CarouselContainer = styled.div`
+  margin: 0 auto;
+`;
