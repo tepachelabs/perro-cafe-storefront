@@ -5,6 +5,7 @@ import {
   LocationConnection,
   Menu as NavigationMenu,
   Metafield,
+  Collection,
 } from '@shopify/hydrogen/storefront-api-types';
 import {LoaderArgs} from '@shopify/remix-oxygen';
 
@@ -24,16 +25,16 @@ interface ShopifyLocation extends Location {
 }
 
 export async function loader({context: {storefront}}: LoaderArgs) {
-  const {menu, locations, collections} = await storefront.query<{
+  const {menu, locations, collection} = await storefront.query<{
     menu: NavigationMenu;
     locations: LocationConnection;
-    collections: CollectionConnection;
+    collection: Collection;
   }>(COLLECTIONS_QUERY);
 
   const {nodes} = locations as LocationConnection;
   const location = nodes[0] as ShopifyLocation;
 
-  return {menu: menu as NavigationMenu, collections, location};
+  return {menu: menu as NavigationMenu, collection, location};
 }
 
 // @ts-ignore
@@ -43,15 +44,11 @@ export default function Index() {
   // lmao this is a mess
   const {
     menu: {items: menuItems},
-    collections: {nodes},
-    location,
-  } = useLoaderData<typeof loader>();
-
-  const [
-    {
+    collection: {
       products: {nodes: products},
     },
-  ] = nodes;
+    location,
+  } = useLoaderData<typeof loader>();
 
   // @ts-ignore
   const images = products.map((product) => {
