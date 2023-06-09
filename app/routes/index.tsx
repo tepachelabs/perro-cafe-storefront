@@ -1,13 +1,15 @@
 import {Link, useLoaderData} from '@remix-run/react';
 
+import {CustomLink} from '~/components/atoms/link';
 import {Hero} from '~/components/organisms/hero';
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {NavBar} from '~/components/organisms/navbar';
 import {Community} from '~/components/templates/community';
 import {Cult} from '~/components/templates/cult';
 import {Footer} from '~/components/templates/footer';
 import {Menu} from '~/components/templates/menu';
 import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
+import {mapNavBarLinks} from '~/utils';
 
 // @ts-ignore
 export async function loader({context}) {
@@ -15,11 +17,12 @@ export async function loader({context}) {
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export default function Index() {
   // lmao this is a mess
   const {
+    menu: {items: menuItems},
     collections: {nodes},
   } = useLoaderData();
 
@@ -39,11 +42,7 @@ export default function Index() {
     };
   });
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label === 'Inicio' && {active: 'true'}),
-  }));
+  const links = mapNavBarLinks(menuItems, 'Inicio');
 
   const cultDescription = configData.cult.description;
   const cultImages = configData.cult.images;
@@ -65,6 +64,12 @@ export default function Index() {
 
 const COLLECTIONS_QUERY = `#graphql
   query FeaturedCollections {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
     collections(first: 1, query: "web-destacados") {
       nodes {
         products(first: 4) {

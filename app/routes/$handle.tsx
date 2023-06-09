@@ -1,10 +1,16 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable check-file/filename-naming-convention */
 import {Link, useLoaderData, useParams} from '@remix-run/react';
-import type {Node, Page, Product} from '@shopify/hydrogen/storefront-api-types';
+import type {
+  Menu,
+  Node,
+  Page,
+  Product,
+} from '@shopify/hydrogen/storefront-api-types';
 import {json, MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {CustomLink} from '~/components/atoms/link';
+import {NavBar} from '~/components/organisms/navbar';
 import {
   HeroBanner,
   MetafieldValue,
@@ -13,6 +19,7 @@ import {
 import {Footer} from '~/components/templates/footer';
 import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
+import {mapNavBarLinks} from '~/utils';
 
 interface ShopifyPage extends Page {
   productsTitle?: MetafieldValue;
@@ -23,6 +30,7 @@ interface ShopifyPage extends Page {
 }
 
 interface LoaderProps {
+  menu: Menu;
   page: ShopifyPage;
   image?: HeroBanner;
   products?: Array<Product>;
@@ -32,11 +40,14 @@ export async function loader({
   params: {handle},
   context: {storefront},
 }: LoaderArgs) {
-  const {page} = await storefront.query<{page: ShopifyPage}>(PAGE_QUERY, {
-    variables: {
-      handle: handle!,
+  const {menu, page} = await storefront.query<{menu: Menu; page: ShopifyPage}>(
+    PAGE_QUERY,
+    {
+      variables: {
+        handle: handle!,
+      },
     },
-  });
+  );
 
   if (!page) {
     throw new Response(null, {
@@ -84,17 +95,18 @@ export async function loader({
     }
 
     return {
+      menu,
       page,
       image: image?.node.image,
       products: products?.nodes,
     } as LoaderProps;
   }
 
-  return {page} as LoaderProps;
+  return {menu, page} as LoaderProps;
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export function CatchBoundary() {
   const links = configData.navbar.links.map((link) => ({
@@ -138,13 +150,14 @@ export const meta: MetaFunction<typeof loader> = ({data, params}) => {
 
 export default function InfoPage() {
   const {handle} = useParams();
-  const {page, image, products} = useLoaderData<typeof loader>();
+  const {
+    menu: {items: menuItems},
+    page,
+    image,
+    products,
+  } = useLoaderData<typeof loader>();
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label.match(new RegExp(handle!, 'gi')) && {active: 'true'}),
-  }));
+  const links = mapNavBarLinks(menuItems, handle!);
 
   return (
     <>
@@ -166,6 +179,12 @@ export default function InfoPage() {
 
 const PAGE_QUERY = `#graphql
   query Page($handle: String!) {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
     page(handle: $handle) {
       body
       id
