@@ -16,10 +16,11 @@ import {
 import Posthog from 'posthog-js';
 import {useEffect} from 'react';
 
+import configData from '~/config.json';
 import {GlobalStyles} from '~/global.styles';
 import theme from '~/theme';
 
-import favicon from '../public/favicon.svg';
+import favicon from '../public/favicon.png';
 
 export const links: LinksFunction = () => {
   return [
@@ -47,16 +48,39 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  viewport: 'width=device-width,initial-scale=1',
-});
+export const meta: MetaFunction<typeof loader> = ({data: {shop}}) => {
+  const metaTags: Record<string, string> = {
+    ...configData.seo,
+  };
+
+  if (!shop) {
+    return metaTags;
+  }
+
+  const {name, description, brand} = shop;
+
+  metaTags['title'] = name;
+  metaTags['og:title'] = name;
+
+  if (description) {
+    metaTags['description'] = description;
+    metaTags['og:description'] = description;
+    metaTags['twitter:description'] = description;
+  }
+
+  if (brand?.coverImage?.image?.url) {
+    metaTags['og:image'] = brand.coverImage.image.url;
+    metaTags['twitter:image'] = brand.coverImage.image.url;
+  }
+
+  return metaTags;
+};
 
 export async function loader({context}: LoaderArgs) {
-  const layout = await context.storefront.query<{shop: Shop}>(LAYOUT_QUERY);
+  const {shop} = await context.storefront.query<{shop: Shop}>(LAYOUT_QUERY);
 
   return {
-    layout,
+    shop: shop as Shop,
     ENV: {
       PUBLIC_POSTHOG_KEY: context.env.PUBLIC_POSTHOG_KEY,
       PUBLIC_ROLLBAR_KEY: context.env.PUBLIC_ROLLBAR_KEY,
@@ -127,6 +151,13 @@ const LAYOUT_QUERY = `#graphql
     shop {
       name
       description
+      brand {
+        coverImage {
+          image {
+            url
+          }
+        }
+      }
     }
   }
 `;

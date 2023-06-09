@@ -1,3 +1,7 @@
+import {
+  LocationAddress,
+  Metafield,
+} from '@shopify/hydrogen/storefront-api-types';
 import {FC} from 'react';
 
 import {
@@ -23,20 +27,35 @@ import {
   TwitterButton,
 } from '../../molecules/social-media-buttons';
 
-export const Footer: FC = () => {
+interface Props {
+  address?: LocationAddress;
+  schedule?: Pick<Metafield, 'value'>;
+}
+
+export const Footer: FC<Props> = ({address, schedule}) => {
+  const formattedAddress = address
+    ? `${address.address1}, ${address.address2}. C.P. ${address.zip}. ${address.city}, ${address.province}.`
+    : configData.location;
+  const splitSchedule = schedule
+    ? schedule.value.split('\n')
+    : configData.schedule;
+
   return (
     <FooterBackground>
       <FooterContainer>
         <TopContainer>
           <Container>
             <Subtitle>Dirección</Subtitle>
-            <LightParagraph>{configData.location}</LightParagraph>
+            <LightParagraph>{formattedAddress}</LightParagraph>
           </Container>
           <Container>
             <Subtitle>Horario</Subtitle>
             <ParagraphWrapper>
-              <LightParagraph>{configData.schedule.weekdays}</LightParagraph>
-              <LightParagraph>{configData.schedule.sunday}</LightParagraph>
+              {splitSchedule.map((sched) => (
+                <LightParagraph key={`Footer Schedule ${sched}`}>
+                  {sched}
+                </LightParagraph>
+              ))}
             </ParagraphWrapper>
           </Container>
           <Container>

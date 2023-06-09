@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
-import {select} from '~/utils';
-
+import {select} from '../../../utils';
 import {Paragraph} from '../../atoms/paragraph';
 
 export interface CardProps {

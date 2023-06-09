@@ -69,10 +69,7 @@
     }
   ],
   "location": "Blvd. Juan Navarrete 125, local 15. Valle Verde. C.P. 83200. Hermosillo, Sonora.",
-  "schedule": {
-    "weekdays": "Martes a Domingo: 3 - 10 PM",
-    "sunday": "Lunes: Cerrado"
-  },
+  "schedule": ["Martes a Domingo: 3 - 10 PM", "Lunes: Cerrado"],
   "footerInfo": ["Cafetería indie experimental,", "Con ❤ desde Hermosillo."],
   "copyright": "Copyright © 2020-2023 TepacheLabs. Todos los derechos reservados.",
   "regularsHero": {
@@ -105,5 +102,25 @@
       "footer": "Molestie consequat, vel illum dolore eu feugiat."
     }
   ],
-  "regularsDisclaimer": "*Aplican restricciones. No válido con otras promociones. Los sellos son intransferibles. Las recompensas no pueden ser cobradas en efectivo. Recompensas sujetas a existencias. El programa de recompensas puede ser negado a discreción si se considera que se está haciendo mal uso de la misma."
+  "regularsDisclaimer": "*Aplican restricciones. No válido con otras promociones. Los sellos son intransferibles. Las recompensas no pueden ser cobradas en efectivo. Recompensas sujetas a existencias. El programa de recompensas puede ser negado a discreción si se considera que se está haciendo mal uso de la misma.",
+  "seo": {
+    "charset": "utf-8",
+    "viewport": "width=device-width,initial-scale=1",
+    "robots": "index, follow",
+    "title": "Culto al Perro Café",
+    "description": "Sirviendo el café más perrón de Hermosillo, Sonora. La cafetería favorita de la gente que trabaja. Ven con tu laptop, libro favorito y/o mascota.",
+    "keywords": "cafeteria, cafe, café, promocion, frappe, cultoperrocafe, frappés, hermosillo, destino, gastronómico, pet friendly, mascotas, libros, juegos de mesa, internet, wifi",
+    "image": "https://perro.cafe/thumbnail.png",
+    "url": "https://perro.cafe",
+    "twitter:app:country": "México",
+    "twitter:card": "summary",
+    "twitter:site": "@cultoperrocafe",
+    "twitter:image": "https://perro.cafe/thumbnail.png",
+    "twitter:url": "https://perro.cafe",
+    "og:title": "Culto al Perro Café",
+    "og:description": "Sirviendo el café más perrón de Hermosillo, Sonora. La cafetería favorita de la gente que trabaja. Ven con tu laptop, libro favorito y/o mascota.",
+    "og:image": "https://perro.cafe/thumbnail.png",
+    "og:url": "https://perro.cafe",
+    "og:type": "website"
+  }
 }

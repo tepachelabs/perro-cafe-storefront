@@ -1,10 +1,19 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable check-file/filename-naming-convention */
 import {Link, useLoaderData, useParams} from '@remix-run/react';
-import type {Node, Page, Product} from '@shopify/hydrogen/storefront-api-types';
-import {json, type LoaderArgs} from '@shopify/remix-oxygen';
+import type {
+  Menu,
+  Location,
+  LocationConnection,
+  Metafield,
+  Node,
+  Page,
+  Product,
+} from '@shopify/hydrogen/storefront-api-types';
+import {MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {CustomLink} from '~/components/atoms/link';
+import {NavBar} from '~/components/organisms/navbar';
 import {
   HeroBanner,
   MetafieldValue,
@@ -13,30 +22,37 @@ import {
 import {Footer} from '~/components/templates/footer';
 import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
+import {mapNavBarLinks} from '~/utils';
+
+interface ShopifyLocation extends Location {
+  schedule?: Pick<Metafield, 'value'>;
+}
 
 interface ShopifyPage extends Page {
   productsTitle?: MetafieldValue;
   products?: MetafieldValue;
   image?: MetafieldValue;
   subtitle?: MetafieldValue;
+  seoDescription?: MetafieldValue;
 }
 
-export const meta = () => {
-  return {
-    title: 'Culto al Perro Café',
-    description: 'A custom storefront powered by Hydrogen',
-  };
-};
+interface LoaderProps {
+  menu: Menu;
+  page: ShopifyPage;
+  location?: ShopifyLocation;
+  image?: HeroBanner;
+  products?: Array<Product>;
+}
 
-export async function loader({params, context: {storefront}}: LoaderArgs) {
-  const result: {
-    page?: ShopifyPage;
-    image?: HeroBanner;
-    products?: Array<Product>;
-  } = {};
-
-  const handle = params.handle;
-  const {page} = await storefront.query<{page: ShopifyPage}>(PAGE_QUERY, {
+export async function loader({
+  params: {handle},
+  context: {storefront},
+}: LoaderArgs) {
+  const {menu, locations, page} = await storefront.query<{
+    menu: Menu;
+    locations: ShopifyLocation;
+    page: ShopifyPage;
+  }>(PAGE_QUERY, {
     variables: {
       handle: handle!,
     },
@@ -49,39 +65,60 @@ export async function loader({params, context: {storefront}}: LoaderArgs) {
     });
   }
 
-  result.page = page as ShopifyPage;
-  if (result.page.image) {
-    const {
-      node: {image},
-    } = await storefront.query<{node: Node}>(IMAGE_QUERY, {
-      variables: {
-        id: page.image.value,
-      },
-    });
+  const {nodes: locationNodes} = locations as LocationConnection;
 
-    result.image = image as HeroBanner;
+  if (page.image || page.products) {
+    const requests = [];
+
+    if (page.image) {
+      requests.push(
+        storefront.query<{node: Node}>(IMAGE_QUERY, {
+          variables: {
+            id: page.image.value,
+          },
+        }),
+      );
+    }
+
+    if (page.products) {
+      const ids = JSON.parse(page.products.value);
+
+      requests.push(
+        storefront.query<Node>(PRODUCTS_QUERY, {
+          variables: {ids},
+        }),
+      );
+    }
+
+    const fulfill = await Promise.all(requests);
+
+    let image;
+    let products;
+
+    if (page.image) {
+      image = fulfill[0];
+
+      if (page.products) {
+        products = fulfill[1];
+      }
+    } else {
+      products = fulfill[0];
+    }
+
+    return {
+      menu,
+      location: locationNodes[0],
+      page,
+      image: image?.node.image,
+      products: products?.nodes,
+    } as LoaderProps;
   }
 
-  if (page && page.products) {
-    const productIds = JSON.parse(page.products.value);
-    const {nodes: products} = await storefront.query<Node>(PRODUCTS_QUERY, {
-      variables: {
-        ids: productIds,
-      },
-    });
-
-    result.products = products as Array<Product>;
-  }
-
-  return json({
-    page: result.page,
-    image: result.image,
-    products: result.products,
-  });
+  return {menu, location: locationNodes[0], page} as LoaderProps;
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export function CatchBoundary() {
   const links = configData.navbar.links.map((link) => ({
@@ -98,15 +135,42 @@ export function CatchBoundary() {
   );
 }
 
+export const meta: MetaFunction<typeof loader> = ({data, params}) => {
+  if (!data || !data.page) {
+    return {};
+  }
+
+  const pageSeo = data.page.seo!;
+  const title = pageSeo?.title || `${data.page.title} - Culto al Perro Café`;
+  const url = `https://perro.cafe/${params.handle}`;
+  const description = pageSeo.description || null;
+  const image = data.image ? data.image.url : null;
+
+  return {
+    title,
+    description,
+    url,
+    'og:title': title,
+    'og:description': description,
+    'og:url': url,
+    'og:image': image,
+    'twitter:title': title,
+    'twitter:url': url,
+    'twitter:description': description,
+  };
+};
+
 export default function InfoPage() {
   const {handle} = useParams();
-  const {page, image, products} = useLoaderData<typeof loader>();
+  const {
+    menu: {items: menuItems},
+    location,
+    page,
+    image,
+    products,
+  } = useLoaderData<typeof loader>();
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label.match(new RegExp(handle!, 'gi')) && {active: 'true'}),
-  }));
+  const links = mapNavBarLinks(menuItems, handle!);
 
   return (
     <>
@@ -121,13 +185,33 @@ export default function InfoPage() {
         productsTitle={page.productsTitle}
         products={products}
       />
-      <Footer />
+      <Footer address={location?.address} schedule={location?.schedule} />
     </>
   );
 }
 
 const PAGE_QUERY = `#graphql
   query Page($handle: String!) {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
+    locations(first: 1) {
+      nodes {
+        address {
+          address1
+          address2
+          zip
+          city
+          province
+        }
+        schedule: metafield(namespace: "custom", key: "schedule") {
+          value
+        }
+      }
+    }
     page(handle: $handle) {
       body
       id
@@ -144,6 +228,13 @@ const PAGE_QUERY = `#graphql
       }
       subtitle: metafield(namespace: "custom", key: "subtitle") {
         value
+      }
+      seoDescription: metafield(namespace: "custom", key: "seo_description") {
+        value
+      }
+      seo {
+        description
+        title
       }
     }
   }

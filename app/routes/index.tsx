@@ -1,34 +1,51 @@
 import {Link, useLoaderData} from '@remix-run/react';
+import {
+  CollectionConnection,
+  Location,
+  LocationConnection,
+  Menu as NavigationMenu,
+  Metafield,
+} from '@shopify/hydrogen/storefront-api-types';
+import {LoaderArgs} from '@shopify/remix-oxygen';
 
+import {CustomLink} from '~/components/atoms/link';
 import {Hero} from '~/components/organisms/hero';
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {NavBar} from '~/components/organisms/navbar';
 import {Community} from '~/components/templates/community';
 import {Cult} from '~/components/templates/cult';
 import {Footer} from '~/components/templates/footer';
 import {Menu} from '~/components/templates/menu';
 import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
+import {mapNavBarLinks} from '~/utils';
 
-export const meta = () => {
-  return {
-    title: 'Culto al Perro Café',
-    description: 'A custom storefront powered by Hydrogen',
-  };
-};
+interface ShopifyLocation extends Location {
+  schedule?: Pick<Metafield, 'value'>;
+}
 
-// @ts-ignore
-export async function loader({context}) {
-  return await context.storefront.query(COLLECTIONS_QUERY);
+export async function loader({context: {storefront}}: LoaderArgs) {
+  const {menu, locations, collections} = await storefront.query<{
+    menu: NavigationMenu;
+    locations: LocationConnection;
+    collections: CollectionConnection;
+  }>(COLLECTIONS_QUERY);
+
+  const {nodes} = locations as LocationConnection;
+  const location = nodes[0] as ShopifyLocation;
+
+  return {menu: menu as NavigationMenu, collections, location};
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export default function Index() {
   // lmao this is a mess
   const {
+    menu: {items: menuItems},
     collections: {nodes},
-  } = useLoaderData();
+    location,
+  } = useLoaderData<typeof loader>();
 
   const [
     {
@@ -47,11 +64,7 @@ export default function Index() {
     };
   });
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label === 'Inicio' && {active: 'true'}),
-  }));
+  const links = mapNavBarLinks(menuItems, 'Inicio');
 
   const cultDescription = configData.cult.description;
   const cultImages = configData.cult.images;
@@ -64,15 +77,35 @@ export default function Index() {
       <Hero />
       <Menu products={images} />
       <Cult images={cultImages} description={cultDescription} />
-      <Temple />
+      <Temple address={location?.address} schedule={location?.schedule} />
       <Community reviews={reviews} />
-      <Footer />
+      <Footer address={location?.address} schedule={location?.schedule} />
     </>
   );
 }
 
 const COLLECTIONS_QUERY = `#graphql
   query FeaturedCollections {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
+    locations(first: 1) {
+      nodes {
+        address {
+          address1
+          address2
+          zip
+          city
+          province
+        }
+        schedule: metafield(namespace: "custom", key: "schedule") {
+          value
+        }
+      }
+    }
     collections(first: 1, query: "web-destacados") {
       nodes {
         products(first: 4) {
