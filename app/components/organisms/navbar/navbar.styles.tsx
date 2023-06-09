@@ -25,7 +25,11 @@ export const Flex = styled.div`
 `;
 
 export const Img = styled.img`
-  height: 1.75em;
+  height: 1.5em;
+
+  ${(props) => props.theme.mediaQueries.desktop} {
+    height: 1.75em;
+  }
 `;
 
 export const MenuButton = styled.button`
