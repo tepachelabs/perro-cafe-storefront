@@ -7,15 +7,20 @@ import {
   StyledHorizontalButton,
 } from './horizontal-button.styles';
 import arrow from './img/arrow.svg';
-import {Link} from '../link';
+import {Link, LinkRender} from '../link';
 
 interface Props {
   label: string;
   href: string;
+  linkRender: LinkRender;
 }
 
-export const HorizontalButton: FC<Props> = ({label, href}) => (
-  <Link to={href}>
+export const HorizontalButton: FC<Props> = ({
+  label,
+  href,
+  linkRender: _Link,
+}) => (
+  <Link to={href} linkRender={_Link}>
     <StyledHorizontalButton>
       <ButtonFace>
         <Label>{label}</Label>
