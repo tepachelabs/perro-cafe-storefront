@@ -9,9 +9,10 @@ import {
 } from './promotion-card.styles';
 import configData from '../../../config.json';
 import {Badge} from '../../atoms/badge';
+import {Link, LinkRender} from '../../atoms/link';
 
 const {
-  globalLinks: {store},
+  globalLinks: {menu},
 } = configData;
 
 interface PromotionCardProps {
@@ -20,6 +21,7 @@ interface PromotionCardProps {
   isSeasonal?: boolean;
   label: string;
   storeUrl?: string;
+  linkRender: LinkRender;
 }
 
 export const PromotionCard: FC<PromotionCardProps & CardProps> = ({
@@ -30,23 +32,21 @@ export const PromotionCard: FC<PromotionCardProps & CardProps> = ({
   storeUrl,
   fullWidth = false,
   borderless = false,
+  linkRender: _Link,
 }) => {
   const showBadge = isRecommended || isSeasonal;
 
   return (
-    <Card
-      fullWidth={fullWidth}
-      borderless={borderless}
-      href={storeUrl}
-      target="_blank"
-    >
-      {showBadge && (
-        <BadgeContainer>
-          <Badge variant={isRecommended ? 'recommendation' : 'seasonal'} />
-        </BadgeContainer>
-      )}
-      <Img src={image} alt={label} />
-      <Title>{label}</Title>
+    <Card fullWidth={fullWidth} borderless={borderless}>
+      <Link to={storeUrl || menu} linkRender={_Link}>
+        {showBadge && (
+          <BadgeContainer>
+            <Badge variant={isRecommended ? 'recommendation' : 'seasonal'} />
+          </BadgeContainer>
+        )}
+        <Img src={image} alt={label} />
+        <Title>{label}</Title>
+      </Link>
     </Card>
   );
 };

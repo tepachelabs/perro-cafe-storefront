@@ -75,7 +75,7 @@ export default function Index() {
     <>
       <NavBar links={links} linkRender={_Link} />
       <Hero />
-      <Menu products={images} />
+      <Menu products={images} linkRender={_Link} />
       <Cult images={cultImages} description={cultDescription} />
       <Temple address={location?.address} schedule={location?.schedule} />
       <Community reviews={reviews} />

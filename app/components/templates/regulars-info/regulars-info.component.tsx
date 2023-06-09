@@ -11,6 +11,7 @@ import {
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {Divider} from '../../atoms/divider';
+import {LinkRender} from '../../atoms/link';
 import {Paragraph} from '../../atoms/paragraph';
 import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
@@ -24,9 +25,15 @@ interface Props {
   content: string;
   productsTitle?: MetafieldValue;
   products?: Product[];
+  linkRender: LinkRender;
 }
 
-export const RegularsInfo: FC<Props> = ({content, productsTitle, products}) => {
+export const RegularsInfo: FC<Props> = ({
+  content,
+  productsTitle,
+  products,
+  linkRender: _Link,
+}) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   return (
@@ -43,6 +50,7 @@ export const RegularsInfo: FC<Props> = ({content, productsTitle, products}) => {
                   image={product.featuredImage!.url}
                   label={product.title}
                   storeUrl={product.onlineStoreUrl || undefined}
+                  linkRender={_Link}
                 />
               ))}
             </Products>
@@ -54,6 +62,7 @@ export const RegularsInfo: FC<Props> = ({content, productsTitle, products}) => {
                   image={product.featuredImage!.url}
                   label={product.title}
                   storeUrl={product.onlineStoreUrl || undefined}
+                  linkRender={_Link}
                   borderless
                   fullWidth
                 />

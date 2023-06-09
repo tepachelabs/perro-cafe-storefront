@@ -184,6 +184,7 @@ export default function InfoPage() {
         content={page.body}
         productsTitle={page.productsTitle}
         products={products}
+        linkRender={_Link}
       />
       <Footer address={location?.address} schedule={location?.schedule} />
     </>

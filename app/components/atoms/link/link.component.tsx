@@ -4,15 +4,17 @@ import {CustomLink} from './link.styles';
 
 export {CustomLink} from './link.styles';
 
+export type LinkRender = FC<{
+  to: string;
+  children: ReactNode;
+  active?: boolean | string;
+}>;
+
 interface Props {
   to: string;
   children: ReactNode;
   active?: boolean | string;
-  linkRender: FC<{
-    to: string;
-    children: ReactNode;
-    active?: boolean | string;
-  }>;
+  linkRender: LinkRender;
 }
 
 export const Link: FC<Props> = ({
