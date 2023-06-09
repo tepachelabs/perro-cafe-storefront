@@ -3,7 +3,7 @@ import {
   CollectionConnection,
   Location,
   LocationConnection,
-  Menu,
+  Menu as NavigationMenu,
   Metafield,
 } from '@shopify/hydrogen/storefront-api-types';
 import {LoaderArgs} from '@shopify/remix-oxygen';
@@ -25,7 +25,7 @@ interface ShopifyLocation extends Location {
 
 export async function loader({context: {storefront}}: LoaderArgs) {
   const {menu, locations, collections} = await storefront.query<{
-    menu: Menu;
+    menu: NavigationMenu;
     locations: LocationConnection;
     collections: CollectionConnection;
   }>(COLLECTIONS_QUERY);
@@ -33,7 +33,7 @@ export async function loader({context: {storefront}}: LoaderArgs) {
   const {nodes} = locations as LocationConnection;
   const location = nodes[0] as ShopifyLocation;
 
-  return {menu: menu as Menu, collections, location};
+  return {menu: menu as NavigationMenu, collections, location};
 }
 
 // @ts-ignore

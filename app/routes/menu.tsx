@@ -1,7 +1,6 @@
 import {Link, useLoaderData} from '@remix-run/react';
 import type {
   Menu,
-  MenuItem,
   Location,
   LocationConnection,
   Metafield,
@@ -13,7 +12,6 @@ import {CustomLink} from '~/components/atoms/link';
 import {NavBar} from '~/components/organisms/navbar';
 import {Footer} from '~/components/templates/footer';
 import {MenuPage} from '~/components/templates/menu-page';
-import configData from '~/config.json';
 import {mapNavBarLinks} from '~/utils';
 
 interface ShopifyLocation extends Location {
