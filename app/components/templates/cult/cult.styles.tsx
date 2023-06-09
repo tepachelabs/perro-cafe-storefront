@@ -63,6 +63,8 @@ export const BottomContainer = styled.div`
 `;
 
 export const CarouselContainer = styled.div`
+  margin: 0 auto;
+
   ${({theme}) => theme.mediaQueries.desktop} {
     flex: 2;
   }
