@@ -56,10 +56,10 @@ export default function Index() {
   // @ts-ignore
   const images = products.map((product) => {
     return {
-      src: product.variants?.nodes?.[0].image?.url,
+      src: product.featuredImage?.url,
       alt: product.title,
-      width: product.variants?.nodes?.[0].image?.width,
-      height: product.variants?.nodes?.[0].image?.height,
+      width: product.featuredImage?.width,
+      height: product.featuredImage?.height,
       onlineStoreUrl: product.onlineStoreUrl,
     };
   });
@@ -106,25 +106,31 @@ const COLLECTIONS_QUERY = `#graphql
         }
       }
     }
-    collections(first: 1, query: "web-destacados") {
-      nodes {
-        products(first: 4) {
-          nodes {
-            title
-            variants(first: 1) {
-              nodes {
-                image {
-                  url(transform: {
-                    maxWidth: 300,
-                    maxHeight: 300,
-                    crop: CENTER
-                  })
-                  altText
-                }
+    collection(handle: "web-destacados") {
+      products(first: 4) {
+        nodes {
+          title
+          featuredImage {
+            url(transform: {
+              maxWidth: 300,
+              maxHeight: 300,
+              crop: CENTER,
+            })
+            altText
+          }
+          variants(first: 1) {
+            nodes {
+              image {
+                url(transform: {
+                  maxWidth: 300,
+                  maxHeight: 300,
+                  crop: CENTER
+                })
+                altText
               }
             }
-            onlineStoreUrl
           }
+            onlineStoreUrl
         }
       }
     }
