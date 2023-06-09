@@ -1,7 +1,5 @@
 import {FC} from 'react';
 
-import {Section} from '~/components/atoms/section';
-
 import {
   Grid,
   PrimaryContainer,
@@ -12,6 +10,8 @@ import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 import {Hr} from '../../atoms/hr';
+import {LinkRender} from '../../atoms/link';
+import {Section} from '../../atoms/section';
 import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
@@ -22,10 +22,12 @@ interface Props {
     alt: string;
     width: number;
     height: number;
+    onlineStoreUrl?: string;
   }>;
+  linkRender: LinkRender;
 }
 
-export const Menu: FC<Props> = ({products}) => {
+export const Menu: FC<Props> = ({products, linkRender: _Link}) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   return (
@@ -52,6 +54,8 @@ export const Menu: FC<Props> = ({products}) => {
               key={product.alt}
               image={product.src}
               label={product.alt}
+              storeUrl={product.onlineStoreUrl}
+              linkRender={_Link}
             />
           ))}
         </Grid>
@@ -63,6 +67,8 @@ export const Menu: FC<Props> = ({products}) => {
                 key={product.alt}
                 image={product.src}
                 label={product.alt}
+                storeUrl={product.onlineStoreUrl}
+                linkRender={_Link}
                 borderless
                 fullWidth
               />

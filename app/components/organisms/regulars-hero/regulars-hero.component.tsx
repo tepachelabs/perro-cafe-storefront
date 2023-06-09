@@ -28,7 +28,7 @@ export const RegularsHero: FC<Props> = ({title, subtitle, imgSrc}) => (
       <RegularsTitle>{title || 'Página no encontrada'}</RegularsTitle>
       {!title && (
         <HeroButtonContainer>
-          <HorizontalButton label="Volver al inicio" href="/" target="_self" />
+          <HorizontalButton label="Volver al inicio" href="/" />
         </HeroButtonContainer>
       )}
       {subtitle && <Description bold>{subtitle.value}</Description>}
