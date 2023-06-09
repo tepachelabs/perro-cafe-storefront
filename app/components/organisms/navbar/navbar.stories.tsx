@@ -1,7 +1,8 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {NavBar, NavBarLink} from './navbar.component';
+import {NavBar} from './navbar.component';
 import configData from '../../../config.json';
+import {CustomLink} from '../../atoms/link';
 
 export default {
   title: 'Organisms/NavBar',
@@ -17,5 +18,5 @@ Default.args = {
     href: link.link,
     active: index === 0,
   })),
-  linkRender: (props) => <NavBarLink {...props} />,
+  linkRender: (props) => <CustomLink {...props} />,
 };

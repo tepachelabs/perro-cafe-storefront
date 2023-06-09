@@ -1,5 +1,7 @@
 import {Link, useLoaderData} from '@remix-run/react';
 import type {
+  Menu,
+  MenuItem,
   Location,
   LocationConnection,
   Metafield,
@@ -7,10 +9,12 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import {type LoaderArgs} from '@shopify/remix-oxygen';
 
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {CustomLink} from '~/components/atoms/link';
+import {NavBar} from '~/components/organisms/navbar';
 import {Footer} from '~/components/templates/footer';
 import {MenuPage} from '~/components/templates/menu-page';
 import configData from '~/config.json';
+import {mapNavBarLinks} from '~/utils';
 
 interface ShopifyLocation extends Location {
   schedule?: Pick<Metafield, 'value'>;
@@ -33,7 +37,8 @@ export const meta = () => {
 };
 
 export async function loader({context: {storefront}}: LoaderArgs) {
-  const {locations, nodes} = await storefront.query<{
+  const {menu, locations, nodes} = await storefront.query<{
+    menu: Menu;
     locations: LocationConnection;
     nodes: Node;
   }>(COLLECTIONS_QUERY, {
@@ -59,20 +64,20 @@ export async function loader({context: {storefront}}: LoaderArgs) {
   const {nodes: locationNodes} = locations as LocationConnection;
   const location = locationNodes[0];
 
-  return {collections, location: location as ShopifyLocation};
+  return {menu, collections, location: location as ShopifyLocation};
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export default function Menu() {
-  const {collections, location} = useLoaderData<typeof loader>();
+  const {
+    menu: {items: menuItems},
+    collections,
+    location,
+  } = useLoaderData<typeof loader>();
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label === 'Menú' && {active: 'true'}),
-  }));
+  const links = mapNavBarLinks(menuItems, 'Menú');
 
   return (
     <>
@@ -85,6 +90,12 @@ export default function Menu() {
 
 const COLLECTIONS_QUERY = `#graphql
   query Menu($ids: [ID!]!) {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
     locations(first: 1) {
       nodes {
         address {

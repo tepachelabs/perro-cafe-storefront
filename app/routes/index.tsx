@@ -3,25 +3,29 @@ import {
   CollectionConnection,
   Location,
   LocationConnection,
+  Menu,
   Metafield,
 } from '@shopify/hydrogen/storefront-api-types';
-import {LoaderArgs, json} from '@shopify/remix-oxygen';
+import {LoaderArgs} from '@shopify/remix-oxygen';
 
+import {CustomLink} from '~/components/atoms/link';
 import {Hero} from '~/components/organisms/hero';
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {NavBar} from '~/components/organisms/navbar';
 import {Community} from '~/components/templates/community';
 import {Cult} from '~/components/templates/cult';
 import {Footer} from '~/components/templates/footer';
 import {Menu} from '~/components/templates/menu';
 import {Temple} from '~/components/templates/temple';
 import configData from '~/config.json';
+import {mapNavBarLinks} from '~/utils';
 
 interface ShopifyLocation extends Location {
   schedule?: Pick<Metafield, 'value'>;
 }
 
 export async function loader({context: {storefront}}: LoaderArgs) {
-  const {locations, collections} = await storefront.query<{
+  const {menu, locations, collections} = await storefront.query<{
+    menu: Menu;
     locations: LocationConnection;
     collections: CollectionConnection;
   }>(COLLECTIONS_QUERY);
@@ -29,15 +33,16 @@ export async function loader({context: {storefront}}: LoaderArgs) {
   const {nodes} = locations as LocationConnection;
   const location = nodes[0] as ShopifyLocation;
 
-  return json({collections, location});
+  return {menu: menu as Menu, collections, location};
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export default function Index() {
   // lmao this is a mess
   const {
+    menu: {items: menuItems},
     collections: {nodes},
     location,
   } = useLoaderData<typeof loader>();
@@ -58,11 +63,7 @@ export default function Index() {
     };
   });
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label === 'Inicio' && {active: 'true'}),
-  }));
+  const links = mapNavBarLinks(menuItems, 'Inicio');
 
   const cultDescription = configData.cult.description;
   const cultImages = configData.cult.images;
@@ -84,6 +85,12 @@ export default function Index() {
 
 const COLLECTIONS_QUERY = `#graphql
   query FeaturedCollections {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
     locations(first: 1) {
       nodes {
         address {

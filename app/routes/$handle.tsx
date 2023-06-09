@@ -2,6 +2,7 @@
 /* eslint-disable check-file/filename-naming-convention */
 import {Link, useLoaderData, useParams} from '@remix-run/react';
 import type {
+  Menu,
   Location,
   LocationConnection,
   Metafield,
@@ -11,7 +12,8 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import {MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
-import {NavBar, NavBarLink} from '~/components/organisms/navbar';
+import {CustomLink} from '~/components/atoms/link';
+import {NavBar} from '~/components/organisms/navbar';
 import {
   HeroBanner,
   MetafieldValue,
@@ -20,6 +22,7 @@ import {
 import {Footer} from '~/components/templates/footer';
 import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
+import {mapNavBarLinks} from '~/utils';
 
 interface ShopifyLocation extends Location {
   schedule?: Pick<Metafield, 'value'>;
@@ -34,6 +37,7 @@ interface ShopifyPage extends Page {
 }
 
 interface LoaderProps {
+  menu: Menu;
   page: ShopifyPage;
   location?: ShopifyLocation;
   image?: HeroBanner;
@@ -44,7 +48,8 @@ export async function loader({
   params: {handle},
   context: {storefront},
 }: LoaderArgs) {
-  const {locations, page} = await storefront.query<{
+  const {menu, locations, page} = await storefront.query<{
+    menu: Menu;
     locations: ShopifyLocation;
     page: ShopifyPage;
   }>(PAGE_QUERY, {
@@ -101,6 +106,7 @@ export async function loader({
     }
 
     return {
+      menu,
       location: locationNodes[0],
       page,
       image: image?.node.image,
@@ -108,11 +114,11 @@ export async function loader({
     } as LoaderProps;
   }
 
-  return {location: locationNodes[0], page} as LoaderProps;
+  return {menu, location: locationNodes[0], page} as LoaderProps;
 }
 
 // @ts-ignore
-const _Link = (props) => <NavBarLink {...props} as={Link} />;
+const _Link = (props) => <CustomLink {...props} as={Link} />;
 
 export function CatchBoundary() {
   const links = configData.navbar.links.map((link) => ({
@@ -156,13 +162,15 @@ export const meta: MetaFunction<typeof loader> = ({data, params}) => {
 
 export default function InfoPage() {
   const {handle} = useParams();
-  const {location, page, image, products} = useLoaderData<typeof loader>();
+  const {
+    menu: {items: menuItems},
+    location,
+    page,
+    image,
+    products,
+  } = useLoaderData<typeof loader>();
 
-  const links = configData.navbar.links.map((link) => ({
-    label: link.label,
-    href: link.link,
-    ...(link.label.match(new RegExp(handle!, 'gi')) && {active: 'true'}),
-  }));
+  const links = mapNavBarLinks(menuItems, handle!);
 
   return (
     <>
@@ -184,6 +192,12 @@ export default function InfoPage() {
 
 const PAGE_QUERY = `#graphql
   query Page($handle: String!) {
+    menu(handle: "storefront-menu") {
+      items {
+        url
+        title
+      }
+    }
     locations(first: 1) {
       nodes {
         address {
