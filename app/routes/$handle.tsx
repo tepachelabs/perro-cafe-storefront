@@ -3,11 +3,14 @@
 import {Link, useLoaderData, useParams} from '@remix-run/react';
 import type {
   Menu,
+  Location,
+  LocationConnection,
+  Metafield,
   Node,
   Page,
   Product,
 } from '@shopify/hydrogen/storefront-api-types';
-import {json, MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
+import {MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
 import {CustomLink} from '~/components/atoms/link';
 import {NavBar} from '~/components/organisms/navbar';
@@ -21,6 +24,10 @@ import {RegularsInfo} from '~/components/templates/regulars-info';
 import configData from '~/config.json';
 import {mapNavBarLinks} from '~/utils';
 
+interface ShopifyLocation extends Location {
+  schedule?: Pick<Metafield, 'value'>;
+}
+
 interface ShopifyPage extends Page {
   productsTitle?: MetafieldValue;
   products?: MetafieldValue;
@@ -32,6 +39,7 @@ interface ShopifyPage extends Page {
 interface LoaderProps {
   menu: Menu;
   page: ShopifyPage;
+  location?: ShopifyLocation;
   image?: HeroBanner;
   products?: Array<Product>;
 }
@@ -40,14 +48,15 @@ export async function loader({
   params: {handle},
   context: {storefront},
 }: LoaderArgs) {
-  const {menu, page} = await storefront.query<{menu: Menu; page: ShopifyPage}>(
-    PAGE_QUERY,
-    {
-      variables: {
-        handle: handle!,
-      },
+  const {menu, locations, page} = await storefront.query<{
+    menu: Menu;
+    locations: ShopifyLocation;
+    page: ShopifyPage;
+  }>(PAGE_QUERY, {
+    variables: {
+      handle: handle!,
     },
-  );
+  });
 
   if (!page) {
     throw new Response(null, {
@@ -55,6 +64,8 @@ export async function loader({
       statusText: 'El recurso solicitado no fue encontrado.',
     });
   }
+
+  const {nodes: locationNodes} = locations as LocationConnection;
 
   if (page.image || page.products) {
     const requests = [];
@@ -96,13 +107,14 @@ export async function loader({
 
     return {
       menu,
+      location: locationNodes[0],
       page,
       image: image?.node.image,
       products: products?.nodes,
     } as LoaderProps;
   }
 
-  return {menu, page} as LoaderProps;
+  return {menu, location: locationNodes[0], page} as LoaderProps;
 }
 
 // @ts-ignore
@@ -152,6 +164,7 @@ export default function InfoPage() {
   const {handle} = useParams();
   const {
     menu: {items: menuItems},
+    location,
     page,
     image,
     products,
@@ -172,7 +185,7 @@ export default function InfoPage() {
         productsTitle={page.productsTitle}
         products={products}
       />
-      <Footer />
+      <Footer address={location?.address} schedule={location?.schedule} />
     </>
   );
 }
@@ -183,6 +196,20 @@ const PAGE_QUERY = `#graphql
       items {
         url
         title
+      }
+    }
+    locations(first: 1) {
+      nodes {
+        address {
+          address1
+          address2
+          zip
+          city
+          province
+        }
+        schedule: metafield(namespace: "custom", key: "schedule") {
+          value
+        }
       }
     }
     page(handle: $handle) {
