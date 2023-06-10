@@ -17,8 +17,8 @@ import {NavBar} from '~/components/organisms/navbar';
 import {
   HeroBanner,
   MetafieldValue,
-  RegularsHero,
-} from '~/components/organisms/regulars-hero';
+  PageHero,
+} from '~/components/organisms/page-hero';
 import {Footer} from '~/components/templates/footer';
 import {PageInfo} from '~/components/templates/page-info';
 import configData from '~/config.json';
@@ -129,7 +129,7 @@ export function CatchBoundary() {
   return (
     <>
       <NavBar links={links} linkRender={_Link} />
-      <RegularsHero linkRender={_Link} />
+      <PageHero linkRender={_Link} />
       <Footer />
     </>
   );
@@ -175,7 +175,7 @@ export default function InfoPage() {
   return (
     <>
       <NavBar links={links} linkRender={_Link} />
-      <RegularsHero
+      <PageHero
         title={page.title}
         subtitle={page.subtitle}
         imgSrc={image}

@@ -6,11 +6,11 @@ import {
   Description,
   HeroButtonContainer,
   PrimaryContainer,
-  RegularsHeroBanner,
-  RegularsHeroContainer,
+  PageHeroBanner,
+  PageHeroContainer,
   RegularsTitle,
   SecondaryContainer,
-} from './regulars-hero.styles';
+} from './page-hero.styles';
 import {HorizontalButton} from '../../atoms/horizontal-button';
 import {LinkRender} from '../../atoms/link';
 
@@ -24,13 +24,13 @@ interface Props {
   linkRender: LinkRender;
 }
 
-export const RegularsHero: FC<Props> = ({
+export const PageHero: FC<Props> = ({
   title,
   subtitle,
   imgSrc,
   linkRender: _Link,
 }) => (
-  <RegularsHeroContainer>
+  <PageHeroContainer>
     <PrimaryContainer>
       <RegularsTitle>{title || 'Página no encontrada'}</RegularsTitle>
       {!title && (
@@ -45,10 +45,10 @@ export const RegularsHero: FC<Props> = ({
       {subtitle && <Description bold>{subtitle.value}</Description>}
     </PrimaryContainer>
     <SecondaryContainer>
-      <RegularsHeroBanner
+      <PageHeroBanner
         src={imgSrc ? imgSrc.url : banner}
         alt="Fondo de cabecera"
       />
     </SecondaryContainer>
-  </RegularsHeroContainer>
+  </PageHeroContainer>
 );
