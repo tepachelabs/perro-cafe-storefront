@@ -49,6 +49,12 @@ const main: Theme = {
     header: `${unit * 16}px`,
     subHeader: `${unit * 12}px`,
     numeralSubheader: `${unit * 10}px`,
+    heading1: `${unit * 12}px`,
+    heading2: `${unit * 8}px`,
+    heading3: `${unit * 6}px`,
+    heading4: `${unit * 5}px`,
+    heading5: `${unit * 4}px`,
+    heading6: `${unit * 3}px`,
   },
 
   mediaQueries: {

@@ -1,4 +1,4 @@
-import '@emotion/react'
+import '@emotion/react';
 
 declare module '@emotion/react' {
   export interface Theme {
@@ -22,6 +22,12 @@ declare module '@emotion/react' {
       header: string;
       subHeader: string;
       numeralSubheader: string;
+      heading1: string;
+      heading2: string;
+      heading3: string;
+      heading4: string;
+      heading5: string;
+      heading6: string;
     };
     mediaQueries: {
       handheld: string;
