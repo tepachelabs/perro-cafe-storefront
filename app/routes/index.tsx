@@ -5,6 +5,7 @@ import {
   LocationConnection,
   Menu as NavigationMenu,
   Metafield,
+  Collection,
 } from '@shopify/hydrogen/storefront-api-types';
 import {LoaderArgs} from '@shopify/remix-oxygen';
 
@@ -24,16 +25,28 @@ interface ShopifyLocation extends Location {
 }
 
 export async function loader({context: {storefront}}: LoaderArgs) {
-  const {menu, locations, collections} = await storefront.query<{
+  const {menu, locations, collection} = await storefront.query<{
     menu: NavigationMenu;
     locations: LocationConnection;
-    collections: CollectionConnection;
+    collection: Collection;
   }>(COLLECTIONS_QUERY);
 
   const {nodes} = locations as LocationConnection;
   const location = nodes[0] as ShopifyLocation;
 
-  return {menu: menu as NavigationMenu, collections, location};
+  const products = (collection as Collection).products.nodes.map((product) => ({
+    src: product.featuredImage?.url!,
+    alt: product.title,
+    width: product.featuredImage?.width!,
+    height: product.featuredImage?.height!,
+    onlineStoreUrl: product.onlineStoreUrl || undefined,
+  }));
+
+  return {
+    menu: menu as NavigationMenu,
+    products,
+    location,
+  };
 }
 
 // @ts-ignore
@@ -43,26 +56,11 @@ export default function Index() {
   // lmao this is a mess
   const {
     menu: {items: menuItems},
-    collections: {nodes},
+    products,
     location,
   } = useLoaderData<typeof loader>();
 
-  const [
-    {
-      products: {nodes: products},
-    },
-  ] = nodes;
-
-  // @ts-ignore
-  const images = products.map((product) => {
-    return {
-      src: product.variants?.nodes?.[0].image?.url,
-      alt: product.title,
-      width: product.variants?.nodes?.[0].image?.width,
-      height: product.variants?.nodes?.[0].image?.height,
-      onlineStoreUrl: product.onlineStoreUrl,
-    };
-  });
+  const images = products;
 
   const links = mapNavBarLinks(menuItems, 'Inicio');
 
@@ -110,25 +108,31 @@ const COLLECTIONS_QUERY = `#graphql
         }
       }
     }
-    collections(first: 1, query: "web-destacados") {
-      nodes {
-        products(first: 4) {
-          nodes {
-            title
-            variants(first: 1) {
-              nodes {
-                image {
-                  url(transform: {
-                    maxWidth: 300,
-                    maxHeight: 300,
-                    crop: CENTER
-                  })
-                  altText
-                }
+    collection(handle: "web-destacados") {
+      products(first: 4) {
+        nodes {
+          title
+          featuredImage {
+            url(transform: {
+              maxWidth: 300,
+              maxHeight: 300,
+              crop: CENTER,
+            })
+            altText
+          }
+          variants(first: 1) {
+            nodes {
+              image {
+                url(transform: {
+                  maxWidth: 300,
+                  maxHeight: 300,
+                  crop: CENTER
+                })
+                altText
               }
             }
-            onlineStoreUrl
           }
+            onlineStoreUrl
         }
       }
     }

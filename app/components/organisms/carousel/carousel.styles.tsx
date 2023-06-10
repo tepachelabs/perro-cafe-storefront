@@ -38,7 +38,7 @@ export const ImageContainer = styled.div`
   border: ${({theme}) => theme.sizes.borderWidth} solid
     ${({theme}) => theme.colors.black};
 
-  &[aria-selected='true'] {
+  &[aria-current='true'] {
     display: flex;
   }
 

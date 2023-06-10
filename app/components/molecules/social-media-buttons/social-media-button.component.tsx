@@ -1,7 +1,7 @@
+import {Theme} from '@emotion/react';
 import {FC} from 'react';
 
 import {SquaredButton, SquaredButtonProps} from './social-media-button.styles';
-import {MainTheme} from '../../../theme';
 import {
   FacebookIcon,
   IconProps,
@@ -10,7 +10,7 @@ import {
 } from '../../atoms/icon';
 
 interface IconButtonProps extends SquaredButtonProps {
-  color?: keyof MainTheme['colors'];
+  color?: keyof Theme['colors'];
   inverted?: boolean;
   href: string;
 }

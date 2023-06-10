@@ -35,21 +35,29 @@ export const Carousel: FC<Props> = ({children, showDots = false}) => {
   };
 
   return (
-    <StyledCarousel>
-      {children.map((child, index) => (
+    <StyledCarousel
+      role="group"
+      aria-roledescription="carousel"
+      aria-label="Imágenes y productos"
+      aria-live="polite"
+    >
+      {children.map((child, index, arr) => (
         <ImageContainer
           // eslint-disable-next-line react/no-array-index-key
           key={`Image ${index}`}
-          aria-selected={index === selectedIndex}
+          role="group"
+          aria-current={index === selectedIndex}
+          aria-roledescription="slide"
+          aria-label={`${index + 1} of ${arr.length}`}
         >
           {child}
         </ImageContainer>
       ))}
       <ArrowButtonContainer variant="left">
-        <LeftArrow onClick={previousImage} title="left arrow" />
+        <LeftArrow onClick={previousImage} title="Contenido previo" />
       </ArrowButtonContainer>
       <ArrowButtonContainer variant="right">
-        <RightArrow onClick={nextImage} title="right arrow" />
+        <RightArrow onClick={nextImage} title="Contenido siguiente" />
       </ArrowButtonContainer>
       {showDots && (
         <CarouselNavigation>

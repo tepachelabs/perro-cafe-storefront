@@ -7,7 +7,7 @@ export const Divider = () => {
     <>
       <Container>
         <Hr></Hr>
-        <Img src={graphic} />
+        <Img src={graphic} alt="Gráfico del divisor" />
         <Hr></Hr>
       </Container>
     </>
