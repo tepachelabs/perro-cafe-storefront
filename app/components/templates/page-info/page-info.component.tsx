@@ -18,7 +18,7 @@ import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
 
-const {regularsDisclaimer} = configData;
+const {disclaimer} = configData;
 
 type MetafieldValue = Pick<Metafield, 'value'>;
 
@@ -78,7 +78,7 @@ export const PageInfo: FC<Props> = ({
         <Divider />
       </SectionDividerContainer>
       <Paragraph>
-        <small>{regularsDisclaimer}</small>
+        <small>{disclaimer}</small>
       </Paragraph>
     </InfoSection>
   );
