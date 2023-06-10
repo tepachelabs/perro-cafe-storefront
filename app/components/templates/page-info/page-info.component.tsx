@@ -8,7 +8,7 @@ import {
   Products,
   ProductsSection,
   SectionDividerContainer,
-} from './regulars-info.styles';
+} from './page-info.styles';
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {Divider} from '../../atoms/divider';
@@ -29,7 +29,7 @@ interface Props {
   linkRender: LinkRender;
 }
 
-export const RegularsInfo: FC<Props> = ({
+export const PageInfo: FC<Props> = ({
   content,
   productsTitle,
   products,

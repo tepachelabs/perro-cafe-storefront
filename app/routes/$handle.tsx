@@ -20,7 +20,7 @@ import {
   RegularsHero,
 } from '~/components/organisms/regulars-hero';
 import {Footer} from '~/components/templates/footer';
-import {RegularsInfo} from '~/components/templates/regulars-info';
+import {PageInfo} from '~/components/templates/page-info';
 import configData from '~/config.json';
 import {mapNavBarLinks} from '~/utils';
 
@@ -181,7 +181,7 @@ export default function InfoPage() {
         imgSrc={image}
         linkRender={_Link}
       />
-      <RegularsInfo
+      <PageInfo
         content={page.body}
         productsTitle={page.productsTitle}
         products={products}
