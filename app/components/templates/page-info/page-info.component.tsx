@@ -8,7 +8,7 @@ import {
   Products,
   ProductsSection,
   SectionDividerContainer,
-} from './regulars-info.styles';
+} from './page-info.styles';
 import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {Divider} from '../../atoms/divider';
@@ -18,7 +18,7 @@ import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
 
-const {regularsDisclaimer} = configData;
+const {disclaimer} = configData;
 
 type MetafieldValue = Pick<Metafield, 'value'>;
 
@@ -29,7 +29,7 @@ interface Props {
   linkRender: LinkRender;
 }
 
-export const RegularsInfo: FC<Props> = ({
+export const PageInfo: FC<Props> = ({
   content,
   productsTitle,
   products,
@@ -78,7 +78,7 @@ export const RegularsInfo: FC<Props> = ({
         <Divider />
       </SectionDividerContainer>
       <Paragraph>
-        <small>{regularsDisclaimer}</small>
+        <small>{disclaimer}</small>
       </Paragraph>
     </InfoSection>
   );

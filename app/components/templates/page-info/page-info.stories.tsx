@@ -1,17 +1,17 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {RegularsInfo} from './regulars-info.component';
+import {PageInfo} from './page-info.component';
 
 export default {
   title: 'Templates/Information',
-  component: RegularsInfo,
-} as ComponentMeta<typeof RegularsInfo>;
+  component: PageInfo,
+} as ComponentMeta<typeof PageInfo>;
 
 const content =
   '<h2>Subtitle</h2>\n<p>Lorem ipsum dolor sit amet.</p>\n<h2>Subtitle</h2>\n<p>Lorem ipsum dolor sit amet.</p>\n<h2>Subtitle</h2>\n<p>Lorem ipsum dolor sit amet.</p>';
 
-const Template: ComponentStory<typeof RegularsInfo> = () => (
-  <RegularsInfo content={content} />
+const Template: ComponentStory<typeof PageInfo> = () => (
+  <PageInfo content={content} />
 );
 
 export const Default = Template.bind({});

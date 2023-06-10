@@ -7,7 +7,7 @@ const borderStyle = ({theme}: {theme: Theme}) => css`
   ${theme.sizes.borderWidth} solid ${theme.colors.black}
 `;
 
-export const RegularsHeroContainer = styled.header`
+export const PageHeroContainer = styled.header`
   display: flex;
   max-width: ${({theme}) => theme.sizes.maxWidth};
   margin: 1rem auto 0;
@@ -82,7 +82,7 @@ export const RegularsTitle = styled.h1`
   }
 `;
 
-export const RegularsHeroBanner = styled.img`
+export const PageHeroBanner = styled.img`
   display: block;
 
   width: 100%;
