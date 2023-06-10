@@ -52,7 +52,7 @@ export const Footer: FC<Props> = ({address, schedule}) => {
             <Subtitle>Horario</Subtitle>
             <ParagraphWrapper>
               {splitSchedule.map((sched) => (
-                <LightParagraph key={`Footer Schedule ${sched}`}>
+                <LightParagraph key={`Footer Schedule ${sched}`} noMargin>
                   {sched}
                 </LightParagraph>
               ))}
@@ -62,7 +62,9 @@ export const Footer: FC<Props> = ({address, schedule}) => {
             <Subtitle>Información</Subtitle>
             <ParagraphWrapper>
               {configData.footerInfo.map((label) => (
-                <LightParagraph key={label}>{label}</LightParagraph>
+                <LightParagraph key={label} noMargin>
+                  {label}
+                </LightParagraph>
               ))}
             </ParagraphWrapper>
           </Container>

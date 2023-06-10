@@ -34,7 +34,7 @@ export const ReviewCard: FC<ReviewCardProps> = ({
       <Img src={authorImages[variant]} alt="Rostro humano" />
       <Content>
         <Review>{review}</Review>
-        <Author>{author}</Author>
+        <Author noMargin>{author}</Author>
       </Content>
     </Frame>
   );

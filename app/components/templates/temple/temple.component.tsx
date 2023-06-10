@@ -43,13 +43,15 @@ export const Temple: FC<Props> = ({address, schedule, linkRender: _Link}) => {
           <Subtitle icon="temple">El Templo</Subtitle>
           <AddressContainer>
             <Paragraph bold>Dirección</Paragraph>
-            <Paragraph>{formattedAddress}</Paragraph>
+            <Paragraph noMargin>{formattedAddress}</Paragraph>
           </AddressContainer>
           <Hr />
           <ScheduleContainer>
             <Paragraph bold>Horario</Paragraph>
-            {splitSchedule.map((sched) => (
-              <Paragraph key={`Temple Schedule ${sched}`}>{sched}</Paragraph>
+            {splitSchedule.map((schedule) => (
+              <Paragraph key={`Temple Schedule ${schedule}`} noMargin>
+                {schedule}
+              </Paragraph>
             ))}
             <ExplosionBadgeContainer>
               <ExplosionBadge label="HMO." />

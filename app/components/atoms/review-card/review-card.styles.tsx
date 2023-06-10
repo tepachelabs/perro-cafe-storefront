@@ -1,6 +1,8 @@
 import {css, Theme} from '@emotion/react';
 import styled from '@emotion/styled';
 
+import {Paragraph, ParagraphStyle} from '../../atoms/paragraph';
+
 export type ReviewCardVariant = 'green' | 'orange' | 'yellow';
 
 const borderStyle = ({theme}: {theme: Theme}) => css`
@@ -23,15 +25,10 @@ export const Frame = styled.div<{variant: ReviewCardVariant}>`
   align-items: stretch;
   display: flex;
   font-family: ${({theme}) => theme.fonts.body};
-  font-size: 1em;
   justify-content: space-between;
   border: ${borderStyle};
 
   ${({variant}) => variants[variant]}
-
-  ${(props) => props.theme.mediaQueries.desktop} {
-    font-size: 0.8em;
-  }
 `;
 
 export const Img = styled.img`
@@ -50,11 +47,17 @@ export const Content = styled.div`
   width: 50%;
 `;
 
-// empty on purpose
-export const Review = styled.p``;
+export const Review = styled.p`
+  ${ParagraphStyle};
+
+  margin-bottom: 0;
+`;
 
 export const Author = styled.p`
+  ${ParagraphStyle};
+
   font-weight: bold;
+  margin-bottom: 0;
   position: relative;
 
   &::before {

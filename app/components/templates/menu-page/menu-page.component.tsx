@@ -75,8 +75,8 @@ const ProductItem: FC<ProductProps> = ({title, priceRange}) => {
 
   return (
     <ListItem>
-      <Paragraph>{title}</Paragraph>
-      <Paragraph>{price}</Paragraph>
+      <Paragraph noMargin>{title}</Paragraph>
+      <Paragraph noMargin>{price}</Paragraph>
     </ListItem>
   );
 };
