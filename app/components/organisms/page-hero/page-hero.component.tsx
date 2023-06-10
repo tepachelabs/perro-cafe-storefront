@@ -42,7 +42,11 @@ export const PageHero: FC<Props> = ({
           />
         </HeroButtonContainer>
       )}
-      {subtitle && <Description bold>{subtitle.value}</Description>}
+      {subtitle && (
+        <Description bold noMargin>
+          {subtitle.value}
+        </Description>
+      )}
     </PrimaryContainer>
     <SecondaryContainer>
       <PageHeroBanner

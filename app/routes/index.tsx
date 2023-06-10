@@ -1,6 +1,5 @@
 import {Link, useLoaderData} from '@remix-run/react';
 import {
-  CollectionConnection,
   Location,
   LocationConnection,
   Menu as NavigationMenu,
@@ -61,12 +60,9 @@ export default function Index() {
   } = useLoaderData<typeof loader>();
 
   const images = products;
-
   const links = mapNavBarLinks(menuItems, 'Inicio');
-
   const cultDescription = configData.cult.description;
   const cultImages = configData.cult.images;
-
   const reviews = configData.reviews;
 
   return (

@@ -47,6 +47,7 @@ export const Description = styled(Paragraph)``;
 
 Description.defaultProps = {
   bold: true,
+  noMargin: true,
 };
 
 export const BottomContainer = styled.div`

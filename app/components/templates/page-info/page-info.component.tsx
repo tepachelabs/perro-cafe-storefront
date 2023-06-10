@@ -1,5 +1,5 @@
 import {Metafield, Product} from '@shopify/hydrogen/storefront-api-types';
-import parse from 'html-react-parser';
+import parse, {domToReact, HTMLReactParserOptions} from 'html-react-parser';
 import {FC} from 'react';
 
 import {
@@ -9,16 +9,21 @@ import {
   ProductsSection,
   SectionDividerContainer,
 } from './page-info.styles';
-import configData from '../../../config.json';
 import useMediaQuery from '../../../hooks/use-media-query';
 import {Divider} from '../../atoms/divider';
+import {
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+} from '../../atoms/heading';
 import {LinkRender} from '../../atoms/link';
 import {Paragraph} from '../../atoms/paragraph';
 import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
 import {Carousel} from '../../organisms/carousel';
-
-const {disclaimer} = configData;
 
 type MetafieldValue = Pick<Metafield, 'value'>;
 
@@ -28,6 +33,41 @@ interface Props {
   products?: Product[];
   linkRender: LinkRender;
 }
+
+const config: HTMLReactParserOptions = {
+  // @ts-ignore
+  replace: ({name, children, ...rest}: DOMNode) => {
+    if (name === 'h1') {
+      return <Heading1>{domToReact(children, config)}</Heading1>;
+    }
+
+    if (name === 'h2') {
+      return <Heading2>{domToReact(children, config)}</Heading2>;
+    }
+
+    if (name === 'h3') {
+      return <Heading3>{domToReact(children, config)}</Heading3>;
+    }
+
+    if (name === 'h4') {
+      return <Heading4>{domToReact(children, config)}</Heading4>;
+    }
+
+    if (name === 'h5') {
+      return <Heading5>{domToReact(children, config)}</Heading5>;
+    }
+
+    if (name === 'h6') {
+      return <Heading6>{domToReact(children, config)}</Heading6>;
+    }
+
+    if (name === 'p') {
+      return <Paragraph>{domToReact(children, config)}</Paragraph>;
+    }
+
+    return null;
+  },
+};
 
 export const PageInfo: FC<Props> = ({
   content,
@@ -39,7 +79,8 @@ export const PageInfo: FC<Props> = ({
 
   return (
     <InfoSection>
-      {parse(content)}
+      {parse(content, config)}
+
       {products && (
         <ProductsSection>
           {productsTitle && <Subtitle>{productsTitle.value}</Subtitle>}
@@ -74,12 +115,10 @@ export const PageInfo: FC<Props> = ({
           )}
         </ProductsSection>
       )}
+
       <SectionDividerContainer>
         <Divider />
       </SectionDividerContainer>
-      <Paragraph>
-        <small>{disclaimer}</small>
-      </Paragraph>
     </InfoSection>
   );
 };

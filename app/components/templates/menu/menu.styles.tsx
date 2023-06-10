@@ -35,7 +35,7 @@ export const CarouselContainer = styled.div`
 `;
 
 export const MenuDescription = styled(Paragraph)``;
-
 MenuDescription.defaultProps = {
   lineHeight: '30px',
+  noMargin: true,
 };

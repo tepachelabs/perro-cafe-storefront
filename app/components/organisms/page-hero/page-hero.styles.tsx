@@ -10,7 +10,8 @@ const borderStyle = ({theme}: {theme: Theme}) => css`
 export const PageHeroContainer = styled.header`
   display: flex;
   max-width: ${({theme}) => theme.sizes.maxWidth};
-  margin: 1rem auto 0;
+  //margin: 1rem auto 0;
+  margin: 0 auto;
   flex-direction: column;
 
   ${({theme}) => theme.mediaQueries.desktop} {
@@ -66,10 +67,11 @@ export const RegularsTitle = styled.h1`
   text-transform: uppercase;
   font-weight: 400;
 
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 3rem;
 
   ${({theme}) => theme.mediaQueries.desktop} {
-    padding: 3rem 1.5rem;
+    padding-top: 3rem;
+    padding-left: 1rem;
   }
 
   &:after {
