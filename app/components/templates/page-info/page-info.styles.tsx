@@ -29,4 +29,5 @@ export const Products = styled.div`
 
 export const CarouselContainer = styled.div`
   margin: 0 auto;
+  max-width: 100%;
 `;

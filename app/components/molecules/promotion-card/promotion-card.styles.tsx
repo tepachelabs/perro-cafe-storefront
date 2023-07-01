@@ -11,8 +11,11 @@ export interface CardProps {
 export const Card = styled.div<CardProps>`
   border: ${select((theme) => theme.sizes.borderWidth)} solid
     ${select((theme) => theme.colors.black)};
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
   position: relative;
+  overflow: hidden;
 
   ${({fullWidth}) => fullWidth && 'width: 100%'};
   ${({borderless}) => borderless && 'border: none'};
@@ -25,6 +28,7 @@ export const Card = styled.div<CardProps>`
     line-height: unset;
     height: unset;
     border-bottom: none;
+    overflow: hidden;
   }
 
   & p {
@@ -33,7 +37,12 @@ export const Card = styled.div<CardProps>`
     font-weight: bold;
     line-height: 2em;
     margin: 0;
+    padding: 0 0.5em;
     text-align: center;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 `;
 
