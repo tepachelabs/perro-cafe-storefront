@@ -20,7 +20,7 @@ export const PrimaryContainer = styled.div`
   }
 
   ${({theme}) => theme.mediaQueries.desktop} {
-    width: 50%;
+    width: 65%;
   }
 `;
 
@@ -32,6 +32,7 @@ export const Grid = styled.div`
 
 export const CarouselContainer = styled.div`
   margin: 0 auto;
+  max-width: 100%;
 `;
 
 export const MenuDescription = styled(Paragraph)``;
