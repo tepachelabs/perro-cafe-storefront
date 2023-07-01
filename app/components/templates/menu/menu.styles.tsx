@@ -20,7 +20,7 @@ export const PrimaryContainer = styled.div`
   }
 
   ${({theme}) => theme.mediaQueries.desktop} {
-    width: 65%;
+    width: 50%;
   }
 `;
 
