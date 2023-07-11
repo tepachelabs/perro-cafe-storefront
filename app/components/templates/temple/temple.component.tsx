@@ -26,9 +26,15 @@ interface Props {
   address?: LocationAddress;
   schedule?: Pick<Metafield, 'value'>;
   linkRender: LinkRender;
+  showRuler?: boolean;
 }
 
-export const Temple: FC<Props> = ({address, schedule, linkRender: _Link}) => {
+export const Temple: FC<Props> = ({
+  address,
+  schedule,
+  linkRender: _Link,
+  showRuler = true,
+}) => {
   const formattedAddress = address
     ? `${address.address1}, ${address.address2}. C.P. ${address.zip}. ${address.city}, ${address.province}.`
     : configData.location;
@@ -67,9 +73,11 @@ export const Temple: FC<Props> = ({address, schedule, linkRender: _Link}) => {
           <MapSketch />
         </SecondaryContainer>
       </TempleContainer>
-      <LineContainer>
-        <Hr />
-      </LineContainer>
+      {showRuler && (
+        <LineContainer>
+          <Hr />
+        </LineContainer>
+      )}
     </>
   );
 };
