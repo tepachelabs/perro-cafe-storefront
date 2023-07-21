@@ -1,15 +1,11 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {MenuCollection, MenuPage, MenuProduct} from './menu-page.component';
 
 export default {
   title: 'Templates/MenuPage',
   component: MenuPage,
-} as ComponentMeta<typeof MenuPage>;
-
-const Template: ComponentStory<typeof MenuPage> = (args) => (
-  <MenuPage {...args} />
-);
+} as Meta<typeof MenuPage>;
 
 const placeholderImage = 'https://placehold.co/400x400.png';
 const placeholderPrice = {amount: '35.0', currencyCode: 'MXN'};
@@ -59,7 +55,9 @@ const collections: Array<MenuCollection> = [
   {id: 'collection_4', title: 'Cuarta colección', products},
 ];
 
-export const Default = Template.bind({});
-Default.args = {
-  collections,
+type Story = StoryObj<typeof MenuPage>;
+
+export const Default: Story = {
+  render: (args) => <MenuPage {...args} />,
+  args: {collections},
 };

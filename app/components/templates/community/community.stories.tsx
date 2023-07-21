@@ -1,4 +1,4 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {Community} from './community.component';
 import configData from '../../../config.json';
@@ -6,13 +6,11 @@ import configData from '../../../config.json';
 export default {
   title: 'Templates/Community',
   component: Community,
-} as ComponentMeta<typeof Community>;
+} as Meta<typeof Community>;
 
-const Template: ComponentStory<typeof Community> = (args) => (
-  <Community {...args} />
-);
+type Story = StoryObj<typeof Community>;
 
-export const Default = Template.bind({});
-Default.args = {
-  reviews: configData.reviews,
+export const Default: Story = {
+  render: (args) => <Community {...args} />,
+  args: {reviews: configData.reviews},
 };
