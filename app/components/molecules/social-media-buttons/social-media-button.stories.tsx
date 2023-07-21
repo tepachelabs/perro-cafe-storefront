@@ -56,17 +56,3 @@ export const Inverted: Story = {
     inverted: true,
   },
 };
-
-// export const Default = Template.bind({});
-// Default.args = {
-//   size: 36,
-//   href: '#',
-//   inverted: false,
-// };
-
-// export const Inverted = Template.bind({});
-// Inverted.args = {
-//   size: 36,
-//   href: '#',
-//   inverted: true,
-// };

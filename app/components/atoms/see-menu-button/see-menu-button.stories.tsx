@@ -13,8 +13,3 @@ export const Default: Story = {
   render: (args) => <SeeMenuButton {...args} />,
   args: {href: 'https://www.instagram.com/cultoperrocafe'},
 };
-
-// export const Default = Template.bind({});
-// Default.args = {
-//   href: 'https://www.instagram.com/cultoperrocafe',
-// };

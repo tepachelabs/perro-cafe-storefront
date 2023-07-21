@@ -17,10 +17,3 @@ export const Default: Story = {
     linkRender: (props) => <CustomLink {...props} />,
   },
 };
-
-// export const Default = Template.bind({});
-// Default.args = {
-//   to: 'https://perro.cafe',
-//   children: <p>Culto al Perro Café</p>,
-//   linkRender: (props) => <CustomLink {...props} />,
-// };

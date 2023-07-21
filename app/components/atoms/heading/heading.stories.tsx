@@ -24,7 +24,7 @@ const allHeadings = [
 
 type Story = StoryObj;
 
-export const Template: Story = {
+export const Default: Story = {
   render: (args) => (
     <div
       style={{
