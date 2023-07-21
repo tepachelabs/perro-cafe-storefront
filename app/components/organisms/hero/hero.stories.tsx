@@ -1,12 +1,13 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {Hero} from './hero.component';
+import {CustomLink} from '../../atoms/link';
 
 export default {
   title: 'Organisms/Hero',
   component: Hero,
-} as ComponentMeta<typeof Hero>;
+} as Meta<typeof Hero>;
 
-const Template: ComponentStory<typeof Hero> = () => <Hero />;
+type Story = StoryObj<typeof Hero>;
 
-export const Default = Template.bind({});
+export const Default: Story = {render: () => <Hero linkRender={CustomLink} />};
