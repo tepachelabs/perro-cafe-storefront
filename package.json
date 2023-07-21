@@ -29,7 +29,7 @@
     "@shopify/remix-oxygen": "^1.0.5",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
-    "html-react-parser": "^3.0.16",
+    "html-react-parser": "^4.1.0",
     "posthog-js": "^1.57.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
