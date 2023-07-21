@@ -76,3 +76,9 @@ export const Img = styled.img`
   height: 23px;
   width: 14px;
 `;
+
+export const LinkWrapper = styled.div`
+  & > a {
+    line-height: unset;
+  }
+`;

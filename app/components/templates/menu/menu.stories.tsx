@@ -1,6 +1,7 @@
 import {Meta, StoryObj} from '@storybook/react';
 
 import {Menu} from './menu.component';
+import {CustomLink} from '../../atoms/link';
 
 export default {
   title: 'Templates/Menu',
@@ -10,7 +11,7 @@ export default {
 type Story = StoryObj<typeof Menu>;
 
 export const Default: Story = {
-  render: (args) => <Menu {...args} />,
+  render: (args) => <Menu {...args} linkRender={CustomLink} />,
   args: {
     products: [
       {

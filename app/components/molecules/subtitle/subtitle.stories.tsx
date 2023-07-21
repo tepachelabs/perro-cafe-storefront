@@ -40,7 +40,7 @@ export const Numerals: Story = {
   render: () => (
     <div style={{display: 'flex', flexDirection: 'column', gap: '2em'}}>
       {sampleNumerals.map(({title, numeral}) => (
-        <Subtitle key={title} numeral={numeral}>
+        <Subtitle key={numeral} numeral={numeral}>
           {title}
         </Subtitle>
       ))}
