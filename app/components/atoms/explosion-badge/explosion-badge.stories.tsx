@@ -1,18 +1,15 @@
-import {ComponentStory, ComponentMeta} from '@storybook/react';
-import React from 'react';
+import {StoryObj, Meta} from '@storybook/react';
 
 import {ExplosionBadge} from './explosion-badge.component';
 
 export default {
   title: 'Atoms/ExplosionBadge',
   component: ExplosionBadge,
-} as ComponentMeta<typeof ExplosionBadge>;
+} as Meta<typeof ExplosionBadge>;
 
-const Template: ComponentStory<typeof ExplosionBadge> = (args) => (
-  <ExplosionBadge {...args} />
-);
+type Story = StoryObj<typeof ExplosionBadge>;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'HMO.',
+export const Default: Story = {
+  render: (args) => <ExplosionBadge {...args} />,
+  args: {label: 'HMO.'},
 };

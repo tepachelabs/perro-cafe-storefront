@@ -1,17 +1,15 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {Numeral} from './numeral.component';
 
 export default {
   title: 'Atoms/Numeral',
   component: Numeral,
-} as ComponentMeta<typeof Numeral>;
+} as Meta<typeof Numeral>;
 
-const Template: ComponentStory<typeof Numeral> = (args) => (
-  <Numeral {...args} />
-);
+type Story = StoryObj<typeof Numeral>;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: '1.',
+export const Default: Story = {
+  render: (args) => <Numeral {...args} />,
+  args: {label: '1.'},
 };

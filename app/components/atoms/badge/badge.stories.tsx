@@ -1,20 +1,19 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {Badge} from './badge.component';
 
 export default {
   title: 'Atoms/Badge',
   component: Badge,
-} as ComponentMeta<typeof Badge>;
+} as Meta<typeof Badge>;
 
-const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
+type Story = StoryObj<typeof Badge>;
 
-export const Seasonal = Template.bind({});
-Seasonal.args = {
-  variant: 'seasonal',
+export const Seasonal: Story = {
+  render: (args) => <Badge {...args} />,
+  args: {variant: 'seasonal'},
 };
-
-export const Recommendation = Template.bind({});
-Recommendation.args = {
-  variant: 'recommendation',
+export const Recommendation: Story = {
+  render: (args) => <Badge {...args} />,
+  args: {variant: 'recommendation'},
 };

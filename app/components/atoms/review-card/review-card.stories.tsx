@@ -1,35 +1,49 @@
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryObj, Meta} from '@storybook/react';
 
 import {ReviewCard} from './review-card.component';
 
 export default {
   title: 'Atoms/ReviewCard',
   component: ReviewCard,
-} as ComponentMeta<typeof ReviewCard>;
+} as Meta<typeof ReviewCard>;
 
-const Template: ComponentStory<typeof ReviewCard> = (args) => (
-  <div style={{maxWidth: '420px'}}>
-    <ReviewCard {...args} />
-  </div>
-);
+type Story = StoryObj<typeof ReviewCard>;
 
-export const Green = Template.bind({});
-Green.args = {
-  author: 'AngelMayer',
-  review: 'Muy rico y saludable, me gustó la opción vegana.',
-  variant: 'green',
+export const Green: Story = {
+  render: (args) => (
+    <div style={{maxWidth: '420px'}}>
+      <ReviewCard {...args} />
+    </div>
+  ),
+  args: {
+    author: 'AngelMayer',
+    review: 'Muy rico y saludable, me gustó la opción vegana.',
+    variant: 'green',
+  },
 };
 
-export const Orange = Template.bind({});
-Orange.args = {
-  author: 'AngelMayer',
-  review: 'Muy rico y saludable, me gustó la opción vegana.',
-  variant: 'orange',
+export const Orange: Story = {
+  render: (args) => (
+    <div style={{maxWidth: '420px'}}>
+      <ReviewCard {...args} />
+    </div>
+  ),
+  args: {
+    author: 'AngelMayer',
+    review: 'Muy rico y saludable, me gustó la opción vegana.',
+    variant: 'orange',
+  },
 };
 
-export const Yellow = Template.bind({});
-Yellow.args = {
-  author: 'AngelMayer',
-  review: 'Muy rico y saludable, me gustó la opción vegana.',
-  variant: 'yellow',
+export const Yellow: Story = {
+  render: (args) => (
+    <div style={{maxWidth: '420px'}}>
+      <ReviewCard {...args} />
+    </div>
+  ),
+  args: {
+    author: 'AngelMayer',
+    review: 'Muy rico y saludable, me gustó la opción vegana.',
+    variant: 'yellow',
+  },
 };

@@ -1,4 +1,4 @@
-import {ComponentStory} from '@storybook/react';
+import {StoryObj} from '@storybook/react';
 
 import {
   Heading1,
@@ -22,21 +22,22 @@ const allHeadings = [
   {title: 'Heading6', component: Heading6},
 ];
 
-const Template: ComponentStory<typeof Heading1> = (args) => (
-  <div
-    style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      flexDirection: 'column',
-    }}
-  >
-    {allHeadings.map(({title, component: HeadingComponent}) => (
-      <div key={title} style={{textAlign: 'center'}}>
-        <HeadingComponent {...args}>{title}</HeadingComponent>
-      </div>
-    ))}
-  </div>
-);
+type Story = StoryObj;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Template: Story = {
+  render: (args) => (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'flex-start',
+        flexDirection: 'column',
+      }}
+    >
+      {allHeadings.map(({title, component: HeadingComponent}) => (
+        <div key={title} style={{textAlign: 'center'}}>
+          <HeadingComponent {...args}>{title}</HeadingComponent>
+        </div>
+      ))}
+    </div>
+  ),
+};
