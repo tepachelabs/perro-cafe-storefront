@@ -1,30 +1,48 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {PromotionCard} from './promotion-card.component';
+import {CustomLink} from '../../atoms/link';
 
 export default {
   title: 'Molecules/PromotionCard',
   component: PromotionCard,
-} as ComponentMeta<typeof PromotionCard>;
+} as Meta<typeof PromotionCard>;
 
-const Template: ComponentStory<typeof PromotionCard> = (args) => (
-  <PromotionCard {...args} />
-);
+type Story = StoryObj<typeof PromotionCard>;
 
-export const Default = Template.bind({});
-Default.args = {
-  image: 'https://placehold.co/600x800.png',
-  label: 'Latte pilonsillo',
+export const Default: Story = {
+  render: (args) => (
+    <div style={{width: '280px'}}>
+      <PromotionCard {...args} />
+    </div>
+  ),
+  args: {
+    image: 'https://placehold.co/600x800.png',
+    label: 'Latte pilonsillo',
+    linkRender: (props) => <CustomLink {...props} />,
+  },
 };
 
-export const IsRecommended = Template.bind({});
-IsRecommended.args = {
-  ...Default.args,
-  isRecommended: true,
+export const IsRecommended: Story = {
+  render: (args) => (
+    <div style={{width: '280px'}}>
+      <PromotionCard {...args} />
+    </div>
+  ),
+  args: {
+    ...Default.args,
+    isRecommended: true,
+  },
 };
 
-export const IsSeasonal = Template.bind({});
-IsSeasonal.args = {
-  ...Default.args,
-  isSeasonal: true,
+export const IsSeasonal: Story = {
+  render: (args) => (
+    <div style={{width: '280px'}}>
+      <PromotionCard {...args} />
+    </div>
+  ),
+  args: {
+    ...Default.args,
+    isSeasonal: true,
+  },
 };

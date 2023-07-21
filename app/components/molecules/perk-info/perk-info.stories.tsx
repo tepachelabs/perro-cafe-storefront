@@ -1,36 +1,30 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {PerkInfo} from './perk-info.component';
 
 export default {
   title: 'Molecules/PerkInfo',
   component: PerkInfo,
-} as ComponentMeta<typeof PerkInfo>;
+} as Meta<typeof PerkInfo>;
 
-const Template: ComponentStory<typeof PerkInfo> = (args) => (
-  <PerkInfo {...args} />
-);
+type Story = StoryObj<typeof PerkInfo>;
 
-export const GamesPerk = Template.bind({});
-GamesPerk.args = {
-  icon: 'games',
-  children: 'Juegos de mesa',
+export const GamesPerk: Story = {
+  render: (args) => <PerkInfo {...args} />,
+  args: {icon: 'games', children: 'Juegos de mesa'},
 };
 
-export const EventsPerk = Template.bind({});
-EventsPerk.args = {
-  icon: 'events',
-  children: 'Hosteo de eventos',
+export const EventsPerk: Story = {
+  render: (args) => <PerkInfo {...args} />,
+  args: {icon: 'events', children: 'Hosteo de eventos'},
 };
 
-export const IngredientsPerk = Template.bind({});
-IngredientsPerk.args = {
-  icon: 'ingredients',
-  children: 'Ingredientes 100% naturales',
+export const IngredientsPerk: Story = {
+  render: (args) => <PerkInfo {...args} />,
+  args: {icon: 'ingredients', children: 'Ingredientes 100% naturales'},
 };
 
-export const InternetPerk = Template.bind({});
-InternetPerk.args = {
-  icon: 'internet',
-  children: 'Internet Rápido',
+export const InternetPerk: Story = {
+  render: (args) => <PerkInfo {...args} />,
+  args: {icon: 'internet', children: 'Internet Rápido'},
 };
