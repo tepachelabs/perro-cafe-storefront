@@ -1,12 +1,18 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {PageHero as PageHero} from './page-hero.component';
+import {CustomLink} from '../../atoms/link';
 
 export default {
   title: 'Organisms/PageHero',
   component: PageHero,
-} as ComponentMeta<typeof PageHero>;
+} as Meta<typeof PageHero>;
 
-const Template: ComponentStory<typeof PageHero> = () => <PageHero />;
+type Story = StoryObj<typeof PageHero>;
 
-export const Default = Template.bind({});
+export const Default: Story = {
+  render: (args) => <PageHero {...args} />,
+  args: {
+    linkRender: (props) => <CustomLink {...props} />,
+  },
+};

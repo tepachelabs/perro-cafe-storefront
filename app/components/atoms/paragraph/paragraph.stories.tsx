@@ -1,21 +1,21 @@
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryObj, Meta} from '@storybook/react';
 
 import {Paragraph} from './paragraph.component';
 
 export default {
   title: 'Atoms/Paragraph',
   component: Paragraph,
-} as ComponentMeta<typeof Paragraph>;
+} as Meta<typeof Paragraph>;
 
-const Template: ComponentStory<typeof Paragraph> = (args) => (
-  <Paragraph {...args} />
-);
+type Story = StoryObj<typeof Paragraph>;
 
-export const Default = Template.bind({});
-Default.args = {
-  children:
-    'Lorem ipsum dolor sit amet, conctetuer adipiscing elit volutpat. Hendrerit invulputatevelit esse  Utwisi enim ad minimveniam.',
-  lineHeight: 1.5,
-  bold: false,
-  italic: false,
+export const Default: Story = {
+  render: (args) => <Paragraph {...args} />,
+  args: {
+    children:
+      'Lorem ipsum dolor sit amet, conctetuer adipiscing elit volutpat. Hendrerit invulputatevelit esse  Utwisi enim ad minimveniam.',
+    lineHeight: 1.5,
+    bold: false,
+    italic: false,
+  },
 };

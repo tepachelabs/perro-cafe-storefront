@@ -1,12 +1,12 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {Hr} from './hr.component';
 
 export default {
   title: 'Atoms/Hr',
   component: Hr,
-} as ComponentMeta<typeof Hr>;
+} as Meta<typeof Hr>;
 
-const Template: ComponentStory<typeof Hr> = () => <Hr />;
+type Story = StoryObj<typeof Hr>;
 
-export const Default = Template.bind({});
+export const Default: Story = {render: () => <Hr />};

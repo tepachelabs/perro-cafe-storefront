@@ -1,4 +1,4 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {
   FacebookButton,
@@ -8,33 +8,51 @@ import {
 
 export default {
   title: 'Molecules/SocialMediaButton',
-} as ComponentMeta<typeof FacebookButton>;
+} as Meta<typeof FacebookButton>;
 
-const Template: ComponentStory<typeof FacebookButton> = (args) => (
-  <div
-    style={{
-      display: 'flex',
-      gap: '1em',
-      backgroundColor: '#9f7d7d',
-      padding: '1em',
-    }}
-  >
-    <FacebookButton {...args} />
-    <InstagramButton {...args} />
-    <TwitterButton {...args} />
-  </div>
-);
+type Story = StoryObj;
 
-export const Default = Template.bind({});
-Default.args = {
-  size: 36,
-  href: '#',
-  inverted: false,
+export const Default: Story = {
+  render: (args) => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '1em',
+        backgroundColor: '#9f7d7d',
+        padding: '1em',
+      }}
+    >
+      <FacebookButton href="#" {...args} />
+      <InstagramButton href="#" {...args} />
+      <TwitterButton href="#" {...args} />
+    </div>
+  ),
+
+  args: {
+    size: 36,
+    href: '#',
+    inverted: false,
+  },
 };
 
-export const Inverted = Template.bind({});
-Inverted.args = {
-  size: 36,
-  href: '#',
-  inverted: true,
+export const Inverted: Story = {
+  render: (args) => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '1em',
+        backgroundColor: '#9f7d7d',
+        padding: '1em',
+      }}
+    >
+      <FacebookButton href="#" {...args} />
+      <InstagramButton href="#" {...args} />
+      <TwitterButton href="#" {...args} />
+    </div>
+  ),
+
+  args: {
+    ...Default.args,
+    inverted: true,
+  },
 };

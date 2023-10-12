@@ -1,12 +1,12 @@
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryObj, Meta} from '@storybook/react';
 
 import {MapSketch} from './map-sketch.component';
 
 export default {
   title: 'Atoms/MapSketch',
   component: MapSketch,
-} as ComponentMeta<typeof MapSketch>;
+} as Meta<typeof MapSketch>;
 
-const Template: ComponentStory<typeof MapSketch> = () => <MapSketch />;
+type Story = StoryObj<typeof MapSketch>;
 
-export const Default = Template.bind({});
+export const Default: Story = {render: () => <MapSketch />};

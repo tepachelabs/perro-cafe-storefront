@@ -1,11 +1,11 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {FacebookIcon, InstagramIcon, TwitterIcon} from './icon.component';
 import {Paragraph} from '../paragraph';
 
 export default {
   title: 'Atoms/Icon',
-} as ComponentMeta<typeof FacebookIcon>;
+} as Meta<typeof FacebookIcon>;
 
 const allIcons = [
   {title: 'FacebookIcon', component: FacebookIcon},
@@ -13,18 +13,20 @@ const allIcons = [
   {title: 'TwitterIcon', component: TwitterIcon},
 ];
 
-const Template: ComponentStory<typeof FacebookIcon> = (args) => (
-  <div style={{display: 'flex', gap: '1em'}}>
-    {allIcons.map(({title, component: IconComponent}) => (
-      <div key={title} style={{textAlign: 'center'}}>
-        <IconComponent {...args} />
-        <Paragraph>{title}</Paragraph>
-      </div>
-    ))}
-  </div>
-);
+type Story = StoryObj;
 
-export const Default = Template.bind({});
-Default.args = {
-  height: 36,
+export const Default: Story = {
+  render: (args) => (
+    <div style={{display: 'flex', gap: '1em'}}>
+      {allIcons.map(({title, component: IconComponent}) => (
+        <div key={title} style={{textAlign: 'center'}}>
+          <IconComponent {...args} />
+          <Paragraph>{title}</Paragraph>
+        </div>
+      ))}
+    </div>
+  ),
+  args: {
+    height: 36,
+  },
 };

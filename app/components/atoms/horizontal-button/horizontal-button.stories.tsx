@@ -1,25 +1,38 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {HorizontalButton} from './horizontal-button.component';
+import {LinkWrapper} from './horizontal-button.styles';
 import configData from '../../../config.json';
+import {CustomLink} from '../link';
 
 export default {
   title: 'Atoms/HorizontalButton',
   component: HorizontalButton,
-} as ComponentMeta<typeof HorizontalButton>;
+} as Meta<typeof HorizontalButton>;
 
-const Template: ComponentStory<typeof HorizontalButton> = (args) => (
-  <HorizontalButton {...args} />
-);
+type Story = StoryObj<typeof HorizontalButton>;
 
-export const SeeMenu = Template.bind({});
-SeeMenu.args = {
-  label: 'VER EL MENÚ',
-  href: configData.globalLinks.menu,
+export const SeeMenu: Story = {
+  render: (args) => (
+    <LinkWrapper>
+      <HorizontalButton {...args} />
+    </LinkWrapper>
+  ),
+  args: {
+    label: 'VER EL MENÚ',
+    href: configData.globalLinks.menu,
+    linkRender: (props) => <CustomLink {...props} />,
+  },
 };
-
-export const Directions = Template.bind({});
-Directions.args = {
-  label: '¿CÓMO LLEGAR?',
-  href: configData.globalLinks.googleMaps,
+export const Directions: Story = {
+  render: (args) => (
+    <LinkWrapper>
+      <HorizontalButton {...args} />
+    </LinkWrapper>
+  ),
+  args: {
+    label: '¿CÓMO LLEGAR?',
+    href: configData.globalLinks.googleMaps,
+    linkRender: (props) => <CustomLink {...props} />,
+  },
 };

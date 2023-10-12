@@ -1,12 +1,15 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {Temple} from './temple.component';
+import {CustomLink} from '../../atoms/link';
 
 export default {
   title: 'Templates/Temple',
   component: Temple,
-} as ComponentMeta<typeof Temple>;
+} as Meta<typeof Temple>;
 
-const Template: ComponentStory<typeof Temple> = () => <Temple />;
+type Story = StoryObj<typeof Temple>;
 
-export const Default = Template.bind({});
+export const Default: Story = {
+  render: () => <Temple linkRender={CustomLink} />,
+};
