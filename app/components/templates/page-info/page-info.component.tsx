@@ -2,6 +2,8 @@ import {Metafield, Product} from '@shopify/hydrogen/storefront-api-types';
 import parse, {domToReact, HTMLReactParserOptions} from 'html-react-parser';
 import {FC} from 'react';
 
+import {List, ListItem, OrderedList} from '~/components/atoms/list';
+
 import {
   CarouselContainer,
   InfoSection,
@@ -63,6 +65,25 @@ const config: HTMLReactParserOptions = {
 
     if (name === 'p') {
       return <Paragraph>{domToReact(children, config)}</Paragraph>;
+    }
+
+    if (name === 'ul') {
+      return <List>{domToReact(children, config)}</List>;
+    }
+
+    if (name === 'ol') {
+      return <OrderedList>{domToReact(children, config)}</OrderedList>;
+    }
+
+    if (name === 'li') {
+      if (children?.[0]?.type === 'text' && children?.[0]?.data !== '\\n') {
+        return (
+          <ListItem>
+            <Paragraph noMargin>{domToReact(children, config)}</Paragraph>
+          </ListItem>
+        );
+      }
+      return <ListItem>{domToReact(children, config)}</ListItem>;
     }
 
     return null;
