@@ -2,7 +2,7 @@
   "name": "perro-cafe-storefront",
   "private": true,
   "sideEffects": false,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "postinstall": "remix-esbuild-override",
     "build": "shopify hydrogen build",
