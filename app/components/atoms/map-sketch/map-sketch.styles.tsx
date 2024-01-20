@@ -19,8 +19,8 @@ export const MapSketchContainer = styled.div`
 
 export const HandOverlay = styled.img`
   position: absolute;
-  top: 19%;
-  right: 16%;
+  top: 10%;
+  left: 36%;
   width: 12%;
   animation-name: ${handAnimation};
   animation-duration: 1.5s;
