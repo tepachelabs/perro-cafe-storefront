@@ -92,13 +92,11 @@ const config = (Link: any) =>
       if (name === 'a') {
         if (rest?.attribs?.['class'] === 'button') {
           return (
-            <>
-              <HorizontalButton
-                label={rest?.attribs?.title}
-                href={rest?.attribs?.href}
-                linkRender={Link}
-              />
-            </>
+            <HorizontalButton
+              label={rest?.attribs?.title}
+              href={rest?.attribs?.href}
+              linkRender={Link}
+            />
           );
         }
       }

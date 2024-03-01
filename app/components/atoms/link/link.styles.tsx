@@ -14,7 +14,6 @@ export const CustomLink = styled.a<NavBarLinkProps>`
   font-family: ${({theme}) => theme.fonts.body};
   font-weight: bold;
   text-decoration: none;
-  line-height: 48px;
 
   border-bottom: ${({theme}) => theme.sizes.borderWidth} solid transparent;
 
