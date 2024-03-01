@@ -44,6 +44,7 @@ const main: Theme = {
   },
 
   sizes: {
+    body: '18px',
     borderWidth: `${unit}px`,
     maxWidth,
     header: `${unit * 16}px`,
