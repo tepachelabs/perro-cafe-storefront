@@ -7,13 +7,12 @@ import {
 } from '@shopify/hydrogen/storefront-api-types';
 import {LoaderArgs} from '@shopify/remix-oxygen';
 
-import {CustomLink} from '~/components/atoms/link';
-import {Hero} from '~/components/organisms/hero';
-import {NavBar} from '~/components/organisms/navbar';
-import {PageHero} from '~/components/organisms/page-hero';
-import {Footer} from '~/components/templates/footer';
-import {Temple} from '~/components/templates/temple';
-import {mapNavBarLinks} from '~/utils';
+import {CustomLink} from '../components/atoms/link';
+import {NavBar} from '../components/organisms/navbar';
+import {PageHero} from '../components/organisms/page-hero';
+import {Footer} from '../components/templates/footer';
+import {Temple} from '../components/templates/temple';
+import {mapNavBarLinks} from '../utils';
 
 // @ts-ignore
 const _Link = (props) => <CustomLink {...props} as={Link} />;

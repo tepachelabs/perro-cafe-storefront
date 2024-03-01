@@ -8,16 +8,16 @@ import {
 } from '@shopify/hydrogen/storefront-api-types';
 import {LoaderArgs} from '@shopify/remix-oxygen';
 
-import {CustomLink} from '~/components/atoms/link';
-import {Hero} from '~/components/organisms/hero';
-import {NavBar} from '~/components/organisms/navbar';
-import {Community} from '~/components/templates/community';
-import {Cult} from '~/components/templates/cult';
-import {Footer} from '~/components/templates/footer';
-import {Menu} from '~/components/templates/menu';
-import {Temple} from '~/components/templates/temple';
-import configData from '~/config.json';
-import {mapNavBarLinks} from '~/utils';
+import {CustomLink} from '../components/atoms/link';
+import {Hero} from '../components/organisms/hero';
+import {NavBar} from '../components/organisms/navbar';
+import {Community} from '../components/templates/community';
+import {Cult} from '../components/templates/cult';
+import {Footer} from '../components/templates/footer';
+import {Menu} from '../components/templates/menu';
+import {Temple} from '../components/templates/temple';
+import configData from '../config.json';
+import {mapNavBarLinks} from '../utils';
 
 interface ShopifyLocation extends Location {
   schedule?: Pick<Metafield, 'value'>;

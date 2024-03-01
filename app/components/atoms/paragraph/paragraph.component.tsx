@@ -11,6 +11,7 @@ interface Props {
 export const ParagraphStyle = ({theme}: {theme: Theme}) => css`
   color: ${theme.colors.black};
   font-family: ${theme.fonts.body};
+  font-size: ${theme.sizes.body};
   margin-bottom: 1.25rem;
 `;
 

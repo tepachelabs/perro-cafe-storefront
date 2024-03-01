@@ -12,17 +12,17 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import {MetaFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 
-import {CustomLink} from '~/components/atoms/link';
-import {NavBar} from '~/components/organisms/navbar';
+import {CustomLink} from '../components/atoms/link';
+import {NavBar} from '../components/organisms/navbar';
 import {
   HeroBanner,
   MetafieldValue,
   PageHero,
-} from '~/components/organisms/page-hero';
-import {Footer} from '~/components/templates/footer';
-import {PageInfo} from '~/components/templates/page-info';
-import configData from '~/config.json';
-import {mapNavBarLinks} from '~/utils';
+} from '../components/organisms/page-hero';
+import {Footer} from '../components/templates/footer';
+import {PageInfo} from '../components/templates/page-info';
+import configData from '../config.json';
+import {mapNavBarLinks} from '../utils';
 
 interface ShopifyLocation extends Location {
   schedule?: Pick<Metafield, 'value'>;

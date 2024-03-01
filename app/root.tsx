@@ -16,10 +16,9 @@ import {
 import Posthog from 'posthog-js';
 import {useEffect} from 'react';
 
-import configData from '~/config.json';
-import {GlobalStyles} from '~/global.styles';
-import theme from '~/theme';
-
+import configData from './config.json';
+import {GlobalStyles} from './global.styles';
+import theme from './theme';
 import favicon from '../public/favicon.png';
 
 export const links: LinksFunction = () => {

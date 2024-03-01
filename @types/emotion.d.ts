@@ -17,6 +17,7 @@ declare module '@emotion/react' {
       title: string;
     };
     sizes: {
+      body: string;
       maxWidth: string;
       borderWidth: string;
       header: string;

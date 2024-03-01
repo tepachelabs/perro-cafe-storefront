@@ -14,13 +14,11 @@ export const CustomLink = styled.a<NavBarLinkProps>`
   font-family: ${({theme}) => theme.fonts.body};
   font-weight: bold;
   text-decoration: none;
-  line-height: 48px;
 
   border-bottom: ${({theme}) => theme.sizes.borderWidth} solid transparent;
 
   ${(props) => props.theme.mediaQueries.desktop} {
     display: inline-block;
-    margin-left: 0.65rem;
     padding: 0;
     height: auto;
 

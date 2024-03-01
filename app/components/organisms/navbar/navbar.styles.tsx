@@ -63,6 +63,7 @@ export const Drawer = styled.div<{collapsed?: boolean}>`
   ${(props) => props.theme.mediaQueries.desktop} {
     padding: 0;
     flex-direction: row;
+    gap: 0.65rem;
 
     width: auto;
   }
