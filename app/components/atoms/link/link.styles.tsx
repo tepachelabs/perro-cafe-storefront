@@ -20,7 +20,6 @@ export const CustomLink = styled.a<NavBarLinkProps>`
 
   ${(props) => props.theme.mediaQueries.desktop} {
     display: inline-block;
-    margin-left: 0.65rem;
     padding: 0;
     height: auto;
 

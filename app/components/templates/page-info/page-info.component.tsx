@@ -2,8 +2,6 @@ import {Metafield, Product} from '@shopify/hydrogen/storefront-api-types';
 import parse, {domToReact, HTMLReactParserOptions} from 'html-react-parser';
 import {FC} from 'react';
 
-import {List, ListItem, OrderedList} from '~/components/atoms/list';
-
 import {
   CarouselContainer,
   InfoSection,
@@ -21,7 +19,9 @@ import {
   Heading5,
   Heading6,
 } from '../../atoms/heading';
+import {HorizontalButton} from '../../atoms/horizontal-button';
 import {LinkRender} from '../../atoms/link';
+import {List, ListItem, OrderedList} from '../../atoms/list';
 import {Paragraph} from '../../atoms/paragraph';
 import {PromotionCard} from '../../molecules/promotion-card';
 import {Subtitle} from '../../molecules/subtitle';
@@ -36,59 +36,76 @@ interface Props {
   linkRender: LinkRender;
 }
 
-const config: HTMLReactParserOptions = {
-  // @ts-ignore
-  replace: ({name, children, ...rest}: DOMNode) => {
-    if (name === 'h1') {
-      return <Heading1>{domToReact(children, config)}</Heading1>;
-    }
-
-    if (name === 'h2') {
-      return <Heading2>{domToReact(children, config)}</Heading2>;
-    }
-
-    if (name === 'h3') {
-      return <Heading3>{domToReact(children, config)}</Heading3>;
-    }
-
-    if (name === 'h4') {
-      return <Heading4>{domToReact(children, config)}</Heading4>;
-    }
-
-    if (name === 'h5') {
-      return <Heading5>{domToReact(children, config)}</Heading5>;
-    }
-
-    if (name === 'h6') {
-      return <Heading6>{domToReact(children, config)}</Heading6>;
-    }
-
-    if (name === 'p') {
-      return <Paragraph>{domToReact(children, config)}</Paragraph>;
-    }
-
-    if (name === 'ul') {
-      return <List>{domToReact(children, config)}</List>;
-    }
-
-    if (name === 'ol') {
-      return <OrderedList>{domToReact(children, config)}</OrderedList>;
-    }
-
-    if (name === 'li') {
-      if (children?.[0]?.type === 'text' && children?.[0]?.data !== '\\n') {
-        return (
-          <ListItem>
-            <Paragraph noMargin>{domToReact(children, config)}</Paragraph>
-          </ListItem>
-        );
+const config = (Link: any) =>
+  ({
+    // @ts-ignore
+    replace: ({name, children, ...rest}: DOMNode) => {
+      if (name === 'h1') {
+        return <Heading1>{domToReact(children, config(Link))}</Heading1>;
       }
-      return <ListItem>{domToReact(children, config)}</ListItem>;
-    }
 
-    return null;
-  },
-};
+      if (name === 'h2') {
+        return <Heading2>{domToReact(children, config(Link))}</Heading2>;
+      }
+
+      if (name === 'h3') {
+        return <Heading3>{domToReact(children, config(Link))}</Heading3>;
+      }
+
+      if (name === 'h4') {
+        return <Heading4>{domToReact(children, config(Link))}</Heading4>;
+      }
+
+      if (name === 'h5') {
+        return <Heading5>{domToReact(children, config(Link))}</Heading5>;
+      }
+
+      if (name === 'h6') {
+        return <Heading6>{domToReact(children, config(Link))}</Heading6>;
+      }
+
+      if (name === 'p') {
+        return <Paragraph>{domToReact(children, config(Link))}</Paragraph>;
+      }
+
+      if (name === 'ul') {
+        return <List>{domToReact(children, config(Link))}</List>;
+      }
+
+      if (name === 'ol') {
+        return <OrderedList>{domToReact(children, config(Link))}</OrderedList>;
+      }
+
+      if (name === 'li') {
+        if (children?.[0]?.type === 'text' && children?.[0]?.data !== '\\n') {
+          return (
+            <ListItem>
+              <Paragraph noMargin>
+                {domToReact(children, config(Link))}
+              </Paragraph>
+            </ListItem>
+          );
+        }
+        return <ListItem>{domToReact(children, config(Link))}</ListItem>;
+      }
+
+      if (name === 'a') {
+        if (rest?.attribs?.['class'] === 'button') {
+          return (
+            <>
+              <HorizontalButton
+                label={rest?.attribs?.title}
+                href={rest?.attribs?.href}
+                linkRender={Link}
+              />
+            </>
+          );
+        }
+      }
+
+      return null;
+    },
+  } as HTMLReactParserOptions);
 
 export const PageInfo: FC<Props> = ({
   content,
@@ -100,7 +117,7 @@ export const PageInfo: FC<Props> = ({
 
   return (
     <InfoSection>
-      {parse(content, config)}
+      {parse(content, config(_Link))}
 
       {products && (
         <ProductsSection>
