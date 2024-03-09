@@ -13,7 +13,8 @@
     "g": "shopify hydrogen generate",
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 6006 --no-open",
     "test": "echo \"No tests yet\"",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_89d4668f6af45d2"
   },
   "prettier": "@shopify/prettier-config",
   "dependencies": {
@@ -53,6 +54,7 @@
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "babel-loader": "^9.1.2",
+    "chromatic": "^11.0.7",
     "eslint": "^8.45.0",
     "eslint-plugin-check-file": "^2.5.0",
     "eslint-plugin-hydrogen": "0.12.2",
