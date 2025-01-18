@@ -122,30 +122,36 @@ export const PageInfo: FC<Props> = ({
           {productsTitle && <Subtitle>{productsTitle.value}</Subtitle>}
           {isDesktop ? (
             <Products>
-              {products.map((product) => (
-                <PromotionCard
-                  key={product.title}
-                  image={product.featuredImage!.url}
-                  label={product.title}
-                  storeUrl={product.onlineStoreUrl || undefined}
-                  linkRender={_Link}
-                />
-              ))}
+              {products.map(
+                (product) =>
+                  product && (
+                    <PromotionCard
+                      key={product.title}
+                      image={product.featuredImage!.url}
+                      label={product.title}
+                      storeUrl={product.onlineStoreUrl || undefined}
+                      linkRender={_Link}
+                    />
+                  ),
+              )}
             </Products>
           ) : (
             <CarouselContainer>
               <Carousel>
-                {products.map((product) => (
-                  <PromotionCard
-                    key={product.title}
-                    image={product.featuredImage!.url}
-                    label={product.title}
-                    storeUrl={product.onlineStoreUrl || undefined}
-                    linkRender={_Link}
-                    borderless
-                    fullWidth
-                  />
-                ))}
+                {products.map(
+                  (product) =>
+                    product && (
+                      <PromotionCard
+                        key={product.title}
+                        image={product.featuredImage!.url}
+                        label={product.title}
+                        storeUrl={product.onlineStoreUrl || undefined}
+                        linkRender={_Link}
+                        borderless
+                        fullWidth
+                      />
+                    ),
+                )}
               </Carousel>
             </CarouselContainer>
           )}
